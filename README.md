@@ -31,7 +31,7 @@ git clone https://github.com/invinciby/CCF_A_agentRL_PapersRead.git
 
 # 进入目录 & 安装依赖
 cd CCF_A_agentRL_PapersRead
-pip install -r requirements.txt          # 或直接 pip install flask
+pip install flask          # 或直接 pip install flask
 
 # 启动服务
 python code/main.py
