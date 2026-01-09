@@ -2,7 +2,16 @@
 
 ## 功能概述
 
-现在Web界面支持在**2024年**和**2025年**的论文数据之间切换查看，用户可以轻松对比两年的论文分类结果。
+现在Web界面支持在**2024年**和**2025年**会议ICML，ICRL，NeurlPS论文数据之间切换查看，用户可以轻松对比两年的论文分类结果。
+
+## 安装方法
+
+```python
+git clone https://github.com/invinciby/CCF_A_agentRL_PapersRead.git
+pip install flask
+cd CCF_A_agentRL_PapersRead
+python code/main.py
+```
 
 ## 使用方法
 
