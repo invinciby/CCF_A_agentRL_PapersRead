@@ -1,0 +1,26 @@
+{
+  "api_config": {
+    "provider": "openai",
+    "api_key": "your_api_key_here",
+    "model": "gpt-4-turbo-preview"
+  },
+  "search_config": {
+    "case_sensitive": false,
+    "keywords": ["AI", "machine learning", "deep learning"],
+    "json_files": [
+      "iclr25_all_papers.json",
+      "neurips2025_all_papers.json",
+      "ICML 2025.json"
+    ]
+  },
+  "classification_config": {
+    "num_categories": 3,
+    "output_dir": "output"
+  },
+  "comments": {
+    "provider": "支持: openai, gemini, deepseek",
+    "api_key": "从对应的API提供商获取",
+    "case_sensitive": "是否对关键词进行大小写敏感匹配",
+    "num_categories": "论文分类的数量"
+  }
+}
