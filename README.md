@@ -4,6 +4,8 @@
 
 现在Web界面支持在**2024年**和**2025年**会议ICML，ICRL，NeurlPS论文数据之间切换查看，用户可以轻松对比两年的论文分类结果。
 
+![alt text](image.png)
+
 ## 安装方法
 
 ```python
