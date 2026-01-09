@@ -1,0 +1,394 @@
+{
+  "name": "强化学习应用与系统",
+  "paper_count": 24,
+  "summary": "本类别关注强化学习在特定复杂现实问题（如云计算、自动化任务生成）中的实际应用与系统构建。研究内容包括：针对动态工作流调度等具体领域挑战，设计结合图神经网络和离线-在线学习的专用DRL框架；以及开发能够自动生成多样化、可学习且有趣的环境与奖励函数的开放生成框架，以推动自我改进的AI系统发展。这些工作侧重于将RL核心算法与领域知识、系统设计相结合，以解决实际部署中的效率、适应性和可扩展性问题。",
+  "papers": [
+    {
+      "title": "Graph Assisted Offline-Online Deep Reinforcement Learning for Dynamic Workflow Scheduling",
+      "abstract": "Dynamic workflow scheduling (DWS) in cloud computing presents substantial challenges due to heterogeneous machine configurations, unpredictable workflow arrivals/patterns, and constantly evolving environments. However, existing research often assumes homogeneous setups and static conditions, limiting flexibility and adaptability in real-world scenarios. In this paper, we propose a novel *Graph assisted Offline-Online Deep Reinforcement Learning* (GOODRL) approach to building an effective and efficient scheduling agent for DWS. Our approach features three key innovations: (1) a *task-specific* graph representation and a *Graph Attention Actor Network* that enable the agent to dynamically assign focused tasks to heterogeneous machines while explicitly considering the future impact of each machine on these tasks; (2) a *system-oriented* graph representation and a *Graph Attention Critic Network* that facilitate efficient processing of new information and understanding its impact on the current state, crucial for managing unpredictable workflow arrivals/patterns in real-time; and (3) an *offline-online* method that utilizes imitation learning for effective offline training and applies gradient control and decoupled high-frequency critic training techniques during online learning to sustain the agent’s robust performance in rapidly changing environments. Experimental results demonstrate that GOODRL significantly outperforms several state-of-the-art algorithms, achieving substantially lower mean flowtime and high adaptability in various online and offline scenarios.",
+      "venue": "ICLR 2025",
+      "authors": [
+        "Yifan Yang",
+        "Gang Chen",
+        "Hui Ma",
+        "Cong Zhang",
+        "Zhiguang Cao",
+        "Mengjie Zhang"
+      ],
+      "paper_id": "4PlbIfmX9o",
+      "pdf_url": "https://openreview.net/pdf/2ba17fb172c6cbbdeb0f05022c5459abe09f3408.pdf",
+      "forum_url": "https://openreview.net/forum?id=4PlbIfmX9o"
+    },
+    {
+      "title": "OMNI-EPIC: Open-endedness via Models of human Notions of Interestingness with Environments Programmed in Code",
+      "abstract": "Open-ended and AI-generating algorithms aim to continuously generate and solve increasingly complex tasks indefinitely, offering a promising path toward more general intelligence. To accomplish this grand vision, learning must occur within a vast array of potential tasks. Existing approaches to automatically generating environments are constrained within manually predefined, often narrow distributions of environments, limiting their ability to create any learning environment. To address this limitation, we introduce a novel framework, OMNI-EPIC, that augments previous work in Open-endedness via Models of human Notions of Interestingness (OMNI) with Environments Programmed in Code (EPIC). OMNI-EPIC leverages foundation models to autonomously generate code specifying the next learnable (i.e., not too easy or difficult for the agent’s current skill set) and interesting (e.g., worthwhile and novel) tasks. OMNI-EPIC generates both environments (e.g., an obstacle course) and reward functions (e.g., progress through the obstacle course quickly without touching red objects), enabling it, in principle, to create any simulatable learning task. We showcase the explosive creativity of OMNI-EPIC, which continuously innovates to suggest new, interesting learning challenges. We also highlight how OMNI-EPIC can adapt to reinforcement learning agents’ learning progress, generating tasks that are of suitable difficulty. Overall, OMNI-EPIC has the potential to endlessly create learnable and interesting environments, further propelling the development of self-improving AI systems and AI-Generating Algorithms.",
+      "venue": "ICLR 2025",
+      "authors": [
+        "Maxence Faldor",
+        "Jenny Zhang",
+        "Antoine Cully",
+        "Jeff Clune"
+      ],
+      "paper_id": "Y1XkzMJpPd",
+      "pdf_url": "https://openreview.net/pdf/23efe03fe48f79d061069f095b1e412d75e96bc0.pdf",
+      "forum_url": "https://openreview.net/forum?id=Y1XkzMJpPd"
+    },
+    {
+      "title": "CycleResearcher: Improving Automated Research via Automated Review",
+      "abstract": "The automation of scientific discovery has been a long-standing goal within the research community, driven by the potential to accelerate knowledge creation. While significant progress has been made using commercial large language models (LLMs) as research assistants or idea generators, the possibility of automating the entire research process with open-source LLMs remains largely unexplored. This paper explores the feasibility of using open-source post-trained LLMs as autonomous agents capable of performing the full cycle of automated research and review, from literature review and manuscript preparation to peer review and paper refinement. Our iterative preference training framework consists of CycleResearcher, which conducts research tasks, and CycleReviewer, which simulates the peer review process, providing iterative feedback via reinforcement learning. To train these models, we develop two new datasets, Review-5k and Research-14k, reflecting real-world machine learning research and peer review dynamics. Our results demonstrate that CycleReviewer achieves promising performance with a 26.89\\% reduction in mean absolute error (MAE) compared to individual human reviewers in predicting paper scores, indicating the potential of LLMs to effectively assist expert-level research evaluation. In research, the papers generated by the CycleResearcher model achieved a score of 5.36 in simulated peer reviews, showing some competitiveness in terms of simulated review scores compared to the preprint level of 5.24 from human experts, while still having room for improvement compared to the accepted paper level of 5.69. This work represents a significant step toward fully automated scientific inquiry, providing ethical safeguards and exploring AI-driven research capabilities. The code, dataset and model weight are released at https://wengsyx.github.io/Researcher.",
+      "venue": "ICLR 2025",
+      "authors": [
+        "Yixuan Weng",
+        "Minjun Zhu",
+        "Guangsheng Bao",
+        "Hongbo Zhang",
+        "Jindong Wang",
+        "Yue Zhang",
+        "Linyi Yang"
+      ],
+      "paper_id": "bjcsVLoHYs",
+      "pdf_url": "https://openreview.net/pdf/fc617925adb22d34e7a2d31f68541c7f3f35ddb6.pdf",
+      "forum_url": "https://openreview.net/forum?id=bjcsVLoHYs"
+    },
+    {
+      "title": "Improving Regret Approximation for Unsupervised Dynamic Environment Generation",
+      "abstract": "Unsupervised Environment Design (UED) seeks to automatically generate training curricula for reinforcement learning (RL) agents, with the goal of improving generalisation and zero-shot performance. However, designing effective curricula remains a difficult problem, particularly in settings where small subsets of environment parameterisations result in significant increases in the complexity of the required policy. Current methods struggle with a difficult credit assignment problem and rely on regret approximations that fail to identify challenging levels, both of which are compounded as the size of the environment grows. We propose Dynamic Environment Generation for UED (DEGen) to enable a denser level generator reward signal, reducing the difficulty of credit assignment and allowing for UED to scale to larger environment sizes. We also introduce a new regret approximation, Maximised Negative Advantage (MNA), as a significantly improved metric to optimise for, that better identifies more challenging levels. We show empirically that MNA outperforms current regret approximations and when combined with DEGen, consistently outperforms existing methods, especially as the size of the environment grows. We have made all our code available here: \\url{https://github.com/HarryMJMead/Dynamic-Environment-Generation-for-UED}.",
+      "venue": "NeurIPS 2025",
+      "authors": [
+        "Harry Mead",
+        "Bruno Lacerda",
+        "Jakob Nicolaus Foerster",
+        "Nick Hawes"
+      ],
+      "paper_id": "UGaAXvav8S",
+      "pdf_url": "https://openreview.net/pdf/78081a25e4989fa4a7d4774da98a42cc057104c3.pdf",
+      "forum_url": "https://openreview.net/forum?id=UGaAXvav8S"
+    },
+    {
+      "title": "DISCOVER: Automated Curricula for Sparse-Reward Reinforcement Learning",
+      "abstract": "Sparse-reward reinforcement learning (RL) can model a wide range of highly complex tasks.\nSolving sparse-reward tasks is RL's core premise — requiring efficient exploration coupled with long-horizon credit assignment — and overcoming these challenges is key for building self-improving agents with superhuman ability.\nWe argue that solving complex and high-dimensional tasks requires solving simpler tasks that are *relevant* to the target task.\nIn contrast, most prior work designs strategies for selecting exploratory tasks with the objective of solving *any* task, making exploration of challenging high-dimensional, long-horizon tasks intractable.\nWe find that the sense of direction, necessary for effective exploration, can be extracted from existing reinforcement learning algorithms, without needing any prior information.\nBased on this finding, we propose a method for _**di**rected **s**parse-reward goal-**co**nditioned **ve**ry long-horizon **R**L_ (DISCOVER), which selects exploratory goals in the direction of the target task.\nWe connect DISCOVER to principled exploration in bandits, formally bounding the time until the target task becomes achievable in terms of the agent's initial distance to the target, but independent of the volume of the space of all tasks.\nEmpirically, we perform a thorough evaluation in high-dimensional simulated environments. We find that the directed goal selection of DISCOVER solves exploration problems that are beyond the reach of prior state-of-the-art exploration methods in RL.",
+      "venue": "NeurIPS 2025",
+      "authors": [
+        "Leander Diaz-Bone",
+        "Marco Bagatella",
+        "Jonas Hübotter",
+        "Andreas Krause"
+      ],
+      "paper_id": "guZBnsKPsw",
+      "pdf_url": "https://openreview.net/pdf/7cc8dd4760e577022940b044e2781d527ba361e3.pdf",
+      "forum_url": "https://openreview.net/forum?id=guZBnsKPsw"
+    },
+    {
+      "title": "WHAT MAKES MATH PROBLEMS HARD FOR REINFORCEMENT LEARNING: A CASE STUDY",
+      "abstract": "Using a long-standing conjecture from combinatorial group theory, we explore, from multiple perspectives, the challenges of finding rare instances carrying disproportionately high rewards. Based on lessons learned in the context defined by the Andrews--Curtis conjecture, we analyze how reinforcement learning agents handle problems of varying hardness. We also address many mathematical questions as a part of our study. Notably, we demonstrate the length reducibility of all but two presentations in the Akbulut--Kirby series (1981), and resolve various potential counterexamples in the Miller--Schupp series (1991), including three infinite subfamilies.",
+      "venue": "NeurIPS 2025",
+      "authors": [
+        "Ali Shehper",
+        "Anibal M. Medina-Mardones",
+        "Lucas Fagan",
+        "Bartłomiej Lewandowski",
+        "Angus Gruen",
+        "Yang Qiu",
+        "Piotr Kucharski",
+        "Zhenghan Wang",
+        "Sergei Gukov"
+      ],
+      "paper_id": "KIlw9nWydt",
+      "pdf_url": "https://openreview.net/pdf/d69eda5f377736a1bb32b29e29f38ea50a4a2e14.pdf",
+      "forum_url": "https://openreview.net/forum?id=KIlw9nWydt"
+    },
+    {
+      "title": "GUI-G1: Understanding R1-Zero-Like Training for Visual Grounding in GUI Agents",
+      "abstract": "Recent Graphical User Interface (GUI) agents replicate the R1-Zero paradigm, coupling online Reinforcement Learning (RL) with explicit chain-of-thought reasoning prior to object grounding and thereby achieving substantial performance gains. In this paper, we first conduct extensive analysis experiments of three key components of that training pipeline: input design, output evaluation, and policy update—each revealing distinct challenges arising from blindly applying general-purpose RL without adapting to GUI grounding tasks. Input design: Current templates encourage the model to generate chain-of-thought reasoning, but longer chains unexpectedly lead to worse grounding performance. Output evaluation: Reward functions based on hit signals or box area allow models to exploit box size, leading to reward hacking and poor localization quality. Policy update: Online RL tends to overfit easy examples due to biases in length and sample difficulty, leading to under-optimization on harder cases. To address these issues, we propose three targeted solutions. First, we adopt a $\\textbf{Fast Thinking Template}$ that encourages direct answer generation, reducing excessive reasoning during training. Second, we incorporate a box size constraint into the reward function to mitigate reward hacking. Third, we revise the RL objective by adjusting length normalization and adding a difficulty-aware scaling factor, enabling better optimization on hard samples. Our $\\textbf{GUI-G1-3B}$, trained on 17K public samples with Qwen2.5-VL-3B-Instruct, achieves $\\textbf{90.3\\%}$ accuracy on ScreenSpot and $\\textbf{37.1\\%}$ on ScreenSpot-Pro. This surpasses all prior models of similar size and even outperforms the larger UI-TARS-7B, establishing a new state-of-the-art in GUI agent grounding.",
+      "venue": "NeurIPS 2025",
+      "authors": [
+        "Yuqi Zhou",
+        "Sunhao Dai",
+        "Shuai Wang",
+        "Kaiwen Zhou",
+        "Qinglin Jia",
+        "Jun Xu"
+      ],
+      "paper_id": "1XLjrmKZ4p",
+      "pdf_url": "https://openreview.net/pdf/f6767d3d1ddd7b12b85d94abd6d7a313406de8a8.pdf",
+      "forum_url": "https://openreview.net/forum?id=1XLjrmKZ4p"
+    },
+    {
+      "title": "HCRMP: An LLM-Hinted Contextual Reinforcement Learning Framework for Autonomous Driving",
+      "abstract": "Integrating the understanding and reasoning capabilities of Large Language Models (LLM) with the self-learning capabilities of Reinforcement Learning (RL) enables more reliable driving performance under complex driving conditions. There has been a lot of work exploring LLM-Dominated RL methods in the field of autonomous driving motion planning. These methods, which utilize LLM to directly generate policies or provide decisive instructions during policy learning of RL agent, are centrally characterized by an over-reliance on LLM outputs. However, LLM outputs are susceptible to hallucinations. Evaluations show that state-of-the-art LLM indicates a non-hallucination rate of only approximately 57.95\\% when assessed on essential driving-related tasks. Thus, in these methods, hallucinations from the LLM can directly jeopardize the performance of driving policies. This paper argues that maintaining relative independence between the LLM and the RL is vital for solving the hallucinations problem. Consequently, this paper is devoted to propose a novel LLM-Hinted RL paradigm. The LLM is used to generate semantic hints for state augmentation and policy optimization to assist RL agent in motion planning, while the RL agent counteracts potential erroneous semantic indications through policy learning to achieve excellent driving performance. Based on this paradigm, we propose the HCRMP (LLM-Hinted Contextual Reinforcement Learning Motion Planner) architecture, which is designed that includes  ①Augmented Semantic Representation Module to extend state space. ②Contextual Stability Anchor Module enhances the reliability of multi-critic weight hints by utilizing information from the knowledge base. ③Semantic Cache Module is employed to seamlessly integrate LLM low-frequency guidance with RL high-frequency control. Extensive experiments in CARLA validate HCRMP's strong overall driving performance. HCRMP achieves a task success rate of up to 80.3\\% under diverse driving conditions with different traffic densities. Under safety-critical driving conditions, HCRMP significantly reduces the collision rate by 11.4\\%, which effectively improves the driving performance in complex scenarios.",
+      "venue": "NeurIPS 2025",
+      "authors": [
+        "Zhiwen Chen",
+        "Hanming Deng",
+        "Zhuoren Li",
+        "Huanxi Wen",
+        "Guizhe Jin",
+        "Ran Yu",
+        "Bo Leng"
+      ],
+      "paper_id": "1BOiVpBtZy",
+      "pdf_url": "https://openreview.net/pdf/1c6edc1362f9abc88143331bc8ca8f548a76312b.pdf",
+      "forum_url": "https://openreview.net/forum?id=1BOiVpBtZy"
+    },
+    {
+      "title": "DynamicRAG: Leveraging Outputs of Large Language Model as Feedback for Dynamic Reranking in Retrieval-Augmented Generation",
+      "abstract": "Retrieval-augmented generation (RAG) systems combine large language models (LLMs) with external knowledge retrieval, making them highly effective for knowledge-intensive tasks. A crucial but often under-explored component of these systems is the reranker, which refines retrieved documents to enhance generation quality and explainability. The challenge of selecting the optimal number of documents (k) remains unsolved: too few may omit critical information, while too many introduce noise and inefficiencies. Although recent studies have explored LLM-based rerankers, they primarily leverage internal model knowledge and overlook the rich supervisory signals that LLMs can provide, such as using response quality as feedback for optimizing reranking decisions. In this paper, we propose DynamicRAG, a novel RAG framework where the reranker dynamically adjusts both the order and number of retrieved documents based on the query. We model the reranker as an agent optimized through reinforcement learning (RL), using rewards derived from LLM output quality. Across seven knowledge-intensive datasets, DynamicRAG demonstrates superior performance, achieving state-of-the-art results.",
+      "venue": "NeurIPS 2025",
+      "authors": [
+        "Jiashuo Sun",
+        "Xianrui Zhong",
+        "Sizhe Zhou",
+        "Jiawei Han"
+      ],
+      "paper_id": "NuCtKoflsV",
+      "pdf_url": "https://openreview.net/pdf/9d193d0269cd2ca3f7a66de1368f8a0e3fdd3dcc.pdf",
+      "forum_url": "https://openreview.net/forum?id=NuCtKoflsV"
+    },
+    {
+      "title": "Planning without Search: Refining Frontier LLMs with Offline Goal-Conditioned RL",
+      "abstract": "Large language models (LLMs) excel in tasks like question answering and dialogue, but complex tasks requiring interaction, such as negotiation and persuasion, require additional long-horizon reasoning and planning. Reinforcement learning (RL) fine-tuning can enable such planning in principle, but suffers from drawbacks that hinder scalability. In particular, multi-turn RL training incurs high memory and computational costs, which are exacerbated when training LLMs as policies. Furthermore, the largest LLMs do not expose the APIs necessary to be trained in such manner. As a result, modern methods to improve the reasoning of LLMs rely on sophisticated prompting mechanisms rather than RL fine-tuning. To remedy this, we propose a novel approach that uses goal-conditioned value functions to guide the reasoning of LLM agents, that scales even to large API-based models. These value functions predict how a task will unfold given an action, allowing the LLM agent to evaluate multiple possible outcomes, both positive and negative, to plan effectively. In addition, these value functions are trained over reasoning steps rather than full actions, to be a concise and light-weight module that facilitates decision-making in multi-turn interactions. We validate our method on tasks requiring interaction, including tool use, social deduction, and dialogue, demonstrating superior performance over both RL fine-tuning and prompting methods while maintaining efficiency and scalability.",
+      "venue": "NeurIPS 2025",
+      "authors": [
+        "Joey Hong",
+        "Anca Dragan",
+        "Sergey Levine"
+      ],
+      "paper_id": "kuoD6G0Suq",
+      "pdf_url": "https://openreview.net/pdf/a27fd29bd9a99f5624d5362501cf5a6acc4c4e37.pdf",
+      "forum_url": "https://openreview.net/forum?id=kuoD6G0Suq"
+    },
+    {
+      "title": "Retro-R1: LLM-based Agentic Retrosynthesis",
+      "abstract": "Retrosynthetic planning is a fundamental task in chemical discovery. Due to the vast combinatorial search space, identifying viable synthetic routes remains a significant challenge--even for expert chemists. Recent advances in Large Language Models (LLMs), particularly equipped with reinforcement learning, have demonstrated strong human-like reasoning and planning abilities, especially in mathematics and code problem solving. This raises a natural question: Can the reasoning capabilities of LLMs be harnessed to develop an AI chemist capable of learning effective policies for multi-step retrosynthesis? In this study, we introduce Retro-R1, a novel LLM-based retrosynthesis agent trained via reinforcement learning to design molecular synthesis pathways. Unlike prior approaches, which typically rely on single-turn, question-answering formats, Retro-R1 interacts dynamically with plug-in single-step retrosynthesis tools and learns from environmental feedback. Experimental results show that Retro-R1 achieves a 55.79\\% pass@1 success rate, surpassing the previous state of the art by 8.95\\%. Notably, Retro-R1 demonstrates strong generalization to out-of-domain test cases, where existing methods tend to fail despite their high in-domain performance. Our work marks a significant step toward equipping LLMs with advanced, chemist-like reasoning abilities, highlighting the promise of reinforcement learning for enabling data-efficient, generalizable, and sophisticated scientific problem-solving in LLM-based agents.",
+      "venue": "NeurIPS 2025",
+      "authors": [
+        "Wei Liu",
+        "Jiangtao Feng",
+        "Hongli Yu",
+        "Yuxuan Song",
+        "Yuqiang Li",
+        "Shufei Zhang",
+        "LEI BAI",
+        "Wei-Ying Ma",
+        "Hao Zhou"
+      ],
+      "paper_id": "30iBKSQMXn",
+      "pdf_url": "https://openreview.net/pdf/470a5ef177e20c474a9e358c1bab0c1cf082f1de.pdf",
+      "forum_url": "https://openreview.net/forum?id=30iBKSQMXn"
+    },
+    {
+      "title": "OrbitZoo: Real Orbital Systems Challenges for Reinforcement Learning",
+      "abstract": "The increasing number of satellites and orbital debris has made space congestion a critical issue, threatening satellite safety and sustainability. Challenges such as collision avoidance, station-keeping, and orbital maneuvering require advanced techniques to handle dynamic uncertainties and multi-agent interactions. Reinforcement learning (RL) has shown promise in this domain, enabling adaptive, autonomous policies for space operations; however, many existing RL frameworks rely on custom-built environments developed from scratch, which often use simplified models and require significant time to implement and validate the orbital dynamics, limiting their ability to fully capture real-world complexities.  To address this, we introduce OrbitZoo, a versatile multi-agent RL environment built on a high-fidelity industry standard library, that enables realistic data generation, supports scenarios like collision avoidance and cooperative maneuvers, and ensures robust and accurate orbital dynamics. The environment is validated against various real satellite constellations, including Starlink, achieving a Mean Absolute Percentage Error (MAPE) of 0.16% compared to real-world data. This validation ensures reliability for generating high-fidelity simulations and enabling autonomous and independent satellite operations.",
+      "venue": "NeurIPS 2025",
+      "authors": [
+        "Alexandre Oliveira",
+        "Katarina Dyreby",
+        "Francisco Miguel Caldas",
+        "Claudia Soares"
+      ],
+      "paper_id": "oElWLpkOux",
+      "pdf_url": "https://openreview.net/pdf/4972fd0b4ad48790705709db3779ecdd2339e08b.pdf",
+      "forum_url": "https://openreview.net/forum?id=oElWLpkOux"
+    },
+    {
+      "title": "OWL: Optimized Workforce Learning for General Multi-Agent Assistance in Real-World Task Automation",
+      "abstract": "Large Language Model (LLM)-based multi-agent systems show promise for automating real-world tasks but struggle to transfer across domains due to their domain-specific nature.\nCurrent approaches face two critical shortcomings: they require complete architectural redesign and full retraining of all components when applied to new domains.\nWe introduce **Workforce**, a hierarchical multi-agent framework that decouples strategic planning from specialized execution through a modular architecture comprising:\n*(i)* a *domain-agnostic* **Planner** for task decomposition,\n*(ii)* a **Coordinator** for subtask management, and\n*(iii)* specialized **Workers** with *domain-specific* tool-calling capabilities.\nThis decoupling enables cross-domain transferability during both inference and training phases:\nDuring inference, Workforce seamlessly adapts to new domains by adding or modifying worker agents;\nFor training, we introduce **Optimized Workforce Learning (OWL)**, which improves generalization across domains by optimizing a domain-agnostic planner with reinforcement learning from real-world feedback.\nTo validate our approach, we evaluate Workforce on the GAIA benchmark, covering various realistic, multi-domain agentic tasks.\nExperimental results demonstrate Workforce achieves open-source state-of-the-art performance (**69.70%**), outperforming commercial systems like OpenAI's Deep Research by **2.34%**.\nMore notably, our OWL-trained 32B model achieves **52.73%** accuracy (**+16.37%**) and demonstrates performance comparable to GPT-4o on challenging tasks.\nTo summarize, by enabling scalable generalization and modular domain transfer, our work establishes a foundation for the next generation of general-purpose AI assistants.\n\n*Our code is available at [Anonymous URL](https://anonymous.4open.science/r/annonymous-owl/), and our data is available at [Anonymous URL](https://huggingface.co/anonymous21016).*",
+      "venue": "NeurIPS 2025",
+      "authors": [
+        "Mengkang Hu",
+        "Yuhang Zhou",
+        "Wendong Fan",
+        "Yuzhou Nie",
+        "Ziyu Ye",
+        "Bowei Xia",
+        "Tao Sun",
+        "Zhaoxuan Jin",
+        "Yingru Li",
+        "Zeyu Zhang",
+        "Yifeng Wang",
+        "Qianshuo Ye",
+        "Bernard Ghanem",
+        "Ping Luo",
+        "Guohao Li"
+      ],
+      "paper_id": "MBJ46gd1CT",
+      "pdf_url": "https://openreview.net/pdf/9ea2d3d5cf7f874c7669ab5c3f1270eb3bc794d1.pdf",
+      "forum_url": "https://openreview.net/forum?id=MBJ46gd1CT"
+    },
+    {
+      "title": "Hephaestus: Mixture Generative Modeling with Energy Guidance for Large-scale QoS Degradation",
+      "abstract": "We study the Quality of Service Degradation (QoSD) problem, in which an adversary perturbs edge weights to degrade network performance. This setting arises in both network infrastructures and distributed ML systems, where communication quality, not just connectivity, determines functionality. While classical methods rely on combinatorial optimization, and recent ML approaches address only restricted linear variants with small-size networks, no prior model directly tackles the QoSD problem under nonlinear edge-weight functions. This work proposes Hephaestus, a self-reinforcing generative framework that synthesizes feasible solutions in latent space, to fill this gap. Our method includes three phases: (1) Forge: a Predictive Path-Stressing (PPS) algorithm that uses graph learning and approximation to produce feasible solutions with performance guarantee, (2) Morph: a new theoretically grounded training paradigm for Mixture of Conditional VAEs guided by an energy-based model to capture solution feature distributions, and (3) Refine: a reinforcement learning agent that explores this space to generate progressively near-optimal solutions using our designed differentiable reward function. Experiments on both synthetic and real-world networks show that our approach consistently outperforms classical and ML baselines, particularly in scenarios with nonlinear cost functions where traditional methods fail to generalize.",
+      "venue": "NeurIPS 2025",
+      "authors": [
+        "Nguyen Hoang Khoi Do",
+        "Bach Ngo",
+        "Youval Kashuv",
+        "Canh V. Pham",
+        "Hanghang Tong",
+        "My T. Thai"
+      ],
+      "paper_id": "qmvEe6nd2I",
+      "pdf_url": "https://openreview.net/pdf/662a28acbcb800f560d21c8dfadc72c1ff9680c3.pdf",
+      "forum_url": "https://openreview.net/forum?id=qmvEe6nd2I"
+    },
+    {
+      "title": "Real-World Adverse Weather Image Restoration via Dual-Level Reinforcement Learning with High-Quality Cold Start",
+      "abstract": "Adverse weather severely impairs real-world visual perception, while existing vision models trained on synthetic data with fixed parameters struggle to generalize to complex degradations. To address this, we first construct HFLS-Weather, a physics-driven, high-fidelity dataset that simulates diverse weather phenomena, and then design a dual-level reinforcement learning framework initialized with HFLS-Weather for cold-start training. Within this framework, at the local level, weather-specific restoration models are refined through perturbation-driven image quality optimization, enabling reward-based learning without paired supervision; at the global level, a meta-controller dynamically orchestrates model selection and execution order according to scene degradation. This framework enables continuous adaptation to real-world conditions and achieves state-of-the-art performance across a wide range of adverse weather scenarios. Code is available at https://github.com/xxclfy/AgentRL-Real-Weather",
+      "venue": "NeurIPS 2025",
+      "authors": [
+        "Fuyang Liu",
+        "Jiaqi Xu",
+        "Xiaowei Hu"
+      ],
+      "paper_id": "7aYBgYDFhh",
+      "pdf_url": "https://openreview.net/pdf/15e09eda7bc8119a966dab3b28e61ca06b1fe637.pdf",
+      "forum_url": "https://openreview.net/forum?id=7aYBgYDFhh"
+    },
+    {
+      "title": "DesignX: Human-Competitive Algorithm Designer for Black-Box Optimization",
+      "abstract": "Designing effective black‑box optimizers is hampered by limited problem-specific knowledge and manual control that spans months for almost every detail. In this paper, we present DesignX, the first automated algorithm design framework that generates an effective optimizer specific to a given black-box optimization problem within seconds. Rooted in the first principles, we identify two key sub-tasks: 1) algorithm structure generation and 2) hyperparameter control. To enable systematic construction, a comprehensive modular algorithmic space is first built, embracing hundreds of algorithm components collected from decades of research. We then introduce a dual-agent reinforcement learning system that collaborates on structural and parametric design through a novel cooperative training objective, enabling large-scale meta-training across 10k diverse instances. Remarkably, through days of autonomous learning, the DesignX-generated optimizers continuously surpass human-crafted optimizers by orders of magnitude, either on synthetic testbed or on realistic optimization scenarios such as Protein-docking, AutoML and UAV path planning. Further in-depth analysis reveals DesignX's capability to discover non-trivial algorithm patterns beyond expert intuition, which, conversely, provides valuable design insights for the optimization community. We provide DesignX's Python project at~\\url{https://github.com/MetaEvo/DesignX}.",
+      "venue": "NeurIPS 2025",
+      "authors": [
+        "Hongshu Guo",
+        "Zeyuan Ma",
+        "Yining Ma",
+        "Xinglin Zhang",
+        "Wei-Neng Chen",
+        "Yue-Jiao Gong"
+      ],
+      "paper_id": "FAiIRMvIwy",
+      "pdf_url": "https://openreview.net/pdf/abf117580ed6ecdac082370b0104d85086274cb3.pdf",
+      "forum_url": "https://openreview.net/forum?id=FAiIRMvIwy"
+    },
+    {
+      "title": "Compiler-R1: Towards Agentic Compiler Auto-tuning with Reinforcement Learning",
+      "abstract": "Compiler auto-tuning optimizes pass sequences to improve performance metrics such as Intermediate Representation (IR) instruction count. Although recent advances leveraging Large Language Models (LLMs) have shown promise in automating compiler tuning, two significant challenges still remain: the absence of high-quality reasoning datasets for agents training, and limited effective interactions with the compilation environment. In this work, we introduce Compiler-R1, the first reinforcement learning (RL)-driven framework specifically augmenting LLM capabilities for compiler auto-tuning. Compiler-R1 features a curated, high-quality reasoning dataset and a novel two-stage end-to-end RL training pipeline, enabling efficient environment exploration and learning through an outcome-based reward. Extensive experiments across seven datasets demonstrate Compiler-R1 achieving an average 8.46\\% IR instruction count reduction compared to opt -Oz, showcasing the strong potential of RL-trained LLMs for compiler optimization. Our code and datasets are publicly available at https://github.com/Panhaolin2001/Compiler-R1.",
+      "venue": "NeurIPS 2025",
+      "authors": [
+        "Haolin Pan",
+        "Hongyu Lin",
+        "Haoran Luo",
+        "Yang Liu",
+        "Kaichun Yao",
+        "Libo Zhang",
+        "Mingjie Xing",
+        "Yanjun Wu"
+      ],
+      "paper_id": "tY8ctrD4W2",
+      "pdf_url": "https://openreview.net/pdf/7b8e4f95272ab1e9e3900b30ef9647d058b6b034.pdf",
+      "forum_url": "https://openreview.net/forum?id=tY8ctrD4W2"
+    },
+    {
+      "title": "SE-GUI: Enhancing Visual Grounding for GUI Agents via Self-Evolutionary Reinforcement Learning",
+      "abstract": "Graphical User Interface (GUI) agents have made substantial strides in understanding and executing user instructions across diverse platforms. Yet, grounding these instructions to precise interface elements remains challenging—especially in complex, high-resolution, professional environments. Traditional supervised fine-tuning (SFT) methods often require large volumes of diverse data and exhibit weak generalization. To overcome these limitations, we introduce a reinforcement learning (RL)-based framework that incorporates three core strategies: (1) seed data curation to ensure high-quality training samples, (2) a dense policy gradient that provides continuous feedback based on prediction accuracy, and (3) a self-evolutionary reinforcement finetuning mechanism that iteratively refines the model using attention maps. With only 3k training samples, our 7B-parameter model achieves state-of-the-art results among similarly sized models on three grounding benchmarks. Notably, it attains 47.3\\% accuracy on the ScreenSpot-Pro dataset—outperforming much larger models, such as UI-TARS-72B, by a margin of 24.2\\%. These findings underscore the effectiveness of RL-based approaches in enhancing GUI agent performance, particularly in high-resolution, complex environments.",
+      "venue": "NeurIPS 2025",
+      "authors": [
+        "Xinbin Yuan",
+        "Jian Zhang",
+        "Kaixin Li",
+        "Zhuoxuan Cai",
+        "Lujian Yao",
+        "Jie Chen",
+        "Enguang Wang",
+        "Qibin Hou",
+        "Jinwei Chen",
+        "Peng-Tao Jiang",
+        "Bo Li"
+      ],
+      "paper_id": "IbzDaIDyt6",
+      "pdf_url": "https://openreview.net/pdf/13bc5a7cb4ce114ec3e9a478b5ce44334b495888.pdf",
+      "forum_url": "https://openreview.net/forum?id=IbzDaIDyt6"
+    },
+    {
+      "title": "Craftium: Bridging Flexibility and Efficiency for Rich 3D Single- and Multi-Agent Environments",
+      "abstract": "Advances in large models, reinforcement learning, and open-endedness have accelerated progress toward autonomous agents that can learn and interact in the real world. To achieve this, flexible tools are needed to create rich, yet computationally efficient, environments. While scalable 2D environments fail to address key real-world challenges like 3D navigation and spatial reasoning, more complex 3D environments are computationally expensive and lack features like customizability and multi-agent support. This paper introduces Craftium, a highly customizable and easy-to-use platform for building rich 3D single- and multi-agent environments. We showcase environments of different complexity and nature: from single- and multi-agent tasks to vast worlds with many creatures and biomes, and customizable procedural task generators. Benchmarking shows that Craftium significantly reduces the computational cost of alternatives of similar richness, achieving +2K steps per second more than Minecraft-based frameworks.",
+      "venue": "ICML 2025",
+      "authors": [
+        "Mikel Malagón",
+        "Josu Ceberio",
+        "Jose A Lozano"
+      ],
+      "paper_id": "44390",
+      "pdf_url": "",
+      "forum_url": "https://ICML.cc/forum?id=2025/poster/44390"
+    },
+    {
+      "title": "Empirical Design in Reinforcement Learning",
+      "abstract": "Empirical design in reinforcement learning is no small task. Running good experiments requires attention to detail and at times significant computational resources. While compute resources available per dollar have continued to grow rapidly, so have the scale of typical experiments in reinforcement learning. It is now common to benchmark agents with millions of parameters against dozens of tasks, each using the equivalent of 30 days of experience. The scale of these experiments often conflict with the need for statistical evidence, especially when comparing algorithms. Recent studies have highlighted how popular algorithms are sensitive to hyperparameter settings and implementation details, and that common empirical practice leads to weak statistical evidence (Machado et al., 2018; Henderson et al., 2018).This manuscript represents both a call to action, and a comprehensive resource for how to do good experiments in reinforcement learning. In particular, we cover: the statistical assumptions underlying common performance measures, how to properly characterize performance variation and stability, hypothesis testing, special considerations for comparing multiple agents, baseline and illustrative example construction, and how to deal with hyperparameters and experimenter bias. Throughout we highlight common mistakes found in the literature and the statistical consequences of those in example experiments. The objective of this document is to provide answers on how we can use our unprecedented compute to do good science in reinforcement learning, as well as stay alert to potential pitfalls in our empirical design.",
+      "venue": "ICML 2025",
+      "authors": [
+        "Andrew Patterson",
+        "Samuel F Neumann",
+        "Martha White",
+        "Adam White"
+      ],
+      "paper_id": "46712",
+      "pdf_url": "",
+      "forum_url": "https://ICML.cc/forum?id=2025/poster/46712"
+    },
+    {
+      "title": "Improving Parallel Program Performance with LLM Optimizers via Agent-System Interfaces",
+      "abstract": "Modern scientific discovery increasingly relies on high-performance computing for complex modeling and simulation. A key challenge in improving parallel program performance is efficiently mapping tasks to processors and data to memory, a process dictated by intricate, low-level system code known as *mappers*. Developing high-performance mappers demands days of manual tuning, posing a significant barrier for domain scientists without systems expertise. We introduce a framework that automates mapper development with generative optimization, leveraging richer feedback beyond scalar performance metrics. Our approach features the Agent-System Interface, which includes a Domain-Specific Language (DSL) to abstract away the low-level complexity of system code and define a structured search space, as well as AutoGuide, a mechanism that interprets raw execution output into actionable feedback. Unlike traditional reinforcement learning methods such as OpenTuner, which rely solely on scalar feedback, our method finds superior mappers in far fewer iterations. With just 10 iterations, it outperforms OpenTuner even after 1000 iterations, achieving $3.8\\times$ faster performance. Our approach finds mappers that surpass expert-written mappers by up to $1.34\\times$ speedup across nine benchmarks while reducing tuning time from days to minutes.",
+      "venue": "ICML 2025",
+      "authors": [
+        "Anjiang Wei",
+        "Allen Nie",
+        "Thiago Teixeira",
+        "Rohan Yadav",
+        "Wonchan Lee",
+        "Ke Wang",
+        "Alex Aiken"
+      ],
+      "paper_id": "46525",
+      "pdf_url": "",
+      "forum_url": "https://ICML.cc/forum?id=2025/poster/46525"
+    },
+    {
+      "title": "LineFlow: A Framework to Learn Active Control of Production Lines",
+      "abstract": "Many production lines require active control mechanisms, such as adaptive routing, worker reallocation, and rescheduling, to maintain optimal performance. However, designing these control systems is challenging for various reasons, and while reinforcement learning (RL) has shown promise in addressing these challenges, a standardized and general framework is still lacking. In this work, we introduce LineFlow, an extensible, open-source Python framework for simulating production lines of arbitrary complexity and training RL agents to control them. To demonstrate the capabilities and to validate the underlying theoretical assumptions of LineFlow, we formulate core subproblems of active line control in ways that facilitate mathematical analysis. For each problem, we provide optimal solutions for comparison. We benchmark state-of-the-art RL algorithms and show that the learned policies approach optimal performance in well-understood scenarios. However, for more complex, industrial-scale production lines, RL still faces significant challenges, highlighting the need for further research in areas such as reward shaping, curriculum learning, and hierarchical control.",
+      "venue": "ICML 2025",
+      "authors": [
+        "Kai Müller",
+        "Martin Wenzel",
+        "Tobias Windisch"
+      ],
+      "paper_id": "46304",
+      "pdf_url": "",
+      "forum_url": "https://ICML.cc/forum?id=2025/poster/46304"
+    },
+    {
+      "title": "Preference Adaptive and Sequential Text-to-Image Generation",
+      "abstract": "We address the problem of interactive text-to-image (T2I) generation, designing a reinforcement learning (RL) agent which iteratively improves a set of generated images for a user through a sequence of prompt expansions. Using human raters, we create a novel dataset of sequential preferences, which we leverage, together with large-scale open-source (non-sequential) datasets. We construct user-preference and user-choice models using an EM strategy and identify varying user preference types. We then leverage a large multimodal language model (LMM) and a value-based RL approach to suggest an adaptive and diverse slate of prompt expansions to the user. Our Preference Adaptive and Sequential Text-to-image Agent (PASTA) extends T2I models with adaptive multi-turn capabilities, fostering collaborative co-creation and addressing uncertainty or underspecification in a user's intent. We evaluate PASTA using human raters, showing significant improvement compared to baseline methods. We also open-source our sequential rater dataset and simulated user-rater interactions to support future research in user-centric multi-turn T2I systems.",
+      "venue": "ICML 2025",
+      "authors": [
+        "Ofir Nabati",
+        "Guy Tennenholtz",
+        "Chih-wei Hsu",
+        "Moonkyung Ryu",
+        "Deepak Ramachandran",
+        "Yinlam Chow",
+        "Xiang Li",
+        "Craig Boutilier"
+      ],
+      "paper_id": "45601",
+      "pdf_url": "",
+      "forum_url": "https://ICML.cc/forum?id=2025/poster/45601"
+    },
+    {
+      "title": "RLEF: Grounding Code LLMs in Execution Feedback with Reinforcement Learning",
+      "abstract": "Large language models (LLMs) deployed as agents solve user-specified tasks over multiple steps while keeping the required manual engagement to a minimum. Crucially, such LLMs need to ground their generations in any feedback obtained to reliably achieve the desired outcomes. We propose an end-to-end reinforcement learning method for teaching models to leverage execution feedback in the realm of code synthesis, where state-of-the-art LLMs struggle to improve code iteratively compared to independent sampling. We benchmark on competitive programming tasks and achieve large performance gains with both small (8B parameters) and large (70B) models, outperforming previous work while reducing the number of samples required by an order of magnitude. Our analysis of inference-time behavior demonstrates that our method produces LLMs that effectively leverage automatic feedback over multiple steps.",
+      "venue": "ICML 2025",
+      "authors": [
+        "Jonas Gehring",
+        "Kunhao Zheng",
+        "Jade Copet",
+        "Vegard Mella",
+        "Taco Cohen",
+        "Gabriel Synnaeve"
+      ],
+      "paper_id": "45358",
+      "pdf_url": "",
+      "forum_url": "https://ICML.cc/forum?id=2025/poster/45358"
+    }
+  ]
+}

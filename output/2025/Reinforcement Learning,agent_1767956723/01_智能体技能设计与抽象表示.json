@@ -1,0 +1,477 @@
+{
+  "name": "智能体技能设计与抽象表示",
+  "paper_count": 30,
+  "summary": "本类别聚焦于如何为智能体设计和表示复杂技能，使其能够执行高级任务。研究内容包括：利用大语言模型（LLM）从自然语言描述中自动生成技能奖励函数和代码（如MaestroMotif）；通过进化策略和强化学习自动生成具有内外骨骼结构的机器人形态与控制器；以及结合神经与符号方法（如Neuro-Symbolic Predicates、BlendRL）来学习抽象的世界模型和策略，以提高样本效率、泛化能力和可解释性。这些工作旨在构建能够理解、组合和执行复杂行为的更通用、更灵活的智能体。",
+  "papers": [
+    {
+      "title": "MaestroMotif: Skill Design from Artificial Intelligence Feedback",
+      "abstract": "Describing skills in natural language has the potential to provide an accessible way to inject human knowledge about decision-making into an AI system. We present MaestroMotif, a method for AI-assisted skill design, which yields high-performing and adaptable agents. MaestroMotif leverages the capabilities of Large Language Models (LLMs) to effectively create and reuse skills. It first uses an LLM's feedback to automatically design rewards corresponding to each skill, starting from their natural language description. Then, it employs an LLM's code generation abilities, together with reinforcement learning, for training the skills and combining them to implement complex behaviors specified in language. We evaluate MaestroMotif using a suite of complex tasks in the NetHack Learning Environment (NLE), demonstrating that it surpasses existing approaches in both performance and usability.",
+      "venue": "ICLR 2025",
+      "authors": [
+        "Martin Klissarov",
+        "Mikael Henaff",
+        "Roberta Raileanu",
+        "Shagun Sodhani",
+        "Pascal Vincent",
+        "Amy Zhang",
+        "Pierre-Luc Bacon",
+        "Doina Precup",
+        "Marlos C. Machado",
+        "Pierluca D'Oro"
+      ],
+      "paper_id": "or8mMhmyRV",
+      "pdf_url": "https://openreview.net/pdf/6b4e6d2c01f3f6093c66c22626f77343d0df2c7b.pdf",
+      "forum_url": "https://openreview.net/forum?id=or8mMhmyRV"
+    },
+    {
+      "title": "Generating Freeform Endoskeletal Robots",
+      "abstract": "The automatic design of embodied agents (e.g. robots) has existed for 31 years and is experiencing a renaissance of interest in the literature. To date however, the field has remained narrowly focused on two kinds of anatomically simple robots: (1) fully rigid, jointed bodies; and (2) fully soft, jointless bodies. Here we bridge these two extremes with the open ended creation of terrestrial endoskeletal robots: deformable soft bodies that leverage jointed internal skeletons to move efficiently across land. Simultaneous de novo generation of external and internal structures is achieved by (i) modeling 3D endoskeletal body plans as integrated collections of elastic and rigid cells that directly attach to form soft tissues anchored to compound rigid bodies; (ii) encoding these discrete mechanical subsystems into a continuous yet coherent latent embedding; (iii) optimizing the sensorimotor coordination of each decoded design using model-free reinforcement learning; and (iv) navigating this smooth yet highly non-convex latent manifold using evolutionary strategies. This yields an endless stream of novel species of ``higher robots'' that, like all higher animals, harness the mechanical advantages of both elastic tissues and skeletal levers for terrestrial travel. It also provides a plug-and-play experimental platform for benchmarking evolutionary design and representation learning algorithms in complex hierarchical embodied systems.",
+      "venue": "ICLR 2025",
+      "authors": [
+        "Muhan Li",
+        "Lingji Kong",
+        "Sam Kriegman"
+      ],
+      "paper_id": "awvJBtB2op",
+      "pdf_url": "https://openreview.net/pdf/8116e2460f3c321de29bb15edde3a42e25becc24.pdf",
+      "forum_url": "https://openreview.net/forum?id=awvJBtB2op"
+    },
+    {
+      "title": "VisualPredicator: Learning Abstract World Models with Neuro-Symbolic Predicates for Robot Planning",
+      "abstract": "Broadly intelligent agents should form task-specific abstractions that selectively expose the essential elements of a task, while abstracting away the complexity of the raw sensorimotor space. In this work, we present Neuro-Symbolic Predicates, a first-order abstraction language that combines the strengths of symbolic and neural knowledge representations. We outline an online algorithm for inventing such predicates and learning abstract world models. We compare our approach to hierarchical reinforcement learning, vision-language model planning, and symbolic predicate invention approaches, on both in- and out-of-distribution tasks across five simulated robotic domains. Results show that our approach offers better sample complexity, stronger out-of-distribution generalization, and improved interpretability.",
+      "venue": "ICLR 2025",
+      "authors": [
+        "Yichao Liang",
+        "Nishanth Kumar",
+        "Hao Tang",
+        "Adrian Weller",
+        "Joshua B. Tenenbaum",
+        "Tom Silver",
+        "Joao F. Henriques",
+        "Kevin Ellis"
+      ],
+      "paper_id": "QOfswj7hij",
+      "pdf_url": "https://openreview.net/pdf/0636c153735818ce4afe13edfccd48c0d57a710c.pdf",
+      "forum_url": "https://openreview.net/forum?id=QOfswj7hij"
+    },
+    {
+      "title": "BlendRL: A Framework for Merging Symbolic and Neural Policy Learning",
+      "abstract": "Humans can leverage both symbolic reasoning and intuitive responses. In contrast, reinforcement learning policies are typically encoded in either opaque systems like neural networks or symbolic systems that rely on predefined symbols and rules. This disjointed approach severely limits the agents’ capabilities, as they often lack either the flexible low-level reaction characteristic of neural agents or the interpretable reasoning of symbolic agents. \n\nTo overcome this challenge, we introduce *BlendRL*, a neuro-symbolic RL framework that harmoniously integrates both paradigms. \nWe empirically demonstrate that BlendRL agents outperform both neural and symbolic baselines in standard Atari environments, and showcase their robustness to environmental changes. Additionally, we analyze the interaction between neural and symbolic policies, illustrating how their hybrid use helps agents overcome each other's limitations.",
+      "venue": "ICLR 2025",
+      "authors": [
+        "Hikaru Shindo",
+        "Quentin Delfosse",
+        "Devendra Singh Dhami",
+        "Kristian Kersting"
+      ],
+      "paper_id": "60i0ksMAhd",
+      "pdf_url": "https://openreview.net/pdf/50fa762e4deb4122e50d28ab6ba123279438480d.pdf",
+      "forum_url": "https://openreview.net/forum?id=60i0ksMAhd"
+    },
+    {
+      "title": "ToolGen: Unified Tool Retrieval and Calling via Generation",
+      "abstract": "As large language models (LLMs) advance, their inability to autonomously execute tasks by directly interacting with external tools remains a critical limitation. Traditional methods rely on inputting tool descriptions as context, which is constrained by context length and requires separate, often inefficient, retrieval mechanisms. We introduce ToolGen, a paradigm shift that integrates tool knowledge directly into the LLM’s parameters by representing each tool as a unique token. This enables the LLM to generate tool calls and arguments as part of its next token prediction capabilities, seamlessly blending tool invocation with language generation.  Our framework allows the LLM to access and utilize a vast amount of tools with no additional retrieval step, significantly enhancing both performance and scalability. Experimental results with over 47,000 tools show that ToolGen not only achieves superior results in both tool retrieval and autonomous task completion but also sets the stage for a new era of AI agents that can adapt to tools across diverse domains.  By fundamentally transforming tool retrieval into a generative process, ToolGen paves the way for more versatile, efficient, and autonomous AI systems. ToolGen enables end-to-end tool learning and opens opportunities for integration with other advanced techniques such as chain-of-thought and reinforcement learning, thereby expanding the practical capabilities of LLMs",
+      "venue": "ICLR 2025",
+      "authors": [
+        "Renxi Wang",
+        "Xudong Han",
+        "Lei Ji",
+        "Shu Wang",
+        "Timothy Baldwin",
+        "Haonan Li"
+      ],
+      "paper_id": "XLMAMmowdY",
+      "pdf_url": "https://openreview.net/pdf/b5d464a0c1f8e39ed945666ae1468185132c7754.pdf",
+      "forum_url": "https://openreview.net/forum?id=XLMAMmowdY"
+    },
+    {
+      "title": "Monte Carlo Planning with Large Language Model for Text-Based Game Agents",
+      "abstract": "Text-based games provide valuable environments for language-based autonomous agents. However, planning-then-learning paradigms, such as those combining Monte Carlo Tree Search (MCTS) and reinforcement learning (RL), are notably time-consuming due to extensive iterations. Additionally, these algorithms perform uncertainty-driven exploration but lack language understanding and reasoning abilities.\nIn this paper, we introduce the Monte Carlo planning with Dynamic Memory-guided Large language model (MC-DML) algorithm. MC-DML leverages the language understanding and reasoning capabilities of Large Language Models (LLMs) alongside the exploratory advantages of tree search algorithms. Specifically, we enhance LLMs with in-trial and cross-trial memory mechanisms, enabling them to learn from past experiences and dynamically adjust action evaluations during planning. We conduct experiments on a series of text-based games from the Jericho benchmark. Our results demonstrate that the MC-DML algorithm significantly enhances performance across various games at the initial planning phase, outperforming strong contemporary methods that require multiple iterations. This demonstrates the effectiveness of our algorithm, paving the way for more efficient language-grounded planning in complex environments.",
+      "venue": "ICLR 2025",
+      "authors": [
+        "Zijing Shi",
+        "Meng Fang",
+        "Ling Chen"
+      ],
+      "paper_id": "r1KcapkzCt",
+      "pdf_url": "https://openreview.net/pdf/ae71224eabd75b46858af897797ca42c6e25d161.pdf",
+      "forum_url": "https://openreview.net/forum?id=r1KcapkzCt"
+    },
+    {
+      "title": "Strategist: Self-improvement of LLM Decision Making via Bi-Level Tree Search",
+      "abstract": "Traditional reinforcement learning and planning require a lot of data and training to develop effective strategies. On the other hand, large language models (LLMs) can generalize well and perform tasks without prior training but struggle with complex planning and decision-making. We introduce **STRATEGIST**, a new approach that combines the strengths of both methods. It uses LLMs to generate and update high-level strategies in text form, while a Monte Carlo Tree Search (MCTS) algorithm refines and executes them. STRATEGIST is a general framework that optimizes strategies through self-play simulations without requiring any training data. We test STRATEGIST in competitive, multi-turn games with partial information, such as **Game of Pure Strategy (GOPS)** and **The Resistance: Avalon**, a multi-agent hidden-identity discussion game. Our results show that STRATEGIST-based agents outperform traditional reinforcement learning models, other LLM-based methods, and existing LLM agents while achieving performance levels comparable to human players.",
+      "venue": "ICLR 2025",
+      "authors": [
+        "Jonathan Light",
+        "Min Cai",
+        "Weiqin Chen",
+        "Guanzhi Wang",
+        "Xiusi Chen",
+        "Wei Cheng",
+        "Yisong Yue",
+        "Ziniu Hu"
+      ],
+      "paper_id": "gfI9v7AbFg",
+      "pdf_url": "https://openreview.net/pdf/55340395fea1857b9b879ea19b03e94b3acf91f8.pdf",
+      "forum_url": "https://openreview.net/forum?id=gfI9v7AbFg"
+    },
+    {
+      "title": "Accelerating Task Generalisation with Multi-Level Skill Hierarchies",
+      "abstract": "Developing reinforcement learning agents that can generalise effectively to new tasks is one of the main challenges in AI research. This paper introduces Fracture Cluster Options (FraCOs), a multi-level hierarchical reinforcement learning method designed to improve generalisation performance. FraCOs identifies patterns in agent behaviour and forms temporally-extended actions (options) based on the expected future usefulness of those patterns, enabling rapid adaptation to new tasks. In tabular settings, FraCOs demonstrates effective transfer and improves performance as the depth of the hierarchy increases. In several complex procedurally-generated environments, FraCOs consistently outperforms state-of-the-art deep reinforcement learning algorithms, achieving superior results in both in-distribution and out-of-distribution scenarios.",
+      "venue": "ICLR 2025",
+      "authors": [
+        "Thomas P Cannon",
+        "Özgür Şimşek"
+      ],
+      "paper_id": "KfeRfxTemB",
+      "pdf_url": "https://openreview.net/pdf/1d0e46825e08933f471ff69a15408f587499f2f6.pdf",
+      "forum_url": "https://openreview.net/forum?id=KfeRfxTemB"
+    },
+    {
+      "title": "Empowering LLM Agents with Zero-Shot Optimal Decision-Making through Q-learning",
+      "abstract": "Large language models (LLMs) are trained on extensive text data to gain general comprehension capability. Current LLM agents leverage this ability to make zero- or few-shot decisions without reinforcement learning (RL) but fail in making optimal decisions, as LLMs inherently perform next-token prediction rather than maximizing rewards. In contrast, agents trained via RL could make optimal decisions but require extensive environmental interaction. In this work, we develop an algorithm that combines the zero-shot capabilities of LLMs with the optimal decision-making of RL, referred to as the Model-based LLM Agent with Q-Learning (MLAQ). MLAQ employs Q-learning to derive optimal policies from transitions within memory. However, unlike RL agents that collect data from environmental interactions, MLAQ constructs an imagination space fully based on LLM to perform imaginary interactions for deriving zero-shot policies. Our proposed UCB variant generates high-quality imaginary data through interactions with the LLM-based world model, balancing exploration and exploitation while ensuring a sub-linear regret bound. Additionally, MLAQ incorporates a mixed-examination mechanism to filter out incorrect data. We evaluate MLAQ in benchmarks that present significant challenges for existing LLM agents. Results show that MLAQ achieves a optimal rate of over 90\\% in tasks where other methods struggle to succeed. Additional experiments are conducted to reach the conclusion that introducing model-based RL into LLM agents shows significant potential to improve optimal decision-making ability. Our interactive website is available at http://mlaq.site.",
+      "venue": "ICLR 2025",
+      "authors": [
+        "Jiajun Chai",
+        "Sicheng Li",
+        "Yuqian Fu",
+        "Dongbin Zhao",
+        "Yuanheng Zhu"
+      ],
+      "paper_id": "JsVIGVntnQ",
+      "pdf_url": "https://openreview.net/pdf/19a6013acbd870d276019cfc942ecc9eaeeaa320.pdf",
+      "forum_url": "https://openreview.net/forum?id=JsVIGVntnQ"
+    },
+    {
+      "title": "Residual-MPPI: Online Policy Customization for Continuous Control",
+      "abstract": "Policies developed through Reinforcement Learning (RL) and Imitation Learning (IL) have shown great potential in continuous control tasks, but real-world applications often require adapting trained policies to unforeseen requirements. While fine-tuning can address such needs, it typically requires additional data and access to the original training metrics and parameters.\nIn contrast, an online planning algorithm, if capable of meeting the additional requirements, can eliminate the necessity for extensive training phases and customize the policy without knowledge of the original training scheme or task. In this work, we propose a generic online planning algorithm for customizing continuous-control policies at the execution time, which we call Residual-MPPI. It can customize a given prior policy on new performance metrics in few-shot and even zero-shot online settings, given access to the prior action distribution alone. Through our experiments, we demonstrate that the proposed Residual-MPPI algorithm can accomplish the few-shot/zero-shot online policy customization task effectively, including customizing the champion-level racing agent, Gran Turismo Sophy (GT Sophy) 1.0, in the challenging car racing scenario, Gran Turismo Sport (GTS) environment. Code for MuJoCo experiments is included in the supplementary and will be open-sourced upon acceptance. Demo videos are available on our website: https://sites.google.com/view/residual-mppi.",
+      "venue": "ICLR 2025",
+      "authors": [
+        "Pengcheng Wang",
+        "Chenran Li",
+        "Catherine Weaver",
+        "Kenta Kawamoto",
+        "Masayoshi Tomizuka",
+        "Chen Tang",
+        "Wei Zhan"
+      ],
+      "paper_id": "gVnJFY8nCM",
+      "pdf_url": "https://openreview.net/pdf/39282e6e4d45e72269d3cc5cf19f3856b02e14c3.pdf",
+      "forum_url": "https://openreview.net/forum?id=gVnJFY8nCM"
+    },
+    {
+      "title": "Efficient Exploration and Discriminative World Model Learning with an Object-Centric Abstraction",
+      "abstract": "In the face of difficult exploration problems in reinforcement learning, we study whether giving an agent an object-centric mapping (describing a set of items and their attributes) allow for more efficient learning. We found this problem is best solved hierarchically by modelling items at a higher level of state abstraction to pixels, and attribute change at a higher level of temporal abstraction to primitive actions. This abstraction simplifies the transition dynamic by making specific future states easier to predict. We make use of this to propose a fully model-based algorithm that learns a discriminative world model, plans to explore efficiently with only a count-based intrinsic reward, and can subsequently plan to reach any discovered (abstract) states.\n\nWe demonstrate the model's ability to (i) efficiently solve single tasks, (ii) transfer zero-shot and few-shot across item types and environments, and (iii) plan across long horizons. Across a suite of 2D crafting and MiniHack environments, we empirically show our model significantly out-performs state-of-the-art low-level methods (without abstraction), as well as performant model-free and model-based methods using the same abstraction. Finally, we show how to learn low level object-perturbing policies via reinforcement learning, and the object mapping itself by supervised learning.",
+      "venue": "ICLR 2025",
+      "authors": [
+        "Anthony GX-Chen",
+        "Kenneth Marino",
+        "Rob Fergus"
+      ],
+      "paper_id": "hgwGi81ndj",
+      "pdf_url": "https://openreview.net/pdf/a25db81d1629a62ab22a42dfd629c0c3ffe029d8.pdf",
+      "forum_url": "https://openreview.net/forum?id=hgwGi81ndj"
+    },
+    {
+      "title": "PEAR: Primitive Enabled Adaptive Relabeling for Boosting Hierarchical Reinforcement Learning",
+      "abstract": "Hierarchical reinforcement learning (HRL) has the potential to solve complex long horizon tasks using temporal abstraction and increased exploration. However, hierarchical agents are difficult to train due to inherent non-stationarity. We present primitive enabled adaptive relabeling (PEAR), a two-phase approach where we first perform adaptive relabeling on a few expert demonstrations to generate efficient subgoal supervision, and then jointly optimize HRL agents by employing reinforcement learning (RL) and imitation learning (IL). We perform theoretical analysis to bound the sub-optimality of our approach and derive a joint optimization framework using RL and IL. Since PEAR utilizes only a few expert demonstrations and considers minimal limiting assumptions on the task structure, it can be easily integrated with typical off-policy \\RL algorithms to produce a practical HRL approach. We perform extensive experiments on challenging environments and show that PEAR is able to outperform various hierarchical and non-hierarchical baselines and achieve upto 80% success rates in complex sparse robotic control tasks where other baselines typically fail to show significant progress. We also perform ablations to thoroughly analyze the importance of our various design choices. Finally, we perform real world robotic experiments on complex tasks and demonstrate that PEAR consistently outperforms the baselines.",
+      "venue": "ICLR 2025",
+      "authors": [
+        "Utsav Singh",
+        "Vinay P. Namboodiri"
+      ],
+      "paper_id": "0nJEgNpb4l",
+      "pdf_url": "https://openreview.net/pdf/12d3031a9f935c986708176a7e99e20965bed69f.pdf",
+      "forum_url": "https://openreview.net/forum?id=0nJEgNpb4l"
+    },
+    {
+      "title": "Hierarchical World Models as Visual Whole-Body Humanoid Controllers",
+      "abstract": "Whole-body control for humanoids is challenging due to the high-dimensional nature of the problem, coupled with the inherent instability of a bipedal morphology. Learning from visual observations further exacerbates this difficulty. In this work, we explore highly data-driven approaches to visual whole-body humanoid control based on reinforcement learning, without any simplifying assumptions, reward design, or skill primitives. Specifically, we propose a hierarchical world model in which a high-level agent generates commands based on visual observations for a low-level agent to execute, both of which are trained with rewards. Our approach produces highly performant control policies in 8 tasks with a simulated 56-DoF humanoid, while synthesizing motions that are broadly preferred by humans. Code and videos: https://www.nicklashansen.com/rlpuppeteer",
+      "venue": "ICLR 2025",
+      "authors": [
+        "Nicklas Hansen",
+        "Jyothir S V",
+        "Vlad Sobal",
+        "Yann LeCun",
+        "Xiaolong Wang",
+        "Hao Su"
+      ],
+      "paper_id": "7wuJMvK639",
+      "pdf_url": "https://openreview.net/pdf/78b4172a1674f74b3079d5d00071e1a5cebdd7ba.pdf",
+      "forum_url": "https://openreview.net/forum?id=7wuJMvK639"
+    },
+    {
+      "title": "Intelligent Go-Explore: Standing on the Shoulders of Giant Foundation Models",
+      "abstract": "Go-Explore is a powerful family of algorithms designed to solve hard-exploration problems built on the principle of archiving discovered states, and iteratively returning to and exploring from the most promising states. This approach has led to superhuman performance across a wide variety of challenging problems including Atari games and robotic control, but requires manually designing heuristics to guide exploration (i.e., determine which states to save and explore from, and what actions to consider next), which is time-consuming and infeasible in general. To resolve this, we propose Intelligent Go-Explore (IGE) which greatly extends the scope of the original Go-Explore by replacing these handcrafted heuristics with the intelligence and internalized human notions of interestingness captured by giant pretrained foundation models (FMs). This provides IGE with a human-like ability to instinctively identify how interesting or promising any new state is (e.g., discovering new objects, locations, or behaviors), even in complex environments where heuristics are hard to define. Moreover, IGE offers the exciting opportunity to recognize and capitalize on serendipitous discoveries---states encountered during exploration that are valuable in terms of exploration, yet where what makes them interesting was not anticipated by the human user. We evaluate our algorithm on a diverse range of language and vision-based tasks that require search and exploration. Across these tasks, IGE strongly exceeds classic reinforcement learning and graph search baselines, and also succeeds where prior state-of-the-art FM agents like Reflexion completely fail. Overall, Intelligent Go-Explore combines the tremendous strengths of FMs and the powerful Go-Explore algorithm, opening up a new frontier of research into creating more generally capable agents with impressive exploration capabilities. All our code is open-sourced at: https://github.com/conglu1997/intelligent-go-explore.",
+      "venue": "ICLR 2025",
+      "authors": [
+        "Cong Lu",
+        "Shengran Hu",
+        "Jeff Clune"
+      ],
+      "paper_id": "apErWGzCAA",
+      "pdf_url": "https://openreview.net/pdf/c14827ceef266c12d8a9cdb99b4dd27960910845.pdf",
+      "forum_url": "https://openreview.net/forum?id=apErWGzCAA"
+    },
+    {
+      "title": "Towards Improving Exploration through Sibling Augmented GFlowNets",
+      "abstract": "Exploration is a key factor for the success of an active learning agent, especially when dealing with sparse extrinsic terminal rewards and long trajectories. We introduce Sibling Augmented Generative Flow Networks (SA-GFN), a novel framework designed to enhance exploration and training efficiency of Generative Flow Networks (GFlowNets). SA-GFN uses a decoupled dual network architecture, comprising of a main Behavior Network and an exploratory Sibling Network, to enable a diverse exploration of the underlying distribution using intrinsic rewards. Inspired by the ideas on exploration from reinforcement learning, SA-GFN provides a general-purpose exploration and learning paradigm that integrates with multiple GFlowNet training objectives and is especially helpful for exploration over a wide range of sparse or low reward distributions and task structures. An extensive set of experiments across a diverse range of tasks, reward structures and trajectory lengths, along with a thorough set of ablations, demonstrate the superior performance of SA-GFN in terms of exploration efficacy and convergence speed as compared to the existing methods. In addition, SA-GFN's versatility and compatibility with different GFlowNet training objectives and intrinsic reward methods underscores its broad applicability in various problem domains.",
+      "venue": "ICLR 2025",
+      "authors": [
+        "Kanika Madan",
+        "Alex Lamb",
+        "Emmanuel Bengio",
+        "Glen Berseth",
+        "Yoshua Bengio"
+      ],
+      "paper_id": "HH4KWP8RP5",
+      "pdf_url": "https://openreview.net/pdf/fafb3b9a21b7d4f8611d49487a900cd95d7921b9.pdf",
+      "forum_url": "https://openreview.net/forum?id=HH4KWP8RP5"
+    },
+    {
+      "title": "GoalLadder: Incremental Goal Discovery with Vision-Language Models",
+      "abstract": "Natural language can offer a concise and human-interpretable means of specifying reinforcement learning (RL) tasks. The ability to extract rewards from a language instruction can enable the development of robotic systems that can learn from human guidance; however, it remains a challenging problem, especially in visual environments. Existing approaches that employ large, pretrained language models either rely on non‑visual environment representations, require prohibitively large amounts of feedback, or generate noisy, ill‑shaped reward functions. In this paper, we propose a novel method, GoalLadder, that leverages vision-language models (VLMs) to train RL agents from a single language instruction in visual environments. GoalLadder works by incrementally discovering states that bring the agent closer to completing a task specified in natural language. To do so, it queries a VLM to identify states that represent an improvement in agent's task progress and to rank them using pairwise comparisons. Unlike prior work, GoalLadder does not trust VLM's feedback completely; instead, it uses it to rank potential goal states using an ELO-based rating system, thus reducing the detrimental effects of noisy VLM feedback. Over the course of training, the agent is tasked with minimising the distance to the top-ranked goal in a learned embedding space, which is trained on unlabelled visual data. This key feature allows us to bypass the need for abundant and accurate feedback typically required to train a well-shaped reward function. We demonstrate that GoalLadder outperforms existing related methods on classic control and robotic manipulation environments with the average final success rate of $\\sim$95\\% compared to only $\\sim$45\\% of the best competitor.",
+      "venue": "NeurIPS 2025",
+      "authors": [
+        "Alexey Zakharov",
+        "Shimon Whiteson"
+      ],
+      "paper_id": "BiowiwzQaO",
+      "pdf_url": "https://openreview.net/pdf/1bd1725eab30686d6f19c7b22db26e952e0088e3.pdf",
+      "forum_url": "https://openreview.net/forum?id=BiowiwzQaO"
+    },
+    {
+      "title": "Periodic Skill Discovery",
+      "abstract": "Unsupervised skill discovery in reinforcement learning (RL) aims to learn diverse behaviors without relying on external rewards. However, current methods often overlook the periodic nature of learned skills, focusing instead on increasing the mutual dependency between states and skills or maximizing the distance traveled in latent space. Considering that many robotic tasks—particularly those involving locomotion—require periodic behaviors across varying timescales, the ability to discover diverse periodic skills is essential. Motivated by this, we propose Periodic Skill Discovery (PSD), a framework that discovers periodic behaviors in an unsupervised manner. The key idea of PSD is to train an encoder that maps states to a circular latent space, thereby naturally encoding periodicity in the latent representation. By capturing temporal distance, PSD can effectively learn skills with diverse periods in complex robotic tasks, even with pixel-based observations. We further show that these learned skills achieve high performance on downstream tasks such as hurdling. Moreover, integrating PSD with an existing skill discovery method offers more diverse behaviors, thus broadening the agent’s repertoire.\nOur code and demos are available at https://jonghaepark.github.io/psd",
+      "venue": "NeurIPS 2025",
+      "authors": [
+        "Jonghae Park",
+        "Daesol Cho",
+        "Jusuk Lee",
+        "Dongseok Shim",
+        "Inkyu Jang",
+        "H. Jin Kim"
+      ],
+      "paper_id": "BPSU46emit",
+      "pdf_url": "https://openreview.net/pdf/fde016723608780b18791f2b719d3400d1e0ef18.pdf",
+      "forum_url": "https://openreview.net/forum?id=BPSU46emit"
+    },
+    {
+      "title": "Curriculum Design for Trajectory-Constrained Agent: Compressing Chain-of-Thought Tokens in LLMs",
+      "abstract": "Training agents to operate under strict constraints during deployment, such as limited resource budgets or stringent safety requirements, presents significant challenges, especially when these constraints render the task complex. In this work, we propose a curriculum learning strategy that gradually tightens constraints during training, enabling the agent to incrementally master the deployment requirements. Inspired by self-paced learning techniques in unconstrained reinforcement learning (RL), our approach facilitates a smoother transition to challenging environments by initially training on simplified versions of the constraints and progressively introducing the full deployment conditions. We provide a theoretical analysis using an RL agent in a binary-tree Markov Decision Process (MDP) to demonstrate that our curriculum strategy can accelerate training relative to a baseline approach that imposes the trajectory constraints from the outset. Moreover, we empirically validate the effectiveness and generality of our method across both RL and large language model (LLM) agents in diverse settings, including a binary-tree MDP, a multi-task navigation domain, and a math reasoning task with two benchmarks. These results highlight the potential of curriculum design in enhancing the efficiency and performance of agents operating under complex trajectory constraints during deployment. Moreover, when applied to LLMs, our strategy enables compression of output chain-of-thought tokens, achieving a substantial inference speedup on consumer hardware, demonstrating its effectiveness for resource-constrained deployment.",
+      "venue": "NeurIPS 2025",
+      "authors": [
+        "Georgios Tzannetos",
+        "Parameswaran Kamalaruban",
+        "Adish Singla"
+      ],
+      "paper_id": "zDU5sfYK1Z",
+      "pdf_url": "https://openreview.net/pdf/3ef59a66c354632e4cb2789380511589795e676c.pdf",
+      "forum_url": "https://openreview.net/forum?id=zDU5sfYK1Z"
+    },
+    {
+      "title": "Imagine Beyond ! Distributionally Robust Autoencoding for State Space Coverage in Online Reinforcement Learning",
+      "abstract": "Goal-Conditioned Reinforcement Learning (GCRL) enables agents to autonomously acquire diverse behaviors, but faces major challenges in visual environments due to high-dimensional, semantically sparse observations. In the online setting, where agents learn representations while exploring, the latent space evolves with the agent's policy, to capture newly discovered areas of the environment. However, without incentivization to maximize state coverage in the representation, classical approaches based on auto-encoders may converge to latent spaces that over-represent a restricted set of states frequently visited by the agent. This is exacerbated in an intrinsic motivation setting, where the agent uses the distribution encoded in the latent space to sample the goals it learns to master.\nTo address this issue, we propose to progressively enforce distributional shifts towards a uniform distribution over the full state space, to ensure a full coverage of skills that can be learned in the environment.\nWe introduce DRAG (Distributionally Robust Auto-Encoding for GCRL), a method that combines the $\\beta$-VAE framework with Distributionally Robust Optimization (DRO).  \nDRAG leverage an adversarial neural weighter of training states of the VAE, to account for the mismatch between the current data distribution and unseen parts of the environment. This allows the agent to construct semantically meaningful latent spaces beyond its immediate experience. Our approach improves state space coverage and downstream control performance on hard exploration environments such as mazes and robotic control involving walls to bypass, without relying on pre-training nor prior environment knowledge.",
+      "venue": "NeurIPS 2025",
+      "authors": [
+        "Nicolas Castanet",
+        "Olivier Sigaud",
+        "Sylvain Lamprier"
+      ],
+      "paper_id": "XEGDKcoQQ1",
+      "pdf_url": "https://openreview.net/pdf/424b893568ae93ac623d76d08890a6fd4efa4f4c.pdf",
+      "forum_url": "https://openreview.net/forum?id=XEGDKcoQQ1"
+    },
+    {
+      "title": "Inverse Optimization Latent Variable Models for Learning Costs Applied to Route Problems",
+      "abstract": "Learning representations for solutions of constrained optimization problems (COPs) with unknown cost functions is challenging, as models like (Variational) Autoencoders struggle to enforce constraints when decoding structured outputs. We propose an Inverse Optimization Latent Variable Model (IO-LVM) that learns a latent space of COP cost functions from observed solutions and reconstructs feasible outputs by solving a COP with a solver in the loop. Our approach leverages estimated gradients of a Fenchel-Young loss through a non-differentiable deterministic solver to shape the latent space. Unlike standard Inverse Optimization or Inverse Reinforcement Learning methods, which typically recover a single or context-specific cost function, IO-LVM captures a distribution over cost functions, enabling the identification of diverse solution behaviors arising from different agents or conditions not available during the training process. We validate our method on real-world datasets of ship and taxi routes, as well as paths in synthetic graphs, demonstrating its ability to reconstruct paths and cycles, predict their distributions, and yield interpretable latent representations.",
+      "venue": "NeurIPS 2025",
+      "authors": [
+        "Alan Lahoud",
+        "Erik Schaffernicht",
+        "Johannes A. Stork"
+      ],
+      "paper_id": "9vDpL9lgKS",
+      "pdf_url": "https://openreview.net/pdf/676d6a42a7d56fee93de3d481e6371d19e025442.pdf",
+      "forum_url": "https://openreview.net/forum?id=9vDpL9lgKS"
+    },
+    {
+      "title": "Temporal Representation Alignment: Successor Features Enable Emergent Compositionality in Robot Instruction Following",
+      "abstract": "Effective task representations should facilitate compositionality, such\nthat after learning a variety of basic tasks, an agent can perform\ncompound tasks consisting of multiple steps simply by composing the\nrepresentations of the constituent steps together. While this is\nconceptually simple and appealing, it is not clear how to automatically\nlearn representations that enable this sort of compositionality. We show\nthat learning to associate the representations of current and future\nstates with a temporal alignment loss can improve compositional\ngeneralization, even in the absence of any explicit subtask planning or\nreinforcement learning. We evaluate our approach across diverse robotic\nmanipulation tasks as well as in simulation, showing substantial\nimprovements for tasks specified with either language or goal images.",
+      "venue": "NeurIPS 2025",
+      "authors": [
+        "Vivek Myers",
+        "Bill Zheng",
+        "Anca Dragan",
+        "Kuan Fang",
+        "Sergey Levine"
+      ],
+      "paper_id": "yaS3JWQRQ6",
+      "pdf_url": "https://openreview.net/pdf/7d44b9b34f8443654f0b834a9bfe9a359da617e8.pdf",
+      "forum_url": "https://openreview.net/forum?id=yaS3JWQRQ6"
+    },
+    {
+      "title": "VAGEN: Reinforcing World Model Reasoning for Multi-Turn VLM Agents",
+      "abstract": "A major challenge in training VLM agents, compared to LLM agents, is that states shift from simple texts to complex visual observations, which introduces partial observability and demands robust world modeling. We ask: can VLM agents build internal world models through explicit visual state reasoning? In this work, we architecturally enforce and reward VLM agent’s reasoning process via reinforcement learning (RL), formulating the problem as a Partially Observable Markov Decision Process (POMDP). We demonstrate that structuring agent’s reasoning into StateEstimation (“what is the current state?”) and TransitionModeling (“what is next?”) is critical by studying five reasoning strategies. Investigating how agents should ground visual states and represent these internal beliefs, we reveal the optimal representations are task-dependent: Natural Language excels at capturing semantic relationships for general tasks, while Structured formats are essential for high-precision manipulation. These insights motivate our approach to reward shaping and credit assignment. We leverage a WorldModeling Reward to densely rewards the agent’s turn-by-turn state predictions, while our Bi-Level General Advantage Estimation (Bi-Level GAE) enables turn-aware credit assignment. Through such world model reasoning, we enable a 3B model to achieve performance of 0.82 on a set of five diverse agent tasks, nearly 3× improvement over its untrained counterpart (0.21) and surpassing proprietary reasoning models like GPT-5 (0.75), Gemini 2.5 Pro (0.67) and Claude 4.5 (0.62). All experiments are supported by our VAGEN framework, a scalable system for training and analyzing multi-turn VLM agents across diverse visual environments",
+      "venue": "NeurIPS 2025",
+      "authors": [
+        "Kangrui Wang",
+        "Pingyue Zhang",
+        "Zihan Wang",
+        "Yaning Gao",
+        "Linjie Li",
+        "Qineng Wang",
+        "Hanyang Chen",
+        "Yiping Lu",
+        "Zhengyuan Yang",
+        "Lijuan Wang",
+        "Ranjay Krishna",
+        "Jiajun Wu",
+        "Li Fei-Fei",
+        "Yejin Choi",
+        "Manling Li"
+      ],
+      "paper_id": "xpjWEgf8zi",
+      "pdf_url": "https://openreview.net/pdf/ed11882b04656406635941c99bb0b5dbf475a088.pdf",
+      "forum_url": "https://openreview.net/forum?id=xpjWEgf8zi"
+    },
+    {
+      "title": "Iterative Tool Usage Exploration for Multimodal Agents via Step-wise Preference Tuning",
+      "abstract": "Multimodal agents, which integrate a controller (e.g., a vision language model) with external tools, have demonstrated remarkable capabilities in tackling complex multimodal tasks.\nExisting approaches for training these agents, both supervised fine-tuning and reinforcement learning, depend on extensive human-annotated task-answer pairs and tool trajectories.\nHowever, for complex multimodal tasks, such annotations are prohibitively expensive or impractical to obtain.\nIn this paper, we propose an iterative tool usage exploration method for multimodal agents without any pre-collected data, namely SPORT, via step-wise preference optimization to refine the trajectories of tool usage. Our method enables multimodal agents to autonomously discover effective tool usage strategies through self-exploration and optimization, eliminating the bottleneck of human annotation.\nSPORT has four iterative components: task synthesis, step sampling, step verification, and preference tuning.\nWe first synthesize multimodal tasks using language models. \nThen, we introduce a novel trajectory exploration scheme, where step sampling and step verification are executed alternately to solve synthesized tasks.\nIn step sampling, the agent tries different tools and obtains corresponding results. \nIn step verification, we employ a verifier to provide AI feedback to construct step-wise preference data. \nThe data is subsequently used to update the controller for tool usage through preference tuning, producing a SPORT agent.\nBy interacting with real environments, the SPORT agent gradually evolves into a more refined and capable system.\nEvaluation in the GTA and GAIA benchmarks shows that the SPORT agent achieves 6.41% and  3.64% improvements, underscoring the generalization and effectiveness introduced by our method.",
+      "venue": "NeurIPS 2025",
+      "authors": [
+        "Pengxiang Li",
+        "Zhi Gao",
+        "Bofei Zhang",
+        "Yapeng Mi",
+        "Xiaojian Ma",
+        "Chenrui Shi",
+        "Tao Yuan",
+        "Yuwei Wu",
+        "Yunde Jia",
+        "Song-Chun Zhu",
+        "Qing Li"
+      ],
+      "paper_id": "yKUwkihcsi",
+      "pdf_url": "https://openreview.net/pdf/a3ae43bcdfe712b2361e4ab5254bbce2bcc0dd95.pdf",
+      "forum_url": "https://openreview.net/forum?id=yKUwkihcsi"
+    },
+    {
+      "title": "Videos are Sample-Efficient Supervisions: Behavior Cloning from Videos via Latent Representations",
+      "abstract": "Humans can efficiently extract knowledge and learn skills from the videos within only a few trials and errors. However, it poses a big challenge to replicate this learning process for autonomous agents, due to the complexity of visual input, the absence of action or reward signals, and the limitations of interaction steps. In this paper, we propose a novel, unsupervised, and sample-efficient framework to achieve imitation learning from videos (ILV), named Behavior Cloning from Videos via Latent Representations (BCV-LR). BCV-LR extracts action-related latent features from high-dimensional video inputs through self-supervised tasks, and then leverages a dynamics-based unsupervised objective to predict latent actions between consecutive frames. The pre-trained latent actions are fine-tuned and efficiently aligned to the real action space online (with collected interactions) for policy behavior cloning. The cloned policy in turn enriches the agent experience for further latent action finetuning, resulting in an iterative policy improvement that is highly sample-efficient.\n  We conduct extensive experiments on a set of challenging visual tasks, including both discrete control and continuous control. BCV-LR enables effective (even expert-level on some tasks) policy performance with only a few interactions, surpassing state-of-the-art ILV baselines and reinforcement learning methods (provided with environmental rewards) in terms of sample efficiency across 24/28 tasks.  To the best of our knowledge, this work for the first time demonstrates that videos can support extremely sample-efficient visual policy learning, without the need to access any other expert supervision.",
+      "venue": "NeurIPS 2025",
+      "authors": [
+        "Xin Liu",
+        "Haoran Li",
+        "Dongbin Zhao"
+      ],
+      "paper_id": "cx1KfZerNY",
+      "pdf_url": "https://openreview.net/pdf/b018099e8ad33896510a971967d8204da51febb0.pdf",
+      "forum_url": "https://openreview.net/forum?id=cx1KfZerNY"
+    },
+    {
+      "title": "Learning Human-Like RL Agents Through Trajectory Optimization With Action Quantization",
+      "abstract": "Human-like agents have long been one of the goals in pursuing artificial intelligence.\nAlthough reinforcement learning (RL) has achieved superhuman performance in many domains, relatively little attention has been focused on designing human-like RL agents.\nAs a result, many reward-driven RL agents often exhibit unnatural behaviors compared to humans, raising concerns for both interpretability and trustworthiness.\nTo achieve human-like behavior in RL, this paper first formulates human-likeness as trajectory optimization, where the objective is to find an action sequence that closely aligns with human behavior while also maximizing rewards, and adapts the classic receding-horizon control to human-like learning as a tractable and efficient implementation.\nTo achieve this, we introduce Macro Action Quantization (MAQ), a human-like RL framework that distills human demonstrations into macro actions via Vector-Quantized VAE.\nExperiments on D4RL Adroit benchmarks show that MAQ significantly improves human-likeness, increasing trajectory similarity scores, and achieving the highest human-likeness rankings among all RL agents in the human evaluation study.\nOur results also demonstrate that MAQ can be easily integrated into various off-the-shelf RL algorithms, opening a promising direction for learning human-like RL agents. \nOur code is available at https://rlg.iis.sinica.edu.tw/papers/MAQ.",
+      "venue": "NeurIPS 2025",
+      "authors": [
+        "Jian-Ting Guo",
+        "Yu-Cheng Chen",
+        "Ping-Chun Hsieh",
+        "Kuo-Hao Ho",
+        "Po-Wei Huang",
+        "Ti-Rong Wu",
+        "I-Chen Wu"
+      ],
+      "paper_id": "1A4Nlibwl5",
+      "pdf_url": "https://openreview.net/pdf/3075f74045ae309567070a48e9198a38e8a7b4f6.pdf",
+      "forum_url": "https://openreview.net/forum?id=1A4Nlibwl5"
+    },
+    {
+      "title": "Agentic RL Scaling Law: Spontaneous Code Execution for Mathematical Problem Solving",
+      "abstract": "Large Language Models (LLMs) often struggle with mathematical reasoning tasks requiring precise, verifiable computation. While Reinforcement Learning (RL) from outcome-based rewards  enhances text-based reasoning, understanding how agents autonomously learn to leverage external tools like code execution remains crucial. We investigate RL from outcome-based rewards for Tool-Integrated Reasoning, ZeroTIR, training base LLMs to spontaneously generate and execute Python code for mathematical problems without supervised tool-use examples. Our central contribution is we demonstrate that as RL training progresses, key metrics scale predictably. Specifically, we observe strong positive correlations where increased training steps lead to increases in the spontaneous code execution frequency, the average response length, and, critically, the final task accuracy. This suggests a quantifiable relationship between computational effort invested in training and the emergence of effective, tool-augmented reasoning strategies. We implement a robust framework featuring a decoupled code execution environment and validate our findings across standard RL algorithms and frameworks. Experiments show ZeroTIR significantly surpasses non-tool ZeroRL baselines on challenging math benchmarks. Our findings provide a foundational understanding of how autonomous tool use is acquired and scales within Agent RL, offering a reproducible benchmark for future studies. Code is released at \\href{https://github.com/yyht/openrlhf_async_pipline}{https://github.com/yyht/openrlhf\\_async\\_pipline}.",
+      "venue": "NeurIPS 2025",
+      "authors": [
+        "Xinji Mai",
+        "Haotian Xu",
+        "Xing W",
+        "Weinong Wang",
+        "Yingying Zhang",
+        "Wenqiang Zhang"
+      ],
+      "paper_id": "kXieirlPjF",
+      "pdf_url": "https://openreview.net/pdf/6d8a6cfbc785966d9381495a786eea81de48d681.pdf",
+      "forum_url": "https://openreview.net/forum?id=kXieirlPjF"
+    },
+    {
+      "title": "Multi-Agent Collaboration via Evolving Orchestration",
+      "abstract": "Large language models (LLMs) have achieved remarkable results across diverse downstream tasks, but their monolithic nature restricts scalability and efficiency in complex problem-solving. While recent research explores multi-agent collaboration among LLMs, most approaches rely on static organizational structures that struggle to adapt as task complexity and agent numbers grow, resulting in coordination overhead and inefficiencies. To this end, we propose a puppeteer-style paradigm for LLM-based multi-agent collaboration, where a centralized orchestrator (\"puppeteer\") dynamically directs agents (\"puppets\") in response to evolving task states. This orchestrator is trained via reinforcement learning to adaptively sequence and prioritize agents, enabling flexible and evolvable collective reasoning. Experiments on closed- and open-domain scenarios show that this method achieves superior performance with reduced computational costs. Analyses further reveal that the key improvements consistently stem from the emergence of more compact, cyclic reasoning structures under the orchestrator’s evolution. Our code is available at https://github.com/OpenBMB/ChatDev/tree/puppeteer.",
+      "venue": "NeurIPS 2025",
+      "authors": [
+        "Yufan Dang",
+        "Chen Qian",
+        "Xueheng Luo",
+        "Jingru Fan",
+        "Zihao Xie",
+        "Ruijie Shi",
+        "Weize Chen",
+        "Cheng Yang",
+        "Xiaoyin Che",
+        "Ye Tian",
+        "Xuantang Xiong",
+        "Lei Han",
+        "Zhiyuan Liu",
+        "Maosong Sun"
+      ],
+      "paper_id": "L0xZPXT3le",
+      "pdf_url": "https://openreview.net/pdf/9727f658d788c52f49f12ae4b230baf4cf0d4007.pdf",
+      "forum_url": "https://openreview.net/forum?id=L0xZPXT3le"
+    },
+    {
+      "title": "Controlling Large Language Model with Latent Action",
+      "abstract": "Adapting Large Language Models (LLMs) to downstream tasks using Reinforcement Learning (RL) has proven to be an effective approach. However, LLMs do not inherently define the structure of an agent for RL training, particularly in terms of specifying the action space. This paper studies learning a compact latent action space to enhance the controllability and exploration of RL for LLMs. Inspired by reinforcement learning from observations, we propose **Co**ntrolling Large Language Models with **L**atent **A**ctions **CoLA**, a framework that integrates a latent action space into pre-trained LLMs. **CoLA** employs an \\emph{inverse dynamics model} to extract latent actions conditioned on future tokens, ensuring that the next token prediction is partially influenced by these actions. Simultaneously, **CoLA** fine-tunes the pre-trained LLM to function as a \\emph{language world model}, capable of incorporating latent actions as inputs. Additionally, **CoLA** trains a \\emph{policy model} to generate actions within this language world model. The policy model can be trained via behavior cloning to mimic a standard language model or through RL to maximize task-specific rewards. In this work, we apply **CoLA** to the Llama-3.1-8B model. Our experiments demonstrate that, compared to RL with token-level actions, **CoLA**'s latent actions enable greater semantic diversity. For enhancing downstream tasks, we show that **CoLA** with RL achieves a score of 42.4 on the \\emph{math500} benchmark, surpassing the baseline score of 38.2, and reaches 68.2 when augmented with a Monte Carlo Tree Search variant. Furthermore, **CoLA** with RL consistently improves performance on agent-based tasks without degrading the pre-trained LLM's capabilities, unlike the baseline. Finally, **CoLA** reduces computation time by half in tasks involving enhanced thinking prompts for LLMs via RL. These results highlight **CoLA**'s potential to advance RL-based adaptation of LLMs for downstream applications. The CoLA model is available at  \\url{https://huggingface.co/LAMDA-RL/Llama-3.1-CoLA-10B}.",
+      "venue": "ICML 2025",
+      "authors": [
+        "Chengxing Jia",
+        "Ziniu Li",
+        "Pengyuan Wang",
+        "Yi-Chen Li",
+        "Zhenyu Hou",
+        "Yuxiao Dong",
+        "Yang Yu"
+      ],
+      "paper_id": "44697",
+      "pdf_url": "",
+      "forum_url": "https://ICML.cc/forum?id=2025/poster/44697"
+    },
+    {
+      "title": "Divide and Conquer: Grounding LLMs as Efficient Decision-Making Agents via Offline Hierarchical Reinforcement Learning",
+      "abstract": "While showing sophisticated reasoning abilities, large language models (LLMs) still struggle with long-horizon decision-making tasks due to deficient exploration and long-term credit assignment, especially in sparse-reward scenarios. Inspired by the divide-and-conquer principle, we propose an innovative framework **GLIDER** (**G**rounding **L**anguage Models as Eff**I**cient **D**ecision-Making Agents via Offline Hi**E**rarchical **R**einforcement Learning) that introduces a parameter-efficient and generally applicable hierarchy to LLM policies. We develop a scheme where the low-level controller is supervised with abstract, step-by-step plans that are learned and instructed by the high-level policy. This design decomposes complicated problems into a series of coherent chain-of-thought reasoning sub-tasks, providing flexible temporal abstraction to significantly enhance exploration and learning for long-horizon tasks. Furthermore, GLIDER facilitates fast online adaptation to non-stationary environments owing to the strong transferability of its task-agnostic low-level skills. Experiments on ScienceWorld and ALFWorld benchmarks show that GLIDER achieves consistent performance gains, along with enhanced generalization capabilities.",
+      "venue": "ICML 2025",
+      "authors": [
+        "Zican Hu",
+        "Wei Liu",
+        "Xiaoye Qu",
+        "Xiangyu Yue",
+        "Chunlin Chen",
+        "Zhi Wang",
+        "Yu Cheng"
+      ],
+      "paper_id": "43989",
+      "pdf_url": "",
+      "forum_url": "https://ICML.cc/forum?id=2025/poster/43989"
+    },
+    {
+      "title": "Strategic Planning: A Top-Down Approach to Option Generation",
+      "abstract": "Real-world human decision-making often relies on strategic planning, where *high-level* goals guide the formulation of sub-goals and subsequent actions, as evidenced by domains such as healthcare, business, and urban policy. Despite notable successes in controlled settings, conventional reinforcement learning (RL) follows a *bottom-up* paradigm, which can struggle to adapt to real-world complexities such as sparse rewards and limited exploration budgets. While methods like hierarchical RL and environment shaping provide partial solutions, they frequently rely on either ad-hoc designs (e.g. choose the set of high-level actions) or purely data-driven discovery of high-level actions that still requires significant exploration. In this paper, we introduce a *top-down* framework for RL that explicitly leverages *human-like strategy* to reduce sample complexity, guide exploration, and enable high-level decision-making. We first formalize the *Strategy Problem*, which frames policy generation as finding distributions over policies that balance *specificity* and *value*. Building on this definition, we propose the *Strategist* agent—an iterative framework that leverages large language models (LLMs) to synthesize domain knowledge into a structured representation of actionable strategies and sub-goals. We further develop a *reward shaping methodology* that translates these strategies expressed in natural language into quantitative feedback for RL methods. Empirically, we demonstrate a significantly faster convergence than conventional PPO. Taken together, our findings highlight that *top-down strategic exploration* opens new avenues for enhancing RL on real-world decision problems.",
+      "venue": "ICML 2025",
+      "authors": [
+        "Max Ruiz Luyten",
+        "Antonin Berthon",
+        "Mihaela van der Schaar"
+      ],
+      "paper_id": "43567",
+      "pdf_url": "",
+      "forum_url": "https://ICML.cc/forum?id=2025/poster/43567"
+    }
+  ]
+}

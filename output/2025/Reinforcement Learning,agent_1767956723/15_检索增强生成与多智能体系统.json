@@ -1,0 +1,55 @@
+{
+  "name": "检索增强生成与多智能体系统",
+  "paper_count": 3,
+  "summary": "本类别聚焦于将多智能体系统框架应用于检索增强生成（RAG）等复杂任务，以优化和协调不同组件（如检索器与大语言模型）之间的交互。研究内容主要包括：设计轻量级的多智能体系统作为代理框架，在不修改核心组件的前提下，通过智能体间的协作（如评估检索需求、生成查询、筛选信息）来提升整体任务性能；开发适用于此类多智能体协调的强化学习训练机制（如树状结构奖励分配）。该方向旨在解决独立开发组件间的对齐难题，并借鉴人类交互行为模式，以实现更灵活、高效且泛化能力强的智能系统。",
+  "papers": [
+    {
+      "title": "C-3PO: Compact Plug-and-Play Proxy Optimization to Achieve Human-like Retrieval-Augmented Generation",
+      "abstract": "Retrieval-augmented generation (RAG) systems face a fundamental challenge in aligning independently developed retrievers and large language models (LLMs). Existing approaches typically involve modifying either component or introducing simple intermediate modules, resulting in practical limitations and sub-optimal performance. Inspired by human search behavior—typically involving a back-and-forth process of proposing search queries and reviewing documents, we propose C-3PO, a proxy-centric framework that facilitates communication between retrievers and LLMs through a lightweight multi-agent system. Our framework implements three specialized agents that collaboratively optimize the entire RAG pipeline without altering the retriever and LLMs. These agents work together to assess the need for retrieval, generate effective queries, and select information suitable for the LLMs. To enable effective multi-agent coordination, we develop a tree-structured rollout approach for reward credit assignment in reinforcement learning. Extensive experiments in both in-domain and out-of-distribution scenarios demonstrate that C-3PO significantly enhances RAG performance while maintaining plug-and-play flexibility and superior generalization capabilities.",
+      "venue": "ICML 2025",
+      "authors": [
+        "Guoxin Chen",
+        "Minpeng Liao",
+        "Peiying Yu",
+        "Dingmin Wang",
+        "Zile Qiao",
+        "Chao Yang",
+        "Xin Zhao",
+        "Kai Fan"
+      ],
+      "paper_id": "44398",
+      "pdf_url": "",
+      "forum_url": "https://ICML.cc/forum?id=2025/poster/44398"
+    },
+    {
+      "title": "LMRL Gym: Benchmarks for Multi-Turn Reinforcement Learning with Language Models",
+      "abstract": "Large language models (LLMs) provide excellent text-generation capabilities, but standard prompting and generation methods generally do not lead to intentional or goal-directed agents and might necessitate considerable prompt tuning. Even the best current LLMs rarely ask clarifying questions, engage in explicit information gathering, or take actions that lead to better decisions after multiple turns. Reinforcement learning has the potential to leverage the powerful modeling capabilities of LLMs, as well as their internal representation of textual interactions, to create capable goal-directed language agents. This can enable intentional and temporally extended interactions, such as with humans, the emergence of complex skills such as persuasion, and long-horizon strategic behavior, such as in the context of games. Enabling this requires the community to develop reliable reinforcement learning algorithms for training LLMs. Developing such algorithms requires tasks that can gauge progress on algorithm design, provide accessible and reproducible evaluations for multi-turn interactions, and cover a range of task properties and challenges in improving reinforcement learning algorithms. Our paper introduces the LMRL-Gym benchmark for evaluating multi-turn RL for LLMs, together with an open-source research framework for getting started on multi-turn RL with offline value-based and online policy-based RL methods. Our benchmark consists of 3 Interactive Dialogue tasks and 5 RL Capability tests for a total of 8 tasks, which require multiple rounds of language interaction and cover a range of tasks in open-ended dialogue and text games.",
+      "venue": "ICML 2025",
+      "authors": [
+        "Marwa Abdulhai",
+        "Isadora White",
+        "Charlie Snell",
+        "Charles Sun",
+        "Joey Hong",
+        "Yuexiang Zhai",
+        "Kelvin Xu",
+        "Sergey Levine"
+      ],
+      "paper_id": "44395",
+      "pdf_url": "",
+      "forum_url": "https://ICML.cc/forum?id=2025/poster/44395"
+    },
+    {
+      "title": "Reinforce LLM Reasoning through Multi-Agent Reflection",
+      "abstract": "Leveraging more test-time computation has proven to be an effective way to boost the reasoning capabilities of large language models (LLMs). Among various methods, the verify-and-improve paradigm stands out for enabling dynamic solution exploration and feedback incorporation. However, existing approaches often suffer from restricted feedback spaces and lack of coordinated training of different parties, leading to suboptimal performance. To address this, we model this multi-turn refinement process as a Markov Decision Process and introduce DPSDP (**D**irect **P**olicy **S**earch by **D**ynamic **P**rogramming), a reinforcement learning algorithm that trains an actor-critic LLM system to iteratively refine answers via direct preference learning on self-generated data. Theoretically, DPSDP can match the performance of any policy within the training distribution. Empirically, we instantiate DPSDP with various base models and show improvements on both in- and out-of-distribution benchmarks. For example, on benchmark MATH 500, majority voting over five refinement steps increases first-turn accuracy from 58.2% to 63.2% with Ministral-based models. An ablation study further confirms the benefits of multi-agent collaboration and out-of-distribution generalization.",
+      "venue": "ICML 2025",
+      "authors": [
+        "Yurun Yuan",
+        "Tengyang Xie"
+      ],
+      "paper_id": "46364",
+      "pdf_url": "",
+      "forum_url": "https://ICML.cc/forum?id=2025/poster/46364"
+    }
+  ]
+}

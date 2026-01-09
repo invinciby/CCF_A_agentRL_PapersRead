@@ -1,0 +1,125 @@
+{
+  "name": "因果强化学习与反事实推理",
+  "paper_count": 8,
+  "summary": "本类别研究如何将因果推理，特别是反事实推理，整合到强化学习与决策框架中，以超越传统的观测和干预策略。核心工作“反事实可实现性”为反事实分布的可实现性（即能否通过物理实验直接采样）提供了形式化定义和完备判定算法。该框架突破了Pearl因果层级中第三层（反事实）通常不可及的认知，证明了在因果公平和因果强化学习等场景下，反事实数据收集策略在理论上优于纯粹的干预或观测策略。这为开发能够进行反事实思考、做出更优决策的智能体奠定了新的理论基础。",
+  "papers": [
+    {
+      "title": "Counterfactual Realizability",
+      "abstract": "It is commonly believed that, in a real-world environment, samples can only be drawn from observational and interventional distributions, corresponding to Layers 1 and 2 of the *Pearl Causal Hierarchy*. Layer 3, representing counterfactual distributions, is believed to be inaccessible by definition. However, Bareinboim, Forney, and Pearl (2015) introduced a procedure that allows an agent to sample directly from a counterfactual distribution, leaving open the question of what other counterfactual quantities can be estimated directly via physical experimentation. We resolve this by introducing a formal definition of realizability, the ability to draw samples from a distribution, and then developing a complete algorithm to determine whether an arbitrary counterfactual distribution is realizable given fundamental physical constraints, such as the inability to go back in time and subject the same unit to a different experimental condition. We illustrate the implications of this new framework for counterfactual data collection using motivating examples from causal fairness and causal reinforcement learning. While the baseline approach in these motivating settings typically follows an interventional or observational strategy, we show that a counterfactual strategy provably dominates both.",
+      "venue": "ICLR 2025",
+      "authors": [
+        "Arvind Raghavan",
+        "Elias Bareinboim"
+      ],
+      "paper_id": "uuriavczkL",
+      "pdf_url": "https://openreview.net/pdf/e0bf58c6302a6d41688eeb07e3b9bf4597424941.pdf",
+      "forum_url": "https://openreview.net/forum?id=uuriavczkL"
+    },
+    {
+      "title": "Modeling Unseen Environments with Language-guided Composable Causal Components in Reinforcement Learning",
+      "abstract": "Generalization in reinforcement learning (RL) remains a significant challenge, especially when agents encounter novel environments with unseen dynamics. Drawing inspiration from human compositional reasoning—where known components are reconfigured to handle new situations—we introduce World Modeling with Compositional Causal Components (WM3C). This novel framework enhances RL generalization by learning and leveraging compositional causal components. Unlike previous approaches focusing on invariant representation learning or meta-learning, WM3C identifies and utilizes causal dynamics among composable elements, facilitating robust adaptation to new tasks. Our approach integrates language as a compositional modality to decompose the latent space into meaningful components and provides theoretical guarantees for their unique identification under mild assumptions. Our practical implementation uses a masked autoencoder with mutual information constraints and adaptive sparsity regularization to capture high-level semantic information and effectively disentangle transition dynamics. Experiments on numerical simulations and real-world robotic manipulation tasks demonstrate that WM3C significantly outperforms existing methods in identifying latent processes, improving policy learning, and generalizing to unseen tasks.",
+      "venue": "ICLR 2025",
+      "authors": [
+        "Xinyue Wang",
+        "Biwei Huang"
+      ],
+      "paper_id": "XMgpnZ2ET7",
+      "pdf_url": "https://openreview.net/pdf/c7455bc50fe9dd68a2a79846e84c6081499ce154.pdf",
+      "forum_url": "https://openreview.net/forum?id=XMgpnZ2ET7"
+    },
+    {
+      "title": "Causal Information Prioritization for Efficient Reinforcement Learning",
+      "abstract": "Current Reinforcement Learning (RL) methods often suffer from sample-inefficiency, resulting from blind exploration strategies that neglect causal relationships among states, actions, and rewards. Although recent causal approaches aim to address this problem, they lack grounded modeling of reward-guided causal understanding of states and actions for goal-orientation, thus impairing learning efficiency. To tackle this issue, we propose a novel method named Causal Information Prioritization (CIP) that improves sample efficiency by leveraging factored MDPs to infer causal relationships between different dimensions of states and actions with respect to rewards, enabling the prioritization of causal information. Specifically, CIP identifies and leverages causal relationships between states and rewards to execute counterfactual data augmentation to prioritize high-impact state features under the causal understanding of the environments. Moreover, CIP integrates a causality-aware empowerment learning objective, which significantly enhances the agent's execution of reward-guided actions for more efficient exploration in complex environments. \nTo fully assess the effectiveness of CIP, we conduct extensive experiments across $39$ tasks in $5$ diverse continuous control environments, encompassing both locomotion and manipulation skills learning with pixel-based and sparse reward settings. Experimental results demonstrate that CIP consistently outperforms existing RL methods across a wide range of scenarios.",
+      "venue": "ICLR 2025",
+      "authors": [
+        "Hongye Cao",
+        "Fan Feng",
+        "Tianpei Yang",
+        "Jing Huo",
+        "Yang Gao"
+      ],
+      "paper_id": "nDj45w5wam",
+      "pdf_url": "https://openreview.net/pdf/20a8ae0a5dfd269846a9b14cc220610e5ebc4494.pdf",
+      "forum_url": "https://openreview.net/forum?id=nDj45w5wam"
+    },
+    {
+      "title": "Towards Empowerment Gain through Causal Structure Learning in Model-Based Reinforcement Learning",
+      "abstract": "In Model-Based Reinforcement Learning (MBRL), incorporating causal structures into dynamics models provides agents with a structured understanding of the environments, enabling efficient decision. \nEmpowerment as an intrinsic motivation enhances the ability of agents to actively control their environments by maximizing the mutual information between future states and actions. \nWe posit that empowerment coupled with causal understanding can improve controllability, while enhanced empowerment gain can further facilitate causal reasoning in MBRL. \nTo improve learning efficiency and controllability, we propose a novel framework, Empowerment through Causal Learning (ECL), where an agent with the awareness of causal dynamics models achieves empowerment-driven exploration and optimizes its causal structure for task learning. \nSpecifically, ECL operates by first training a causal dynamics model of the environment based on collected data. We then maximize empowerment under the causal structure for exploration, simultaneously using data gathered through exploration to update causal dynamics model to be more controllable than dense dynamics model without causal structure. In downstream task learning, an intrinsic curiosity reward is included to balance the causality, mitigating overfitting. \nImportantly, ECL is method-agnostic and is capable of integrating various causal discovery methods. \nWe evaluate ECL combined with $3$ causal discovery methods across $6$ environments including pixel-based tasks, demonstrating its superior performance compared to other causal MBRL methods, in terms of causal discovery, sample efficiency, and asymptotic performance.",
+      "venue": "ICLR 2025",
+      "authors": [
+        "Hongye Cao",
+        "Fan Feng",
+        "Meng Fang",
+        "Shaokang Dong",
+        "Tianpei Yang",
+        "Jing Huo",
+        "Yang Gao"
+      ],
+      "paper_id": "vgXI1Ws0ma",
+      "pdf_url": "https://openreview.net/pdf/9a6083d4c109cc64892310dbae2a4a7d29da2bdb.pdf",
+      "forum_url": "https://openreview.net/forum?id=vgXI1Ws0ma"
+    },
+    {
+      "title": "Towards Generalizable Reinforcement Learning via Causality-Guided Self-Adaptive Representations",
+      "abstract": "General intelligence requires quick adaptation across tasks. While existing reinforcement learning (RL) methods have made progress in generalization, they typically assume only distribution changes between source and target domains. In this paper, we explore a wider range of scenarios where not only the distribution but also the environment spaces may change. For example, in the CoinRun environment, we train agents from easy levels and generalize them to difficulty levels where there could be new enemies that have never occurred before. To address this challenging setting, we introduce a causality-guided self-adaptive representation-based approach, called CSR, that equips the agent to generalize effectively across tasks with evolving dynamics. Specifically, we employ causal representation learning to characterize the latent causal variables within the RL system. Such compact causal representations uncover the structural relationships among variables, enabling the agent to autonomously determine whether changes in the environment stem from distribution shifts or variations in space, and to precisely locate these changes. We then devise a three-step strategy to fine-tune the causal model under different scenarios accordingly. Empirical experiments show that CSR efficiently adapts to the target domains with only a few samples and outperforms state-of-the-art baselines on a wide range of scenarios, including our simulated environments, CartPole, CoinRun and Atari games.",
+      "venue": "ICLR 2025",
+      "authors": [
+        "Yupei Yang",
+        "Biwei Huang",
+        "Fan Feng",
+        "Xinyue Wang",
+        "Shikui Tu",
+        "Lei Xu"
+      ],
+      "paper_id": "bMvqccRmKD",
+      "pdf_url": "https://openreview.net/pdf/d6751db3330ceb2627dbf080c1267dc08694ae4d.pdf",
+      "forum_url": "https://openreview.net/forum?id=bMvqccRmKD"
+    },
+    {
+      "title": "GoIRL: Graph-Oriented Inverse Reinforcement Learning for Multimodal Trajectory Prediction",
+      "abstract": "Trajectory prediction for surrounding agents is a challenging task in autonomous driving due to its inherent uncertainty and underlying multimodality. Unlike prevailing data-driven methods that primarily rely on supervised learning, in this paper, we introduce a novel **G**raph-**o**riented **I**nverse **R**einforcement **L**earning (GoIRL) framework, which is an IRL-based predictor equipped with vectorized context representations. We develop a feature adaptor to effectively aggregate lane-graph features into grid space, enabling seamless integration with the maximum entropy IRL paradigm to infer the reward distribution and obtain the policy that can be sampled to induce multiple plausible plans. Furthermore, conditioned on the sampled plans, we implement a hierarchical parameterized trajectory generator with a refinement module to enhance prediction accuracy and a probability fusion strategy to boost prediction confidence. Extensive experimental results showcase our approach not only achieves state-of-the-art performance on the large-scale Argoverse & nuScenes motion forecasting benchmarks but also exhibits superior generalization abilities compared to existing supervised models.",
+      "venue": "ICML 2025",
+      "authors": [
+        "Muleilan Pei",
+        "Shaoshuai Shi",
+        "Lu Zhang",
+        "Peiliang Li",
+        "Shaojie Shen"
+      ],
+      "paper_id": "43591",
+      "pdf_url": "",
+      "forum_url": "https://ICML.cc/forum?id=2025/poster/43591"
+    },
+    {
+      "title": "Provably Efficient Exploration in Inverse Constrained Reinforcement Learning",
+      "abstract": "Optimizing objective functions subject to constraints is fundamental in many real-world applications. However, these constraints are often not readily defined and must be inferred from expert agent behaviors, a problem known as Inverse Constraint Inference. Inverse Constrained Reinforcement Learning (ICRL) is a common solver for recovering feasible constraints in complex environments, relying on training samples collected from interactive environments. However, the efficacy and efficiency of current sampling strategies remain unclear. We propose a strategic exploration framework for sampling with guaranteed efficiency to bridge this gap. By defining the feasible cost set for ICRL problems, we analyze how estimation errors in transition dynamics and the expert policy influence the feasibility of inferred constraints. Based on this analysis, we introduce two exploratory algorithms to achieve efficient constraint inference via 1) dynamically reducing the bounded aggregate error of cost estimations or 2) strategically constraining the exploration policy around plausibly optimal ones. Both algorithms are theoretically grounded with tractable sample complexity, and their performance is validated empirically across various environments.",
+      "venue": "ICML 2025",
+      "authors": [
+        "Bo Yue",
+        "Jian Li",
+        "Guiliang Liu"
+      ],
+      "paper_id": "44588",
+      "pdf_url": "",
+      "forum_url": "https://ICML.cc/forum?id=2025/poster/44588"
+    },
+    {
+      "title": "Towards Efficient Online Tuning of VLM Agents via Counterfactual Soft Reinforcement Learning",
+      "abstract": "Online fine-tuning vision-language model (VLM) agents with reinforcement learning (RL) has shown promise for equipping agents with multi-step, goal-oriented capabilities in dynamic environments. However, their open-ended textual action space and non-end-to-end nature of action generation present significant challenges to effective online exploration in RL, e.g., explosion of the exploration space. We propose a novel online fine-tuning method, Counterfactual Soft Reinforcement Learning (CoSo), better suited to the textual output space of VLM agents. Compared to prior methods that assign uniform uncertainty to all tokens, CoSo leverages counterfactual reasoning to dynamically assess the causal influence of individual tokens on post-processed actions. By prioritizing the exploration of action-critical tokens while reducing the impact of semantically redundant or low-impact tokens, CoSo enables a more targeted and efficient online rollout process. We provide theoretical analysis proving CoSo's convergence and policy improvement guarantees, and extensive empirical evaluations supporting CoSo's effectiveness. Our results across a diverse set of agent tasks, including Android device control, card gaming, and embodied AI, highlight its remarkable ability to enhance exploration efficiency and deliver consistent performance gains. The code is available at https://github.com/langfengQ/CoSo.",
+      "venue": "ICML 2025",
+      "authors": [
+        "Lang Feng",
+        "Weihao Tan",
+        "Zhiyi Lyu",
+        "Longtao Zheng",
+        "Haiyang Xu",
+        "Ming Yan",
+        "Fei Huang",
+        "Bo An"
+      ],
+      "paper_id": "45797",
+      "pdf_url": "",
+      "forum_url": "https://ICML.cc/forum?id=2025/poster/45797"
+    }
+  ]
+}

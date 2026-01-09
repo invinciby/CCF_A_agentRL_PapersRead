@@ -1,0 +1,55 @@
+{
+  "name": "强化学习理论基础与可解释性",
+  "paper_count": 4,
+  "summary": "本类别聚焦于强化学习及深度学习中核心组件的理论分析与可解释性研究，旨在从数学和机制层面理解模型的工作原理、表示能力和泛化行为。研究内容包括：通过“交互实体”的视角（如多智能体系统中的智能体、基因序列中的等位基因）分析自注意力机制如何高效地表征、学习和泛化实体间的成对交互函数，揭示其作为“互交互学习器”的本质；并基于理论洞察设计新的神经网络模块（如HyperFeatureAttention, HyperAttention）以捕获更复杂的多实体依赖关系。此类研究不局限于特定算法优化，而是为智能体的核心计算单元提供理论基础和设计原则。",
+  "papers": [
+    {
+      "title": "A Theoretical Study of (Hyper) Self-Attention through the Lens of Interactions: Representation, Training, Generalization",
+      "abstract": "Self-attention has emerged as a core component of modern neural architectures, yet its theoretical underpinnings remain elusive. In this paper, we study self-attention through the lens of *interacting entities*, ranging from agents in multi-agent reinforcement learning to alleles in genetic sequences, and show that a single layer linear self-attention can *efficiently* represent, learn, and generalize functions capturing pairwise interactions, including out-of-distribution scenarios. Our analysis reveals that self-attention acts as a *mutual interaction learner* under minimal assumptions on the diversity of interaction patterns observed during training, thereby encompassing a wide variety of real-world domains. In addition, we validate our theoretical insights through experiments demonstrating that self-attention learns interaction functions and generalizes across both population distributions and out-of-distribution scenarios. Building on our theories, we introduce *HyperFeatureAttention*, a novel neural network module designed to learn couplings of different feature-level interactions between entities. Furthermore, we propose *HyperAttention*, a new module that extends beyond pairwise interactions to capture multi-entity dependencies, such as three-way, four-way, or general $n$-way interactions.",
+      "venue": "ICML 2025",
+      "authors": [
+        "Muhammed Ustaomeroglu",
+        "Guannan Qu"
+      ],
+      "paper_id": "43622",
+      "pdf_url": "",
+      "forum_url": "https://ICML.cc/forum?id=2025/poster/43622"
+    },
+    {
+      "title": "Combinatorial Reinforcement Learning with Preference Feedback",
+      "abstract": "In this paper, we consider combinatorial reinforcement learning with preference feedback, where a learning agent sequentially offers an action—an assortment of multiple items—to a user, whose preference feedback follows a multinomial logistic (MNL) model. This framework allows us to model real-world scenarios, particularly those involving long-term user engagement, such as in recommender systems and online advertising. However, this framework faces two main challenges: (1) the unknown value of each item, unlike traditional MNL bandits that only address single-step preference feedback, and (2) the difficulty of ensuring optimism while maintaining tractable assortment selection in the combinatorial action space with unknown values. In this paper, we assume a contextual MNL preference model, where the mean utilities are linear, and the value of each item is approximated by a general function. We propose an algorithm, MNL-VQL, that addresses these challenges, making it both computationally and statistically efficient. As a special case, for linear MDPs (with the MNL preference feedback), we establish the first regret lower bound in this framework and show that MNL-VQL achieves near-optimal regret. To the best of our knowledge, this is the first work to provide statistical guarantees in combinatorial RL with preference feedback.",
+      "venue": "ICML 2025",
+      "authors": [
+        "Joongkyu Lee",
+        "Min-hwan Oh"
+      ],
+      "paper_id": "43927",
+      "pdf_url": "",
+      "forum_url": "https://ICML.cc/forum?id=2025/poster/43927"
+    },
+    {
+      "title": "Quantum Speedups in Regret Analysis of Infinite Horizon Average-Reward Markov Decision Processes",
+      "abstract": "This paper investigates the potential of quantum acceleration in addressing infinite horizon Markov Decision Processes (MDPs) to enhance average reward outcomes. We introduce an innovative quantum framework for the agent's engagement with an unknown MDP, extending the conventional interaction paradigm. Our approach involves the design of an optimism-driven tabular Reinforcement Learning algorithm that harnesses quantum signals acquired by the agent through efficient quantum mean estimation techniques. Through thorough theoretical analysis, we demonstrate that the quantum advantage in mean estimation leads to exponential advancements in regret guarantees for infinite horizon Reinforcement Learning. Specifically, the proposed Quantum algorithm achieves a regret bound of $\\tilde{\\mathcal{O}}(1)$\\footnote{$\\tilde{\\mathcal{O}}(\\cdot)$ conceals logarithmic terms of $T$.}, a significant improvement over the $\\tilde{\\mathcal{O}}(\\sqrt{T})$ bound exhibited by classical counterparts, where $T$ is the length of the time horizon.",
+      "venue": "ICML 2025",
+      "authors": [
+        "Bhargav Ganguly",
+        "Yang Xu",
+        "Vaneet Aggarwal"
+      ],
+      "paper_id": "46126",
+      "pdf_url": "",
+      "forum_url": "https://ICML.cc/forum?id=2025/poster/46126"
+    },
+    {
+      "title": "Robust Noise Attenuation via Adaptive Pooling of Transformer Outputs",
+      "abstract": "We investigate the design of pooling methods used to summarize the outputs of transformer embedding models, primarily motivated by reinforcement learning and vision applications. This work considers problems where a subset of the input vectors contains requisite information for a downstream task (signal) while the rest are distractors (noise). By framing pooling as vector quantization with the goal of minimizing signal loss, we demonstrate that the standard methods used to aggregate transformer outputs, AvgPool, MaxPool, and ClsToken, are vulnerable to performance collapse as the signal-to-noise ratio (SNR) of inputs fluctuates. We then show that an attention-based *adaptive pooling* method can approximate the signal-optimal vector quantizer within derived error bounds for any SNR. Our theoretical results are first validated by supervised experiments on a synthetic dataset designed to isolate the SNR problem, then generalized to standard relational reasoning, multi-agent reinforcement learning, and vision benchmarks with noisy observations, where transformers with adaptive pooling display superior robustness across tasks.",
+      "venue": "ICML 2025",
+      "authors": [
+        "Greyson Brothers"
+      ],
+      "paper_id": "46284",
+      "pdf_url": "",
+      "forum_url": "https://ICML.cc/forum?id=2025/poster/46284"
+    }
+  ]
+}

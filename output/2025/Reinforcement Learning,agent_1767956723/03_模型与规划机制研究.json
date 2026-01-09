@@ -1,0 +1,603 @@
+{
+  "name": "模型与规划机制研究",
+  "paper_count": 40,
+  "summary": "本类别深入探索智能体内部的世界模型构建、规划机制及其可解释性。研究内容包括：通过概念可解释性方法，首次从机制上证明无模型RL智能体（如DRC）能够学习内部规划表示，其算法类似于并行双向搜索；为了在开放世界中进行长视野探索，提出长短时想象（LS-Imagine）方法，构建能够模拟目标条件跳转状态转移的世界模型；以及为了提升基于Transformer的世界模型性能，引入行动条件对比预测编码（TWISTER）来学习高层时序特征表示，在Atari等基准上取得领先成绩。这些工作致力于理解和提升智能体的内部推理与长远规划能力。",
+  "papers": [
+    {
+      "title": "Interpreting Emergent Planning in Model-Free Reinforcement Learning",
+      "abstract": "We present the first mechanistic evidence that model-free reinforcement learning agents can learn to plan. This is achieved by applying a methodology based on concept-based interpretability to a model-free agent in Sokoban -- a commonly used benchmark for studying planning. Specifically, we demonstrate that DRC, a generic model-free agent introduced by [Guez et al. (2019)](https://arxiv.org/abs/1901.03559), uses learned concept representations to internally formulate plans that both predict the long-term effects of actions on the environment and influence action selection. Our methodology involves: (1) probing for planning-relevant concepts, (2) investigating plan formation within the agent's representations, and (3) verifying that discovered plans (in the agent's representations) have a causal effect on the agent's behavior through interventions. We also show that the emergence of these plans coincides with the emergence of a planning-like property: the ability to benefit from additional test-time compute. Finally, we perform a qualitative analysis of the planning algorithm learned by the agent and discover a strong resemblance to parallelized bidirectional search.  Our findings advance understanding of the internal mechanisms underlying planning behavior in agents, which is important given the recent trend of emergent planning and reasoning capabilities in LLMs through RL.",
+      "venue": "ICLR 2025",
+      "authors": [
+        "Thomas Bush",
+        "Stephen Chung",
+        "Usman Anwar",
+        "Adrià Garriga-Alonso",
+        "David Krueger"
+      ],
+      "paper_id": "DzGe40glxs",
+      "pdf_url": "https://openreview.net/pdf/43b0c3f44cc1ad29322bcfcf0b20ec8935b7343e.pdf",
+      "forum_url": "https://openreview.net/forum?id=DzGe40glxs"
+    },
+    {
+      "title": "Open-World Reinforcement Learning over Long Short-Term Imagination",
+      "abstract": "Training visual reinforcement learning agents in a high-dimensional open world presents significant challenges. While various model-based methods have improved sample efficiency by learning interactive world models, these agents tend to be “short-sighted”, as they are typically trained on short snippets of imagined experiences. We argue that the primary challenge in open-world decision-making is improving the exploration efficiency across a vast state space, especially for tasks that demand consideration of long-horizon payoffs. In this paper, we present LS-Imagine, which extends the imagination horizon within a limited number of state transition steps, enabling the agent to explore behaviors that potentially lead to promising long-term feedback. The foundation of our approach is to build a $\\textit{long short-term world model}$. To achieve this, we simulate goal-conditioned jumpy state transitions and compute corresponding affordance maps by zooming in on specific areas within single images. This facilitates the integration of direct long-term values into behavior learning. Our method demonstrates significant improvements over state-of-the-art techniques in MineDojo.",
+      "venue": "ICLR 2025",
+      "authors": [
+        "Jiajian Li",
+        "Qi Wang",
+        "Yunbo Wang",
+        "Xin Jin",
+        "Yang Li",
+        "Wenjun Zeng",
+        "Xiaokang Yang"
+      ],
+      "paper_id": "vzItLaEoDa",
+      "pdf_url": "https://openreview.net/pdf/226739f3ad5e47bba8ae3d228cb62839cd0b8b22.pdf",
+      "forum_url": "https://openreview.net/forum?id=vzItLaEoDa"
+    },
+    {
+      "title": "Learning Transformer-based World Models with Contrastive Predictive Coding",
+      "abstract": "The DreamerV3 algorithm recently obtained remarkable performance across diverse environment domains by learning an accurate world model based on Recurrent Neural Networks (RNNs). Following the success of model-based reinforcement learning algorithms and the rapid adoption of the Transformer architecture for its superior training efficiency and favorable scaling properties, recent works such as STORM have proposed replacing RNN-based world models with Transformer-based world models using masked self-attention. However, despite the improved training efficiency of these methods, their impact on performance remains limited compared to the Dreamer algorithm, struggling to learn competitive Transformer-based world models. In this work, we show that the next state prediction objective adopted in previous approaches is insufficient to fully exploit the representation capabilities of Transformers. We propose to extend world model predictions to longer time horizons by introducing TWISTER (Transformer-based World model wIth contraSTivE Representations), a world model using action-conditioned Contrastive Predictive Coding to learn high-level temporal feature representations and improve the agent performance. TWISTER achieves a human-normalized mean score of 162% on the Atari 100k benchmark, setting a new record among state-of-the-art methods that do not employ look-ahead search. We release our code at https://github.com/burchim/TWISTER.",
+      "venue": "ICLR 2025",
+      "authors": [
+        "Maxime Burchi",
+        "Radu Timofte"
+      ],
+      "paper_id": "YK9G4Htdew",
+      "pdf_url": "https://openreview.net/pdf/35ce71767720f6970c16fe95fd1f1873aa60bd46.pdf",
+      "forum_url": "https://openreview.net/forum?id=YK9G4Htdew"
+    },
+    {
+      "title": "LICORICE: Label-Efficient Concept-Based Interpretable Reinforcement Learning",
+      "abstract": "Recent advances in reinforcement learning (RL) have predominantly leveraged neural network policies for decision-making, yet these models often lack interpretability, posing challenges for stakeholder comprehension and trust. Concept bottleneck models offer an interpretable alternative by integrating human-understandable concepts into policies. However, prior work assumes that concept annotations are readily available during training. For RL, this requirement poses a significant limitation: it necessitates continuous real-time concept annotation, which either places an impractical burden on human annotators or incurs substantial costs in API queries and inference time when employing automated labeling methods. To overcome this limitation, we introduce a novel training scheme that enables RL agents to efficiently learn a concept-based policy by only querying annotators to label a small set of data. Our algorithm, LICORICE, involves three main contributions: interleaving concept learning and RL training, using an ensemble to actively select informative data points for labeling, and decorrelating the concept data. We show how LICORICE reduces human labeling efforts to 500 or fewer concept labels in three environments, and 5000 or fewer in two more complex environments, all at no cost to performance. We also explore the use of VLMs as automated concept annotators, finding them effective in some cases but imperfect in others. Our work significantly reduces the annotation burden for interpretable RL, making it more practical for real-world applications that necessitate transparency. Our code is released.",
+      "venue": "ICLR 2025",
+      "authors": [
+        "Zhuorui Ye",
+        "Stephanie Milani",
+        "Geoffrey J. Gordon",
+        "Fei Fang"
+      ],
+      "paper_id": "Mjn53GtMxi",
+      "pdf_url": "https://openreview.net/pdf/bb4d46dd3363447fb0fece82cb1427c27a4caa1d.pdf",
+      "forum_url": "https://openreview.net/forum?id=Mjn53GtMxi"
+    },
+    {
+      "title": "Action abstractions for amortized sampling",
+      "abstract": "As trajectories sampled by policies used by reinforcement learning (RL) and generative flow networks (GFlowNets) grow longer, credit assignment and exploration become more challenging, and the long planning horizon hinders mode discovery and generalization.\nThe challenge is particularly pronounced in entropy-seeking RL methods, such as generative flow networks, where the agent must learn to sample from a structured distribution and discover multiple high-reward states, each of which take many steps to reach.\nTo tackle this challenge, we propose an approach to incorporate the discovery of action abstractions, or high-level actions, into the policy optimization process.\nOur approach involves iteratively extracting action subsequences commonly used across many high-reward trajectories and `chunking' them into a single action that is added to the action space.\nIn empirical evaluation on synthetic and real-world environments, our approach demonstrates improved sample efficiency performance in discovering diverse high-reward objects, especially on harder exploration problems.\nWe also observe that the abstracted high-order actions are potentially interpretable, capturing the latent structure of the reward landscape of the action space.\nThis work provides a cognitively motivated approach to action abstraction in RL and is the first demonstration of hierarchical planning in amortized sequential sampling.",
+      "venue": "ICLR 2025",
+      "authors": [
+        "Oussama Boussif",
+        "Lena Nehale Ezzine",
+        "Joseph D Viviano",
+        "Michał Koziarski",
+        "Moksh Jain",
+        "Nikolay Malkin",
+        "Emmanuel Bengio",
+        "Rim Assouel",
+        "Yoshua Bengio"
+      ],
+      "paper_id": "ispjankYab",
+      "pdf_url": "https://openreview.net/pdf/b25eca478a19053a86fcd73d32c55b929cd5c66a.pdf",
+      "forum_url": "https://openreview.net/forum?id=ispjankYab"
+    },
+    {
+      "title": "Learning Task Belief Similarity with Latent Dynamics for Meta-Reinforcement Learning",
+      "abstract": "Meta-reinforcement learning requires utilizing prior task distribution information obtained during exploration to rapidly adapt to unknown tasks. The efficiency of an agent's exploration hinges on accurately identifying the current task. Recent Bayes-Adaptive Deep RL approaches often rely on reconstructing the environment's reward signal, which is challenging in sparse reward settings, leading to suboptimal exploitation. Inspired by bisimulation metrics, which robustly extracts behavioral similarity in continuous MDPs, we propose SimBelief—a novel meta-RL framework via measuring similarity of task belief in Bayes-Adaptive MDP (BAMDP). SimBelief effectively extracts common features of similar task distributions, enabling efficient task identification and exploration in sparse reward environments. We introduce latent task belief metric to learn the common structure of similar tasks and incorporate it into the real task belief. By learning the latent dynamics across task distributions, we connect shared latent task belief features with specific task features, facilitating rapid task identification and adaptation. Our method outperforms state-of-the-art baselines on sparse reward MuJoCo and panda-gym tasks.",
+      "venue": "ICLR 2025",
+      "authors": [
+        "Menglong Zhang",
+        "Fuyuan Qian",
+        "Quanying Liu"
+      ],
+      "paper_id": "5YbuOTUFQ4",
+      "pdf_url": "https://openreview.net/pdf/d880d57b9f9f5ea15fdf8237c4a756807b970939.pdf",
+      "forum_url": "https://openreview.net/forum?id=5YbuOTUFQ4"
+    },
+    {
+      "title": "BAMDP Shaping: a Unified Framework for Intrinsic Motivation and Reward Shaping",
+      "abstract": "Intrinsic motivation and reward shaping guide reinforcement learning (RL) agents by adding pseudo-rewards, which can lead to useful emergent behaviors. However, they can also encourage counterproductive exploits, e.g., fixation with noisy TV screens. Here we provide a theoretical model which anticipates these behaviors, and provides broad criteria under which adverse effects can be bounded. We characterize all pseudo-rewards as reward shaping in Bayes-Adaptive Markov Decision Processes (BAMDPs), which formulates the problem of learning in MDPs as an MDP over the agent's knowledge. Optimal exploration maximizes BAMDP state value, which we decompose into the value of the information gathered and the prior value of the physical state. Psuedo-rewards guide RL agents by rewarding behavior that increases these value components, while they hinder exploration when they align poorly with the actual value. We extend potential-based shaping theory to prove BAMDP Potential-based shaping Functions (BAMPFs) are immune to reward-hacking (convergence to behaviors maximizing composite rewards to the detriment of real rewards) in meta-RL, and show empirically how a BAMPF helps a meta-RL agent learn optimal RL algorithms for a Bernoulli Bandit domain. We finally prove that BAMPFs with bounded monotone increasing potentials also resist reward-hacking in the regular RL setting. We show that it is straightforward to retrofit or design new pseudo-reward terms in this form, and provide an empirical demonstration in the Mountain Car environment.",
+      "venue": "ICLR 2025",
+      "authors": [
+        "Aly Lidayan",
+        "Michael D Dennis",
+        "Stuart Russell"
+      ],
+      "paper_id": "tijmpS9Vy2",
+      "pdf_url": "https://openreview.net/pdf/6f684ffda7a2ed107c7181cad5b1caa492502cce.pdf",
+      "forum_url": "https://openreview.net/forum?id=tijmpS9Vy2"
+    },
+    {
+      "title": "On the Modeling Capabilities of Large Language Models for Sequential Decision Making",
+      "abstract": "Large pretrained models are showing increasingly better performance in reasoning and planning tasks across different modalities, opening the possibility to leverage them for complex sequential decision making problems. In this paper, we investigate the capabilities of Large Language Models (LLMs) for reinforcement learning (RL) across a diversity of interactive domains. We evaluate their ability to produce decision-making policies, either directly, by generating actions, or indirectly, by first generating reward models to train an agent with RL. Our results show that, even without task-specific fine-tuning, LLMs excel at reward modeling. In particular, crafting rewards through artificial intelligence (AI) feedback yields the most generally applicable approach and can enhance performance by improving credit assignment and exploration. Finally, in environments with unfamiliar dynamics, we explore how fine-tuning LLMs with synthetic data can significantly improve their reward modeling capabilities while mitigating catastrophic forgetting, further broadening their utility in sequential decision-making tasks.",
+      "venue": "ICLR 2025",
+      "authors": [
+        "Martin Klissarov",
+        "R Devon Hjelm",
+        "Alexander T Toshev",
+        "Bogdan Mazoure"
+      ],
+      "paper_id": "vodsIF3o7N",
+      "pdf_url": "https://openreview.net/pdf/21bc4233891161329b1745351a8cb728e0c74b90.pdf",
+      "forum_url": "https://openreview.net/forum?id=vodsIF3o7N"
+    },
+    {
+      "title": "M^3PC: Test-time Model Predictive Control using Pretrained Masked Trajectory Model",
+      "abstract": "Recent work in Offline Reinforcement Learning (RL) has shown that  a unified transformer trained under a masked auto-encoding objective can effectively capture the relationships between different modalities (e.g., states, actions, rewards) within given trajectory datasets. However, this information has not been fully exploited during the inference phase, where the agent needs to generate an optimal policy instead of just reconstructing masked components from unmasked. Given that a pretrained trajectory model can act as both a Policy Model and a World Model with appropriate mask patterns, we propose using Model Predictive Control (MPC) at test time to leverage the model's own predictive capacity to guide its action selection. Empirical results on D4RL and RoboMimic show that our inference-phase MPC significantly improves the decision-making performance of a pretrained trajectory model without any additional parameter training. Furthermore, our framework can be adapted to Offline to Online (O2O) RL and Goal Reaching RL, resulting in more substantial performance gains when an additional online interaction budget is given, and better generalization capabilities when different task targets are specified. Code is available: \\href{https://github.com/wkh923/m3pc}{\\texttt{https://github.com/wkh923/m3pc}}.",
+      "venue": "ICLR 2025",
+      "authors": [
+        "Kehan Wen",
+        "Yutong Hu",
+        "Yao Mu",
+        "Lei Ke"
+      ],
+      "paper_id": "inOwd7hZC1",
+      "pdf_url": "https://openreview.net/pdf/d82891202728fac4e3c8f00b0f082d8d6bc2f510.pdf",
+      "forum_url": "https://openreview.net/forum?id=inOwd7hZC1"
+    },
+    {
+      "title": "Scaling Offline Model-Based RL via Jointly-Optimized World-Action Model Pretraining",
+      "abstract": "A significant aspiration of offline reinforcement learning (RL) is to develop a generalist agent with high capabilities from large and heterogeneous datasets. However, prior approaches that scale offline RL either rely heavily on expert trajectories or struggle to generalize to diverse unseen tasks. Inspired by the excellent generalization of world model in conditional video generation, we explore the potential of image observation-based world model for scaling offline RL and enhancing generalization on novel tasks. In this paper, we introduce JOWA: Jointly-Optimized World-Action model, an offline model-based RL agent pretrained on multiple Atari games with 6 billion tokens data to learn general-purpose representation and decision-making ability. Our method jointly optimizes a world-action model through a shared transformer backbone, which stabilize temporal difference learning with large models during pretraining. Moreover, we propose a provably efficient and parallelizable planning algorithm to compensate for the Q-value estimation error and thus search out better policies. Experimental results indicate that our largest agent, with 150 million parameters, achieves 78.9% human-level performance on pretrained games using only 10% subsampled offline data, outperforming existing state-of-the-art large-scale offline RL baselines by 31.6% on averange. Furthermore, JOWA scales favorably with model capacity and can sample-efficiently transfer to novel games using only 5k offline fine-tuning data (approximately 4 trajectories) per game, demonstrating superior generalization.",
+      "venue": "ICLR 2025",
+      "authors": [
+        "Jie Cheng",
+        "Ruixi Qiao",
+        "YINGWEI MA",
+        "Binhua Li",
+        "Gang Xiong",
+        "Qinghai Miao",
+        "Yongbin Li",
+        "Yisheng Lv"
+      ],
+      "paper_id": "T1OvCSFaum",
+      "pdf_url": "https://openreview.net/pdf/efaec42c3808fce35116753d535dd536924a486f.pdf",
+      "forum_url": "https://openreview.net/forum?id=T1OvCSFaum"
+    },
+    {
+      "title": "Discrete Codebook World Models for Continuous Control",
+      "abstract": "In reinforcement learning (RL), world models serve as internal simulators, enabling agents to predict environment dynamics and future outcomes in order to make informed decisions. While previous approaches leveraging discrete latent spaces, such as DreamerV3, have demonstrated strong performance in discrete action settings and visual control tasks, their comparative performance in state-based continuous control remains underexplored. In contrast, methods with continuous latent spaces, such as TD-MPC2, have shown notable success in state-based continuous control benchmarks. In this paper, we demonstrate that modeling discrete latent states has benefits over continuous latent states and that discrete codebook encodings are more effective representations for continuous control, compared to alternative encodings, such as one-hot and label-based encodings. Based on these insights, we introduce DCWM: Discrete Codebook World Model, a self-supervised world model with a discrete and stochastic latent space, where latent states are codes from a codebook. We combine DCWM with decision-time planning to get our model-based RL algorithm, named DC-MPC: Discrete Codebook Model Predictive Control, which performs competitively against recent state-of-the-art algorithms, including TD-MPC2 and DreamerV3, on continuous control benchmarks.",
+      "venue": "ICLR 2025",
+      "authors": [
+        "Aidan Scannell",
+        "Mohammadreza Nakhaeinezhadfard",
+        "Kalle Kujanpää",
+        "Yi Zhao",
+        "Kevin Sebastian Luck",
+        "Arno Solin",
+        "Joni Pajarinen"
+      ],
+      "paper_id": "lfRYzd8ady",
+      "pdf_url": "https://openreview.net/pdf/3dd9b5346d58a27ef332db4770f358f012e2a6c8.pdf",
+      "forum_url": "https://openreview.net/forum?id=lfRYzd8ady"
+    },
+    {
+      "title": "The World Is Bigger: A Computationally-Embedded Perspective on the Big World Hypothesis",
+      "abstract": "Continual learning is often motivated by the idea, known as the big world hypothesis, that the \"world is bigger\" than the agent. Recent problem formulations capture this idea by explicitly constraining an agent relative to the environment. These constraints lead to solutions in which the agent continually adapts to best use its limited capacity, rather than converging to a fixed solution. However, explicit constraints can be ad hoc, difficult to incorporate, and limiting to the effectiveness of scaling up the agent's capacity. In this paper, we characterize a problem setting in which an agent, regardless of its capacity, is implicitly constrained by being embedded in the environment. In particular, we introduce a computationally-embedded perspective that represents an embedded agent as an automaton simulated within a universal (formal) computer. We prove that such an automaton is implicitly constrained and that it is equivalent to an agent that interacts with a partially observable Markov decision process over a countably infinite state-space. We then propose an objective for this setting, which we call interactivity, that measures an agent's ability to continually adapt its behaviour and to continually learn new predictions. We develop a reinforcement learning algorithm for maximizing interactivity and a synthetic benchmark to experimentation on continual learning. Our results indicate that deep nonlinear networks struggle to sustain interactivity whereas deep linear networks can achieve higher interactivity as capacity increases.",
+      "venue": "NeurIPS 2025",
+      "authors": [
+        "Alex Lewandowski",
+        "Aditya A. Ramesh",
+        "Edan Meyer",
+        "Dale Schuurmans",
+        "Marlos C. Machado"
+      ],
+      "paper_id": "gJclyLFSdU",
+      "pdf_url": "https://openreview.net/pdf/463a93594b9e688fecce37543cf3bf45e7f91310.pdf",
+      "forum_url": "https://openreview.net/forum?id=gJclyLFSdU"
+    },
+    {
+      "title": "Reinforcement Learning with Imperfect Transition Predictions: A Bellman-Jensen Approach",
+      "abstract": "Traditional reinforcement learning (RL) assumes the agents make decisions based on Markov decision processes (MDPs) with one-step transition models. In many real-world applications, such as energy management and stock investment, agents can access multi-step predictions of future states, which provide additional advantages for decision making. However, multi-step predictions are inherently high-dimensional: naively embedding these predictions into an MDP leads to an exponential blow-up in state space and the curse of dimensionality. Moreover, existing RL theory provides few tools to analyze prediction-augmented MDPs, as it typically works on one-step transition kernels and cannot accommodate multi-step predictions with errors or partial action-coverage. We address these challenges with three key innovations: First, we propose the \\emph{Bayesian value function} to characterize the optimal prediction-aware policy tractably. Second, we develop a novel \\emph{Bellman–Jensen Gap} analysis on the Bayesian value function, which enables characterizing the value of imperfect predictions. Third, we introduce BOLA (Bayesian Offline Learning with Online Adaptation), a two-stage model-based RL algorithm that separates offline Bayesian value learning from lightweight online adaptation to real-time predictions. We prove that BOLA remains sample-efficient even under imperfect predictions. We validate our theory and algorithm on synthetic MDPs and a real-world wind energy storage control problem.",
+      "venue": "NeurIPS 2025",
+      "authors": [
+        "Chenbei Lu",
+        "Zaiwei Chen",
+        "Tongxin Li",
+        "Chenye Wu",
+        "Adam Wierman"
+      ],
+      "paper_id": "DYuPwwDy9n",
+      "pdf_url": "https://openreview.net/pdf/772e77c64f558f9df89b7c750c36b0926c4de579.pdf",
+      "forum_url": "https://openreview.net/forum?id=DYuPwwDy9n"
+    },
+    {
+      "title": "EDELINE: Enhancing Memory in Diffusion-based World Models via Linear-Time Sequence Modeling",
+      "abstract": "World models represent a promising approach for training reinforcement learning agents with significantly improved sample efficiency. While most world model methods primarily rely on sequences of discrete latent variables to model environment dynamics, this compression often neglects critical visual details essential for reinforcement learning. Recent diffusion-based world models condition generation on a fixed context length of frames to predict the next observation, using separate recurrent neural networks to model rewards and termination signals. Although this architecture effectively enhances visual fidelity, the fixed context length approach inherently limits memory capacity.\nIn this paper, we introduce EDELINE, a unified world model architecture that integrates state space models with diffusion models. Our approach outperforms existing baselines across visually challenging Atari 100k tasks, memory-demanding Crafter benchmark, and 3D first-person ViZDoom environments, demonstrating superior performance in all these diverse challenges. Code is available at https://github.com/LJH-coding/EDELINE.",
+      "venue": "NeurIPS 2025",
+      "authors": [
+        "Jia-Hua Lee",
+        "Bor-Jiun Lin",
+        "Wei-Fang Sun",
+        "Chun-Yi Lee"
+      ],
+      "paper_id": "ph1V6n7BSv",
+      "pdf_url": "https://openreview.net/pdf/93ea029dc52e5a7f6c416972769fb83b127fe3df.pdf",
+      "forum_url": "https://openreview.net/forum?id=ph1V6n7BSv"
+    },
+    {
+      "title": "Dynamics-Aligned Latent Imagination in Contextual World Models for Zero-Shot Generalization",
+      "abstract": "Real-world reinforcement learning demands adaptation to unseen environmental conditions without costly retraining. Contextual Markov Decision Processes (cMDP) model this challenge, but existing methods often require explicit context variables (e.g., friction, gravity), limiting their use when contexts are latent or hard to measure. We introduce Dynamics-Aligned Latent Imagination (DALI), a framework integrated within the Dreamer architecture that infers latent context representations from agent-environment interactions. By training a self-supervised encoder to predict forward dynamics, DALI generates actionable representations conditioning the world model and policy, bridging perception and control. We theoretically prove this encoder is essential for efficient context inference and robust generalization. DALI’s latent space enables counterfactual consistency: Perturbing a gravity-encoding dimension alters imagined rollouts in physically plausible ways. On challenging cMDP benchmarks, DALI achieves significant gains over context-unaware baselines, often surpassing context-aware baselines in extrapolation tasks, enabling zero-shot generalization to unseen contextual variations.",
+      "venue": "NeurIPS 2025",
+      "authors": [
+        "Frank Röder",
+        "Jan Benad",
+        "Manfred Eppe",
+        "Pradeep Kr. Banerjee"
+      ],
+      "paper_id": "41bIzD5sit",
+      "pdf_url": "https://openreview.net/pdf/7c307a9a6f2b1e42e901aea2422257dc706fe28c.pdf",
+      "forum_url": "https://openreview.net/forum?id=41bIzD5sit"
+    },
+    {
+      "title": "Predictive Coding Enhances Meta-RL To Achieve Interpretable Bayes-Optimal Belief Representation Under Partial Observability",
+      "abstract": "Learning a compact representation of history is critical for planning and generalization in partially observable environments. \nWhile meta-reinforcement learning (RL) agents can attain near Bayes-optimal policies, they often fail to learn the compact, interpretable Bayes-optimal belief states. \nThis representational inefficiency potentially limits the agent's adaptability and generalization capacity.\nInspired by predictive coding in neuroscience---which suggests that the brain predicts sensory inputs as a neural implementation of Bayesian inference---and by auxiliary predictive objectives in deep RL, we investigate whether integrating self-supervised predictive coding modules into meta-RL can facilitate learning of Bayes-optimal representations.\nThrough state machine simulation, we show that meta-RL with predictive modules consistently generates more interpretable representations that better approximate Bayes-optimal belief states compared to conventional meta-RL across a wide variety of tasks, even when both achieve optimal policies.\nIn challenging tasks requiring active information seeking, only meta-RL with predictive modules successfully learns optimal representations and policies, whereas conventional meta-RL struggles with inadequate representation learning.\nFinally, we demonstrate that better representation learning leads to improved generalization.\nOur results strongly suggest the role of predictive learning as a guiding principle for effective representation learning in agents navigating partial observability.",
+      "venue": "NeurIPS 2025",
+      "authors": [
+        "Po-Chen Kuo",
+        "Han Hou",
+        "Will Dabney",
+        "Edgar Y. Walker"
+      ],
+      "paper_id": "ykDUVoelgj",
+      "pdf_url": "https://openreview.net/pdf/e79917c3f7b6fe1f90031442a232f412139e7a39.pdf",
+      "forum_url": "https://openreview.net/forum?id=ykDUVoelgj"
+    },
+    {
+      "title": "Imitation Learning with Temporal Logic Constraints",
+      "abstract": "Designing reinforcement learning agents to satisfy complex temporal objectives expressed in Linear Temporal Logic (LTL), presents significant challenges, particularly in ensuring sample efficiency and task alignment over infinite horizons. Recent works have shown that by leveraging the corresponding Limit Deterministic Büchi Automaton (LDBA) representation, LTL formulas can be translated into variable discounting schemes over LDBA-accepting states to maximize a lower bound on the probability of formula satisfaction. However, the resulting reward signals are inherently sparse, making exploration of LDBA-accepting states increasingly difficult as task horizons lengthen to infinity. In this work, we address these challenges by leveraging finite-length demonstrations to overcome the exploration bottleneck for LTL objectives over infinite horizons. We segment demonstrations and agent exploratory trajectories at LDBA-accepting states and iteratively guide the agent within each segment to learn to reach these accepting states. By incentivizing the agent to visit LDBA-accepting states from arbitrary states, our approach increases the probability of LTL formula satisfaction without the need for extensive or lengthy demonstrations. We demonstrate the applicability of our method across a variety of high-dimensional continuous control domains. It achieves faster convergence and consistently outperforms baseline approaches.",
+      "venue": "NeurIPS 2025",
+      "authors": [
+        "Zining Fan",
+        "He Zhu"
+      ],
+      "paper_id": "MKLcSmSTQI",
+      "pdf_url": "https://openreview.net/pdf/7fac7df667e433818d54c9d10cf8bf6d60c99971.pdf",
+      "forum_url": "https://openreview.net/forum?id=MKLcSmSTQI"
+    },
+    {
+      "title": "DyMoDreamer: World Modeling with Dynamic Modulation",
+      "abstract": "A critical bottleneck in deep reinforcement learning (DRL) is sample inefficiency, as training high-performance agents often demands extensive environmental interactions. Model-based reinforcement learning (MBRL) mitigates this by building world models that simulate environmental dynamics and generate synthetic experience, improving sample efficiency. However, conventional world models process observations holistically, failing to decouple dynamic objects and temporal features from static backgrounds. This approach is computationally inefficient, especially for visual tasks where dynamic objects significantly influence rewards and decision-making performance. To address this, we introduce DyMoDreamer, a novel MBRL algorithm that incorporates a dynamic modulation mechanism to improve the extraction of dynamic features and enrich the temporal information. DyMoDreamer employs differential observations derived from a novel inter-frame differencing mask, explicitly encoding object-level motion cues and temporal dynamics. Dynamic modulation is modeled as stochastic categorical distributions and integrated into a recurrent state-space model (RSSM), enhancing the model's focus on reward-relevant dynamics. Experiments demonstrate that DyMoDreamer sets a new state-of-the-art on the Atari $100$k benchmark with a $156.6$\\% mean human-normalized score, establishes a new record of $832$ on the DeepMind Visual Control Suite, and gains a $9.5$\\% performance improvement after $1$M steps on the Crafter benchmark.",
+      "venue": "NeurIPS 2025",
+      "authors": [
+        "Boxuan Zhang",
+        "Runqing Wang",
+        "Wei Xiao",
+        "Weipu Zhang",
+        "Jian Sun",
+        "Gao Huang",
+        "Jie Chen",
+        "Gang Wang"
+      ],
+      "paper_id": "SYKwGnik3w",
+      "pdf_url": "https://openreview.net/pdf/4faa5aa4dc13ce2e74a66d19a97181545d04985f.pdf",
+      "forum_url": "https://openreview.net/forum?id=SYKwGnik3w"
+    },
+    {
+      "title": "Cognitive Predictive Processing: A Human-inspired Framework for Adaptive Exploration in Open-World Reinforcement Learning",
+      "abstract": "Open-world reinforcement learning challenges agents to develop intelligent behavior in vast exploration spaces. Recent approaches like LS-Imagine have advanced the field by extending imagination horizons through jumpy state transitions, yet remain limited by fixed exploration mechanisms and static jump thresholds that cannot adapt across changing task phases, resulting in inefficient exploration and lower completion rates.\n  Humans demonstrate remarkable capabilities in open-world decision-making through a chain-like process of task decomposition, selective memory utilization, and adaptive uncertainty regulation.\n  Inspired by human decision-making processes, we present Cognitive Predictive Processing (CPP), a novel framework that integrates three neurologically-inspired systems: a phase-adaptive cognitive controller that dynamically decomposes tasks into exploration, approach, and completion phases with adaptive parameters;\n  a dual-memory integration system implementing dual-modal memory that balances immediate context with selective long-term storage; \n  and an uncertainty-modulated prediction regulator that continuously updates environmental predictions to modulate exploration behavior.\n  Comprehensive experiments in MineDojo demonstrate that these human-inspired decision-making strategies enhance performance over recent techniques, with success rates improving by an average of 4.6\\% across resource collection tasks while reducing task completion steps by an average of 7.1\\%. \n  Our approach bridges cognitive neuroscience and reinforcement learning, excelling in complex scenarios that require sustained exploration and strategic adaptation while demonstrating how neural-inspired models can solve key challenges in open-world AI systems.",
+      "venue": "NeurIPS 2025",
+      "authors": [
+        "boheng liu",
+        "Ziyu Li",
+        "Chenghua Duan",
+        "YuTian Liu",
+        "Zhuo Wang",
+        "Xiuxing Li",
+        "Qing Li",
+        "Xia Wu"
+      ],
+      "paper_id": "2fFRIIwau6",
+      "pdf_url": "https://openreview.net/pdf/da5aa40f06434399950114c9dc6770f1c9f84079.pdf",
+      "forum_url": "https://openreview.net/forum?id=2fFRIIwau6"
+    },
+    {
+      "title": "Intrinsic Goals for Autonomous Agents: Model-Based Exploration in Virtual Zebrafish Predicts Ethological Behavior and Whole-Brain Dynamics",
+      "abstract": "Autonomy is a hallmark of animal intelligence, enabling adaptive and intelligent behavior in complex environments without relying on external reward or task structure. Existing reinforcement learning approaches to exploration in reward-free environments, including a class of methods known as *model-based intrinsic motivation*, exhibit inconsistent exploration patterns and do not converge to an exploratory policy, thus failing to capture robust autonomous behaviors observed in animals. Moreover, systems neuroscience has largely overlooked the neural basis of autonomy, focusing instead on experimental paradigms where animals are motivated by external reward rather than engaging in ethological, naturalistic and task-independent behavior. To bridge these gaps, we introduce a novel model-based intrinsic drive explicitly designed after the principles of autonomous exploration in animals. Our method (3M-Progress) achieves animal-like exploration by tracking divergence between an online world model and a fixed prior learned from an ecological niche. To the best of our knowledge, we introduce the first autonomous embodied agent that predicts brain data entirely from self-supervised optimization of an intrinsic goal—without any behavioral or neural training data—demonstrating that 3M-Progress agents capture the explainable variance in behavioral patterns and whole-brain neural-glial dynamics recorded from autonomously behaving larval zebrafish, thereby providing the first goal-driven, population-level model of neural-glial computation. Our findings establish a computational framework connecting model-based intrinsic motivation to naturalistic behavior, providing a foundation for building artificial agents with animal-like autonomy.",
+      "venue": "NeurIPS 2025",
+      "authors": [
+        "Reece Keller",
+        "Alyn Kirsch",
+        "Felix Pei",
+        "Xaq Pitkow",
+        "Leo Kozachkov",
+        "Aran Nayebi"
+      ],
+      "paper_id": "g2vViuEVDS",
+      "pdf_url": "https://openreview.net/pdf/5ad4cabfd095c88375d5e524dd1a4c36795ebef1.pdf",
+      "forum_url": "https://openreview.net/forum?id=g2vViuEVDS"
+    },
+    {
+      "title": "Spatial-Aware Decision-Making with Ring Attractors in Reinforcement Learning Systems",
+      "abstract": "Ring attractors, mathematical models inspired by neural circuit dynamics, provide a biologically plausible mechanism to improve learning speed and accuracy in Reinforcement Learning (RL). Serving as specialized brain-inspired structures that encode spatial information and uncertainty, ring attractors explicitly encode the action space, facilitate the organization of neural activity, and enable the distribution of spatial representations across the neural network in the context of Deep Reinforcement Learning (DRL). These structures also provide temporal filtering that stabilizes action selection during exploration, for example, by preserving the continuity between rotation angles in robotic control or adjacency between tactical moves in game-like environments. The application of ring attractors in the action selection process involves mapping actions to specific locations on the ring and decoding the selected action based on neural activity. We investigate the application of ring attractors by both building an exogenous model and integrating them as part of DRL agents. Our approach significantly improves state-of-the-art performance on the Atari 100k benchmark, achieving a 53\\% increase in performance over selected baselines.",
+      "venue": "NeurIPS 2025",
+      "authors": [
+        "Marcos Negre Saura",
+        "Richard Allmendinger",
+        "Wei Pan",
+        "Theodore Papamarkou"
+      ],
+      "paper_id": "FthMPOhgfp",
+      "pdf_url": "https://openreview.net/pdf/3b33c9cda6de25485d66e8c6d0e9fdc475b1d124.pdf",
+      "forum_url": "https://openreview.net/forum?id=FthMPOhgfp"
+    },
+    {
+      "title": "Modelling the control of offline processing with reinforcement learning",
+      "abstract": "Brains reorganise knowledge offline to improve future behaviour, with 'replay' involved in consolidating memories, abstracting patterns from experience, and simulating new scenarios. However, there are few models of how the brain might orchestrate these processes, and of when different types of replay might be useful. Here we propose a framework in which a meta-controller learns to coordinate offline learning of a lower-level agent or model in 'sleep' phases to maximise reward in an 'awake' phase. The meta-controller selects among several actions, such as learning from recent memories in a hippocampal store, abstracting patterns from memories into a 'world model', and learning from generated data. In addition, the meta-controller learns to estimate the value of each episode, enabling the prioritisation of past events in memory replay, or of new simulations in generative replay. Using image classification, maze solving, and relational inference tasks, we show that the meta-controller learns an adaptive curriculum for offline learning. This lays the groundwork for normative predictions about replay in a range of experimental neuroscience tasks.",
+      "venue": "NeurIPS 2025",
+      "authors": [
+        "Eleanor Spens",
+        "Neil Burgess",
+        "Timothy Edward John Behrens"
+      ],
+      "paper_id": "BFW1fkB8ck",
+      "pdf_url": "https://openreview.net/pdf/17ffafddc47da594e31dd4dc02213d3f3500e51b.pdf",
+      "forum_url": "https://openreview.net/forum?id=BFW1fkB8ck"
+    },
+    {
+      "title": "When Can Model-Free Reinforcement Learning be Enough for Thinking?",
+      "abstract": "Recent work on large language models has demonstrated the use of model-free reinforcement learning (RL) to train reasoning-like capabilities. The emergence of \"thinking\" through model-free RL is interesting as thinking actions neither produce reward nor change the external world state to one where the agent is more likely to get reward. This paper seeks to build a domain-independent understanding of when model-free RL will lead to such \"thinking\" as a strategy for reward maximization. To build this understanding, we first introduce a theoretical model which we call a thought Markov decision process (MDP). Thought MDPs minimally extend the classical MDP model to include an abstract notion of thought state and thought action. Using the thought MDP model, we prove the importance of policy initialization in determining whether or not thinking emerges and show formally that thought actions are equivalent to the agent choosing to perform a step of policy improvement before continuing to act. We then show that open-source LLMs satisfy the conditions that our theory predicts are necessary for model-free RL to produce thinking-like behavior. Finally, we hypothesize sufficient conditions that would enable thinking to be learned outside of language generation and introduce a toy domain where a combination of multi-task pre-training and designated thought actions enable more data-efficient RL compared to non-thinking agents.",
+      "venue": "NeurIPS 2025",
+      "authors": [
+        "Josiah P. Hanna",
+        "Nicholas E. Corrado"
+      ],
+      "paper_id": "elfvik1mkg",
+      "pdf_url": "https://openreview.net/pdf/3f77bd583c6c1f39dc7bea01c24c975bde06ee3c.pdf",
+      "forum_url": "https://openreview.net/forum?id=elfvik1mkg"
+    },
+    {
+      "title": "SOMBRL: Scalable and Optimistic Model-Based RL",
+      "abstract": "We address the challenge of efficient exploration in model-based reinforcement learning (MBRL), where the system dynamics are unknown and the RL agent must learn directly from online interactions. We propose **S**calable and **O**ptimistic **MBRL** (SOMBRL), an approach based on the principle of optimism in the face of uncertainty. SOMBRL learns an uncertainty-aware dynamics model and *greedily* maximizes a weighted sum of the extrinsic reward and the agent's epistemic uncertainty.  SOMBRL is compatible with any policy optimizers or planners, and under common regularity assumptions on the system, we show that SOMBRL has sublinear regret for nonlinear dynamics in the (*i*) finite-horizon, (*ii*) discounted infinite-horizon, and (*iii*) non-episodic setting. Additionally, SOMBRL offers a flexible and scalable solution for principled exploration.  We evaluate SOMBRL on state-based and visual-control environments, where it displays strong performance across all tasks and baselines.  We also evaluate SOMBRL on a dynamic RC car hardware and show SOMBRL outperforms the state-of-the-art, illustrating the benefits of principled exploration for MBRL.",
+      "venue": "NeurIPS 2025",
+      "authors": [
+        "Bhavya Sukhija",
+        "Lenart Treven",
+        "Carmelo Sferrazza",
+        "Florian Dorfler",
+        "Pieter Abbeel",
+        "Andreas Krause"
+      ],
+      "paper_id": "eGfi5k7RP6",
+      "pdf_url": "https://openreview.net/pdf/255742ea4b926f7580312ecf1785db3899f97794.pdf",
+      "forum_url": "https://openreview.net/forum?id=eGfi5k7RP6"
+    },
+    {
+      "title": "Learning from Reward-Free Offline Data: A Case for Planning with Latent Dynamics Models",
+      "abstract": "A long-standing goal in AI is to develop agents capable of solving diverse tasks across a range of environments, including those never seen during training. Two dominant paradigms address this challenge: (i) reinforcement learning (RL), which learns policies via trial and error, and (ii) optimal control, which plans actions using a known or learned dynamics model. However, their comparative strengths in the offline setting—where agents must learn from reward-free trajectories—remain underexplored. In this work, we systematically evaluate RL and control-based methods on a suite of navigation tasks, using offline datasets of varying quality. On the RL side, we consider goal-conditioned and zero-shot methods. On the control side, we train a latent dynamics model using the Joint Embedding Predictive Architecture (JEPA) and employ it for planning. We investigate how factors such as data diversity, trajectory quality, and environment variability influence the performance of these approaches. Our results show that model-free RL benefits most from large amounts of high-quality data, whereas model-based planning generalizes better to unseen layouts and is more data-efficient, while achieving trajectory stitching performance comparable to leading model-free methods. Notably, planning with a latent dynamics model proves to be a strong approach for handling suboptimal offline data and adapting to diverse environments.",
+      "venue": "NeurIPS 2025",
+      "authors": [
+        "Vlad Sobal",
+        "Wancong Zhang",
+        "Kyunghyun Cho",
+        "Randall Balestriero",
+        "Tim G. J. Rudner",
+        "Yann LeCun"
+      ],
+      "paper_id": "hTZ0SJCGQX",
+      "pdf_url": "https://openreview.net/pdf/5233ea1b8598dfd1eed771e087de919731ced5a1.pdf",
+      "forum_url": "https://openreview.net/forum?id=hTZ0SJCGQX"
+    },
+    {
+      "title": "Learning Interactive World Model for Object-Centric Reinforcement Learning",
+      "abstract": "Agents that understand objects and their interactions can learn policies that are more robust and transferable. However, most object-centric RL methods factor state by individual objects while leaving interactions implicit. We introduce the Factored Interactive Object-Centric World Model (FIOC-WM), a unified framework that learns structured representations of both objects and their interactions within a world model. FIOC-WM captures environment dynamics with disentangled and modular representations of object interactions, improving sample efficiency and generalization for policy learning. Concretely, FIOC-WM first learns object-centric latents and an interaction structure directly from pixels, leveraging pre-trained vision encoders. The learned world model then decomposes tasks into composable interaction primitives, and a hierarchical policy is trained on top: a high level selects the type and order of interactions, while a low level executes them. On simulated robotic and embodied-AI benchmarks, FIOC-WM improves policy-learning sample efficiency and generalization over world-model baselines, indicating that explicit, modular interaction learning is crucial for robust control.",
+      "venue": "NeurIPS 2025",
+      "authors": [
+        "Fan Feng",
+        "Phillip Lippe",
+        "Sara Magliacane"
+      ],
+      "paper_id": "E0cjqfM55C",
+      "pdf_url": "https://openreview.net/pdf/66f1b36008267ba8f2a4d5c9c244c1481dd27825.pdf",
+      "forum_url": "https://openreview.net/forum?id=E0cjqfM55C"
+    },
+    {
+      "title": "Learning and Planning Multi-Agent Tasks via an MoE-based World Model",
+      "abstract": "Multi-task multi-agent reinforcement learning (MT-MARL) aims to develop a single model capable of solving a diverse set of tasks. However, existing methods often fall short due to the substantial variation in optimal policies across tasks, making it challenging for a single policy model to generalize effectively. In contrast, we find that many tasks exhibit **bounded similarity** in their underlying dynamics—highly similar within certain groups (e.g., door-open/close) diverge significantly between unrelated tasks (e.g., door-open \\& object-catch). To leverage this property, we reconsider the role of modularity in multi-task learning, and propose **M3W**, a novel approach that applies mixture-of-experts (MoE) to world model instead of policy, enabling both learning and planning. For learning, it uses a SoftMoE-based dynamics model alongside a SparseMoE-based predictor to facilitate knowledge reuse across similar tasks while avoiding gradient conflicts across dissimilar tasks. For planning, it evaluates and optimizes actions using the predicted rollouts from the world model, without relying directly on a explicit policy model, thereby overcoming the limitations of policy-centric methods. As the first MoE-based multi-task world model, M3W demonstrates superior performance, sample efficiency, and multi-task adaptability, as validated on Bi-DexHands with 14 tasks and MA-Mujoco with 24 tasks. The demos and anonymous code are available at \\url{https://github.com/zhaozijie2022/m3w-marl}.",
+      "venue": "NeurIPS 2025",
+      "authors": [
+        "Zijie Zhao",
+        "Zhongyue Zhao",
+        "Kaixuan Xu",
+        "Yuqian Fu",
+        "Jiajun Chai",
+        "Yuanheng Zhu",
+        "Dongbin Zhao"
+      ],
+      "paper_id": "fi24ry0BX5",
+      "pdf_url": "https://openreview.net/pdf/09e9ae881c16219816d4e101be5c5634163ae0b6.pdf",
+      "forum_url": "https://openreview.net/forum?id=fi24ry0BX5"
+    },
+    {
+      "title": "Mixture-of-Experts Meets In-Context Reinforcement Learning",
+      "abstract": "In-context reinforcement learning (ICRL) has emerged as a promising paradigm for adapting RL agents to downstream tasks through prompt conditioning. However, two notable challenges remain in fully harnessing in-context learning within RL domains: the intrinsic multi-modality of the state-action-reward data and the diverse, heterogeneous nature of decision tasks. To tackle these challenges, we propose **T2MIR** (**T**oken- and **T**ask-wise **M**oE for **I**n-context **R**L), an innovative framework that introduces architectural advances of mixture-of-experts (MoE) into transformer-based decision models. T2MIR substitutes the feedforward layer with two parallel layers: a token-wise MoE that captures distinct semantics of input tokens across multiple modalities, and a task-wise MoE that routes diverse tasks to specialized experts for managing a broad task distribution with alleviated gradient conflicts. To enhance task-wise routing, we introduce a contrastive learning method that maximizes the mutual information between the task and its router representation, enabling more precise capture of task-relevant information. The outputs of two MoE components are concatenated and fed into the next layer. Comprehensive experiments show that T2MIR significantly facilitates in-context learning capacity and outperforms various types of baselines. We bring the potential and promise of MoE to ICRL, offering a simple and scalable architectural enhancement to advance ICRL one step closer toward achievements in language and vision communities. Our code is available at [https://github.com/NJU-RL/T2MIR](https://github.com/NJU-RL/T2MIR).",
+      "venue": "NeurIPS 2025",
+      "authors": [
+        "Wenhao Wu",
+        "Fuhong Liu",
+        "Haoru Li",
+        "Zican Hu",
+        "Daoyi Dong",
+        "Chunlin Chen",
+        "Zhi Wang"
+      ],
+      "paper_id": "VMqxRPqdPw",
+      "pdf_url": "https://openreview.net/pdf/8970376e581cc91b55b0d45f5d80d481bfc83160.pdf",
+      "forum_url": "https://openreview.net/forum?id=VMqxRPqdPw"
+    },
+    {
+      "title": "A Large Recurrent Action Model: xLSTM enables Fast Inference for Robotics Tasks",
+      "abstract": "In recent years, there has been a trend in the field of Reinforcement Learning (RL) towards large action models trained offline on large-scale datasets via sequence modeling. Existing models are primarily based on the Transformer architecture, which results in powerful agents. However, due to slow inference times, Transformer-based approaches are impractical for real-time applications, such as robotics. Recently, modern recurrent architectures, such as xLSTM and Mamba, have been proposed that exhibit parallelization benefits during training similar to the Transformer architecture while offering fast inference. In this work, we study the aptitude of these modern recurrent architectures for large action models. Consequently, we propose a Large Recurrent Action Model (LRAM) with an xLSTM at its core that comes with linear-time inference complexity and natural sequence length extrapolation abilities. Experiments on 432 tasks from 6 domains show that LRAM compares favorably to Transformers in terms of performance and speed.",
+      "venue": "ICML 2025",
+      "authors": [
+        "Thomas Schmied",
+        "Thomas Adler",
+        "Vihang Patil",
+        "Maximilian Beck",
+        "Korbinian Pöppel",
+        "Johannes Brandstetter",
+        "Günter Klambauer",
+        "Razvan Pascanu",
+        "Sepp Hochreiter"
+      ],
+      "paper_id": "45715",
+      "pdf_url": "",
+      "forum_url": "https://ICML.cc/forum?id=2025/poster/45715"
+    },
+    {
+      "title": "Behavior-agnostic Task Inference for Robust Offline In-context Reinforcement Learning",
+      "abstract": "The ability to adapt to new environments with noisy dynamics and unseen objectives is crucial for AI agents. In-context reinforcement learning (ICRL) has emerged as a paradigm to build adaptive policies, employing a **context** trajectory of the test-time interactions to infer the true task and the corresponding optimal policy efficiently without gradient updates. However, ICRL policies heavily rely on context trajectories, making them vulnerable to distribution shifts from training to testing and degrading performance, particularly in offline settings where the training data is static. In this paper, we highlight that most existing offline ICRL methods are trained for approximate Bayesian inference based on the training distribution, rendering them vulnerable to distribution shifts at test time and resulting in poor generalization. To address this, we introduce Behavior-agnostic Task Inference (BATI) for ICRL, a model-based maximum-likelihood solution to infer the task representation robustly. In contrast to previous methods that rely on a learned encoder as the approximate posterior, BATI focuses purely on dynamics, thus insulating itself against the behavior of the context collection policy. Experiments on MuJoCo environments demonstrate that BATI effectively interprets out-of-distribution contexts and outperforms other methods, even in the presence of significant environmental noise.",
+      "venue": "ICML 2025",
+      "authors": [
+        "Long Ma",
+        "Fangwei Zhong",
+        "Yizhou Wang"
+      ],
+      "paper_id": "44307",
+      "pdf_url": "",
+      "forum_url": "https://ICML.cc/forum?id=2025/poster/44307"
+    },
+    {
+      "title": "Continual Reinforcement Learning by Planning with Online World Models",
+      "abstract": "Continual reinforcement learning (CRL) refers to a naturalistic setting where an agent needs to endlessly evolve, by trial and error, to solve multiple tasks that are presented sequentially. One of the largest obstacles to CRL is that the agent may forget how to solve previous tasks when learning a new task, known as catastrophic forgetting. In this paper, we propose to address this challenge by planning with online world models. Specifically, we learn a Follow-The-Leader shallow model online to capture the world dynamics, in which we plan using model predictive control to solve a set of tasks specified by any reward functions. The online world model is immune to forgetting by construction with a proven regret bound of $\\mathcal{O}(\\sqrt{K^2D\\log(T)})$ under mild assumptions. The planner searches actions solely based on the latest online model, thus forming a FTL Online Agent (OA) that updates incrementally. To assess OA, we further design Continual Bench, a dedicated environment for CRL, and compare with several strong baselines under the same model-planning algorithmic framework. The empirical results show that OA learns continuously to solve new tasks while not forgetting old skills, outperforming agents built on deep world models with various continual learning techniques.",
+      "venue": "ICML 2025",
+      "authors": [
+        "Zichen Liu",
+        "Guoji Fu",
+        "Chao Du",
+        "Wee Sun Lee",
+        "Min Lin"
+      ],
+      "paper_id": "44151",
+      "pdf_url": "",
+      "forum_url": "https://ICML.cc/forum?id=2025/poster/44151"
+    },
+    {
+      "title": "Flow-of-Options: Diversified and Improved LLM Reasoning by Thinking Through Options",
+      "abstract": "We present a novel reasoning approach called Flow-of-Options (FoO), designed to address intrinsic biases in Large Language Models (LLMs). Flow-of-Options enables LLMs to systematically explore a diverse range of possibilities in their reasoning, as demonstrated by an FoO-based agentic framework developed for autonomously solving Machine Learning (ML) tasks. FoO enforces diversity in LLM solutions through compressed and interpretable task representations, resulting in improvements of 38.2% - 69.2% on standard data science tasks, and 37.4% - 47.9% on therapeutic chemistry tasks, as compared to state-of-the-art baselines. With an overall operation cost under $1 per task, our framework is well-suited for cost-sensitive applications. Going beyond tabular classification and regression, we show the broader applicability of our FoO-based agentic system to tasks such as reinforcement learning and image generation. Our code is open-sourced at: https://github.com/flagshippioneering/Flow-of-Options.",
+      "venue": "ICML 2025",
+      "authors": [
+        "Lakshmi Nair",
+        "Ian Trase",
+        "J. Kim"
+      ],
+      "paper_id": "45931",
+      "pdf_url": "",
+      "forum_url": "https://ICML.cc/forum?id=2025/poster/45931"
+    },
+    {
+      "title": "GIVE: Structured Reasoning of Large Language Models with Knowledge Graph Inspired Veracity Extrapolation",
+      "abstract": "Existing approaches based on context prompting or reinforcement learning (RL) to improve the reasoning capacities of large language models (LLMs) depend on the LLMs' internal knowledge to produce reliable Chain-Of-Thought (CoT). However, no matter the size of LLMs, certain problems cannot be resolved in a single forward pass. Meanwhile, agent-based reasoning systems require access to a comprehensive nonparametric knowledge base, which is often costly or not feasible for use in scientific and niche domains. We present Graph Inspired Veracity Extrapolation (GIVE), a novel reasoning method that merges parametric and non-parametric memories to improve accurate reasoning with minimal external input. GIVE guides the LLM agent to select the most pertinent expert data ($\\textbf{observe}$), engage in query-specific associative thinking ($\\textbf{reflect}$), and then synthesize this information to produce the final output ($\\textbf{speak}$). Extensive experiments demonstrated the following benefits of our framework: (1) GIVE increases the performance of LLMs across various sizes. (2) In some scenarios, GIVE allows smaller LLMs to surpass larger, more sophisticated ones in scientific tasks ($\\textbf{GPT3.5T + GIVE > GPT4}$). (3) GIVE is effective on scientific and open-domain assessments. (4) GIVE is a training-free method that enables LLMs to tackle new problems that extend beyond their training data (up to $\\textbf{43.5}$\\% $\\rightarrow$ $\\textbf{88.2}$\\% accuracy improvement). (5) GIVE allows LLM agents to reason using both restricted (very small) and noisy (very large) knowledge sources, accommodating knowledge graphs (KG) ranging from $\\textbf{135}$ to more than $\\textbf{840k}$ nodes. (6) The reasoning process involved in GIVE is fully interpretable. Our code is available at https://github.com/Jason-Tree/GIVE",
+      "venue": "ICML 2025",
+      "authors": [
+        "Jiashu HE",
+        "Mingyu Ma",
+        "Jinxuan Fan",
+        "Dan Roth",
+        "Wei Wang",
+        "Alejandro Ribeiro"
+      ],
+      "paper_id": "46217",
+      "pdf_url": "",
+      "forum_url": "https://ICML.cc/forum?id=2025/poster/46217"
+    },
+    {
+      "title": "Knowledge Retention in Continual Model-Based Reinforcement Learning",
+      "abstract": "We propose DRAGO, a novel approach for continual model-based reinforcement learning aimed at improving the incremental development of world models across a sequence of tasks that differ in their reward functions but not the state space or dynamics. DRAGO comprises two key components: *Synthetic Experience Rehearsal*, which leverages generative models to create synthetic experiences from past tasks, allowing the agent to reinforce previously learned dynamics without storing data, and *Regaining Memories Through Exploration*, which introduces an intrinsic reward mechanism to guide the agent toward revisiting relevant states from prior tasks. Together, these components enable the agent to maintain a comprehensive and continually developing world model, facilitating more effective learning and adaptation across diverse environments. Empirical evaluations demonstrate that DRAGO is able to preserve knowledge across tasks, achieving superior performance in various continual learning scenarios.",
+      "venue": "ICML 2025",
+      "authors": [
+        "Haotian Fu",
+        "Yixiang Sun",
+        "Michael L. Littman",
+        "George Konidaris"
+      ],
+      "paper_id": "45991",
+      "pdf_url": "",
+      "forum_url": "https://ICML.cc/forum?id=2025/poster/45991"
+    },
+    {
+      "title": "Model-Based Exploration in Monitored Markov Decision Processes",
+      "abstract": "A tenet of reinforcement learning is that the agent always observes rewards. However, this is not true in many realistic settings, e.g., a human observer may not always be available to provide rewards, sensors may be limited or malfunctioning, or rewards may be inaccessible during deployment. Monitored Markov decision processes (Mon-MDPs) have recently been proposed to model such settings. However, existing Mon-MDP algorithms have several limitations: they do not fully exploit the problem structure, cannot leverage a known monitor, lack worst-case guarantees for \"unsolvable\" Mon-MDPs without specific initialization, and offer only asymptotic convergence proofs. This paper makes three contributions.  First, we introduce a model-based algorithm for Mon-MDPs that addresses these shortcomings. The algorithm employs two instances of model-based interval estimation: one to ensure that observable rewards are reliably captured, and another to learn the minimax-optimal policy. Second, we empirically demonstrate the advantages. We show faster convergence than prior algorithms in more than four dozen benchmarks, and even more dramatic improvements when the monitoring process is known. Third, we present the first finite-sample bound on performance. We show convergence to a minimax-optimal policy even when some rewards are never observable.",
+      "venue": "ICML 2025",
+      "authors": [
+        "Alireza Kazemipour",
+        "Matthew Taylor",
+        "Michael Bowling"
+      ],
+      "paper_id": "45819",
+      "pdf_url": "",
+      "forum_url": "https://ICML.cc/forum?id=2025/poster/45819"
+    },
+    {
+      "title": "Novelty Detection in Reinforcement Learning with World Models",
+      "abstract": "Reinforcement learning (RL) using world models has found significant recent successes.However, when a sudden change to world mechanics or properties occurs then agent performance and reliability can dramatically decline.We refer to the sudden change in visual properties or state transitions as novelties.Implementing novelty detection within generated world model frameworks is a crucialtask for protecting the agent when deployed. In this paper, we propose straightforward bounding approaches to incorporate novelty detection into world model RL agents by utilizing the misalignment of the world model's hallucinated states and the true observed states as a novelty score.  We provideeffective approaches to detecting novelties in a distribution of transitions learned by an agent ina world model. Finally, we show the advantage ofour work in a novel environment compared to traditional machine learning novelty detection methods as well as currently accepted RL-focused novelty detection algorithms.",
+      "venue": "ICML 2025",
+      "authors": [
+        "Geigh Zollicoffer",
+        "Kenneth Eaton",
+        "Jonathan Balloch",
+        "Julia Kim",
+        "Wei Zhou",
+        "Robert Wright",
+        "Mark Riedl"
+      ],
+      "paper_id": "43561",
+      "pdf_url": "",
+      "forum_url": "https://ICML.cc/forum?id=2025/poster/43561"
+    },
+    {
+      "title": "Random Policy Evaluation Uncovers Policies of Generative Flow Networks",
+      "abstract": "The Generative Flow Network (GFlowNet) is a probabilistic framework in which an agent learns a stochastic policy and flow functions to sample objects with probability proportional to an unnormalized reward function. GFlowNets share a strong connection with reinforcement learning (RL) that typically aims to maximize reward. A number of recent works explored connections between GFlowNets and maximum entropy (MaxEnt) RL, which incorporates entropy regularization into the standard RL objective. However, the relationship between GFlowNets and standard RL remains largely unexplored, despite the inherent similarities in their sequential decision-making nature.While GFlowNets can discover diverse solutions through specialized flow-matching objectives, connecting them to standard RL can simplify their implementation through well-established RL principles and also improve RL's capabilities in diverse solution discovery (a critical requirement in many real-world applications), and bridging this gap can further unlock the potential of both fields. In this paper, we bridge this gap by revealing a fundamental connection between GFlowNets and one of the most basic components of RL -- policy evaluation. Surprisingly, we find that the value function obtained from evaluating a uniform policy is closely associated with the flow functions in GFlowNets. Building upon these insights, we introduce a rectified random policy evaluation (RPE) algorithm, which achieves the same reward-matching effect as GFlowNets based on simply evaluating a fixed random policy, offering a new perspective. Empirical results across extensive benchmarks demonstrate that RPE achieves competitive results compared to previous approaches, shedding light on the previously overlooked connection between (non-MaxEnt) RL and GFlowNets.",
+      "venue": "ICML 2025",
+      "authors": [
+        "Haoran He",
+        "Emmanuel Bengio",
+        "Qingpeng Cai",
+        "Ling Pan"
+      ],
+      "paper_id": "43990",
+      "pdf_url": "",
+      "forum_url": "https://ICML.cc/forum?id=2025/poster/43990"
+    },
+    {
+      "title": "Reward-free World Models for Online Imitation Learning",
+      "abstract": "Imitation learning (IL) enables agents to acquire skills directly from expert demonstrations, providing a compelling alternative to reinforcement learning. However, prior online IL approaches struggle with complex tasks characterized by high-dimensional inputs and complex dynamics. In this work, we propose a novel approach to online imitation learning that leverages reward-free world models. Our method learns environmental dynamics entirely in latent spaces without reconstruction, enabling efficient and accurate modeling. We adopt the inverse soft-Q learning objective, reformulating the optimization process in the Q-policy space to mitigate the instability associated with traditional optimization in the reward-policy space. By employing a learned latent dynamics model and planning for control, our approach consistently achieves stable, expert-level performance in tasks with high-dimensional observation or action spaces and intricate dynamics. We evaluate our method on a diverse set of benchmarks, including DMControl, MyoSuite, and ManiSkill2, demonstrating superior empirical performance compared to existing approaches.",
+      "venue": "ICML 2025",
+      "authors": [
+        "Shangzhe Li",
+        "Zhiao Huang",
+        "Hao Su"
+      ],
+      "paper_id": "44035",
+      "pdf_url": "",
+      "forum_url": "https://ICML.cc/forum?id=2025/poster/44035"
+    },
+    {
+      "title": "SOLD: Slot Object-Centric Latent Dynamics Models for Relational Manipulation Learning from Pixels",
+      "abstract": "Learning a latent dynamics model provides a task-agnostic representation of an agent's understanding of its environment. Leveraging this knowledge for model-based reinforcement learning (RL) holds the potential to improve sample efficiency over model-free methods by learning from imagined rollouts. Furthermore, because the latent space serves as input to behavior models, the informative representations learned by the world model facilitate efficient learning of desired skills. Most existing methods rely on holistic representations of the environment’s state. In contrast, humans reason about objects and their interactions, predicting how actions will affect specific parts of their surroundings. Inspired by this, we propose *Slot-Attention for Object-centric Latent Dynamics (SOLD)*, a novel model-based RL algorithm that learns object-centric dynamics models in an unsupervised manner from pixel inputs. We demonstrate that the structured latent space not only improves model interpretability but also provides a valuable input space for behavior models to reason over. Our results show that SOLD outperforms DreamerV3 and TD-MPC2 - state-of-the-art model-based RL algorithms - across a range of multi-object manipulation environments that require both relational reasoning and dexterous control. Videos and code are available at https:// slot-latent-dynamics.github.io.",
+      "venue": "ICML 2025",
+      "authors": [
+        "Malte Mosbach",
+        "Jan Ewertz",
+        "Angel Villar-Corrales",
+        "Sven Behnke"
+      ],
+      "paper_id": "44962",
+      "pdf_url": "",
+      "forum_url": "https://ICML.cc/forum?id=2025/poster/44962"
+    },
+    {
+      "title": "Video-Enhanced Offline Reinforcement Learning: A Model-Based Approach",
+      "abstract": "Offline reinforcement learning (RL) enables policy optimization using static datasets, avoiding the risks and costs of extensive real-world exploration. However, it struggles with suboptimal offline behaviors and inaccurate value estimation due to the lack of environmental interaction. We present Video-Enhanced Offline RL (VeoRL), a model-based method that constructs an interactive world model from diverse, unlabeled video data readily available online. Leveraging model-based behavior guidance, our approach transfers commonsense knowledge of control policy and physical dynamics from natural videos to the RL agent within the target domain. VeoRL achieves substantial performance gains (over 100% in some cases) across visual control tasks in robotic manipulation, autonomous driving, and open-world video games. Project page: https://panmt.github.io/VeoRL.github.io.",
+      "venue": "ICML 2025",
+      "authors": [
+        "Minting Pan",
+        "Yitao Zheng",
+        "Jiajian Li",
+        "Yunbo Wang",
+        "Xiaokang Yang"
+      ],
+      "paper_id": "43738",
+      "pdf_url": "",
+      "forum_url": "https://ICML.cc/forum?id=2025/poster/43738"
+    }
+  ]
+}

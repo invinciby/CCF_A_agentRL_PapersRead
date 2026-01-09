@@ -1,0 +1,1306 @@
+{
+  "name": "多智能体强化学习与博弈论",
+  "paper_count": 84,
+  "summary": "本类别研究多智能体系统中的交互、合作与均衡问题，结合强化学习与博弈论原理。核心方向包括：为解决多智能体强化学习（MARL）中纳什均衡等解概念计算难的问题，引入行为经济学概念（风险厌恶和有限理性），提出易于计算的风险厌恶量化响应均衡（RQE），并分析了其样本复杂度；以及为了在一般和博弈中找到社会有益的均衡，从第一性原理推导出优势对齐（Advantage Alignment）算法族，通过对齐智能体间的优势信号来促进合作，该方法简化了对手塑造的数学表述并扩展至连续动作域。这些工作旨在为多智能体系统提供可计算、可合作的理论与算法基础。",
+  "papers": [
+    {
+      "title": "Tractable Multi-Agent Reinforcement Learning through Behavioral Economics",
+      "abstract": "A significant roadblock to the development of principled multi-agent reinforcement learning (MARL) algorithms is the fact that desired solution concepts like Nash equilibria may be intractable to compute. We show how one can overcome this obstacle by introducing concepts from behavioral economics into MARL. To do so, we imbue agents with two key features of human decision-making: risk aversion and bounded rationality. We show that introducing these two properties into games gives rise to a class of equilibria---risk-averse quantal response equilibria (RQE)---which are tractable to compute in \\emph{all} $n$-player matrix and finite-horizon Markov games.  In particular, we show that they emerge as the endpoint of no-regret learning in suitably adjusted versions of the games. Crucially, the class of computationally tractable RQE is independent of the underlying game structure and only depends on agents' degrees of risk-aversion and bounded rationality.  To validate the expressivity of this class of solution concepts we show that it captures peoples' patterns of play in a number of 2-player matrix games previously studied in experimental economics. Furthermore, we give a first analysis of the sample complexity of computing these equilibria in finite-horizon Markov games when one has access to a generative model. We validate our findings on a simple multi-agent reinforcement learning benchmark. Our results open the doors for to the principled development of new decentralized multi-agent reinforcement learning algorithms.",
+      "venue": "ICLR 2025",
+      "authors": [
+        "Eric Mazumdar",
+        "Kishan Panaganti",
+        "Laixi Shi"
+      ],
+      "paper_id": "stUKwWBuBm",
+      "pdf_url": "https://openreview.net/pdf/168286ae29b41e2ede4ee3062cd5078fb64a5871.pdf",
+      "forum_url": "https://openreview.net/forum?id=stUKwWBuBm"
+    },
+    {
+      "title": "Advantage Alignment Algorithms",
+      "abstract": "Artificially intelligent agents are increasingly being integrated into human decision-making: from large language model (LLM) assistants to autonomous vehicles. These systems often optimize their individual objective, leading to conflicts, particularly in general-sum games where naive reinforcement learning agents empirically converge to Pareto-suboptimal Nash equilibria. To address this issue, opponent shaping has emerged as a paradigm for finding socially beneficial equilibria in general-sum games. In this work, we introduce Advantage Alignment, a family of algorithms derived from first principles that perform opponent shaping efficiently and intuitively. We achieve this by aligning the advantages of interacting agents, increasing the probability of mutually beneficial actions when their interaction has been positive. We prove that existing opponent shaping methods implicitly perform Advantage Alignment. Compared to these methods, Advantage Alignment simplifies the mathematical formulation of opponent shaping, reduces the computational burden and extends to continuous action domains. We demonstrate the effectiveness of our algorithms across a range of social dilemmas, achieving state-of-the-art cooperation and robustness against exploitation.",
+      "venue": "ICLR 2025",
+      "authors": [
+        "Juan Agustin Duque",
+        "Milad Aghajohari",
+        "Tim Cooijmans",
+        "razvan ciuca",
+        "Tianyu Zhang",
+        "Gauthier Gidel",
+        "Aaron Courville"
+      ],
+      "paper_id": "QFO1asgas2",
+      "pdf_url": "https://openreview.net/pdf/1668aadc796a27dbd82ead44b99d16f2e3a43645.pdf",
+      "forum_url": "https://openreview.net/forum?id=QFO1asgas2"
+    },
+    {
+      "title": "ComaDICE: Offline Cooperative Multi-Agent Reinforcement Learning with Stationary Distribution Shift Regularization",
+      "abstract": "Offline reinforcement learning (RL) has garnered significant attention for its ability to learn effective policies from pre-collected datasets without the need for further environmental interactions. While promising results have been demonstrated in single-agent settings, offline multi-agent reinforcement learning (MARL) presents additional challenges due to the large joint state-action space and the complexity of multi-agent behaviors. A key issue in offline RL is the distributional shift, which arises when the target policy being optimized deviates from the behavior policy that generated the data. This problem is exacerbated in MARL due to the interdependence between agents' local policies and the expansive joint state-action space. Prior approaches have primarily addressed this challenge by incorporating regularization in the space of either Q-functions or policies. In this work, we propose a novel type of regularizer in the space of stationary distributions to address the distributional shift more effectively. Our algorithm, ComaDICE, provides a principled framework for offline cooperative MARL to correct the stationary distribution of the global policy, which is then leveraged to derive local policies for individual agents. Through extensive experiments on the offline multi-agent MuJoCo and StarCraft II benchmarks, we demonstrate that ComaDICE achieves superior performance compared to state-of-the-art offline MARL methods across nearly all tasks.",
+      "venue": "ICLR 2025",
+      "authors": [
+        "The Viet Bui",
+        "Thanh Hong Nguyen",
+        "Tien Anh Mai"
+      ],
+      "paper_id": "5o9JJJPPm6",
+      "pdf_url": "https://openreview.net/pdf/47b6e4f77893ddc057541ed679a8725a2d346ae7.pdf",
+      "forum_url": "https://openreview.net/forum?id=5o9JJJPPm6"
+    },
+    {
+      "title": "InvestESG: A multi-agent reinforcement learning benchmark for studying climate investment as a social dilemma",
+      "abstract": "**InvestESG** is a novel multi-agent reinforcement learning (MARL) benchmark designed to study the impact of Environmental, Social, and Governance (ESG) disclosure mandates on corporate climate investments. The benchmark models an intertemporal social dilemma where companies balance short-term profit losses from climate mitigation efforts and long-term benefits from reducing climate risk, while ESG-conscious investors attempt to influence corporate behavior through their investment decisions. Companies allocate capital across mitigation, greenwashing, and resilience, with varying strategies influencing climate outcomes and investor preferences. We are releasing open-source versions of InvestESG in both PyTorch and JAX, which enable scalable and hardware-accelerated simulations for investigating competing incentives in mitigate climate change. Our experiments show that without ESG-conscious investors with sufficient capital, corporate mitigation efforts remain limited under the disclosure mandate. However, when a critical mass of investors prioritizes ESG, corporate cooperation increases, which in turn reduces climate risks and enhances long-term financial stability. Additionally, providing more information about global climate risks encourages companies to invest more in mitigation, even without investor involvement. Our findings align with empirical research using real-world data, highlighting MARL's potential to inform policy by providing insights into large-scale socio-economic challenges through efficient testing of alternative policy and market designs.",
+      "venue": "ICLR 2025",
+      "authors": [
+        "Xiaoxuan Hou",
+        "Jiayi Yuan",
+        "Joel Z Leibo",
+        "Natasha Jaques"
+      ],
+      "paper_id": "2TasVD7FXp",
+      "pdf_url": "https://openreview.net/pdf/41797ba012617130c45786794592fc260cd0436c.pdf",
+      "forum_url": "https://openreview.net/forum?id=2TasVD7FXp"
+    },
+    {
+      "title": "Multi-agent cooperation through learning-aware policy gradients",
+      "abstract": "Self-interested individuals often fail to cooperate, posing a fundamental challenge for multi-agent learning. How can we achieve cooperation among self-interested, independent learning agents? Promising recent work has shown that in certain tasks cooperation can be established between ``learning-aware\" agents who model the learning dynamics of each other. Here, we present the first unbiased, higher-derivative-free policy gradient algorithm for learning-aware reinforcement learning, which takes into account that other agents are themselves learning through trial and error based on multiple noisy trials. We then leverage efficient sequence models to condition behavior on long observation histories that contain traces of the learning dynamics of other agents. Training long-context policies with our algorithm leads to cooperative behavior and high returns on standard social dilemmas, including a challenging environment where temporally-extended action coordination is required. Finally, we derive from the iterated prisoner's dilemma a novel explanation for how and when cooperation arises among self-interested learning-aware agents.",
+      "venue": "ICLR 2025",
+      "authors": [
+        "Alexander Meulemans",
+        "Seijin Kobayashi",
+        "Johannes von Oswald",
+        "Nino Scherrer",
+        "Eric Elmoznino",
+        "Blake Aaron Richards",
+        "Guillaume Lajoie",
+        "Blaise Aguera y Arcas",
+        "Joao Sacramento"
+      ],
+      "paper_id": "GkWA6NjePN",
+      "pdf_url": "https://openreview.net/pdf/285e1b9dad7e2cc3ca878820b61f9e4c7a3d7c97.pdf",
+      "forum_url": "https://openreview.net/forum?id=GkWA6NjePN"
+    },
+    {
+      "title": "Trajectory-Class-Aware Multi-Agent Reinforcement Learning",
+      "abstract": "In the context of multi-agent reinforcement learning, *generalization* is a challenge to solve various tasks that may require different joint policies or coordination without relying on policies specialized for each task. We refer to this type of problem as a *multi-task*, and we train agents to be versatile in this multi-task setting through a single training process. To address this challenge, we introduce TRajectory-class-Aware Multi-Agent reinforcement learning (TRAMA). In TRAMA, agents recognize a task type by identifying the class of trajectories they are experiencing through partial observations, and the agents use this trajectory awareness or prediction as additional information for action policy. To this end, we introduce three primary objectives in TRAMA: (a) constructing a quantized latent space to generate trajectory embeddings that reflect key similarities among them; (b) conducting trajectory clustering using these trajectory embeddings; and (c) building a trajectory-class-aware policy. Specifically for (c), we introduce a trajectory-class predictor that performs agent-wise predictions on the trajectory class; and we design a trajectory-class representation model for each trajectory class. Each agent takes actions based on this trajectory-class representation along with its partial observation for task-aware execution. The proposed method is evaluated on various tasks, including multi-task problems built upon StarCraft II. Empirical results show further performance improvements over state-of-the-art baselines.",
+      "venue": "ICLR 2025",
+      "authors": [
+        "Hyungho Na",
+        "Kwanghyeon Lee",
+        "Sumin Lee",
+        "Il-chul Moon"
+      ],
+      "paper_id": "uqe5HkjbT9",
+      "pdf_url": "https://openreview.net/pdf/a543548c257abbf6aa9bb9400fe32d07129a2557.pdf",
+      "forum_url": "https://openreview.net/forum?id=uqe5HkjbT9"
+    },
+    {
+      "title": "A Generalist Hanabi Agent",
+      "abstract": "Traditional multi-agent reinforcement learning (MARL) systems can develop cooperative strategies through repeated interactions. However, these systems are unable to perform well on any other setting than the one they have been trained on, and struggle to successfully cooperate with unfamiliar collaborators. This is particularly visible in the Hanabi benchmark, a popular 2-to-5 player cooperative card-game which requires complex reasoning and precise assistance to other agents. Current MARL agents for Hanabi can only learn one specific game-setting (e.g., 2-player games), and play with the same algorithmic agents. This is in stark contrast to humans, who can quickly adjust their strategies to work with unfamiliar partners or situations. In this paper, we introduce Recurrent Replay Relevance Distributed DQN (R3D2), a generalist agent for Hanabi, designed to overcome these limitations. We reformulate the task using text, as language has been shown to improve transfer. We then propose a distributed MARL algorithm that copes with the resulting dynamic observation- and action-space. In doing so, our agent is the first that can play all game settings concurrently, and extend strategies learned from one setting to other ones. As a consequence, our agent also demonstrates the ability to collaborate with different algorithmic agents ---agents that are themselves unable to do so.",
+      "venue": "ICLR 2025",
+      "authors": [
+        "Arjun V Sudhakar",
+        "Hadi Nekoei",
+        "Mathieu Reymond",
+        "Miao Liu",
+        "Janarthanan Rajendran",
+        "Sarath Chandar"
+      ],
+      "paper_id": "pCj2sLNoJq",
+      "pdf_url": "https://openreview.net/pdf/4dcaf7b53587ec743c88b18b24bd2edf6ba34bfc.pdf",
+      "forum_url": "https://openreview.net/forum?id=pCj2sLNoJq"
+    },
+    {
+      "title": "Efficient Multi-agent Offline Coordination via Diffusion-based Trajectory Stitching",
+      "abstract": "Learning from offline data without interacting with the environment is a promising way to fully leverage the intelligent decision-making capabilities of multi-agent reinforcement learning (MARL). Previous approaches have primarily focused on developing learning techniques, such as conservative methods tailored to MARL using limited offline data. However, these methods often overlook the temporal relationships across different timesteps and spatial relationships between teammates, resulting in low learning efficiency in imbalanced data scenarios. To comprehensively explore the data structure of MARL and enhance learning efficiency, we propose Multi-Agent offline coordination via Diffusion-based Trajectory Stitching (MADiTS), a novel diffusion-based data augmentation pipeline that systematically generates trajectories by stitching high-quality coordination segments together. MADiTS first generates trajectory segments using a trained diffusion model, followed by applying a bidirectional dynamics constraint to ensure that the trajectories align with environmental dynamics. Additionally, we develop an offline credit assignment technique to identify and optimize the behavior of underperforming agents in the generated segments. This iterative procedure continues until a satisfactory augmented episode trajectory is generated within the predefined limit or is discarded otherwise. Empirical results on imbalanced datasets of multiple benchmarks demonstrate that MADiTS significantly improves MARL performance.",
+      "venue": "ICLR 2025",
+      "authors": [
+        "Lei Yuan",
+        "Yuqi Bian",
+        "Lihe Li",
+        "Ziqian Zhang",
+        "Cong Guan",
+        "Yang Yu"
+      ],
+      "paper_id": "EpnZEzYDUT",
+      "pdf_url": "https://openreview.net/pdf/45b94ad7d2c57f4e2e4c441d3076d7e697042240.pdf",
+      "forum_url": "https://openreview.net/forum?id=EpnZEzYDUT"
+    },
+    {
+      "title": "Exponential Topology-enabled Scalable Communication in Multi-agent Reinforcement Learning",
+      "abstract": "In cooperative multi-agent reinforcement learning (MARL), well-designed communication protocols can effectively facilitate consensus among agents, thereby enhancing task performance. Moreover, in large-scale multi-agent systems commonly found in real-world applications, effective communication plays an even more critical role due to the escalated challenge of partial observability compared to smaller-scale setups. In this work, we endeavor to develop a scalable communication protocol for MARL. Unlike previous methods that focus on selecting optimal pairwise communication links—a task that becomes increasingly complex as the number of agents grows—we adopt a global perspective on communication topology design. Specifically, we propose utilizing the exponential topology to enable rapid information dissemination among agents by leveraging its small-diameter and small-size properties. This approach leads to a scalable communication protocol, named ExpoComm. To fully unlock the potential of exponential graphs as communication topologies, we employ memory-based message processors and auxiliary tasks to ground messages, ensuring that they reflect global information and benefit decision-making. Extensive experiments on large-scale cooperative benchmarks, including MAgent and Infrastructure Management Planning, demonstrate the superior performance and robust zero-shot transferability of ExpoComm compared to existing communication strategies. The\ncode is publicly available at [https://github.com/LXXXXR/ExpoComm](https://github.com/LXXXXR/ExpoComm).",
+      "venue": "ICLR 2025",
+      "authors": [
+        "Xinran Li",
+        "Xiaolu Wang",
+        "Chenjia Bai",
+        "Jun Zhang"
+      ],
+      "paper_id": "CL3U0GxFRD",
+      "pdf_url": "https://openreview.net/pdf/099ca577bb4201168ce2fb973ae5e94e0a9074cd.pdf",
+      "forum_url": "https://openreview.net/forum?id=CL3U0GxFRD"
+    },
+    {
+      "title": "MA$^2$E: Addressing Partial Observability in Multi-Agent Reinforcement Learning with Masked Auto-Encoder",
+      "abstract": "Centralized Training and Decentralized Execution (CTDE) is a widely adopted paradigm to solve cooperative multi-agent reinforcement learning (MARL) problems. Despite the successes achieved with CTDE, partial observability still limits cooperation among agents. While previous studies have attempted to overcome this challenge through communication, direct information exchanges could be restricted and introduce additional constraints. Alternatively, if an agent can infer the global information solely from local observations, it can obtain a global view without the need for communication. To this end, we propose the Multi-Agent Masked Auto-Encoder (MA$^2$E), which utilizes the masked auto-encoder architecture to infer the information of other agents from partial observations. By employing masking to learn to reconstruct global information, MA$^2$E serves as an inference module for individual agents within the CTDE framework. MA$^2$E can be easily integrated into existing MARL algorithms and has been experimentally proven to be effective across a wide range of environments and algorithms.",
+      "venue": "ICLR 2025",
+      "authors": [
+        "Sehyeok Kang",
+        "Yongsik Lee",
+        "Gahee Kim",
+        "Song Chong",
+        "Se-Young Yun"
+      ],
+      "paper_id": "klpdEThT8q",
+      "pdf_url": "https://openreview.net/pdf/f1003e4a4c27ff01ffd8c6d85329beb14007771f.pdf",
+      "forum_url": "https://openreview.net/forum?id=klpdEThT8q"
+    },
+    {
+      "title": "Hypothetical Minds: Scaffolding Theory of Mind for Multi-Agent Tasks with Large Language Models",
+      "abstract": "Multi-agent reinforcement learning (MARL) methods struggle with the non-stationarity of multi-agent systems and fail to adaptively learn online when tested with novel agents. Here, we leverage large language models (LLMs) to create an autonomous agent that can handle these challenges. Our agent, Hypothetical Minds, consists of a cognitively-inspired architecture, featuring modular components for perception, memory, and hierarchical planning over two levels of abstraction. We introduce the Theory of Mind module that scaffolds the high-level planning process by generating hypotheses about other agents' strategies in natural language. It then evaluates and iteratively refines these hypotheses by reinforcing hypotheses that make correct predictions about the other agents' behavior. Hypothetical Minds significantly improves performance over previous LLM-agent and RL baselines on a range of competitive, mixed motive, and collaborative domains in the Melting Pot benchmark, including both dyadic and population-based environments. Additionally, comparisons against LLM-agent baselines and ablations reveal the importance of hypothesis evaluation and refinement for succeeding on complex scenarios.",
+      "venue": "ICLR 2025",
+      "authors": [
+        "Logan Cross",
+        "Violet Xiang",
+        "Agam Bhatia",
+        "Daniel LK Yamins",
+        "Nick Haber"
+      ],
+      "paper_id": "otW0TJOUYF",
+      "pdf_url": "https://openreview.net/pdf/b85a375d8c5672bb041b204393e3cab2f1552cac.pdf",
+      "forum_url": "https://openreview.net/forum?id=otW0TJOUYF"
+    },
+    {
+      "title": "IntersectionZoo: Eco-driving for Benchmarking Multi-Agent Contextual Reinforcement Learning",
+      "abstract": "Despite the popularity of multi-agent reinforcement learning (RL) in simulated and two-player applications, its success in messy real-world applications has been limited. A key challenge lies in its generalizability across problem variations, a common necessity for many real-world problems. Contextual reinforcement learning (CRL) formalizes learning policies that generalize across problem variations. However, the lack of standardized benchmarks for multi-agent CRL has hindered progress in the field. Such benchmarks are desired to be based on real-world applications to naturally capture the many open challenges of real-world problems that affect generalization. To bridge this gap, we propose IntersectionZoo, a comprehensive benchmark suite for multi-agent CRL through the real-world application of cooperative eco-driving in urban road networks. The task of cooperative eco-driving is to control a fleet of vehicles to reduce fleet-level vehicular emissions. By grounding IntersectionZoo in a real-world application, we naturally capture real-world problem characteristics, such as partial observability and multiple competing objectives. IntersectionZoo is built on data-informed simulations of 16,334 signalized intersections derived from 10 major US cities, modeled in an open-source industry-grade microscopic traffic simulator. By modeling factors affecting vehicular exhaust emissions (e.g., temperature, road conditions, travel demand), IntersectionZoo provides one million data-driven traffic scenarios. Using these traffic scenarios, we benchmark popular multi-agent RL and human-like driving algorithms and demonstrate that the popular multi-agent RL algorithms struggle to generalize in CRL settings.",
+      "venue": "ICLR 2025",
+      "authors": [
+        "Vindula Jayawardana",
+        "Baptiste Freydt",
+        "Ao Qu",
+        "Cameron Hickert",
+        "Zhongxia Yan",
+        "Cathy Wu"
+      ],
+      "paper_id": "XoulHHQGFi",
+      "pdf_url": "https://openreview.net/pdf/a5755be074036a2b8b2c406d877735d28896ba68.pdf",
+      "forum_url": "https://openreview.net/forum?id=XoulHHQGFi"
+    },
+    {
+      "title": "eQMARL: Entangled Quantum Multi-Agent Reinforcement Learning for Distributed Cooperation over Quantum Channels",
+      "abstract": "Collaboration is a key challenge in distributed multi-agent reinforcement learning (MARL) environments. Learning frameworks for these decentralized systems must weigh the benefits of explicit player coordination against the communication overhead and computational cost of sharing local observations and environmental data. Quantum computing has sparked a potential synergy between quantum entanglement and cooperation in multi-agent environments, which could enable more efficient distributed collaboration with minimal information sharing. This relationship is largely unexplored, however, as current state-of-the-art quantum MARL (QMARL) implementations rely on classical information sharing rather than entanglement over a quantum channel as a coordination medium. In contrast, in this paper, a novel framework dubbed entangled QMARL (eQMARL) is proposed. The proposed eQMARL is a distributed actor-critic framework that facilitates cooperation over a quantum channel and eliminates local observation sharing via a quantum entangled split critic. Introducing a quantum critic uniquely spread across the agents allows coupling of local observation encoders through entangled input qubits over a quantum channel, which requires no explicit sharing of local observations and reduces classical communication overhead. Further, agent policies are tuned through joint observation-value function estimation via joint quantum measurements, thereby reducing the centralized computational burden. Experimental results show that eQMARL with $\\Psi^{+}$ entanglement converges to a cooperative strategy up to $17.8\\\\%$ faster and with a higher overall score compared to split classical and fully centralized classical and quantum baselines. The results also show that eQMARL achieves this performance with a constant factor of $25$-times fewer centralized parameters compared to the split classical baseline.",
+      "venue": "ICLR 2025",
+      "authors": [
+        "Alexander DeRieux",
+        "Walid Saad"
+      ],
+      "paper_id": "cR5GTis5II",
+      "pdf_url": "https://openreview.net/pdf/4d098c7453d6f8dfd85d1329104f4b7135073b86.pdf",
+      "forum_url": "https://openreview.net/forum?id=cR5GTis5II"
+    },
+    {
+      "title": "Toward Efficient Multi-Agent Exploration With Trajectory Entropy Maximization",
+      "abstract": "Recent works have increasingly focused on learning decentralized policies for agents as a solution to the scalability challenges in Multi-Agent Reinforcement Learning (MARL), where agents typically share the parameters of a policy network to make action decisions. However, this parameter sharing can impede efficient exploration, as it may lead to similar behaviors among agents. Different from previous mutual information-based methods that promote multi-agent diversity, we introduce a novel multi-agent exploration method called Trajectory Entropy Exploration (TEE). Our method employs a particle-based entropy estimator to maximize the entropy of different agents' trajectories in a contrastive trajectory representation space, resulting in diverse trajectories and efficient exploration. This entropy estimator avoids challenging density modeling and scales effectively in high-dimensional multi-agent settings. We integrate our method with MARL algorithms by deploying an intrinsic reward for each agent to encourage entropy maximization. To validate the effectiveness of our method, we test our method in challenging multi-agent tasks from several MARL benchmarks. The results demonstrate that our method consistently outperforms existing state-of-the-art methods.",
+      "venue": "ICLR 2025",
+      "authors": [
+        "Tianxu Li",
+        "Kun Zhu"
+      ],
+      "paper_id": "YvKJGYL4j7",
+      "pdf_url": "https://openreview.net/pdf/dd89f301bd928d0b44b44bf9d4d9a194fe80f1e4.pdf",
+      "forum_url": "https://openreview.net/forum?id=YvKJGYL4j7"
+    },
+    {
+      "title": "GPUDrive: Data-driven, multi-agent driving simulation at 1 million FPS",
+      "abstract": "Multi-agent learning algorithms have been successful at generating superhuman planning in various games but have had limited impact on the design of deployed multi-agent planners. A key bottleneck in applying these techniques to multi-agent planning is that they require billions of steps of experience. To enable the study of multi-agent planning at scale, we present GPUDrive, a GPU-accelerated, multi-agent simulator built on top of the Madrona Game Engine capable of generating over a million simulation steps per second. Observation, reward, and dynamics functions are written directly in C++, allowing users to define complex, heterogeneous agent behaviors that are lowered to high-performance CUDA. Despite these low-level optimizations, GPUDrive is fully accessible through Python, offering a seamless and efficient workflow for multi-agent, closed-loop simulation. Using GPUDrive, we train reinforcement learning agents on the Waymo Open Motion Dataset, achieving efficient goal-reaching in minutes and scaling to thousands of scenarios in hours. We open-source the code and pre-trained agents at \\url{www.github.com/Emerge-Lab/gpudrive}.",
+      "venue": "ICLR 2025",
+      "authors": [
+        "Saman Kazemkhani",
+        "Aarav Pandya",
+        "Daphne Cornelisse",
+        "Brennan Shacklett",
+        "Eugene Vinitsky"
+      ],
+      "paper_id": "ERv8ptegFi",
+      "pdf_url": "https://openreview.net/pdf/58416eb8dcfad96ca7cb5ada85252ab5f1d42c94.pdf",
+      "forum_url": "https://openreview.net/forum?id=ERv8ptegFi"
+    },
+    {
+      "title": "POGEMA: A Benchmark Platform for Cooperative Multi-Agent Pathfinding",
+      "abstract": "Multi-agent reinforcement learning (MARL) has recently excelled in solving challenging cooperative and competitive multi-agent problems in various environments, typically involving a small number of agents and full observability. Moreover, a range of crucial robotics-related tasks, such as multi-robot pathfinding, which have traditionally been approached with classical non-learnable methods (e.g., heuristic search), are now being suggested for solution using learning-based or hybrid methods. However, in this domain, it remains difficult, if not impossible, to conduct a fair comparison between classical, learning-based, and hybrid approaches due to the lack of a unified framework that supports both learning and evaluation. To address this, we introduce POGEMA, a comprehensive set of tools that includes a fast environment for learning, a problem instance generator, a collection of predefined problem instances, a visualization toolkit, and a benchmarking tool for automated evaluation. We also introduce and define an evaluation protocol that specifies a range of domain-related metrics, computed based on primary evaluation indicators (such as success rate and path length), enabling a fair multi-fold comparison. The results of this comparison, which involves a variety of state-of-the-art MARL, search-based, and hybrid methods, are presented.",
+      "venue": "ICLR 2025",
+      "authors": [
+        "Alexey Skrynnik",
+        "Anton Andreychuk",
+        "Anatolii Borzilov",
+        "Alexander Chernyavskiy",
+        "Konstantin Yakovlev",
+        "Aleksandr Panov"
+      ],
+      "paper_id": "6VgwE2tCRm",
+      "pdf_url": "https://openreview.net/pdf/19e55d87f236d0ca49d30994ced3703e8bd5a14e.pdf",
+      "forum_url": "https://openreview.net/forum?id=6VgwE2tCRm"
+    },
+    {
+      "title": "INS: Interaction-aware Synthesis to Enhance Offline Multi-agent Reinforcement Learning",
+      "abstract": "Data scarcity in offline multi-agent reinforcement learning (MARL) is a key challenge for real-world applications. Recent advances in offline single-agent reinforcement learning (RL) demonstrate the potential of data synthesis to mitigate this issue.\nHowever, in multi-agent systems, interactions between agents introduce additional challenges. These interactions complicate the synthesis of multi-agent datasets, leading to data distortion when inter-agent interactions are neglected. Furthermore, the quality of the synthetic dataset is often constrained by the original dataset. To address these challenges, we propose **INteraction-aware Synthesis (INS)**, which synthesizes high-quality multi-agent datasets using diffusion models. Recognizing the sparsity of inter-agent interactions, INS employs a sparse attention mechanism to capture these interactions, ensuring that the synthetic dataset reflects the underlying agent dynamics. To overcome the limitation of diffusion models requiring continuous variables, INS implements a bit action module, enabling compatibility with both discrete and continuous action spaces. Additionally, we incorporate a select mechanism to prioritize transitions with higher estimated values, further enhancing the dataset quality. Experimental results across multiple datasets in MPE and SMAC environments demonstrate that INS consistently outperforms existing methods, resulting in improved downstream policy performance and superior dataset metrics. Notably, INS can synthesize high-quality data using only 10% of the original dataset, highlighting its efficiency in data-limited scenarios.",
+      "venue": "ICLR 2025",
+      "authors": [
+        "Yuqian Fu",
+        "Yuanheng Zhu",
+        "Jian Zhao",
+        "Jiajun Chai",
+        "Dongbin Zhao"
+      ],
+      "paper_id": "kxD2LlPr40",
+      "pdf_url": "https://openreview.net/pdf/11d051ce1688032d6996243a8e0744a655b2b8e8.pdf",
+      "forum_url": "https://openreview.net/forum?id=kxD2LlPr40"
+    },
+    {
+      "title": "DoF: A Diffusion Factorization Framework for Offline Multi-Agent Reinforcement Learning",
+      "abstract": "Diffusion models have been widely adopted in image and language generation and are now being applied to reinforcement learning. However, the application of diffusion models in offline cooperative Multi-Agent Reinforcement Learning (MARL) remains limited. Although existing studies explore this direction, they suffer from scalability or poor cooperation issues due to the lack of design principles for diffusion-based MARL. The Individual-Global-Max (IGM) principle is a popular design principle for cooperative MARL. By satisfying this principle, MARL algorithms achieve remarkable performance with good scalability. In this work, we extend the IGM principle to the Individual-Global-identically-Distributed (IGD) principle. This principle stipulates that the generated outcome of a multi-agent diffusion model should be identically distributed as the collective outcomes from multiple individual-agent diffusion models. We propose DoF, a diffusion factorization framework for Offline MARL. It uses noise factorization function to factorize a centralized diffusion model into multiple diffusion models. We theoretically show that the noise factorization functions satisfy the IGD principle. Furthermore, DoF uses data factorization function to model the complex relationship among data generated by multiple diffusion models. Through extensive experiments, we demonstrate the effectiveness of DoF.  The source code is available at [https://github.com/xmu-rl-3dv/DoF](https://github.com/xmu-rl-3dv/DoF).",
+      "venue": "ICLR 2025",
+      "authors": [
+        "Chao Li",
+        "Ziwei Deng",
+        "Chenxing Lin",
+        "Wenqi Chen",
+        "Yongquan Fu",
+        "Weiquan Liu",
+        "Chenglu Wen",
+        "Cheng Wang",
+        "Siqi Shen"
+      ],
+      "paper_id": "OTFKVkxSlL",
+      "pdf_url": "https://openreview.net/pdf/8e0439c926a047e42ccdd76c5172608e3516c4df.pdf",
+      "forum_url": "https://openreview.net/forum?id=OTFKVkxSlL"
+    },
+    {
+      "title": "Exploiting Structure in Offline Multi-Agent RL: The Benefits of Low Interaction Rank",
+      "abstract": "We study the problem of learning an approximate equilibrium in the offline multi-agent reinforcement learning (MARL) setting. We introduce a structural assumption---the interaction rank---and establish that functions with low interaction rank are significantly more robust to distribution shift compared to general ones. Leveraging this observation, we demonstrate that utilizing function classes with low interaction rank, when combined with regularization and no-regret learning, admits decentralized, computationally and statistically efficient learning in cooperative and competitive offline MARL. Our theoretical results are complemented by experiments that showcase the potential of critic architectures with low interaction rank in offline MARL, contrasting with commonly used single-agent value decomposition architectures.",
+      "venue": "ICLR 2025",
+      "authors": [
+        "Wenhao Zhan",
+        "Scott Fujimoto",
+        "Zheqing Zhu",
+        "Jason D. Lee",
+        "Daniel Jiang",
+        "Yonathan Efroni"
+      ],
+      "paper_id": "AOlm45AUVS",
+      "pdf_url": "https://openreview.net/pdf/ee2f616ffa77e07cbec088997cca76489c208b7b.pdf",
+      "forum_url": "https://openreview.net/forum?id=AOlm45AUVS"
+    },
+    {
+      "title": "A Policy-Gradient Approach to Solving Imperfect-Information Games with Best-Iterate Convergence",
+      "abstract": "Policy gradient methods have become a staple of any single-agent reinforcement learning toolbox, due to their combination of desirable properties: iterate convergence, efficient use of stochastic trajectory feedback, and theoretically-sound avoidance of importance sampling corrections. In multi-agent imperfect-information settings (extensive-form games), however, it is still unknown whether the same desiderata can be guaranteed while retaining theoretical guarantees. Instead, sound methods for extensive-form games rely on approximating \\emph{counterfactual} values (as opposed to Q values), which are incompatible with policy gradient methodologies. In this paper, we investigate whether policy gradient can be safely used in two-player zero-sum imperfect-information extensive-form games (EFGs). We establish positive results, showing for the first time that a policy gradient method leads to provable best-iterate convergence to a regularized Nash equilibrium in self-play.",
+      "venue": "ICLR 2025",
+      "authors": [
+        "Mingyang Liu",
+        "Gabriele Farina",
+        "Asuman E. Ozdaglar"
+      ],
+      "paper_id": "ZW4MRZrmSA",
+      "pdf_url": "https://openreview.net/pdf/39e30a8e2c33326b8186c09f579b382606788813.pdf",
+      "forum_url": "https://openreview.net/forum?id=ZW4MRZrmSA"
+    },
+    {
+      "title": "FlickerFusion: Intra-trajectory Domain Generalizing Multi-agent Reinforcement Learning",
+      "abstract": "Multi-agent reinforcement learning has demonstrated significant potential in addressing complex cooperative tasks across various real-world applications. However, existing MARL approaches often rely on the restrictive assumption that the number of entities (e.g., agents, obstacles) remains constant between training and inference. This overlooks scenarios where entities are dynamically removed or $\\textit{added}$ $\\textit{during}$ the inference trajectory—a common occurrence in real-world environments like search and rescue missions and dynamic combat situations. In this paper, we tackle the challenge of intra-trajectory dynamic entity composition under zero-shot out-of-domain (OOD) generalization, where such dynamic changes cannot be anticipated beforehand. Our empirical studies reveal that existing MARL methods suffer $\\textit{significant}$ performance degradation and increased uncertainty in these scenarios. In response, we propose FlickerFusion, a novel OOD generalization method that acts as a $\\textit{universally}$ applicable augmentation technique for MARL backbone methods. FlickerFusion stochastically drops out parts of the observation space, emulating being in-domain when inferenced OOD. The results show that FlickerFusion not only achieves superior inference rewards but also $\\textit{uniquely}$ reduces uncertainty vis-à-vis the backbone, compared to existing methods. Benchmarks, implementations, and  model weights are organized and open-sourced at $\\texttt{\\href{flickerfusion305.github.io}{\\textbf{flickerfusion305.github.io}}}$, accompanied by ample demo video renderings.",
+      "venue": "ICLR 2025",
+      "authors": [
+        "Woosung Koh",
+        "Wonbeen Oh",
+        "Siyeol Kim",
+        "Suhin Shin",
+        "Hyeongjin Kim",
+        "Jaein Jang",
+        "Junghyun Lee",
+        "Se-Young Yun"
+      ],
+      "paper_id": "MRYyOaNxh3",
+      "pdf_url": "https://openreview.net/pdf/2967188815daed9df1c0d1dc55c40445a96ceb35.pdf",
+      "forum_url": "https://openreview.net/forum?id=MRYyOaNxh3"
+    },
+    {
+      "title": "Reconstruction-Guided Policy: Enhancing Decision-Making through Agent-Wise State Consistency",
+      "abstract": "An important challenge in multi-agent reinforcement learning is partial observability, where agents cannot access the global state of the environment during execution and can only receive observations within their field of view. To address this issue, previous works typically use the dimensional-wise state, which is obtained by applying MLP or dimensional-based attention on the global state, for decision-making during training and relying on a reconstructed dimensional-wise state during execution. However, dimensional-wise states tend to divert agent attention to specific features, neglecting potential dependencies between agents, making it difficult to make optimal decisions. Moreover, the inconsistency between the states used in training and execution further increases additional errors. To resolve these issues, we propose a method called Reconstruction-Guided Policy (RGP) to reconstruct the agent-wise state, which represents the information of inter-agent relationships, as input for decision-making during both training and execution. This not only preserves the potential dependencies between agents but also ensures consistency between the states used in training and execution. We conducted extensive experiments on both discrete and continuous action environments to evaluate RGP, and the results demonstrates its superior effectiveness. Our code is public in https://anonymous.4open.science/r/RGP-9F79",
+      "venue": "ICLR 2025",
+      "authors": [
+        "Liang Qifan",
+        "Yixiang Shan",
+        "Haipeng Liu",
+        "Zhengbang Zhu",
+        "Ting Long",
+        "Weinan Zhang",
+        "Yuan Tian"
+      ],
+      "paper_id": "Y8L5RB4GWb",
+      "pdf_url": "https://openreview.net/pdf/93889fa7a9600b0947adac903f86072a53ee146f.pdf",
+      "forum_url": "https://openreview.net/forum?id=Y8L5RB4GWb"
+    },
+    {
+      "title": "Breaking the Performance Ceiling in Reinforcement Learning requires Inference Strategies",
+      "abstract": "Reinforcement learning (RL) systems have countless applications, from energy-grid management to protein design. However, such real-world scenarios are often extremely difficult, combinatorial in nature, and require complex coordination between multiple agents. This level of complexity can cause even state-of-the-art RL systems, trained until convergence, to hit a performance ceiling which they are unable to break out of with zero-shot inference. Meanwhile, many digital or simulation-based applications allow for an inference phase that utilises a specific time and compute budget to explore multiple attempts before outputting a final solution. In this work, we show that such an inference phase employed at execution time, and the choice of a corresponding inference strategy, are key to breaking the performance ceiling observed in complex multi-agent RL problems. Our main result is striking: we can obtain up to a 126% and, on average, a 45% improvement over the previous state-of-the-art across 17 tasks, using only a couple seconds of extra wall-clock time during execution. We also demonstrate promising compute scaling properties, supported by over 60k experiments, making it the largest study on inference strategies for complex RL to date. We make all of our experimental data and code available.",
+      "venue": "NeurIPS 2025",
+      "authors": [
+        "Felix Chalumeau",
+        "Daniel Rajaonarivonivelomanantsoa",
+        "Ruan John de Kock",
+        "Juan Claude Formanek",
+        "Sasha Abramowitz",
+        "Omayma Mahjoub",
+        "Wiem Khlifi",
+        "Simon Verster Du Toit",
+        "Louay Ben Nessir",
+        "Refiloe Shabe",
+        "Arnol Manuel Fokam",
+        "Siddarth Singh",
+        "Ulrich Armel Mbou Sob",
+        "Arnu Pretorius"
+      ],
+      "paper_id": "RxkCwOKVKa",
+      "pdf_url": "https://openreview.net/pdf/5d59ea40926886752f5ab100ab83a383587e3e1e.pdf",
+      "forum_url": "https://openreview.net/forum?id=RxkCwOKVKa"
+    },
+    {
+      "title": "Fair Cooperation in Mixed-Motive Games via Conflict-Aware Gradient Adjustment",
+      "abstract": "Multi-agent reinforcement learning in mixed-motive settings presents a fundamental challenge: agents must balance individual interests with collective goals, which are neither fully aligned nor strictly opposed. To address this, reward restructuring methods such as gifting and intrinsic motivation have been proposed. However, these approaches primarily focus on promoting cooperation by managing the trade-off between individual and collective returns, without explicitly addressing fairness with respect to agents’ task-specific rewards. In this paper, we propose an adaptive conflict-aware gradient adjustment method that promotes cooperation while ensuring fairness in individual rewards. The proposed method dynamically balances policy gradients derived from individual and collective objectives in situations where the two objectives are in conflict. By explicitly resolving such conflicts, our method improves collective performance while preserving fairness across agents. We provide theoretical results that guarantee monotonic non-decreasing improvement in both the collective and individual objectives and ensure fairness. Empirical results in sequential social dilemma environments demonstrate that our approach outperforms baselines in terms of social welfare, while maintaining fairness.",
+      "venue": "NeurIPS 2025",
+      "authors": [
+        "Woojun Kim",
+        "Katia P. Sycara"
+      ],
+      "paper_id": "yPsJ1PKiAi",
+      "pdf_url": "https://openreview.net/pdf/04273649fd0b3f8d9420d37287be398822e205a9.pdf",
+      "forum_url": "https://openreview.net/forum?id=yPsJ1PKiAi"
+    },
+    {
+      "title": "On Feasible Rewards in Multi-Agent Inverse Reinforcement Learning",
+      "abstract": "Multi-agent inverse reinforcement learning (MAIRL) aims to recover agent reward functions from expert demonstrations. We characterize the feasible reward set in Markov games, identifying all reward functions that rationalize a given equilibrium. However, equilibrium-based observations are often ambiguous: a single Nash equilibrium can correspond to many reward structures, potentially changing the game's nature in multi-agent systems. We address this by introducing entropy-regularized Markov games, which yield a unique equilibrium while preserving strategic incentives. For this setting, we provide a sample complexity analysis detailing how errors affect learned policy performance. Our work establishes theoretical foundations and practical insights for MAIRL.",
+      "venue": "NeurIPS 2025",
+      "authors": [
+        "Till Freihaut",
+        "Giorgia Ramponi"
+      ],
+      "paper_id": "qu6mRbSnUs",
+      "pdf_url": "https://openreview.net/pdf/da0667e6f3c1016bf860dd8622ddb179be811029.pdf",
+      "forum_url": "https://openreview.net/forum?id=qu6mRbSnUs"
+    },
+    {
+      "title": "Mean-Field Sampling for Cooperative Multi-Agent Reinforcement Learning",
+      "abstract": "Designing efficient algorithms for multi-agent reinforcement learning (MARL) is fundamentally challenging because the size of the joint state and action spaces grows exponentially in the number of agents. These difficulties are exacerbated when balancing sequential global decision-making with local agent interactions. In this work, we propose a new algorithm $\\texttt{SUBSAMPLE-MFQ}$ ($\\textbf{Subsample}$-$\\textbf{M}$ean-$\\textbf{F}$ield-$\\textbf{Q}$-learning) and a decentralized randomized policy for a system with $n$ agents. For any $k\\leq n$, our algorithm learns a policy for the system in time polynomial in $k$. We prove that this learned policy converges to the optimal policy on the order of $\\tilde{O}(1/\\sqrt{k})$ as the number of subsampled agents $k$ increases. In particular, this bound is independent of the number of agents $n$.",
+      "venue": "NeurIPS 2025",
+      "authors": [
+        "Emile Timothy Anand",
+        "Ishani Karmarkar",
+        "Guannan Qu"
+      ],
+      "paper_id": "CTsdZ3j6dR",
+      "pdf_url": "https://openreview.net/pdf/8068654df0bddeccc848d58d7a46cdd76f4ba670.pdf",
+      "forum_url": "https://openreview.net/forum?id=CTsdZ3j6dR"
+    },
+    {
+      "title": "Multi-agent Markov Entanglement",
+      "abstract": "Value decomposition has long been a fundamental technique in multi-agent reinforcement learning and dynamic programming. Specifically, the value function of a global state $(s_1,s_2,\\ldots,s_N)$ is often approximated as the sum of local functions: $V(s_1,s_2,\\ldots,s_N)\\approx\\sum_{i=1}^N V_i(s_i)$. This approach has found various applications in modern RL systems. However, the theoretical justification for why this decomposition works so effectively remains underexplored. In this paper, we uncover the underlying mathematical structure that enables value decomposition. We demonstrate that a Markov decision process (MDP) permits value decomposition *if and only if* its transition matrix is not \"entangled\"—a concept analogous to quantum entanglement in quantum physics. Drawing inspiration from how physicists measure quantum entanglement, we introduce how to measure the \"Markov entanglement\" and show that this measure can be used to bound the decomposition error in general multi-agent MDPs. Using the concept of Markov entanglement, we proved that a widely-used class of policies, the index policy, is weakly-entangled and enjoys a sublinear $\\mathcal O(\\sqrt{N})$ scale of decomposition error for $N$-agent systems. Finally, we show Markov entanglement can be efficiently estimated, guiding practitioners on the feasibility of value decomposition.",
+      "venue": "NeurIPS 2025",
+      "authors": [
+        "Shuze Chen",
+        "Tianyi Peng"
+      ],
+      "paper_id": "IupCqXiiOE",
+      "pdf_url": "https://openreview.net/pdf/36922e4b5df261406991b00bab7d64a8d8313ccf.pdf",
+      "forum_url": "https://openreview.net/forum?id=IupCqXiiOE"
+    },
+    {
+      "title": "Stochastic Principal-Agent Problems: Computing and Learning Optimal History-Dependent Policies",
+      "abstract": "We study a stochastic principal-agent model. A principal and an agent interact in a stochastic environment, each privy to observations about the state not available to the other. The principal has the power of commitment, both to elicit information from the agent and to signal her own information. The players communicate with each other and then select actions independently. \nBoth players are {\\em far-sighted}, aiming to maximize their total payoffs over the entire time horizon. \nWe consider both the computation and learning of the principal's optimal policy. \nThe key challenge lies in enabling {\\em history-dependent} policies, which are essential for achieving optimality in this model but difficult to cope with because of the exponential growth of possible histories as the size of the model increases; explicit representation of history-dependent policies is infeasible as a result.\nTo address this challenge, we develop algorithmic techniques based on the concept of {\\em inducible value set}. The techniques yield an efficient algorithm that computes an $\\epsilon$-approximate optimal policy in time polynomial in $1/\\epsilon$. \nWe also present an efficient learning algorithm for an episodic reinforcement learning setting with unknown transition probabilities. The algorithm achieves sublinear regret $\\widetilde{\\mathcal{O}}(T^{2/3})$ for both players over $T$ episodes.",
+      "venue": "NeurIPS 2025",
+      "authors": [
+        "Jiarui Gan",
+        "R Majumdar",
+        "Debmalya Mandal",
+        "Goran Radanovic"
+      ],
+      "paper_id": "u0rNHqMpFD",
+      "pdf_url": "https://openreview.net/pdf/2fbc7d10a63e1167402a84aef602f141e5300ee5.pdf",
+      "forum_url": "https://openreview.net/forum?id=u0rNHqMpFD"
+    },
+    {
+      "title": "Multi-Agent Reinforcement Learning with Communication-Constrained Priors",
+      "abstract": "Communication is one of the effective means to improve the learning of cooperative policy in multi-agent systems. However, in most real-world scenarios, lossy communication is a prevalent issue. Existing multi-agent reinforcement learning with communication, due to their limited scalability and robustness, struggles to apply to complex and dynamic real-world environments. To address these challenges, we propose a generalized communication-constrained model to uniformly characterize communication conditions across different scenarios. Based on this, we utilize it as a learning prior to distinguish between lossy and lossless messages for specific scenarios. Additionally, we decouple the impact of lossy and lossless messages on distributed decision-making, drawing on a dual mutual information estimatior, and introduce a communication-constrained multi-agent reinforcement learning framework, quantifying the impact of communication messages into the global reward. Finally, we validate the effectiveness of our approach across several communication-constrained benchmarks.",
+      "venue": "NeurIPS 2025",
+      "authors": [
+        "Guang Yang",
+        "Jingwen Qiao",
+        "Tianpei Yang",
+        "Yanqing Wu",
+        "Jing Huo",
+        "Xingguo Chen",
+        "Yang Gao"
+      ],
+      "paper_id": "1m177EsP3V",
+      "pdf_url": "https://openreview.net/pdf/2c4562eb3ea472ac38cb77ab753312c63c828655.pdf",
+      "forum_url": "https://openreview.net/forum?id=1m177EsP3V"
+    },
+    {
+      "title": "MisoDICE: Multi-Agent Imitation from Mixed-Quality Demonstrations",
+      "abstract": "We study offline imitation learning (IL) in cooperative multi-agent settings, where demonstrations have unlabeled mixed quality - containing both expert and suboptimal trajectories. Our proposed solution is structured in two stages: trajectory labeling and multi-agent imitation learning, designed jointly to enable effective learning from heterogeneous, unlabeled data. In the first stage, we combine advances in large language models and preference-based reinforcement learning to construct a progressive labeling pipeline that distinguishes expert-quality trajectories. In the second stage, we introduce MisoDICE, a novel multi-agent IL algorithm that leverages these labels to learn robust policies while addressing the computational complexity of large joint state-action spaces. By extending the popular single-agent DICE framework to multi-agent settings with a new value decomposition and mixing architecture, our method yields a convex policy optimization objective and ensures consistency between global and local policies. We evaluate MisoDICE on multiple standard multi-agent RL benchmarks and demonstrate superior performance, especially when expert data is scarce.",
+      "venue": "NeurIPS 2025",
+      "authors": [
+        "The Viet Bui",
+        "Tien Anh Mai",
+        "Thanh Hong Nguyen"
+      ],
+      "paper_id": "krG6UHAvYr",
+      "pdf_url": "https://openreview.net/pdf/4b2409e02a7e2d01eabd842a20cb992608dc0256.pdf",
+      "forum_url": "https://openreview.net/forum?id=krG6UHAvYr"
+    },
+    {
+      "title": "Policy Gradient Methods Converge Globally in Imperfect-Information Extensive-Form Games",
+      "abstract": "Multi-agent reinforcement learning (MARL) has long been seen as inseparable from Markov games (Littman 1994). Yet, the most remarkable achievements of practical MARL have arguably been in extensive-form games (EFGs)---spanning games like Poker, Stratego, and Hanabi. At the same time, little is known about provable equilibrium convergence for MARL algorithms applied to EFGs as they stumble upon the inherent nonconvexity of the optimization landscape and the failure of the value-iteration subroutine in EFGs. To this goal, we utilize contemporary advances in nonconvex optimization theory to prove that regularized alternating policy gradient with (i) *direct policy parametrization*, (ii) *softmax policy parametrization*, and (iii) *softmax policy parametrization with natural policy gradient* updates converge to an approximate Nash equilibrium (NE) in the *last-iterate* in imperfect-information perfect-recall zero-sum EFGs. Namely, we observe that since the individual utilities are concave with respect to the sequence-form strategy, they satisfy gradient dominance w.r.t. the behavioral strategy---or, \\textit{policy}, in reinforcement learning terms. We exploit this structure to further prove that the regularized utility satisfies the much stronger proximal Polyak- Łojasiewicz condition. In turn, we show that the different flavors of alternating policy gradient methods converge to an $\\epsilon$-approximate NE with a number of iterations and trajectory samples that are  polynomial in $1/\\epsilon$ and the natural parameters of the game. Our work is a preliminary---yet principled---attempt in bridging the conceptual gap between the theory of Markov and imperfect-information EFGs while it aspires to stimulate a deeper dialogue between them.",
+      "venue": "NeurIPS 2025",
+      "authors": [
+        "Fivos Kalogiannis",
+        "Gabriele Farina"
+      ],
+      "paper_id": "VYY5sG4EMm",
+      "pdf_url": "https://openreview.net/pdf/17954acd345b0c815841fa019cdc61241787627d.pdf",
+      "forum_url": "https://openreview.net/forum?id=VYY5sG4EMm"
+    },
+    {
+      "title": "Solving Continuous Mean Field Games: Deep Reinforcement Learning for Non-Stationary Dynamics",
+      "abstract": "Mean field games (MFGs) have emerged as a powerful framework for modeling interactions in large-scale multi-agent systems. Despite recent advancements in reinforcement learning (RL) for MFGs, existing methods are typically limited to finite spaces or stationary models, hindering their applicability to real-world problems. This paper introduces a novel deep reinforcement learning (DRL) algorithm specifically designed for non-stationary continuous MFGs. The proposed approach builds upon a Fictitious Play (FP) methodology, leveraging DRL for best-response computation and supervised learning for average policy representation. Furthermore, it learns a representation of the time-dependent population distribution using a Conditional Normalizing Flow. To validate the effectiveness of our method, we evaluate it on three different examples of increasing complexity. By addressing critical limitations in scalability and density approximation, this work represents a significant advancement in applying DRL techniques to complex MFG problems, bringing the field closer to real-world multi-agent systems.",
+      "venue": "NeurIPS 2025",
+      "authors": [
+        "Lorenzo Magnino",
+        "Kai Shao",
+        "Zida Wu",
+        "Jiacheng Shen",
+        "Mathieu Lauriere"
+      ],
+      "paper_id": "Jw5TFF3HkH",
+      "pdf_url": "https://openreview.net/pdf/2c5e71db3184bfe70ce4a5578088652fc2d680f9.pdf",
+      "forum_url": "https://openreview.net/forum?id=Jw5TFF3HkH"
+    },
+    {
+      "title": "MALinZero: Efficient Low-Dimensional Search for Mastering Complex Multi-Agent Planning",
+      "abstract": "Monte Carlo Tree Search (MCTS), which leverages Upper Confidence Bound for Trees (UCTs) to balance exploration and exploitation through randomized sampling, is instrumental to solving complex planning problems. However, for multi-agent planning, MCTS is confronted with a large combinatorial action space that often grows exponentially with the number of agents. As a result, the branching factor of MCTS during tree expansion also increases exponentially, making it very difficult to efficiently explore and exploit during tree search. To this end, we propose MALinZero, a new approach to leverage low-dimensional representational structures on joint-action returns and enable efficient MCTS in complex multi-agent planning. Our solution can be viewed as projecting the joint-action returns into the low-dimensional space representable using a contextual linear bandit problem formulation. We solve the contextual linear bandit problem with convex and $\\mu$-smooth loss functions -- in order to place more importance on better joint actions and mitigate potential representational limitations -- and derive a linear Upper Confidence Bound applied to trees (LinUCT) to enable novel multi-agent exploration and exploitation in the low-dimensional space. We analyze the regret of MALinZero for low-dimensional reward functions and propose an $(1-\\tfrac1e)$-approximation algorithm for the joint action selection by maximizing a sub-modular objective. MALinZero demonstrates state-of-the-art performance on multi-agent benchmarks such as matrix games, SMAC, and SMACv2, outperforming both model-based and model-free multi-agent reinforcement learning baselines with faster learning speed and better performance.",
+      "venue": "NeurIPS 2025",
+      "authors": [
+        "Sizhe Tang",
+        "Jiayu Chen",
+        "Tian Lan"
+      ],
+      "paper_id": "Rxdon7jWni",
+      "pdf_url": "https://openreview.net/pdf/8e363493ff9d9b3fa837f8d6bb3198fa13ba65f4.pdf",
+      "forum_url": "https://openreview.net/forum?id=Rxdon7jWni"
+    },
+    {
+      "title": "LOPT: Learning Optimal Pigovian Tax in Sequential Social Dilemmas",
+      "abstract": "Multi-agent reinforcement learning (MARL) has emerged as a powerful framework for modeling autonomous agents that independently optimize their individual objectives. However, in mixed-motive MARL environments, rational self-interested behaviors often lead to collectively suboptimal outcomes situations commonly referred to as social dilemmas.\nA key challenge in addressing social dilemmas lies in accurately quantifying and representing them in a numerical form that captures how self-interested agent behaviors impact social welfare.\nTo address this challenge, \\textit{externalities} in the economic concept is adopted and extended to denote the unaccounted-for impact of one agent's actions on others, as a means to rigorously quantify social dilemmas.\nBased on this measurement, a novel method, \\textbf{L}earning \\textbf{O}ptimal \\textbf{P}igovian \\textbf{T}ax (\\textbf{LOPT}) is proposed. Inspired by Pigovian taxes, which are designed to internalize externalities by imposing cost on negative societal impacts, LOPT employs an auxiliary tax agent that learns an optimal Pigovian tax policy to reshape individual rewards aligned with social welfare, thereby promoting agent coordination and mitigating social dilemmas. We support LOPT with theoretical analysis and validate it on standard MARL benchmarks, including Escape Room and Cleanup. Results show that by effectively internalizing externalities that quantify social dilemmas, LOPT aligns individual objectives with collective goals, significantly improving social welfare over state-of-the-art baselines.",
+      "venue": "NeurIPS 2025",
+      "authors": [
+        "Yun Hua",
+        "Shang Gao",
+        "Wenhao Li",
+        "Haosheng Chen",
+        "Bo Jin",
+        "Xiangfeng Wang",
+        "Jun Luo",
+        "Hongyuan Zha"
+      ],
+      "paper_id": "bct6UQcsiA",
+      "pdf_url": "https://openreview.net/pdf/8b61f590fa00b5a3a6ea01c66c0191d5035b38a1.pdf",
+      "forum_url": "https://openreview.net/forum?id=bct6UQcsiA"
+    },
+    {
+      "title": "Oryx: a Scalable Sequence Model for Many-Agent Coordination in Offline MARL",
+      "abstract": "A key challenge in offline multi-agent reinforcement learning (MARL) is achieving effective many-agent multi-step coordination in complex environments. In this work, we propose Oryx, a novel algorithm for offline cooperative MARL to directly address this challenge. Oryx adapts the recently proposed retention-based architecture Sable and combines it with a sequential form of implicit constraint Q-learning (ICQ), to develop a novel offline autoregressive policy update scheme. This allows Oryx to solve complex coordination challenges while maintaining temporal coherence over long trajectories. We evaluate Oryx across a diverse set of benchmarks from prior works—SMAC, RWARE, and Multi-Agent MuJoCo—covering tasks of both discrete and continuous control, varying in scale and difficulty. Oryx achieves state-of-the-art performance on more than 80% of the 65 tested datasets, outperforming prior offline MARL methods and demonstrating robust generalisation across domains with many agents and long horizons. Finally, we introduce new datasets to push the limits of many-agent coordination in offline MARL, and demonstrate Oryx's superior ability to scale effectively in such settings.",
+      "venue": "NeurIPS 2025",
+      "authors": [
+        "Juan Claude Formanek",
+        "Omayma Mahjoub",
+        "Louay Ben Nessir",
+        "Sasha Abramowitz",
+        "Ruan John de Kock",
+        "Wiem Khlifi",
+        "Daniel Rajaonarivonivelomanantsoa",
+        "Simon Verster Du Toit",
+        "Arnol Manuel Fokam",
+        "Siddarth Singh",
+        "Ulrich Armel Mbou Sob",
+        "Felix Chalumeau",
+        "Arnu Pretorius"
+      ],
+      "paper_id": "XzXGqoUNUa",
+      "pdf_url": "https://openreview.net/pdf/760cfff7afea430a6744bb86e4d0525881a6f6fa.pdf",
+      "forum_url": "https://openreview.net/forum?id=XzXGqoUNUa"
+    },
+    {
+      "title": "Wonder Wins Ways: Curiosity-Driven Exploration through Multi-Agent Contextual Calibration",
+      "abstract": "Autonomous exploration in complex multi-agent reinforcement learning (MARL) with sparse rewards critically depends on providing agents with effective intrinsic motivation. While artificial curiosity offers a powerful self-supervised signal, it often confuses environmental stochasticity with meaningful novelty. Moreover, existing curiosity mechanisms exhibit a uniform novelty bias, treating all unexpected observations equally. However, peer behavior novelty, which encode latent task dynamics, are often overlooked, resulting in suboptimal exploration in decentralized, communication-free MARL settings. To this end, inspired by how human children adaptively calibrate their own exploratory behaviors via observing peers, we propose a novel approach to enhance multi-agent exploration. We introduce CERMIC, a principled framework that empowers agents to robustly filter noisy surprise signals and guide exploration by dynamically calibrating their intrinsic curiosity with inferred multi-agent context. Additionally, CERMIC generates theoretically-grounded intrinsic rewards, encouraging agents to explore state transitions with high information gain. We evaluate CERMIC on benchmark suites including VMAS, Meltingpot, and SMACv2. Empirical results demonstrate that exploration with CERMIC significantly outperforms SoTA algorithms in sparse-reward environments.",
+      "venue": "NeurIPS 2025",
+      "authors": [
+        "Yiyuan Pan",
+        "Zhe Liu",
+        "Hesheng Wang"
+      ],
+      "paper_id": "1fOGTbO5Sx",
+      "pdf_url": "https://openreview.net/pdf/dac815c07ab9f9e54d2b1f128f30787f3774ea58.pdf",
+      "forum_url": "https://openreview.net/forum?id=1fOGTbO5Sx"
+    },
+    {
+      "title": "PARCO: Parallel AutoRegressive Models for Multi-Agent Combinatorial Optimization",
+      "abstract": "Combinatorial optimization problems involving multiple agents are notoriously challenging due to their NP-hard nature and the necessity for effective agent coordination. Despite advancements in learning-based methods, existing approaches often face critical limitations, including suboptimal agent coordination, poor generalization, and high computational latency. To address these issues, we propose PARCO (Parallel AutoRegressive Combinatorial Optimization), a general reinforcement learning framework designed to construct high-quality solutions for multi-agent combinatorial tasks efficiently. To this end, PARCO integrates three key novel components: (1) transformer-based communication layers to enable effective agent collaboration during parallel solution construction, (2) a multiple pointer mechanism for low-latency, parallel agent decision-making, and (3) priority-based conflict handlers to resolve decision conflicts via learned priorities. We evaluate PARCO in multi-agent vehicle routing and scheduling problems, where our approach outperforms state-of-the-art learning methods, demonstrating strong generalization ability and remarkable computational efficiency. We make our source code publicly available to foster future research: https://github.com/ai4co/parco.",
+      "venue": "NeurIPS 2025",
+      "authors": [
+        "Federico Berto",
+        "Chuanbo Hua",
+        "Laurin Luttmann",
+        "Jiwoo Son",
+        "Junyoung Park",
+        "Kyuree Ahn",
+        "Changhyun Kwon",
+        "Lin Xie",
+        "Jinkyoo Park"
+      ],
+      "paper_id": "9F2Cmgo17M",
+      "pdf_url": "https://openreview.net/pdf/672bb4ede45dba28f133a8ebb2cfe40fb1f395c8.pdf",
+      "forum_url": "https://openreview.net/forum?id=9F2Cmgo17M"
+    },
+    {
+      "title": "Revisiting Multi-Agent World Modeling from a Diffusion-Inspired Perspective",
+      "abstract": "World models have recently attracted growing interest in Multi-Agent Reinforcement Learning (MARL) due to their ability to improve sample efficiency for policy learning. However, accurately modeling environments in MARL is challenging due to the exponentially large joint action space and highly uncertain dynamics inherent in multi-agent systems. To address this, we reduce modeling complexity by shifting from jointly modeling the entire state-action transition dynamics to focusing on the state space alone at each timestep through sequential agent modeling. Specifically, our approach enables the model to progressively resolve uncertainty while capturing the structured dependencies among agents, providing a more accurate representation of how agents influence the state. Interestingly, this sequential revelation of agents' actions in a multi-agent system aligns with the reverse process in diffusion models—a class of powerful generative models known for their expressiveness and training stability compared to autoregressive or latent variable models. Leveraging this insight, we develop a flexible and robust world model for MARL using diffusion models. Our method, \\textbf{D}iffusion-\\textbf{I}nspired \\textbf{M}ulti-\\textbf{A}gent world model (DIMA), achieves state-of-the-art performance across multiple multi-agent control benchmarks, significantly outperforming prior world models in terms of final return and sample efficiency, including MAMuJoCo and Bi-DexHands. DIMA establishes a new paradigm for constructing multi-agent world models, advancing the frontier of MARL research.",
+      "venue": "NeurIPS 2025",
+      "authors": [
+        "Yang Zhang",
+        "Xinran Li",
+        "Jianing Ye",
+        "Shuang Qiu",
+        "Delin Qu",
+        "Xiu Li",
+        "Chongjie Zhang",
+        "Chenjia Bai"
+      ],
+      "paper_id": "rRxFIOoEeF",
+      "pdf_url": "https://openreview.net/pdf/c9213e44761a54b3065c1cafc662367acc7fa15c.pdf",
+      "forum_url": "https://openreview.net/forum?id=rRxFIOoEeF"
+    },
+    {
+      "title": "MACS: Multi-Agent Reinforcement Learning for Optimization of Crystal Structures",
+      "abstract": "Geometry optimization of atomic structures is a common and crucial task in computational chemistry and materials design. Following the learning to optimize paradigm, we propose a new multi-agent reinforcement learning method called Multi-Agent Crystal Structure optimization (MACS) to address the problem of periodic crystal structure optimization. MACS treats geometry optimization as a partially observable Markov game in which atoms are agents that adjust their positions to collectively discover a stable configuration. We train MACS across various compositions of reported crystalline materials to obtain a policy that successfully optimizes structures from the training compositions as well as structures of larger sizes and unseen compositions, confirming its excellent scalability and zero-shot transferability. We benchmark our approach against a broad range of state-of-the-art optimization methods and demonstrate that MACS optimizes periodic crystal structures significantly faster, with fewer energy calculations, and the lowest failure rate.",
+      "venue": "NeurIPS 2025",
+      "authors": [
+        "Elena Zamaraeva",
+        "Christopher Collins",
+        "George R Darling",
+        "Matthew Stephen Dyer",
+        "Bei Peng",
+        "Rahul Savani",
+        "Dmytro Antypov",
+        "Vladimir Gusev",
+        "Judith Clymo",
+        "Paul G. Spirakis",
+        "Matthew Rosseinsky"
+      ],
+      "paper_id": "XwMDUND6iO",
+      "pdf_url": "https://openreview.net/pdf/211e025089643c744c06921ade5974c4520d0b46.pdf",
+      "forum_url": "https://openreview.net/forum?id=XwMDUND6iO"
+    },
+    {
+      "title": "ReMA: Learning to Meta-Think for LLMs with Multi-agent Reinforcement Learning",
+      "abstract": "Recent research on Reasoning of Large Language Models (LLMs) has sought to further enhance their performance by integrating meta-thinking—enabling models to monitor, evaluate, and control their reasoning processes for more adaptive and effective problem-solving.\nHowever, current single-agent work lacks a specialized design for acquiring meta-thinking, resulting in low efficacy.\nTo address this challenge, we introduce Reinforced Meta-thinking Agents (ReMA), a novel framework that leverages Multi-Agent Reinforcement Learning (MARL) to elicit meta-thinking behaviors, encouraging LLMs to think about thinking.\nReMA decouples the reasoning process into two hierarchical agents: a high-level meta-thinking agent responsible for generating strategic oversight and plans, and a low-level reasoning agent for detailed executions.\nThrough iterative reinforcement learning with aligned objectives, these agents explore and learn collaboration, leading to improved generalization and robustness.\nEmpirical results from single-turn experiments demonstrate that ReMA outperforms single-agent RL baselines on complex reasoning tasks, including competitive-level mathematical benchmarks and LLM-as-a-Judge benchmarks.\nAdditionally, we further extend ReMA to multi-turn interaction settings, leveraging turn-level ratio and parameter sharing to improve efficiency.\nComprehensive ablation studies further illustrate the evolving dynamics of each distinct agent, providing valuable insights into how the meta-thinking reasoning process enhances the reasoning capabilities of LLMs.",
+      "venue": "NeurIPS 2025",
+      "authors": [
+        "Ziyu Wan",
+        "Yunxiang LI",
+        "Xiaoyu Wen",
+        "Yan Song",
+        "Hanjing Wang",
+        "Linyi Yang",
+        "Mark Schmidt",
+        "Jun Wang",
+        "Weinan Zhang",
+        "Shuyue Hu",
+        "Ying Wen"
+      ],
+      "paper_id": "ur295YVtmt",
+      "pdf_url": "https://openreview.net/pdf/4ef88667f9d6e59455e6805cd91df2e8e519f9d0.pdf",
+      "forum_url": "https://openreview.net/forum?id=ur295YVtmt"
+    },
+    {
+      "title": "High-order Interactions Modeling for Interpretable Multi-Agent Q-Learning",
+      "abstract": "The ability to model interactions among agents is crucial for effective coordination and understanding their cooperation mechanisms in multi-agent reinforcement learning (MARL). \nHowever, previous efforts to model high-order interactions have been primarily hindered by the combinatorial explosion or the opaque nature of their black-box network structures.\nIn this paper, we propose a novel value decomposition framework, called Continued Fraction Q-Learning (QCoFr), which can flexibly capture arbitrary-order agent interactions with only linear complexity $\\mathcal{O}\\left({n}\\right)$ in the number of agents, thus avoiding the combinatorial explosion when modeling rich cooperation. \nFurthermore, we introduce the variational information bottleneck to extract latent information for estimating credits.\nThis latent information helps agents filter out noisy interactions, thereby significantly enhancing both cooperation and interpretability.\nExtensive experiments demonstrate that QCoFr not only consistently achieves better performance but also provides interpretability that aligns with our theoretical analysis.",
+      "venue": "NeurIPS 2025",
+      "authors": [
+        "Qinyu Xu",
+        "Yuanyang Zhu",
+        "Xuefei Wu",
+        "Chunlin Chen"
+      ],
+      "paper_id": "JZ1fVVS3uk",
+      "pdf_url": "https://openreview.net/pdf/285490f5da546e4b408c905507a4e808cb38d647.pdf",
+      "forum_url": "https://openreview.net/forum?id=JZ1fVVS3uk"
+    },
+    {
+      "title": "Role-aware Multi-agent Reinforcement Learning for Coordinated Emergency Traffic Control",
+      "abstract": "Emergency traffic control presents an increasingly critical challenge, requiring seamless coordination among emergency vehicles, regular vehicles, and traffic lights to ensure efficient passage for all vehicles. Existing models primarily only focus on traffic light control, leaving emergency and regular vehicles prone to delay due to the lack of navigation strategies. To address this issue, we propose the ***R*ole-aware *M*ulti-agent *T*raffic *C*ontrol (RMTC)** framework, which dynamically assigns appropriate roles to traffic components for better cooperation by considering their relations with emergency vehicles and adaptively adjusting their policies. Specifically, RMTC introduces a *Heterogeneous Temporal Traffic Graph (HTTG)* to model the spatial and temporal relationships among all traffic components (traffic lights, regular and emergency vehicles) at each time step. Furthermore, we develop a *Dynamic Role Learning* model to infer the evolving roles of traffic lights and regular vehicles based on HTTG. Finally, we present a *Role-aware Multi-agent Reinforcement Learning* approach that learns traffic policies conditioned on the dynamically roles. Extensive experiments across four public traffic scenarios show that RMTC outperforms existing traffic light control methods by significantly reducing emergency vehicle travel time, while effectively preserving traffic efficiency for regular vehicles. The code is released at [https://anonymous.4open.science/r/RMTC-5E28](https://anonymous.4open.science/r/RMTC-5E28).",
+      "venue": "NeurIPS 2025",
+      "authors": [
+        "Ming Cheng",
+        "Hao Chen",
+        "Zhiqing Li",
+        "Jia Wang",
+        "Senzhang Wang"
+      ],
+      "paper_id": "R3xbcRIzUd",
+      "pdf_url": "https://openreview.net/pdf/9b88a289f4f24565703c770c3ab1347ecc0209c7.pdf",
+      "forum_url": "https://openreview.net/forum?id=R3xbcRIzUd"
+    },
+    {
+      "title": "Heterogeneous Graph Transformers for Simultaneous Mobile Multi-Robot Task Allocation and Scheduling under Temporal Constraints",
+      "abstract": "Coordinating large teams of heterogeneous mobile agents to perform complex tasks efficiently has scalability bottlenecks in feasible and optimal task scheduling, with critical applications in logistics, manufacturing, and disaster response. Existing task allocation and scheduling methods, including heuristics and optimization-based solvers, often fail to scale and overlook inter-task dependencies and agent heterogeneity. We propose a novel Simultaneous Decision-Making model for Heterogeneous Multi-Agent Task Allocation and Scheduling (HM-MATAS), built on a Residual Heterogeneous Graph Transformer with edge and node-level attention. Our model encodes agent capabilities, travel times, and temporospatial constraints into a rich graph representation and is trainable via reinforcement learning. Trained on small-scale problems (10 agents, 20 tasks), our model generalizes effectively to significantly larger scenarios (up to 40 agents and 200 tasks), enabling fast, one-shot task assignment and scheduling. Our simultaneous model outperforms classical heuristics by assigning 164.10\\% more feasible tasks given temporal constraints in 3.83\\% of the time, metaheuristics by 201.54\\% in 0.01\\% of the time and exact solver by 231.73\\% in 0.03\\% of the time, while achieving $20\\times$-to-$250\\times$ speedup from prior graph-based methods across scales.",
+      "venue": "NeurIPS 2025",
+      "authors": [
+        "Batuhan Altundas",
+        "Shengkang Chen",
+        "Shivika Singh",
+        "Shivangi Deo",
+        "Minwoo Cho",
+        "Matthew Craig Gombolay"
+      ],
+      "paper_id": "k1fbdnwjCH",
+      "pdf_url": "https://openreview.net/pdf/c132589a72ce5fd8c489d67b73b34261d138def2.pdf",
+      "forum_url": "https://openreview.net/forum?id=k1fbdnwjCH"
+    },
+    {
+      "title": "Continuous Soft Actor-Critic: An Off-Policy Learning Method Robust to Time Discretization",
+      "abstract": "Many \\textit{Deep Reinforcement Learning} (DRL) algorithms are sensitive to time discretization, which reduces their performance in real-world scenarios. We propose Continuous Soft Actor-Critic, an off-policy actor-critic DRL algorithm in continuous time and space. It is robust to environment time discretization. We also extend the framework to multi-agent scenarios. This \\textit{Multi-Agent Reinforcement Learning} (MARL) algorithm is suitable for both competitive and cooperative settings. Policy evaluation employs stochastic control theory, with loss functions derived from martingale orthogonality conditions. We establish scaling principles for hyperparameters of the algorithm as the environment time discretization $\\delta t$ changes ($\\delta t \\rightarrow 0$). We provide theoretical proofs for the relevant theorems. To validate the algorithm's effectiveness, we conduct comparative experiments between the proposed algorithm and other mainstream methods across multiple tasks in \\textit{Virtual Multi-Agent System} (VMAS). Experimental results demonstrate that the proposed algorithm achieves robust performance across various environments with different time discretization parameter settings, outperforming other methods.",
+      "venue": "NeurIPS 2025",
+      "authors": [
+        "Huimin Han",
+        "Shaolin Ji"
+      ],
+      "paper_id": "Ey0mro4vJ6",
+      "pdf_url": "https://openreview.net/pdf/a23c3437ca227f32f586000c959a825f9fc94fbd.pdf",
+      "forum_url": "https://openreview.net/forum?id=Ey0mro4vJ6"
+    },
+    {
+      "title": "Sequential Multi-Agent Dynamic Algorithm Configuration",
+      "abstract": "The performance of an algorithm often critically depends on its hyperparameter configuration. Dynamic algorithm configuration (DAC) is a recent trend in automated machine learning, which can dynamically adjust the algorithm’s configuration during the execution process and relieve users from tedious trial-and-error tuning tasks. Recently, multi-agent reinforcement learning (MARL) approaches have improved the configuration of multiple heterogeneous hyperparameters, making various parameter configurations for complex algorithms possible. However, many complex algorithms have inherent inter-dependencies among multiple parameters (e.g., determining the operator type first and then the operator's parameter), which are, however, not considered in previous approaches, thus leading to sub-optimal results. In this paper, we propose the sequential multi-agent DAC (Seq-MADAC) framework to address this issue by considering the inherent inter-dependencies of multiple parameters. Specifically, we propose a sequential advantage decomposition network, which can leverage action-order information through sequential advantage decomposition. Experiments from synthetic functions to the configuration of multi-objective optimization algorithms demonstrate Seq-MADAC's superior performance over state-of-the-art MARL methods and show strong generalization across problem classes. Seq-MADAC establishes a new paradigm for the widespread dependency-aware automated algorithm configuration. Our code is available at https://github.com/lamda-bbo/seq-madac.",
+      "venue": "NeurIPS 2025",
+      "authors": [
+        "Chen Lu",
+        "Ke Xue",
+        "Lei Yuan",
+        "Yao Wang",
+        "Yaoyuan Wang",
+        "Fu Sheng",
+        "Chao Qian"
+      ],
+      "paper_id": "27aIOGfkAV",
+      "pdf_url": "https://openreview.net/pdf/af44dda81a363c4c9ef3387096194992bc17e93c.pdf",
+      "forum_url": "https://openreview.net/forum?id=27aIOGfkAV"
+    },
+    {
+      "title": "Adaptive Context Length Optimization with Low-Frequency Truncation for Multi-Agent Reinforcement Learning",
+      "abstract": "Recently, deep multi-agent reinforcement learning (MARL) has demonstrated promising performance for solving challenging tasks, such as long-term dependencies and non-Markovian environments. Its success is partly attributed to conditioning policies on large fixed context length. However, such large fixed context lengths may lead to limited exploration efficiency and redundant information. In this paper, we propose a novel MARL framework to obtain adaptive and effective contextual information. Specifically, we design a central agent that dynamically optimizes context length via temporal gradient analysis, enhancing exploration to facilitate convergence to global optima in MARL. Furthermore, to enhance the adaptive optimization capability of the context length, we present an efficient input representation for the central agent, which effectively filters redundant information. By leveraging a Fourier-based low-frequency truncation method, we extract global temporal trends across decentralized agents, providing an effective and efficient representation of the MARL environment. Extensive experiments demonstrate that the proposed method achieves state-of-the-art (SOTA) performance on long-term dependency tasks, including PettingZoo, MiniGrid, Google Research Football (GRF), and  StarCraft Multi-Agent Challenge v2 (SMACv2).",
+      "venue": "NeurIPS 2025",
+      "authors": [
+        "Wenchang Duan",
+        "Yaoliang Yu",
+        "Jiwan He",
+        "Yi Shi"
+      ],
+      "paper_id": "4BsrGHtvW5",
+      "pdf_url": "https://openreview.net/pdf/4d6d91de9831de82589c5aa2931337aba3a39d34.pdf",
+      "forum_url": "https://openreview.net/forum?id=4BsrGHtvW5"
+    },
+    {
+      "title": "HYPRL: Reinforcement Learning of Control Policies for Hyperproperties",
+      "abstract": "Reward shaping in multi-agent reinforcement learning (MARL) for complex tasks remains a significant challenge. Existing approaches often fail to find optimal solutions or cannot efficiently handle such tasks. We propose HYPRL, a specification-guided reinforcement learning framework that learns control policies w.r.t. hyperproperties expressed in HyperLTL. Hyperproperties constitute a powerful formalism for specifying objectives and constraints over sets of execution traces across agents. To learn policies that maximize the satisfaction of a HyperLTL formula $\\varphi$, we apply Skolemization to manage quantifier alternations and define quantitative robustness functions to shape rewards over execution traces of a Markov decision process with unknown transitions. A suitable RL algorithm is then used to learn policies that collectively maximize the expected reward and, consequently, increase the probability of satisfying $\\varphi$. We evaluate HYPRL on a diverse set of benchmarks, including safety-aware planning, Deep Sea Treasure, and the Post Correspondence Problem. We also compare with specification-driven baselines to demonstrate the effectiveness and efficiency of HYPRL.",
+      "venue": "NeurIPS 2025",
+      "authors": [
+        "Tzu-Han Hsu",
+        "Arshia Rafieioskouei",
+        "Borzoo Bonakdarpour"
+      ],
+      "paper_id": "lJSAtyx9Uc",
+      "pdf_url": "https://openreview.net/pdf/01d24e5015ccb74f1e01bbbb0818b4bbc5239891.pdf",
+      "forum_url": "https://openreview.net/forum?id=lJSAtyx9Uc"
+    },
+    {
+      "title": "HyperMARL: Adaptive Hypernetworks for Multi-Agent RL",
+      "abstract": "Adaptive cooperation in multi-agent reinforcement learning (MARL) requires policies to express homogeneous, specialised, or mixed behaviours, yet achieving this adaptivity remains a critical challenge. While parameter sharing (PS) is standard for efficient learning, it notoriously suppresses the behavioural diversity required for specialisation. This failure is largely due to cross-agent gradient interference, a problem we find is surprisingly exacerbated by the common practice of *coupling agent IDs with observations*. Existing remedies typically add complexity through altered objectives, manual preset diversity levels, or sequential updates -- raising a fundamental question: *can shared policies adapt without these intricacies?* We propose a solution built on a key insight: an agent-conditioned hypernetwork can generate agent-specific parameters and *decouple* observation- and agent-conditioned gradients, directly countering the interference from coupling agent IDs with observations. Our resulting method, **HyperMARL**, avoids the complexities of prior work and empirically reduces policy gradient variance. Across diverse MARL benchmarks (22 scenarios, up to 30 agents), HyperMARL achieves performance competitive with six key baselines while preserving behavioural diversity comparable to non-parameter sharing methods, establishing it as a versatile and principled approach for adaptive MARL. The code is publicly available at https://github.com/KaleabTessera/HyperMARL.",
+      "venue": "NeurIPS 2025",
+      "authors": [
+        "Kale-ab Tessera",
+        "Arrasy Rahman",
+        "Amos Storkey",
+        "Stefano V. Albrecht"
+      ],
+      "paper_id": "56CgYnf9Dr",
+      "pdf_url": "https://openreview.net/pdf/419bb79fe6098ef6311e7f20a067e51d6dc2efcb.pdf",
+      "forum_url": "https://openreview.net/forum?id=56CgYnf9Dr"
+    },
+    {
+      "title": "Towards Principled Unsupervised Multi-Agent Reinforcement Learning",
+      "abstract": "In reinforcement learning, we typically refer to *unsupervised* pre-training when we aim to pre-train a policy without a priori access to the task specification, i.e., rewards, to be later employed for efficient learning of downstream tasks. In single-agent settings, the problem has been extensively studied and mostly understood. A popular approach casts the unsupervised objective as maximizing the *entropy* of the state distribution induced by the agent's policy, from which principles and methods follow. In contrast, little is known about state entropy maximization in multi-agent settings, which are ubiquitous in the real world. What are the pros and cons of alternative problem formulations in this setting? How hard is the problem in theory, how can we solve it in practice? In this paper, we address these questions by first characterizing those alternative formulations and highlighting how the problem, even when tractable in theory, is non-trivial in practice. Then, we present a scalable, decentralized, trust-region policy search algorithm to address the problem in practical settings. Finally, we provide numerical validations to both corroborate the theoretical findings and pave the way for unsupervised multi-agent reinforcement learning via state entropy maximization in challenging domains, showing that optimizing for a specific objective, namely *mixture entropy*, provides an excellent trade-off between tractability and performances.",
+      "venue": "NeurIPS 2025",
+      "authors": [
+        "Riccardo Zamboni",
+        "Mirco Mutti",
+        "Marcello Restelli"
+      ],
+      "paper_id": "XF1OzY8mEI",
+      "pdf_url": "https://openreview.net/pdf/0b099e4ceadc5f85e5a60633a4e2c3b55b190bc7.pdf",
+      "forum_url": "https://openreview.net/forum?id=XF1OzY8mEI"
+    },
+    {
+      "title": "A Principle of Targeted Intervention for Multi-Agent Reinforcement Learning",
+      "abstract": "Steering cooperative multi-agent reinforcement learning (MARL) towards desired outcomes is challenging, particularly when the global guidance from a human on the whole multi-agent system is impractical in a large-scale MARL. On the other hand, designing external mechanisms (e.g., intrinsic rewards and human feedback) to coordinate agents mostly relies on empirical studies, lacking a easy-to-use research tool. In this work, we employ multi-agent influence diagrams (MAIDs) as a graphical framework to address the above issues. First, we introduce the concept of MARL interaction paradigms (orthogonal to MARL learning paradigms), using MAIDs to analyze and visualize both unguided self-organization and global guidance mechanisms in MARL. Then, we design a new MARL interaction paradigm, referred to as the targeted intervention paradigm that is applied to only a single targeted agent, so the problem of global guidance can be mitigated. In implementation, we introduce a causal inference technique—referred to as Pre-Strategy Intervention (PSI)—to realize the targeted intervention paradigm. Since MAIDs can be regarded as a special class of causal diagrams, a composite desired outcome that integrates the primary task goal and an additional desired outcome can be achieved by maximizing the corresponding causal effect through the PSI. Moreover, the bundled relevance graph analysis of MAIDs provides a tool to identify whether an MARL learning paradigm is workable under the design of an MARL interaction paradigm. In experiments, we demonstrate the effectiveness of our proposed targeted intervention, and verify the result of relevance graph analysis.",
+      "venue": "NeurIPS 2025",
+      "authors": [
+        "Anjie Liu",
+        "Jianhong Wang",
+        "Samuel Kaski",
+        "Jun Wang",
+        "Mengyue Yang"
+      ],
+      "paper_id": "Vejx32FeWt",
+      "pdf_url": "https://openreview.net/pdf/4ab60f7a43857f9b872256c8f6144e3b46d65ab2.pdf",
+      "forum_url": "https://openreview.net/forum?id=Vejx32FeWt"
+    },
+    {
+      "title": "Bayesian Ego-graph inference for Networked Multi-Agent Reinforcement Learning",
+      "abstract": "In networked multi-agent reinforcement learning (Networked-MARL), decentralized agents must act autonomously under local observability and constrained communication over fixed physical graphs. Existing methods often assume static neighborhoods, limiting adaptability to dynamic or heterogeneous environments. While centralized frameworks can learn dynamic graphs, their reliance on global state access and centralized infrastructure is impractical in real-world decentralized systems. We propose a stochastic graph-based policy for Networked-MARL, where each agent conditions its decision on a sampled subgraph over its local physical neighborhood. Building on this formulation, we introduce \\textbf{BayesG}, a decentralized actor–critic framework that learns sparse, context-aware interaction structures via Bayesian variational inference. Each agent operates over an ego-graph and samples a latent communication mask to guide message passing and policy computation. The variational distribution is trained end-to-end alongside the policy using an evidence lower bound (ELBO) objective, enabling agents to jointly learn both interaction topology and decision-making strategies.\nBayesG outperforms strong MARL baselines on large-scale traffic control tasks with up to 167 agents, demonstrating superior scalability, efficiency, and performance.",
+      "venue": "NeurIPS 2025",
+      "authors": [
+        "Wei Duan",
+        "Jie Lu",
+        "Junyu Xuan"
+      ],
+      "paper_id": "3qeTs05bRL",
+      "pdf_url": "https://openreview.net/pdf/87e86ebe6cbabd5d2073b3cd3d3f0a6e8bb23c19.pdf",
+      "forum_url": "https://openreview.net/forum?id=3qeTs05bRL"
+    },
+    {
+      "title": "Rainbow Delay Compensation: A Multi-Agent Reinforcement Learning Framework for Mitigating Observation Delays",
+      "abstract": "In real-world multi-agent systems (MASs), observation delays are ubiquitous, preventing agents from making decisions based on the environment's true state. An individual agent's local observation typically comprises multiple components from other agents or dynamic entities within the environment. These discrete observation components with varying delay characteristics pose significant challenges for multi-agent reinforcement learning (MARL). In this paper, we first formulate the decentralized stochastic individual delay partially observable Markov decision process (DSID-POMDP) by extending the standard Dec-POMDP. We then propose the Rainbow Delay Compensation (RDC), a MARL training framework for addressing stochastic individual delays, along with recommended implementations for its constituent modules. We implement the DSID-POMDP's observation generation pattern using standard MARL benchmarks, including MPE and SMAC. Experiments demonstrate that baseline MARL methods suffer severe performance degradation under fixed and unfixed delays. The RDC-enhanced approach mitigates this issue, remarkably achieving ideal delay-free performance in certain delay scenarios while maintaining generalizability. Our work provides a novel perspective on multi-agent delayed observation problems and offers an effective solution framework. The source code is available at https://github.com/linkjoker1006/RDC-pymarl.",
+      "venue": "NeurIPS 2025",
+      "authors": [
+        "Songchen Fu",
+        "Siang Chen",
+        "Shaojing Zhao",
+        "Letian Bai",
+        "Hong Liang",
+        "Ta Li",
+        "Yonghong Yan"
+      ],
+      "paper_id": "KsmlBRhLgs",
+      "pdf_url": "https://openreview.net/pdf/987910dbeae9a12971e2ab807f1001794e2402b0.pdf",
+      "forum_url": "https://openreview.net/forum?id=KsmlBRhLgs"
+    },
+    {
+      "title": "Empirical Study on Robustness and Resilience in Cooperative Multi-Agent Reinforcement Learning",
+      "abstract": "In cooperative Multi-Agent Reinforcement Learning (MARL), it is a common practice to tune hyperparameters in ideal simulated environments to maximize cooperative performance. However, policies tuned for cooperation often fail to maintain robustness and resilience under real-world uncertainties. Building trustworthy MARL systems requires a deep understanding of \\emph{robustness}, which ensures stability under uncertainties, and \\emph{resilience}, the ability to recover from disruptions—a concept extensively studied in control systems but largely overlooked in MARL. In this paper, we present a large-scale empirical study comprising over 82,620 experiments to evaluate cooperation, robustness, and resilience in MARL across 4 real-world environments, 13 uncertainty types, and 15 hyperparameters. Our key findings are: (1) Under mild uncertainty, optimizing cooperation improves robustness and resilience, but this link weakens as perturbations intensify. Robustness and resilience also varies by algorithm and uncertainty type. (2) Robustness and resilience do not generalize across uncertainty modalities or agent scopes: policies robust to action noise for all agents may fail under observation noise on a single agent. (3) Hyperparameter tuning is critical for trustworthy MARL: surprisingly, standard practices like parameter sharing, GAE, and PopArt can hurt robustness, while early stopping, high critic learning rates, and Leaky ReLU consistently help. By optimizing hyperparameters only, we observe substantial improvement in cooperation, robustness and resilience across all MARL backbones, with the phenomenon also generalizing to robust MARL methods across these backbones.",
+      "venue": "NeurIPS 2025",
+      "authors": [
+        "Simin Li",
+        "Zihao Mao",
+        "Hanxiao Li",
+        "Zonglei Jing",
+        "Zhuohang bian",
+        "Jun Guo",
+        "Li Wang",
+        "Zhuoran Han",
+        "Ruixiao Xu",
+        "Xin Yu",
+        "Chengdong Ma",
+        "Yuqing Ma",
+        "Bo An",
+        "Yaodong Yang",
+        "Weifeng Lv",
+        "Xianglong Liu"
+      ],
+      "paper_id": "t3NzYXXICp",
+      "pdf_url": "https://openreview.net/pdf/4943492287e7c1ae1f7aeebd0dc1cd9ece61bdbc.pdf",
+      "forum_url": "https://openreview.net/forum?id=t3NzYXXICp"
+    },
+    {
+      "title": "Improving Retrieval-Augmented Generation through Multi-Agent Reinforcement Learning",
+      "abstract": "Retrieval-augmented generation (RAG) is widely utilized to incorporate external knowledge into large language models, thereby enhancing factuality and reducing hallucinations in question-answering (QA) tasks. A standard RAG pipeline consists of several components, such as query rewriting, document retrieval, document filtering, and answer generation. However, these components are typically optimized separately through supervised fine-tuning, which can lead to misalignments between the objectives of individual components and the overarching aim of generating accurate answers. Although recent efforts have explored using reinforcement learning (RL) to optimize specific RAG components, these approaches often focus on simple pipelines with only two components or do not adequately address the complex interdependencies and collaborative interactions among the modules. To overcome these limitations, we propose treating the complex RAG pipeline with multiple components as a multi-agent cooperative task, in which each component can be regarded as an RL agent. Specifically, we present MMOA-RAG\\footnote{The code of MMOA-RAG is on \\url{https://github.com/chenyiqun/MMOA-RAG}.}, \\textbf{M}ulti-\\textbf{M}odule joint \\textbf{O}ptimization \\textbf{A}lgorithm for \\textbf{RAG}, which employs multi-agent reinforcement learning to harmonize all agents' goals toward a unified reward, such as the F1 score of the final answer. Experiments conducted on various QA benchmarks demonstrate that MMOA-RAG effectively boost the overall performance of the pipeline and outperforms existing baselines. Furthermore, comprehensive ablation studies validate the contributions of individual components and demonstrate MMOA-RAG can be adapted to different RAG pipelines and benchmarks.",
+      "venue": "NeurIPS 2025",
+      "authors": [
+        "Yiqun Chen",
+        "Lingyong Yan",
+        "Weiwei Sun",
+        "Xinyu Ma",
+        "Yi Zhang",
+        "Shuaiqiang Wang",
+        "Dawei Yin",
+        "Yiming Yang",
+        "Jiaxin Mao"
+      ],
+      "paper_id": "9Ia0KiVAut",
+      "pdf_url": "https://openreview.net/pdf/0bc82f5b29d7122b8b021ba8fad9f4e5ce031dd8.pdf",
+      "forum_url": "https://openreview.net/forum?id=9Ia0KiVAut"
+    },
+    {
+      "title": "Bi-Level Knowledge Transfer for Multi-Task Multi-Agent Reinforcement Learning",
+      "abstract": "Multi-Agent Reinforcement Learning (MARL) has achieved remarkable success in various real-world scenarios, but its high cost of online training makes it impractical to learn each task from scratch. \nTo enable effective policy reuse, we consider the problem of zero-shot generalization from offline data across multiple tasks. \nWhile prior work focuses on transferring individual skills of agents, we argue that the effective policy transfer across tasks should also capture the team-level coordination knowledge.\nIn this paper, we propose Bi-Level Knowledge Transfer (BiKT) for Multi-Task MARL, which performs knowledge transfer at both the individual and team levels. \nAt the individual level, we extract transferable individual skill embeddings from offline MARL trajectories.\nAt the team level, we define tactics as coordinated patterns of skill combinations and capture them by leveraging the learned skill embeddings. \nWe map skill combinations into compact tactic embeddings and then construct a tactic codebook.\nTo incorporate both skills and tactics into decision-making, we design a bi-level decision transformer that infers them in sequence.\nOur BiKT leverages both the generalizability of individual skills and the diversity of tactics, enabling the learned policy to perform effectively across multiple tasks.\nExtensive experiments on SMAC and MPE benchmarks demonstrate that BiKT achieves strong generalization to previously unseen tasks.",
+      "venue": "NeurIPS 2025",
+      "authors": [
+        "Junkai Zhang",
+        "Jinmin He",
+        "Yifan Zhang",
+        "Yifan Zang",
+        "Ning Xu",
+        "Jian Cheng"
+      ],
+      "paper_id": "6jKed3sx4f",
+      "pdf_url": "https://openreview.net/pdf/2b86cc9f576d8abadc37889762dbb565bf235fe1.pdf",
+      "forum_url": "https://openreview.net/forum?id=6jKed3sx4f"
+    },
+    {
+      "title": "OPHR: Mastering Volatility Trading with Multi-Agent Deep Reinforcement Learning",
+      "abstract": "Options markets represent one of the most sophisticated segments of the financial ecosystem, with prices that directly reflect market uncertainty. In this paper, we introduce the first reinforcement learning (RL) framework specifically designed for volatility trading through options, focusing on profit from the difference between implied volatility and realized volatility. Our multi-agent architecture consists of an Option Position Agent (OP-Agent) responsible for volatility timing by controlling long/short volatility positions, and a Hedger Routing Agent (HR-Agent) that manages risk and maximizes path-dependent profits by selecting optimal hedging strategies with different risk preferences. Evaluating our approach using cryptocurrency options data from 2021-2024, we demonstrate superior performance on BTC and ETH, significantly outperforming traditional strategies and machine learning baselines across all profit and risk-adjusted metrics while exhibiting sophisticated trading behavior. The code framework and sample data of this paper have been released on https://github.com/Edwicn/OPHR-MasteringVolatilityTradingwithMultiAgentDeepReinforcementLearning",
+      "venue": "NeurIPS 2025",
+      "authors": [
+        "Zeting Chen",
+        "Xinyu Cai",
+        "Molei Qin",
+        "Bo An"
+      ],
+      "paper_id": "2p4AtivyZz",
+      "pdf_url": "https://openreview.net/pdf/0a54e33013db5c0872e1579260f30cb5ab2f203d.pdf",
+      "forum_url": "https://openreview.net/forum?id=2p4AtivyZz"
+    },
+    {
+      "title": "In-Context Fully Decentralized Cooperative Multi-Agent Reinforcement Learning",
+      "abstract": "In this paper, we consider fully decentralized cooperative multi-agent reinforcement learning, where each agent has access only to the states, its local actions, and the shared rewards. The absence of information about other agents' actions typically leads to the non-stationarity problem during per-agent value function updates, and the relative overgeneralization issue during value function estimation. However, existing works fail to address both issues simultaneously, as they lack the capability to model the agents' joint policy in a fully decentralized setting. To overcome this limitation, we propose a simple yet effective method named Return-Aware Context (RAC). RAC formalizes the dynamically changing task, as locally perceived by each agent, as a contextual Markov Decision Process (MDP), and addresses both non-stationarity and relative overgeneralization through return-aware context modeling. Specifically, the contextual MDP attributes the non-stationary local dynamics of each agent to switches between contexts, each corresponding to a distinct joint policy. Then, based on the assumption that the joint policy changes only between episodes, RAC distinguishes different joint policies by the training episodic return and constructs contexts using discretized episodic return values. Accordingly, RAC learns a context-based value function for each agent to address the non-stationarity issue during value function updates. For value function estimation, an individual optimistic marginal value is constructed to encourage the selection of optimal joint actions, thereby mitigating the relative overgeneralization problem. Experimentally, we evaluate RAC on various cooperative tasks (including matrix game, predator and prey, and SMAC), and its significant performance validates its effectiveness.",
+      "venue": "NeurIPS 2025",
+      "authors": [
+        "Chao Li",
+        "Bingkun BAO",
+        "Yang Gao"
+      ],
+      "paper_id": "5J4IpiMKkq",
+      "pdf_url": "https://openreview.net/pdf/c8e43e29371115e9c66bce1f2bd25f74ce725ade.pdf",
+      "forum_url": "https://openreview.net/forum?id=5J4IpiMKkq"
+    },
+    {
+      "title": "Agent-Centric Actor-Critic for Asynchronous Multi-Agent Reinforcement Learning",
+      "abstract": "Multi-Agent Reinforcement Learning (MARL) struggles with coordination in sparse reward environments. Macro-actions —sequences of actions executed as single decisions— facilitate long-term planning but introduce asynchrony, complicating Centralized Training with Decentralized Execution (CTDE). Existing CTDE methods use padding to handle asynchrony, risking misaligned asynchronous experiences and spurious correlations. We propose the Agent-Centric Actor-Critic (ACAC) algorithm to manage asynchrony without padding. ACAC uses agent-centric encoders for independent trajectory processing, with an attention-based aggregation module integrating these histories into a centralized critic for improved temporal abstractions. The proposed structure is trained via a PPO-based algorithm with a modified Generalized Advantage Estimation for asynchronous environments. Experiments show ACAC accelerates convergence and enhances performance over baselines in complex MARL tasks.",
+      "venue": "ICML 2025",
+      "authors": [
+        "Whiyoung Jung",
+        "Sunghoon Hong",
+        "Deunsol Yoon",
+        "Kanghoon Lee",
+        "Woohyung Lim"
+      ],
+      "paper_id": "46556",
+      "pdf_url": "",
+      "forum_url": "https://ICML.cc/forum?id=2025/poster/46556"
+    },
+    {
+      "title": "AI for Global Climate Cooperation: Modeling Global Climate Negotiations, Agreements, and Long-Term Cooperation in RICE-N",
+      "abstract": "Global cooperation on climate change mitigation is essential to limit temperature increases while supporting long-term, equitable economic growth and sustainable development. Achieving such cooperation among diverse regions, each with different incentives, in a dynamic environment shaped by complex geopolitical and economic factors, without a central authority, is a profoundly challenging game-theoretic problem. This article introduces RICE-N, a multi-region integrated assessment model that simulates the global climate, economy, and climate negotiations and agreements. RICE-N uses multi-agent reinforcement learning (MARL) to encourage agents to develop strategic behaviors based on the environmental dynamics and the actions of the others. We present two negotiation protocols: (1) Bilateral Negotiation, an exemplary protocol and (2) Basic Club, inspired from Climate Clubs and the carbon border adjustment mechanism (Nordhaus, 2015; Comissions, 2022). We compare their impact against a no-negotiation baseline with various mitigation strategies, showing that both protocols significantly reduce temperature growth at the cost of a minor drop in production while ensuring a more equitable distribution of the emission reduction costs.",
+      "venue": "ICML 2025",
+      "authors": [
+        "Tianyu Zhang",
+        "Andrew Williams",
+        "Phillip Wozny",
+        "Kai-Hendrik Cohrs",
+        "Koen Ponse",
+        "Marco Jiralerspong",
+        "Soham Phade",
+        "Sunil Srinivasa",
+        "Lu Li",
+        "Yang Zhang",
+        "Prateek Gupta",
+        "Erman Acar",
+        "Irina Rish",
+        "Yoshua Bengio",
+        "Stephan Zheng"
+      ],
+      "paper_id": "45380",
+      "pdf_url": "",
+      "forum_url": "https://ICML.cc/forum?id=2025/poster/45380"
+    },
+    {
+      "title": "Breaking the Curse of Multiagency in Robust Multi-Agent Reinforcement Learning",
+      "abstract": "Standard multi-agent reinforcement learning (MARL) algorithms are vulnerable to sim-to-real gaps. To address this, distributionally robust Markov games (RMGs) have been proposed to enhance robustness in MARL by optimizing the worst-case performance when game dynamics shift within a prescribed uncertainty set. RMGs remains under-explored, from reasonable problem formulation to the development of sample-efficient algorithms. Two notorious and open challenges are the formulation of the uncertainty set and whether the corresponding RMGs can overcome the curse of multiagency,  where the sample complexity scales exponentially with the number of agents. In this work, we propose a natural class of RMGs inspired by behavioral economics, where each agent's uncertainty set is shaped by both the environment and the integrated behavior of other agents. We first establish the well-posedness of this class of RMGs by proving the existence of game-theoretic solutions such as robust Nash equilibria and coarse correlated equilibria (CCE). Assuming access to a generative model, we then introduce a sample-efficient algorithm for learning the CCE whose sample complexity scales polynomially with all relevant parameters. To the best of our knowledge, this is the first algorithm to break the curse of multiagency for RMGs, regardless of the uncertainty set formulation.",
+      "venue": "ICML 2025",
+      "authors": [
+        "Laixi Shi",
+        "Jingchu Gai",
+        "Eric Mazumdar",
+        "Yuejie Chi",
+        "Adam Wierman"
+      ],
+      "paper_id": "44535",
+      "pdf_url": "",
+      "forum_url": "https://ICML.cc/forum?id=2025/poster/44535"
+    },
+    {
+      "title": "Constrained Exploitability Descent: An Offline Reinforcement Learning Method for Finding Mixed-Strategy Nash Equilibrium",
+      "abstract": "This paper proposes Constrained Exploitability Descent (CED), a model-free offline reinforcement learning (RL) algorithm for solving adversarial Markov games (MGs). CED combines the game-theoretical approach of Exploitability Descent (ED) with policy constraint methods from offline RL. While policy constraints can perturb the optimal pure-strategy solutions in single-agent scenarios, we find the side effect less detrimental in adversarial games, where the optimal policy can be a mixed-strategy Nash equilibrium. We theoretically prove that, under the uniform coverage assumption on the dataset, CED converges to a stationary point in deterministic two-player zero-sum Markov games. We further prove that the min-player policy at the stationary point follows the property of mixed-strategy Nash equilibrium in MGs. Compared to the model-based ED method that optimizes the max-player policy, our CED method no longer relies on a generalized gradient. Experiments in matrix games, a tree-form game, and an infinite-horizon soccer game verify that CED can find an equilibrium policy for the min-player as long as the offline dataset guarantees uniform coverage. Besides, CED achieves a significantly lower NashConv compared to an existing pessimism-based method and can gradually improve the behavior policy even under non-uniform data coverages. When combined with neural networks, CED also outperforms behavior cloning and offline self-play in a large-scale two-team robotic combat game.",
+      "venue": "ICML 2025",
+      "authors": [
+        "Runyu Lu",
+        "Yuanheng Zhu",
+        "Dongbin Zhao"
+      ],
+      "paper_id": "43717",
+      "pdf_url": "",
+      "forum_url": "https://ICML.cc/forum?id=2025/poster/43717"
+    },
+    {
+      "title": "Convex Markov Games: A New Frontier for Multi-Agent Reinforcement Learning",
+      "abstract": "Behavioral diversity, expert imitation, fairness, safety goals and others give rise to preferences in sequential decision making domains that do not decompose additively across time. We introduce the class of convex Markov games that allow general convex preferences over occupancy measures. Despite infinite time horizon and strictly higher generality than Markov games, pure strategy Nash equilibria exist. Furthermore, equilibria can be approximated empirically by performing gradient descent on an upper bound of exploitability. Our experiments reveal novel solutions to classic repeated normal-form games, find fair solutions in a repeated asymmetric coordination game, and prioritize safe long-term behavior in a robot warehouse environment. In the prisoner's dilemma, our algorithm leverages transient imitation to find a policy profile that deviates from observed human play only slightly, yet achieves higher per-player utility while also being three orders of magnitude less exploitable.",
+      "venue": "ICML 2025",
+      "authors": [
+        "Ian Gemp",
+        "Andreas Haupt",
+        "Luke Marris",
+        "Siqi Liu",
+        "Georgios Piliouras"
+      ],
+      "paper_id": "43543",
+      "pdf_url": "",
+      "forum_url": "https://ICML.cc/forum?id=2025/poster/43543"
+    },
+    {
+      "title": "Cross-environment Cooperation Enables Zero-shot Multi-agent Coordination",
+      "abstract": "Zero-shot coordination (ZSC), the ability to adapt to a new partner in a cooperative task, is a critical component of human-compatible AI. While prior work has focused on training agents to cooperate on a single task, these specialized models do not generalize to new tasks, even if they are highly similar. Here, we study how reinforcement learning on a **distribution of environments with a single partner** enables learning general cooperative skills that support ZSC with **many new partners on many new problems**. We introduce *two* Jax-based, procedural generators that create billions of solvable coordination challenges. We develop a new paradigm called **Cross-Environment Cooperation (CEC)**, and show that it outperforms competitive baselines quantitatively and qualitatively when collaborating with real people. Our findings suggest that learning to collaborate across many unique scenarios encourages agents to develop general norms, which prove effective for collaboration with different partners. Together, our results suggest a new route toward designing generalist cooperative agents capable of interacting with humans without requiring human data.",
+      "venue": "ICML 2025",
+      "authors": [
+        "Kunal Jha",
+        "Wilka Carvalho",
+        "Yancheng Liang",
+        "Simon Du",
+        "Max Kleiman-Weiner",
+        "Natasha Jaques"
+      ],
+      "paper_id": "43490",
+      "pdf_url": "",
+      "forum_url": "https://ICML.cc/forum?id=2025/poster/43490"
+    },
+    {
+      "title": "Decoding Rewards in Competitive Games: Inverse Game Theory with Entropy Regularization",
+      "abstract": "Estimating the unknown reward functions driving agents' behavior is a central challenge in inverse games and reinforcement learning. This paper introduces a unified framework for reward function recovery in two-player zero-sum matrix games and Markov games with entropy regularization. Given observed player strategies and actions, we aim to reconstruct the underlying reward functions. This task is challenging due to the inherent ambiguity of inverse problems, the non-uniqueness of feasible rewards, and limited observational data coverage. To address these challenges, we establish reward function identifiability using the quantal response equilibrium (QRE) under linear assumptions. Building on this theoretical foundation, we propose an algorithm to learn reward from observed actions, designed to capture all plausible reward parameters by constructing confidence sets. Our algorithm works in both static and dynamic settings and is adaptable to incorporate other methods, such as Maximum Likelihood Estimation (MLE). We provide strong theoretical guarantees for the reliability and sample-efficiency of our algorithm. Empirical results demonstrate the framework’s effectiveness in accurately recovering reward functions across various scenarios, offering new insights into decision-making in competitive environments.",
+      "venue": "ICML 2025",
+      "authors": [
+        "Junyi Liao",
+        "Zihan Zhu",
+        "Ethan Fang",
+        "Zhuoran Yang",
+        "Vahid Tarokh"
+      ],
+      "paper_id": "45614",
+      "pdf_url": "",
+      "forum_url": "https://ICML.cc/forum?id=2025/poster/45614"
+    },
+    {
+      "title": "Distributionally Robust Multi-Agent Reinforcement Learning for Dynamic Chute Mapping",
+      "abstract": "In Amazon robotic warehouses, the destination-to-chute mapping problem is crucial for efficient package sorting. Often, however, this problem is complicated by uncertain and dynamic package induction rates, which can lead to increased package recirculation. To tackle this challenge, we introduce a Distributionally Robust Multi-Agent Reinforcement Learning (DRMARL) framework that learns a destination-to-chute mapping policy that is resilient to adversarial variations in induction rates. Specifically, DRMARL relies on group distributionally robust optimization (DRO) to learn a policy that performs well not only on average but also on each individual subpopulation of induction rates within the group that capture, for example, different seasonality or operation modes of the system. This approach is then combined with a novel contextual bandit-based estimator of the worst-case induction distribution for each state-action pair, significantly reducing the cost of exploration and thereby increasing the learning efficiency and scalability of our framework. Extensive simulations demonstrate that DRMARL achieves robust chute mapping in the presence of varying induction distributions, reducing package recirculation by an average of 80% in the simulation scenario.",
+      "venue": "ICML 2025",
+      "authors": [
+        "Guangyi Liu",
+        "Suzan Iloglu",
+        "Michael Caldara",
+        "Joseph Durham",
+        "Michael Zavlanos"
+      ],
+      "paper_id": "45979",
+      "pdf_url": "",
+      "forum_url": "https://ICML.cc/forum?id=2025/poster/45979"
+    },
+    {
+      "title": "Enhancing Cooperative Multi-Agent Reinforcement Learning with State Modelling and Adversarial Exploration",
+      "abstract": "Learning to cooperate in distributed partially observable environments with no communication abilities poses significant challenges for multi-agent deep reinforcement learning (MARL). This paper addresses key concerns in this domain, focusing on inferring state representations from individual agent observations and leveraging these representations to enhance agents' exploration and collaborative task execution policies. To this end, we propose a novel state modelling framework for cooperative MARL, where agents infer meaningful belief representations of the non-observable state, with respect to optimizing their own policies, while filtering redundant and less informative joint state information. Building upon this framework, we propose the MARL SMPE$^2$ algorithm. In SMPE$^2$, agents enhance their own policy's discriminative abilities under partial observability, explicitly by incorporating their beliefs into the policy network, and implicitly by adopting an adversarial type of exploration policies which encourages agents to discover novel, high-value states while improving the discriminative abilities of others. Experimentally, we show that SMPE$^2$ outperforms a plethora of state-of-the-art MARL algorithms in complex fully cooperative tasks from the MPE, LBF, and RWARE benchmarks.",
+      "venue": "ICML 2025",
+      "authors": [
+        "Andreas Kontogiannis",
+        "Konstantinos Papathanasiou",
+        "Yi Shen",
+        "Giorgos Stamou",
+        "Michael Zavlanos",
+        "George Vouros"
+      ],
+      "paper_id": "45186",
+      "pdf_url": "",
+      "forum_url": "https://ICML.cc/forum?id=2025/poster/45186"
+    },
+    {
+      "title": "Explicit Exploration for High-Welfare Equilibria in Game-Theoretic Multiagent Reinforcement Learning",
+      "abstract": "Iterative extension of empirical game models through deep reinforcement learning (RL) has proved an effective approach for finding equilibria in complex games. When multiple equilibria exist, we may also be interested in finding solutions with particular characteristics. We address this issue of equilibrium selection in the context of Policy Space Response Oracles (PSRO), a flexible game-solving framework based on deep RL, by skewing the strategy exploration process towards higher-welfare solutions. At each iteration, we create an exploration policy that imitates high welfare-yielding behavior and train a response to the current solution, regularized to be similar to the exploration policy. With no additional simulation expense, our approach, named Ex$^2$PSRO, tends to find higher welfare equilibria than vanilla PSRO in two benchmarks: a sequential bargaining game and a social dilemma game. Further experiments demonstrate Ex$^2$PSRO's composability with other PSRO variants and illuminate the relationship between exploration policy choice and algorithmic performance.",
+      "venue": "ICML 2025",
+      "authors": [
+        "Austin Nguyen",
+        "Anri Gu",
+        "Michael Wellman"
+      ],
+      "paper_id": "46142",
+      "pdf_url": "",
+      "forum_url": "https://ICML.cc/forum?id=2025/poster/46142"
+    },
+    {
+      "title": "Finite-Sample Convergence Bounds for Trust Region Policy Optimization in Mean Field Games",
+      "abstract": "We introduce Mean Field Trust Region Policy Optimization (MF-TRPO), a novel algorithm designed to compute approximate Nash equilibria for ergodic Mean Field Games (MFGs) in finite state-action spaces. Building on the well-established performance of TRPO in the reinforcement learning (RL) setting, we extend its methodology to the MFG framework, leveraging its stability and robustness in policy optimization. Under standard assumptions in the MFG literature, we provide a rigorous analysis of MF-TRPO, establishing theoretical guarantees on its convergence. Our results cover both the exact formulation of the algorithm and its sample-based counterpart, where we derive high-probability guarantees and finite sample complexity. This work advances MFG optimization by bridging RL techniques with mean-field decision-making, offering a theoretically grounded approach to solving complex multi-agent problems.",
+      "venue": "ICML 2025",
+      "authors": [
+        "Antonio Ocello",
+        "Daniil Tiapkin",
+        "Lorenzo Mancini",
+        "Mathieu Lauriere",
+        "Eric Moulines"
+      ],
+      "paper_id": "45512",
+      "pdf_url": "",
+      "forum_url": "https://ICML.cc/forum?id=2025/poster/45512"
+    },
+    {
+      "title": "Finite-Time Global Optimality Convergence in Deep Neural Actor-Critic Methods for Decentralized Multi-Agent Reinforcement Learning",
+      "abstract": "Actor-critic methods for decentralized multi-agent reinforcement learning (MARL) facilitate collaborative optimal decision making without centralized coordination, thus enabling a wide range of applications in practice. To date, however, most theoretical convergence studies for existing actor-critic decentralized MARL methods are limited to the guarantee of a stationary solution under the linear function approximation. This leaves a significant gap between the highly successful use of deep neural actor-critic for decentralized MARL in practice and the current theoretical understanding. To bridge this gap, in this paper, we make the first attempt to develop a deep neural actor-critic method for decentralized MARL, where both the actor and critic components are inherently non-linear. We show that our proposed method enjoys a global optimality guarantee with a finite-time convergence rate of $\\mathcal{O}(1/T)$, where $T$ is the total iteration times. This marks the first global convergence result for deep neural actor-critic methods in the MARL literature. We also conduct extensive numerical experiments, which verify our theoretical results.",
+      "venue": "ICML 2025",
+      "authors": [
+        "Zhiyao Zhang",
+        "Myeung Suk Oh",
+        "Hairi",
+        "Ziyue Luo",
+        "Alvaro Velasquez",
+        "Jia (Kevin) Liu"
+      ],
+      "paper_id": "44842",
+      "pdf_url": "",
+      "forum_url": "https://ICML.cc/forum?id=2025/poster/44842"
+    },
+    {
+      "title": "GradPS: Resolving Futile Neurons in Parameter Sharing Network for Multi-Agent Reinforcement Learning",
+      "abstract": "Parameter-sharing (PS) techniques have been widely adopted in cooperative Multi-Agent Reinforcement Learning (MARL). In PS, all the agents share a policy network with identical parameters, which enjoys good sample efficiency. However, PS could lead to homogeneous policies that limit MARL performance. We tackle this problem from the angle of gradient conflict among agents. We find that the existence of futile neurons whose update is canceled out by gradient conflicts among agents leads to poor learning efficiency and diversity. To address this deficiency, we propose GradPS, a gradient-based PS method. It dynamically creates multiple clones for each futile neuron. For each clone, a group of agents with low gradient-conflict shares the neuron's parameters.Our method can enjoy good sample efficiency by sharing the gradients among agents of the same clone neuron. Moreover, it can encourage diverse behaviors through independently updating an exclusive clone neuron. Through extensive experiments, we show that GradPS can learn diverse policies with promising performance. The source code for GradPS is available in \\url{https://github.com/xmu-rl-3dv/GradPS}.",
+      "venue": "ICML 2025",
+      "authors": [
+        "Haoyuan Qin",
+        "Zhengzhu Liu",
+        "Chenxing Lin",
+        "Chennan Ma",
+        "Songzhu Mei",
+        "Siqi Shen",
+        "Cheng Wang"
+      ],
+      "paper_id": "45651",
+      "pdf_url": "",
+      "forum_url": "https://ICML.cc/forum?id=2025/poster/45651"
+    },
+    {
+      "title": "Graph Diffusion for Robust Multi-Agent Coordination",
+      "abstract": "Offline multi-agent reinforcement learning (MARL) struggles to estimate out-of-distribution states and actions due to the absence of real-time environmental feedback. While diffusion models show promise in addressing these challenges, their application primarily focuses on independently diffusing the historical trajectories of individual agents, neglecting crucial multi-agent coordination dynamics and reducing policy robustness in dynamic environments. In this paper, we propose MCGD, a novel Multi-agent Coordination framework based on Graph Diffusion models to improve the effectiveness and robustness of collaborative policies. Specifically, we begin by constructing a sparse coordination graph that includes continuous node attributes and discrete edge attributes to effectively identify the underlying dynamics of multi-agent interactions. Next, we derive transition probabilities between edge categories and present adaptive categorical diffusion to capture the structure diversity of multi-agent coordination. Leveraging this coordination structure, we define neighbor-dependent forward noise and develop anisotropic diffusion to enhance the action diversity of each agent. Extensive experiments across various multi-agent environments demonstrate that MCGD significantly outperforms existing state-of-the-art baselines in coordination performance and policy robustness in dynamic environments.",
+      "venue": "ICML 2025",
+      "authors": [
+        "Xianghua Zeng",
+        "Hang Su",
+        "Zhengyi Wang",
+        "Zhiyuan LIN"
+      ],
+      "paper_id": "45189",
+      "pdf_url": "",
+      "forum_url": "https://ICML.cc/forum?id=2025/poster/45189"
+    },
+    {
+      "title": "HYGMA: Hypergraph Coordination Networks with Dynamic Grouping for Multi-Agent Reinforcement Learning",
+      "abstract": "Cooperative multi-agent reinforcement learning faces significant challenges in effectively organizing agent relationships and facilitating information exchange, particularly when agents need to adapt their coordination patterns dynamically. This paper presents a novel framework that integrates dynamic spectral clustering with hypergraph neural networks to enable adaptive group formation and efficient information processing in multi-agent systems. The proposed framework dynamically constructs and updates hypergraph structures through spectral clustering on agents' state histories, enabling higher-order relationships to emerge naturally from agent interactions. The hypergraph structure is enhanced with attention mechanisms for selective information processing, providing an expressive and efficient way to model complex agent relationships. This architecture can be implemented in both value-based and policy-based paradigms through a unified objective combining task performance with structural regularization. Extensive experiments on challenging cooperative tasks demonstrate that our method significantly outperforms state-of-the-art approaches in both sample efficiency and final performance. The code is available at: https://github.com/mysteryelder/HYGMA.",
+      "venue": "ICML 2025",
+      "authors": [
+        "Chiqiang Liu",
+        "Dazi Li"
+      ],
+      "paper_id": "44143",
+      "pdf_url": "",
+      "forum_url": "https://ICML.cc/forum?id=2025/poster/44143"
+    },
+    {
+      "title": "Incentivize without Bonus: Provably Efficient Model-based Online Multi-agent RL for Markov Games",
+      "abstract": "Multi-agent reinforcement learning (MARL) lies at the heart of a plethora of applications involving the interaction of a group of agents in a shared unknown environment. A prominent framework for studying MARL is Markov games, with the goal of finding various notions of equilibria in a sample-efficient manner, such as the Nash equilibrium (NE) and the coarse correlated equilibrium (CCE). However, existing sample-efficient approaches either require tailored uncertainty estimation under function approximation, or careful coordination of the players. In this paper, we propose a novel model-based algorithm, called VMG, that incentivizes exploration via biasing the empiricalestimate of the model parameters towards those with a higher collective best-response values of all the players when fixing the other players' policies, thus encouraging the policy to deviate from its current equilibrium for more exploration. VMG is oblivious to different forms of function approximation, and permits simultaneous and uncoupled policy updates of all players. Theoretically, we also establish that VMG achieves a near-optimal regret for finding both the NEs of two-player zero-sum Markov games and CCEs of multi-player general-sum Markov games under linear function approximation in an online environment, which nearly match their counterparts with sophisticated uncertainty quantification.",
+      "venue": "ICML 2025",
+      "authors": [
+        "Tong Yang",
+        "Bo Dai",
+        "Lin Xiao",
+        "Yuejie Chi"
+      ],
+      "paper_id": "44674",
+      "pdf_url": "",
+      "forum_url": "https://ICML.cc/forum?id=2025/poster/44674"
+    },
+    {
+      "title": "Learning Mean Field Control on Sparse Graphs",
+      "abstract": "Large agent networks are abundant in applications and nature and pose difficult challenges in the field of multi-agent reinforcement learning (MARL) due to their computational and theoretical complexity. While graphon mean field games and their extensions provide efficient learning algorithms for dense and moderately sparse agent networks, the case of realistic sparser graphs remains largely unsolved. Thus, we propose a novel mean field control model inspired by local weak convergence to include sparse graphs such as power law networks with coefficients above two. Besides a theoretical analysis, we design scalable learning algorithms which apply to the challenging class of graph sequences with finite first moment. We compare our model and algorithms for various examples on synthetic and real world networks with mean field algorithms based on Lp graphons and graphexes. As it turns out, our approach outperforms existing methods in many examples and on various networks due to the special design aiming at an important, but so far hard to solve class of MARL problems.",
+      "venue": "ICML 2025",
+      "authors": [
+        "Christian Fabian",
+        "Kai Cui",
+        "Heinz Koeppl"
+      ],
+      "paper_id": "44932",
+      "pdf_url": "",
+      "forum_url": "https://ICML.cc/forum?id=2025/poster/44932"
+    },
+    {
+      "title": "Learning Progress Driven Multi-Agent Curriculum",
+      "abstract": "The number of agents can be an effective curriculum variable for controlling the difficulty of multi-agent reinforcement learning (MARL) tasks. Existing work typically uses manually defined curricula such as linear schemes. We identify two potential flaws while applying existing reward-based automatic curriculum learning methods in MARL: (1) The expected episode return used to measure task difficulty has high variance; (2) Credit assignment difficulty can be exacerbated in tasks where increasing the number of agents yields higher returns which is common in many MARL tasks. To address these issues, we propose to control the curriculum by using a TD-error based *learning progress* measure and by letting the curriculum proceed from an initial context distribution to the final task specific one. Since our approach maintains a distribution over the number of agents and measures learning progress rather than absolute performance, which often increases with the number of agents, we alleviate problem (2). Moreover, the learning progress measure naturally alleviates problem (1) by aggregating returns. In three challenging sparse-reward MARL benchmarks, our approach outperforms state-of-the-art baselines.",
+      "venue": "ICML 2025",
+      "authors": [
+        "Wenshuai Zhao",
+        "Zhiyuan Li",
+        "Joni Pajarinen"
+      ],
+      "paper_id": "46153",
+      "pdf_url": "",
+      "forum_url": "https://ICML.cc/forum?id=2025/poster/46153"
+    },
+    {
+      "title": "M³HF: Multi-agent Reinforcement Learning from Multi-phase Human Feedback of Mixed Quality",
+      "abstract": "Designing effective reward functions in multi-agent reinforcement learning (MARL) is a significant challenge, often leading to suboptimal or misaligned behaviors in complex, coordinated environments. We introduce Multi-agent Reinforcement Learning from Multi-phase Human Feedback of Mixed Quality ($\\text{M}^3\\text{HF}$), a novel framework that integrates multi-phase human feedback of mixed quality into the MARL training process. By involving humans with diverse expertise levels to provide iterative guidance, $\\text{M}^3\\text{HF}$ leverages both expert and non-expert feedback to continuously refine agents' policies. During training, we strategically pause agent learning for human evaluation, parse feedback using large language models to assign it appropriately and update reward functions through predefined templates and adaptive weights by using weight decay and performance-based adjustments. Our approach enables the integration of nuanced human insights across various levels of quality, enhancing the interpretability and robustness of multi-agent cooperation. Empirical results in challenging environments demonstrate that $\\text{M}^3\\text{HF}$ significantly outperforms state-of-the-art methods, effectively addressing the complexities of reward design in MARL and enabling broader human participation in the training process.",
+      "venue": "ICML 2025",
+      "authors": [
+        "Ziyan Wang",
+        "Zhicheng Zhang",
+        "Fei Fang",
+        "Yali Du"
+      ],
+      "paper_id": "46583",
+      "pdf_url": "",
+      "forum_url": "https://ICML.cc/forum?id=2025/poster/46583"
+    },
+    {
+      "title": "O-MAPL: Offline Multi-agent Preference Learning",
+      "abstract": "Inferring reward functions from demonstrations is a key challenge in reinforcement learning (RL), particularly in multi-agent RL (MARL). The large joint state-action spaces and intricate inter-agent interactions in MARL make inferring the joint reward function especially challenging. While prior studies in single-agent settings have explored ways to recover reward functions and expert policies from human preference feedback, such studies in MARL remain limited. Existing methods typically combine two separate stages, supervised reward learning, and standard MARL algorithms, leading to unstable training processes. In this work, we exploit the inherent connection between reward functions and Q functions in cooperative MARL to introduce a novel end-to-end preference-based learning framework.Our framework is supported by a carefully designed multi-agent value decomposition strategy that enhances training efficiency. Extensive experiments on two state-of-the-art benchmarks, SMAC and MAMuJoCo, using preference data generated by both rule-based and large language model approaches demonstrate that our algorithm consistently outperforms existing methods across various tasks.",
+      "venue": "ICML 2025",
+      "authors": [
+        "The Viet Bui",
+        "Tien Mai",
+        "Thanh Nguyen"
+      ],
+      "paper_id": "45881",
+      "pdf_url": "",
+      "forum_url": "https://ICML.cc/forum?id=2025/poster/45881"
+    },
+    {
+      "title": "R3DM: Enabling Role Discovery and Diversity Through Dynamics Models in Multi-agent Reinforcement Learning",
+      "abstract": "Multi-agent reinforcement learning (MARL) has achieved significant progress in large-scale traffic control, autonomous vehicles, and robotics. Drawing inspiration from biological systems where roles naturally emerge to enable coordination, role-based MARL methods have been proposed to enhance cooperation learning for complex tasks. However, existing methods exclusively derive roles from an agent's past experience during training, neglecting their influence on its future trajectories. This paper introduces a key insight: an agent’s role should shape its future behavior to enable effective coordination. Hence, we propose Role Discovery and Diversity through Dynamics Models (R3DM), a novel role-based MARL framework that learns emergent roles by maximizing the mutual information between agents' roles, observed trajectories, and expected future behaviors. R3DM optimizes the proposed objective through contrastive learning on past trajectories to first derive intermediate roles that shape intrinsic rewards to promote diversity in future behaviors across different roles through a learned dynamics model. Benchmarking on SMAC and SMACv2 environments demonstrates that R3DM outperforms state-of-the-art MARL approaches, improving multi-agent coordination to increase win rates by up to 20%. The code is available at https://github.com/UTAustin-SwarmLab/R3DM.",
+      "venue": "ICML 2025",
+      "authors": [
+        "Harsh Goel",
+        "Mohammad Omama",
+        "Behdad Chalaki",
+        "Vaishnav Tadiparthi",
+        "Ehsan Moradi Pari",
+        "Sandeep Chinchali"
+      ],
+      "paper_id": "45066",
+      "pdf_url": "",
+      "forum_url": "https://ICML.cc/forum?id=2025/poster/45066"
+    },
+    {
+      "title": "Reidentify: Context-Aware Identity Generation for Contextual Multi-Agent Reinforcement Learning",
+      "abstract": "Generalizing multi-agent reinforcement learning (MARL) to accommodate variations in problem configurations remains a critical challenge in real-world applications, where even subtle differences in task setups can cause pre-trained policies to fail. To address this, we propose Context-Aware Identity Generation (CAID), a novel framework to enhance MARL performance under the Contextual MARL (CMARL) setting. CAID dynamically generates unique agent identities through the agent identity decoder built on a causal Transformer architecture. These identities provide contextualized representations that align corresponding agents across similar problem variants, facilitating policy reuse and improving sample efficiency. Furthermore, the action regulator in CAID incorporates these agent identities into the action-value space, enabling seamless adaptation to varying contexts. Extensive experiments on CMARL benchmarks demonstrate that CAID significantly outperforms existing approaches by enhancing both sample efficiency and generalization across diverse context variants.",
+      "venue": "ICML 2025",
+      "authors": [
+        "Zhiwei XU",
+        "Kun Hu",
+        "Xin Xin",
+        "Weiliang Meng",
+        "Yiwei Shi",
+        "Hangyu Mao",
+        "Bin Zhang",
+        "dapeng Li",
+        "Jiangjin Yin"
+      ],
+      "paper_id": "43673",
+      "pdf_url": "",
+      "forum_url": "https://ICML.cc/forum?id=2025/poster/43673"
+    },
+    {
+      "title": "Revisiting Cooperative Off-Policy Multi-Agent Reinforcement Learning",
+      "abstract": "Cooperative Multi-Agent Reinforcement Learning (MARL) has become a critical tool for addressing complex real-world problems. However, off-policy MARL methods, which rely on joint Q-functions, face significant scalability challenges due to the exponentially growing joint action space.In this work, we highlight a critical yet often overlooked issue: erroneous Q-target estimation, primarily caused by extrapolation error.Our analysis reveals that this error becomes increasingly severe as the number of agents grows, leading to unique challenges in MARL due to its expansive joint action space and the decentralized execution paradigm.To address these challenges, we propose a suite of techniques tailored for off-policy MARL, including annealed multi-step bootstrapping, averaged Q-targets, and restricted action representation. Experimental results demonstrate that these methods effectively mitigate erroneous estimations, yielding substantial performance improvements in challenging benchmarks such as SMAC, SMACv2, and Google Research Football.",
+      "venue": "ICML 2025",
+      "authors": [
+        "yueheng li",
+        "Guangming Xie",
+        "Zongqing Lu"
+      ],
+      "paper_id": "45696",
+      "pdf_url": "",
+      "forum_url": "https://ICML.cc/forum?id=2025/poster/45696"
+    },
+    {
+      "title": "Robust Multi-Agent Reinforcement Learning with Stochastic Adversary",
+      "abstract": "The performance of models trained by Multi-Agent Reinforcement Learning (MARL) is sensitive to perturbations in observations, lowering their trustworthiness in complex environments. Adversarial training is a valuable approach to enhance their performance robustness. However, existing methods often overfit to adversarial perturbations of observations and fail to incorporate prior information about the policy adopted by their protagonist agent, i.e., the primary one being trained. To address this important issue, this paper introduces Adversarial Training with Stochastic Adversary (ATSA), where the proposed adversary is trained online alongside the protagonist agent. The former consists of Stochastic Director (SDor) and SDor-guided generaTor (STor). SDor performs policy perturbations by minimizing the expected team reward of protagonists and maximizing the entropy of its policy, while STor generates adversarial perturbations of observations by following SDor's guidance. We prove that SDor's soft policy converges to a global optimum according to factorized maximum-entropy MARL and leads to the optimal adversary. This paper also introduces an SDor-STor loss function to quantify the difference between a) perturbations in the agent's policy and b) those advised by SDor. We evaluate our ATSA on StarCraft II tasks and autonomous driving scenarios, demonstrating that a) it is robust against diverse perturbations of observations while maintaining outstanding performance in perturbation-free environments, and b) it outperforms the state-of-the-art methods.",
+      "venue": "ICML 2025",
+      "authors": [
+        "Ziyuan Zhou",
+        "Guanjun Liu",
+        "Mengchu Zhou",
+        "Guo"
+      ],
+      "paper_id": "44719",
+      "pdf_url": "",
+      "forum_url": "https://ICML.cc/forum?id=2025/poster/44719"
+    },
+    {
+      "title": "Sable: a Performant, Efficient and Scalable Sequence Model for MARL",
+      "abstract": "As multi-agent reinforcement learning (MARL) progresses towards solving larger and more complex problems, it becomes increasingly important that algorithms exhibit the key properties of (1) strong performance, (2) memory efficiency, and (3) scalability. In this work, we introduce Sable, a performant, memory-efficient, and scalable sequence modelling approach to MARL. Sable works by adapting the retention mechanism in Retentive Networks (Sun et al., 2023) to achieve computationally efficient processing of multi-agent observations with long context memory for temporal reasoning. Through extensive evaluations across six diverse environments, we demonstrate how **Sable is able to significantly outperform existing state-of-the-art methods in a large number of diverse tasks (34 out of 45 tested)**. Furthermore, Sable maintains performance as we scale the number of agents, handling environments with more than a thousand agents while exhibiting a linear increase in memory usage. Finally, we conduct ablation studies to isolate the source of Sable's performance gains and confirm its efficient computational memory usage. **All experimental data, hyperparameters, and code for a frozen version of Sable used in this paper are available on our website:** https://sites.google.com/view/sable-marl. **An improved and maintained version of Sable is available in Mava:** https://github.com/instadeepai/Mava.",
+      "venue": "ICML 2025",
+      "authors": [
+        "Omayma Mahjoub",
+        "Sasha Abramowitz",
+        "Ruan de Kock",
+        "Wiem Khlifi",
+        "Simon Du Toit",
+        "Jemma Daniel",
+        "Louay Nessir",
+        "Louise Beyers",
+        "Juan Formanek",
+        "Liam Clark",
+        "Arnu Pretorius"
+      ],
+      "paper_id": "46076",
+      "pdf_url": "",
+      "forum_url": "https://ICML.cc/forum?id=2025/poster/46076"
+    },
+    {
+      "title": "The Sample Complexity of Online Strategic Decision Making with Information Asymmetry and Knowledge Transportability",
+      "abstract": "Information asymmetry is a pervasive feature of multi-agent systems, especially evident in economics and social sciences. In these settings, agents tailor their actions based on private information to maximize their rewards. These strategic behaviors often introduce complexities due to confounding variables. Simultaneously, knowledge transportability poses another significant challenge, arising from the difficulties of conducting experiments in target environments. It requires transferring knowledge from environments where empirical data is more readily available. Against these backdrops, this paper explores a fundamental question in online learning: Can we employ non-i.i.d. actions to learn about confounders even when requiring knowledge transfer? We present a sample-efficient algorithm designed to accurately identify system dynamics under information asymmetry and to navigate the challenges of knowledge transfer effectively in reinforcement learning, framed within an online strategic interaction model. Our method provably achieves learning of an $\\epsilon$-optimal policy with a tight sample complexity of $\\tilde{O}(1/\\epsilon^2)$.",
+      "venue": "ICML 2025",
+      "authors": [
+        "Jiachen Hu",
+        "Rui Ai",
+        "Han Zhong",
+        "Xiaoyu Chen",
+        "Liwei Wang",
+        "Zhaoran Wang",
+        "Zhuoran Yang"
+      ],
+      "paper_id": "44600",
+      "pdf_url": "",
+      "forum_url": "https://ICML.cc/forum?id=2025/poster/44600"
+    },
+    {
+      "title": "Wolfpack Adversarial Attack for Robust Multi-Agent Reinforcement Learning",
+      "abstract": "Traditional robust methods in multi-agent reinforcement learning (MARL) often struggle against coordinated adversarial attacks in cooperative scenarios. To address this limitation, we propose the Wolfpack Adversarial Attack framework, inspired by wolf hunting strategies, which targets an initial agent and its assisting agents to disrupt cooperation. Additionally, we introduce the Wolfpack-Adversarial Learning for MARL (WALL) framework, which trains robust MARL policies to defend against the proposed Wolfpack attack by fostering system-wide collaboration. Experimental results underscore the devastating impact of the Wolfpack attack and the significant robustness improvements achieved by WALL. Our code is available at https://github.com/sunwoolee0504/WALL.",
+      "venue": "ICML 2025",
+      "authors": [
+        "Sunwoo Lee",
+        "Jaebak Hwang",
+        "Yonghyeon Jo",
+        "Seungyul Han"
+      ],
+      "paper_id": "46646",
+      "pdf_url": "",
+      "forum_url": "https://ICML.cc/forum?id=2025/poster/46646"
+    }
+  ]
+}

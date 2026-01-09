@@ -1,0 +1,68 @@
+{
+  "name": "状态与观测表示学习",
+  "paper_count": 4,
+  "summary": "本类别聚焦于强化学习智能体如何处理和适应动态变化的状态或观测空间。核心挑战在于当环境的状态特征因传感器维护、升级或故障而发生变化时，如何保证已部署策略的性能不出现灾难性下降。研究内容包括：形式化定义状态可演化强化学习问题；通过复用旧策略的行为经验进行离线学习，以快速适应新状态空间；构建状态重建模型以处理传感器缺失；以及设计自动集成机制来动态组合新旧策略，从而在状态空间演变时实现高效、鲁棒的策略迁移与重用，避免代价高昂的重新探索。",
+  "papers": [
+    {
+      "title": "Learning to Reuse Policies in State Evolvable Environments",
+      "abstract": "The policy trained via reinforcement learning (RL) makes decisions based on sensor-derived state features. It is common for state features to evolve for reasons such as periodic sensor maintenance or the addition of new sensors for performance improvement. The deployed policy fails in new state space when state features are unseen during training. Previous work tackles this challenge by training a sensor-invariant policy or generating multiple policies and selecting the appropriate one with limited samples. However, both directions struggle to guarantee the performance when faced with unpredictable evolutions. In this paper, we formalize this problem as state evolvable reinforcement learning (SERL), where the agent is required to mitigate policy degradation after state evolutions without costly exploration. We propose **Lapse** by reusing policies learned from the old state space in two distinct aspects. On one hand, Lapse directly reuses the *robust* old policy by composing it with a learned state reconstruction model to handle vanishing sensors. On the other hand, the behavioral experience from the old policy is reused by Lapse to train a newly adaptive policy through offline learning, better utilizing new sensors. To leverage advantages of both policies in different scenarios, we further propose *automatic ensemble weight adjustment* to effectively aggregate them. Theoretically, we justify that robust policy reuse helps mitigate uncertainty and error from both evolution and reconstruction. Empirically, Lapse achieves a significant performance improvement, outperforming the strongest baseline by about $2\\times$ in benchmark environments.",
+      "venue": "ICML 2025",
+      "authors": [
+        "Ziqian Zhang",
+        "Bohan Yang",
+        "Lihe Li",
+        "Yuqi Bian",
+        "Ruiqi Xue",
+        "Feng Chen",
+        "Yi-Chen Li",
+        "lei yuan",
+        "Yang Yu"
+      ],
+      "paper_id": "46639",
+      "pdf_url": "",
+      "forum_url": "https://ICML.cc/forum?id=2025/poster/46639"
+    },
+    {
+      "title": "Proto Successor Measure: Representing the Behavior Space of an RL Agent",
+      "abstract": "Having explored an environment, intelligent agents should be able to transfer their knowledge to most downstream tasks within that environment without additional interactions. Referred to as \"zero-shot learning\", this ability remains elusive for general-purpose reinforcement learning algorithms.  While recent works have attempted to produce zero-shot RL agents, they make assumptions about the nature of the tasks or the structure of the MDP. We present *Proto Successor Measure*: the basis set for all possible behaviors of a Reinforcement Learning Agent in a dynamical system. We prove that any possible behavior (represented using visitation distributions) can be represented using an affine combination of these policy-independent basis functions. Given a reward function at test time, we simply need to find the right set of linear weights to combine these bases corresponding to the optimal policy. We derive a practical algorithm to learn these basis functions using reward-free interaction data from the environment and show that our approach can produce the near-optimal policy at test time for any given reward function without additional environmental interactions. Project page: agarwalsiddhant10.github.io/projects/psm.html.",
+      "venue": "ICML 2025",
+      "authors": [
+        "Siddhant Agarwal",
+        "Harshit Sikchi",
+        "Peter Stone",
+        "Amy Zhang"
+      ],
+      "paper_id": "44149",
+      "pdf_url": "",
+      "forum_url": "https://ICML.cc/forum?id=2025/poster/44149"
+    },
+    {
+      "title": "Sliding Puzzles Gym: A Scalable Benchmark for State Representation in Visual Reinforcement Learning",
+      "abstract": "Effective visual representation learning is crucial for reinforcement learning (RL) agents to extract task-relevant information from raw sensory inputs and generalize across diverse environments. However, existing RL benchmarks lack the ability to systematically evaluate representation learning capabilities in isolation from other learning challenges. To address this gap, we introduce the Sliding Puzzles Gym (SPGym), a novel benchmark that transforms the classic 8-tile puzzle into a visual RL task with images drawn from arbitrarily large datasets. SPGym's key innovation lies in its ability to precisely control representation learning complexity through adjustable grid sizes and image pools, while maintaining fixed environment dynamics, observation, and action spaces. This design enables researchers to isolate and scale the visual representation challenge independently of other learning components. Through extensive experiments with model-free and model-based RL algorithms, we uncover fundamental limitations in current methods' ability to handle visual diversity. As we increase the pool of possible images, all algorithms exhibit in- and out-of-distribution performance degradation, with sophisticated representation learning techniques often underperforming simpler approaches like data augmentation. These findings highlight critical gaps in visual representation learning for RL and establish SPGym as a valuable tool for driving progress in robust, generalizable decision-making systems.",
+      "venue": "ICML 2025",
+      "authors": [
+        "Bryan L. M. de Oliveira",
+        "Luana G. B. Martins",
+        "Bruno Brandão",
+        "Murilo L. da Luz",
+        "Telma Woerle de Lima Soares",
+        "Luckeciano C. Melo"
+      ],
+      "paper_id": "43653",
+      "pdf_url": "",
+      "forum_url": "https://ICML.cc/forum?id=2025/poster/43653"
+    },
+    {
+      "title": "Zero Shot Generalization of Vision-Based RL Without Data Augmentation",
+      "abstract": "Generalizing vision-based reinforcement learning (RL) agents to novel environments remains a difficult and open challenge. Current trends are to collect large-scale datasets or use data augmentation techniques to prevent overfitting and improve downstream generalization. However, the computational and data collection costs increase exponentially with the number of task variations and can destabilize the already difficult task of training RL agents. In this work, we take inspiration from recent advances in computational neuroscience and propose a model, Associative Latent DisentAnglement (ALDA), that builds on standard off-policy RL towards zero-shot generalization. Specifically, we revisit the role of latent disentanglement in RL and show how combining it with a model of associative memory achieves zero-shot generalization on difficult task variations *without* relying on data augmentation. Finally, we formally show that data augmentation techniques are a form of weak disentanglement and discuss the implications of this insight.",
+      "venue": "ICML 2025",
+      "authors": [
+        "Sumeet Batra",
+        "Gaurav Sukhatme"
+      ],
+      "paper_id": "44254",
+      "pdf_url": "",
+      "forum_url": "https://ICML.cc/forum?id=2025/poster/44254"
+    }
+  ]
+}

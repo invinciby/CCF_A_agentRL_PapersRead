@@ -1,0 +1,126 @@
+{
+  "name": "联邦与分布式强化学习",
+  "paper_count": 8,
+  "summary": "本类别聚焦于在数据分散、设备异构或隐私敏感的场景下，如何高效、协同地训练强化学习智能体。核心研究方向包括：提出异步分布式强化学习框架（如DistRL），通过集中训练与分散数据采集来优化移动设备上控制智能体的在线微调效率；研究个性化联邦强化学习（如PFedRL-Rep），利用共享表征与个性化权重来应对不同智能体面临的异构环境，并理论证明其线性加速收敛。这些工作旨在解决现实部署中数据孤岛、计算资源受限和隐私保护等挑战，推动强化学习从集中式仿真走向分布式实际应用。",
+  "papers": [
+    {
+      "title": "DistRL: An Asynchronous Distributed Reinforcement Learning Framework for On-Device Control Agent",
+      "abstract": "On-device control agents, especially on mobile devices, are responsible for operating mobile devices to fulfill users' requests, enabling seamless and intuitive interactions. Integrating Multimodal Large Language Models (MLLMs) into these agents enhances their ability to understand and execute complex commands, thereby improving user experience. However, fine-tuning MLLMs for on-device control presents significant challenges due to limited data availability and inefficient online training processes. This paper introduces DistRL, a novel framework designed to enhance the efficiency of online RL fine-tuning for mobile device control agents. DistRL employs centralized training and decentralized data acquisition to ensure efficient fine-tuning in the context of dynamic online interactions. Additionally, the framework is backed by our tailor-made RL algorithm, which effectively balances exploration with the prioritized utilization of collected data to ensure stable and robust training. Our experiments show that, on average, DistRL delivers a 3$\\times$ improvement in training efficiency and enables training data collection 2.4$\\times$ faster than the leading synchronous multi-machine methods. Notably, after training, DistRL achieves a 20\\% relative improvement in success rate compared to state-of-the-art methods on general Android tasks from an open benchmark, significantly outperforming existing approaches while maintaining the same training time. These results validate DistRL as a scalable and efficient solution, offering substantial improvements in both training efficiency and agent performance for real-world, in-the-wild device control tasks.",
+      "venue": "ICLR 2025",
+      "authors": [
+        "Taiyi Wang",
+        "Zhihao Wu",
+        "Jianheng Liu",
+        "Jianye HAO",
+        "Jun Wang",
+        "Kun Shao"
+      ],
+      "paper_id": "LPG8pPSfQD",
+      "pdf_url": "https://openreview.net/pdf/b0ac68a1bdcdb9b6e72ee52644ecbb6103901c0a.pdf",
+      "forum_url": "https://openreview.net/forum?id=LPG8pPSfQD"
+    },
+    {
+      "title": "On the Linear Speedup of Personalized Federated Reinforcement Learning with Shared Representations",
+      "abstract": "Federated reinforcement learning (FedRL) enables multiple agents to collaboratively learn a policy without needing to share the local trajectories collected during agent-environment interactions. However, in practice, the environments faced by different agents are often heterogeneous, but since existing FedRL algorithms learn a single policy across all agents, this may lead to poor performance. In this paper, we introduce a personalized FedRL framework (PFedRL) by taking advantage of possibly shared common structure among agents in heterogeneous environments. Specifically, we develop a class of PFedRL algorithms named PFedRL-Rep that learns (1) a shared feature representation collaboratively among all agents, and (2) an agent-specific weight vector personalized to its local environment. We analyze the convergence of PFedTD-Rep, a particular instance of the framework with temporal difference (TD) learning and linear representations. To the best of our knowledge, we are the first to prove a linear convergence speedup with respect to the number of agents in the PFedRL setting. To achieve this, we show that PFedTD-Rep is an example of federated two-timescale stochastic approximation with Markovian noise. Experimental results demonstrate that PFedTD-Rep, along with an extension to the control setting based on deep Q-networks (DQN), not only improve learning in heterogeneous settings, but also provide better generalization to new environments.",
+      "venue": "ICLR 2025",
+      "authors": [
+        "GUOJUN XIONG",
+        "Shufan Wang",
+        "Daniel Jiang",
+        "Jian Li"
+      ],
+      "paper_id": "BfUDZGqCAu",
+      "pdf_url": "https://openreview.net/pdf/f2964da016f815b33cba5fa06b5948702eced543.pdf",
+      "forum_url": "https://openreview.net/forum?id=BfUDZGqCAu"
+    },
+    {
+      "title": "Asynchronous Federated Reinforcement Learning with Policy Gradient Updates: Algorithm Design and Convergence Analysis",
+      "abstract": "To improve the efficiency of reinforcement learning (RL), we propose a novel asynchronous federated reinforcement learning (FedRL) framework termed AFedPG, which constructs a global model through collaboration among $N$ agents using policy gradient (PG) updates. To address the challenge of lagged policies in asynchronous settings, we design a delay-adaptive lookahead technique *specifically for FedRL* that can effectively handle heterogeneous arrival times of policy gradients. We analyze the theoretical global convergence bound of AFedPG, and characterize the advantage of the proposed algorithm in terms of both the sample complexity and time complexity. Specifically, our AFedPG method achieves $\\mathcal{O}(\\frac{{\\epsilon}^{-2.5}}{N})$ sample complexity for global convergence at each agent on average. Compared to the single agent setting with $\\mathcal{O}(\\epsilon^{-2.5})$ sample complexity, it enjoys a linear speedup with respect to the number of agents. Moreover, compared to synchronous FedPG, AFedPG improves the time complexity from $\\mathcal{O}(\\frac{t_{\\max}}{N})$ to $\\mathcal{O}({\\sum_{i=1}^{N} \\frac{1}{t_{i}}})^{-1}$, where $t_{i}$ denotes the time consumption in each iteration at agent $i$, and $t_{\\max}$ is the largest one. The latter complexity $\\mathcal{O}({\\sum_{i=1}^{N} \\frac{1}{t_{i}}})^{-1}$ is always smaller than the former one, and this improvement becomes significant in large-scale federated settings with heterogeneous computing powers ($t_{\\max}\\gg t_{\\min}$). Finally, we empirically verify the improved performance of AFedPG in four widely used MuJoCo environments with varying numbers of agents. We also demonstrate the advantages of AFedPG in various computing heterogeneity scenarios.",
+      "venue": "ICLR 2025",
+      "authors": [
+        "Guangchen Lan",
+        "Dong-Jun Han",
+        "Abolfazl Hashemi",
+        "Vaneet Aggarwal",
+        "Christopher Brinton"
+      ],
+      "paper_id": "5DUekOKWcS",
+      "pdf_url": "https://openreview.net/pdf/d4e1723ad3b864b8092af3a372f5d804dc4bf0a0.pdf",
+      "forum_url": "https://openreview.net/forum?id=5DUekOKWcS"
+    },
+    {
+      "title": "Federated $Q$-Learning with Reference-Advantage Decomposition: Almost Optimal Regret and Logarithmic Communication Cost",
+      "abstract": "In this paper, we consider model-free federated reinforcement learning for tabular episodic Markov decision processes. Under the coordination of a central server, multiple agents collaboratively explore the environment and learn an optimal policy without sharing their raw data. Despite recent advances in federated $Q$-learning algorithms achieving near-linear regret speedup with low communication cost, existing algorithms only attain suboptimal regrets compared to the information bound. We propose a novel model-free federated $Q$-Learning algorithm, termed FedQ-Advantage. Our algorithm leverages reference-advantage decomposition for variance reduction and adopts three novel designs: separate event-triggered communication and policy switching, heterogeneous communication triggering conditions, and optional forced synchronization. We prove that our algorithm not only requires a lower logarithmic communication cost but also achieves an almost optimal regret, reaching the information bound up to a logarithmic factor and near-linear regret speedup compared to its single-agent counterpart when the time horizon is sufficiently large.",
+      "venue": "ICLR 2025",
+      "authors": [
+        "Zhong Zheng",
+        "Haochen Zhang",
+        "Lingzhou Xue"
+      ],
+      "paper_id": "FoUpv84hMw",
+      "pdf_url": "https://openreview.net/pdf/480c934d23cf5347860512ac00b22096bc913589.pdf",
+      "forum_url": "https://openreview.net/forum?id=FoUpv84hMw"
+    },
+    {
+      "title": "Centralized Reward Agent for Knowledge Sharing and Transfer in Multi-Task Reinforcement Learning",
+      "abstract": "Reward shaping is effective in addressing the sparse-reward challenge in reinforcement learning (RL) by providing immediate feedback through auxiliary, informative rewards. Based on the reward shaping strategy, we propose a novel multi-task reinforcement learning framework that integrates a centralized reward agent (CRA) and multiple distributed policy agents. The CRA functions as a knowledge pool, aimed at distilling knowledge from various tasks and distributing it to individual policy agents to improve learning efficiency. Specifically, the shaped rewards serve as a straightforward metric for encoding knowledge. This framework not only enhances knowledge sharing across established tasks but also adapts to new tasks by transferring meaningful reward signals. We validate the proposed method on both discrete and continuous domains, including the representative Meta-World benchmark, demonstrating its robustness in multi-task sparse-reward settings and its effective transferability to unseen tasks.",
+      "venue": "NeurIPS 2025",
+      "authors": [
+        "Haozhe Ma",
+        "Zhengding Luo",
+        "Thanh Vinh Vo",
+        "Kuankuan Sima",
+        "Tze-Yun Leong"
+      ],
+      "paper_id": "MyCKtV9CpR",
+      "pdf_url": "https://openreview.net/pdf/38ee6499e41e6f21693d91c32df96a859b26ef67.pdf",
+      "forum_url": "https://openreview.net/forum?id=MyCKtV9CpR"
+    },
+    {
+      "title": "A Reinforcement Learning-based Bidding Strategy for Data Consumers in Auction-based Federated Learning",
+      "abstract": "Auction-based Federated Learning (AFL) fosters collaboration among self-interested data consumers (DCs) and data owners (DOs). A major challenge in AFL pertains to how DCs select and bid for DOs. Existing methods are generally static, making them ill-suited for dynamic AFL markets. To address this issue, we propose the R}einforcement Learning-based Bidding Strategy for DCs in Auction-based Federated Learning (RLB-AFL). We incorporate historical states into a Deep Q-Network to capture sequential information critical for bidding decisions. To mitigate state space sparsity, where specific states rarely reoccur for each DC during auctions, we incorporate the Gaussian Mixture Model into RLB-AFL. This facilitates soft clustering on sequential states, reducing the state space dimensionality and easing exploration and action-value function approximation. In addition, we enhance the $\\epsilon$-greedy policy to help the RLB-AFL agent balance exploitation and exploration, enabling it to be more adaptable in the AFL decision-making process. Extensive experiments under 6 widely used benchmark datasets demonstrate that RLB-AFL achieves superior performance compared to 8 state-of-the-art approaches. It outperforms the best baseline by 10.56% and 3.15% in terms of average total utility",
+      "venue": "NeurIPS 2025",
+      "authors": [
+        "Xiaoli Tang",
+        "Han Yu",
+        "Xiaoxiao Li"
+      ],
+      "paper_id": "zIbNGkaYij",
+      "pdf_url": "https://openreview.net/pdf/0a4297dcbadc49dd5371a7d70312b3ca269a1f97.pdf",
+      "forum_url": "https://openreview.net/forum?id=zIbNGkaYij"
+    },
+    {
+      "title": "Regret-Optimal Q-Learning with Low Cost for Single-Agent and Federated Reinforcement Learning",
+      "abstract": "Motivated by real-world settings where data collection and policy deployment&mdash;whether for a single agent or across multiple agents&mdash;are costly, we study the problem of on-policy single-agent reinforcement learning (RL) and federated RL (FRL) with a focus on minimizing burn-in costs (the sample sizes needed to reach near-optimal regret) and policy switching or communication costs. In parallel finite-horizon episodic Markov Decision Processes (MDPs) with $S$ states and $A$ actions, existing methods either require superlinear burn-in costs in $S$ and $A$ or fail to achieve logarithmic switching or communication costs. We propose two novel model-free RL algorithms&mdash;Q-EarlySettled-LowCost and FedQ-EarlySettled-LowCost&mdash;that are the first in the literature to simultaneously achieve: (i) the best near-optimal regret among all known model-free RL or FRL algorithms, (ii) low burn-in cost that scales linearly with $S$ and $A$, and (iii) logarithmic policy switching cost for single-agent RL or communication cost for FRL. Additionally, we establish gap-dependent theoretical guarantees for both regret and switching/communication costs, improving or matching the best-known gap-dependent bounds.",
+      "venue": "NeurIPS 2025",
+      "authors": [
+        "Haochen Zhang",
+        "Zhong Zheng",
+        "Lingzhou Xue"
+      ],
+      "paper_id": "fNOCsycDG4",
+      "pdf_url": "https://openreview.net/pdf/9fdf381a6fd2375639fa023f4e0cbc445526c5ab.pdf",
+      "forum_url": "https://openreview.net/forum?id=fNOCsycDG4"
+    },
+    {
+      "title": "LBI-FL: Low-Bit Integerized Federated Learning with Temporally Dynamic Bit-Width Allocation",
+      "abstract": "Federated learning (FL) is greatly challenged by the communication bottleneck and computation limitation on clients. Existing methods based on quantization for FL cannot simultaneously reduce the uplink and downlink communication cost and mitigate the computation burden on clients. To address this problem, in this paper, we propose the first low-bit integerized federated learning (LBI-FL) framework that quantizes the weights, activations, and gradients to lower than INT8 precision to evidently reduce the communication and computational costs. Specifically, we achieve dynamical temporal bit-width allocation for weights, activations, and gradients along the training trajectory via reinforcement learning. An agent is trained to determine bit-width allocation by comprehensively considering the states like current bit-width, training stage, and quantization loss as the state. The agent efficiently trained on small-scale datasets can be well generalized to train varying network architectures on non-independent and identically distributed datasets. Furthermore, we demonstrated in theory that federated learning with gradient quantization achieves an equivalent convergence rate to FedAvg. The proposed LBI-FL can  reduce the communication costs by 8 times compared to full-precision FL. Extensive experiments show that the proposed LBI-FL achieves a reduction of more than 50\\% BitOPs per client on average for FL with less than 2\\% accuracy loss compared to low-bit training with INT8 precision.",
+      "venue": "ICML 2025",
+      "authors": [
+        "Li Ding",
+        "Hao Zhang",
+        "Wenrui Dai",
+        "Chenglin Li",
+        "Weijia Lu",
+        "ZHIFEI YANG",
+        "xiaodong Zhang",
+        "Xiaofeng Ma",
+        "Junni Zou",
+        "Hongkai Xiong"
+      ],
+      "paper_id": "44187",
+      "pdf_url": "",
+      "forum_url": "https://ICML.cc/forum?id=2025/poster/44187"
+    }
+  ]
+}

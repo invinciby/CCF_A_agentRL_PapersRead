@@ -1,0 +1,224 @@
+{
+  "name": "强化学习中的表示学习与技能组合",
+  "paper_count": 15,
+  "summary": "该类别专注于强化学习中与表示学习和技能组合相关的研究。研究重点在于如何从高维观测（如视频）或经验中学习有效的状态或技能表示，以支持高效的决策和泛化。相关工作包括利用时序对比学习、前向建模等方法从视频数据中预训练状态表示，以及通过组合预学习的技能基元（Skill Primitives）来实现对复杂时序逻辑任务规范的零样本泛化。这些方法旨在解决样本效率、泛化能力和长期任务规划等核心挑战，为构建更通用、更灵活的智能体奠定基础。",
+  "papers": [
+    {
+      "title": "Skill Machines: Temporal Logic Skill Composition in Reinforcement Learning",
+      "abstract": "It is desirable for an agent to be able to solve a rich variety of problems that can be specified through language in the same environment. A popular approach towards obtaining such agents is to reuse skills learned in prior tasks to generalise compositionally to new ones. However, this is a challenging problem due to the curse of dimensionality induced by the combinatorially large number of ways high-level goals can be combined both logically and temporally in language. To address this problem, we propose a framework where an agent first learns a sufficient set of skill primitives to achieve all high-level goals in its environment. The agent can then flexibly compose them both logically and temporally to provably achieve temporal logic specifications in any regular language, such as regular fragments of linear temporal logic. This provides the agent with the ability to map from complex temporal logic task specifications to near-optimal behaviours zero-shot. We demonstrate this experimentally in a tabular setting, as well as in a high-dimensional video game and continuous control environment. Finally, we also demonstrate that the performance of skill machines can be improved with regular off-policy reinforcement learning algorithms when optimal behaviours are desired.",
+      "venue": "ICLR 2024",
+      "authors": [
+        "Geraud Nangue Tasse",
+        "Devon Jarvis",
+        "Steven James",
+        "Benjamin Rosman"
+      ],
+      "paper_id": "17719",
+      "pdf_url": "",
+      "forum_url": "https://iclr.cc/forum?id=2024/poster/17719"
+    },
+    {
+      "title": "Spatially-Aware Transformers for Embodied Agents",
+      "abstract": "Episodic memory plays a crucial role in various cognitive processes, such as the ability to mentally recall past events. While cognitive science emphasizes the significance of spatial context in the formation and retrieval of episodic memory, the current primary approach to implementing episodic memory in AI systems is through transformers that store temporally ordered experiences, which overlooks the spatial dimension. As a result, it is unclear how the underlying structure could be extended to incorporate the spatial axis beyond temporal order alone and thereby what benefits can be obtained. To address this, this paper explores the use of Spatially-Aware Transformer models that incorporate spatial information. These models enable the creation of place-centric episodic memory that considers both temporal and spatial dimensions. Adopting this approach, we demonstrate that memory utilization efficiency can be improved, leading to enhanced accuracy in various place-centric downstream tasks. Additionally, we propose the Adaptive Memory Allocator, a memory management method based on reinforcement learning that aims to optimize efficiency of memory utilization. Our experiments demonstrate the advantages of our proposed model in various environments and across multiple downstream tasks, including prediction, generation, reasoning, and reinforcement learning. The source code for our models and experiments will be available at \\href{https://github.com/spatially_aware_transformer}{https://github.com/spatially_aware_transformer}.",
+      "venue": "ICLR 2024",
+      "authors": [
+        "Junmo Cho",
+        "Jaesik Yoon",
+        "Sungjin Ahn"
+      ],
+      "paper_id": "18546",
+      "pdf_url": "",
+      "forum_url": "https://iclr.cc/forum?id=2024/poster/18546"
+    },
+    {
+      "title": "Unveiling Options with Neural Network Decomposition",
+      "abstract": "In reinforcement learning, agents often learn policies for specific tasks without the ability to generalize this knowledge to related tasks. This paper introduces an algorithm that attempts to address this limitation by decomposing neural networks encoding policies for Markov Decision Processes into reusable sub-policies, which are used to synthesize temporally extended actions, or options. We consider neural networks with piecewise linear activation functions, so that they can be mapped to an equivalent tree that is similar to oblique decision trees. Since each node in such a tree serves as a function of the input of the tree, each sub-tree is a sub-policy of the main policy. We turn each of these sub-policies into options by wrapping it with while-loops of varied number of iterations. Given the large number of options, we propose a selection mechanism based on minimizing the Levin loss for a uniform policy on these options. Empirical results in two grid-world domains where exploration can be difficult confirm that our method can identify useful options, thereby accelerating the learning process on similar but different tasks.",
+      "venue": "ICLR 2024",
+      "authors": [
+        "Mahdi Alikhasi",
+        "Levi Lelis"
+      ],
+      "paper_id": "18376",
+      "pdf_url": "",
+      "forum_url": "https://iclr.cc/forum?id=2024/poster/18376"
+    },
+    {
+      "title": "Emergence of In-Context Reinforcement Learning from Noise Distillation",
+      "abstract": "Recently, extensive studies in Reinforcement Learning have been carried out on the ability of transformers to adapt in-context to various environments and tasks. Current in-context RL methods are limited by their strict requirements for data, which needs to be generated by RL agents or labeled with actions from an optimal policy. In order to address this prevalent problem, we propose AD$^\\varepsilon$, a new data acquisition approach that enables in-context Reinforcement Learning from noise-induced curriculum. We show that it is viable to construct a synthetic noise injection curriculum which helps to obtain learning histories. Moreover, we experimentally demonstrate that it is possible to alleviate the need for generation using optimal policies, with in-context RL still able to outperform the best suboptimal policy in a learning dataset by a 2x margin.",
+      "venue": "ICML 2024",
+      "authors": [
+        "Ilya Zisman",
+        "Vladislav Kurenkov",
+        "Alexander Nikulin",
+        "Viacheslav Sinii",
+        "Sergey Kolesnikov"
+      ],
+      "paper_id": "33784",
+      "pdf_url": "",
+      "forum_url": "https://ICML.cc/forum?id=2024/poster/33784"
+    },
+    {
+      "title": "Unsupervised Zero-Shot Reinforcement Learning via Functional Reward Encodings",
+      "abstract": "Can we pre-train a generalist agent from a large amount of unlabeled offline trajectories such that it can be immediately adapted to any new downstream tasks in a zero-shot manner? In this work, we present a *functional* reward encoding (FRE) as a general, scalable solution to this *zero-shot RL* problem. Our main idea is to learn functional representations of any arbitrary tasks by encoding their state-reward samples using a transformer-based variational auto-encoder. This functional encoding not only enables the pre-training of an agent from a wide diversity of general unsupervised reward functions, but also provides a way to solve any new downstream tasks in a zero-shot manner, given a small number of reward-annotated samples. We empirically show that FRE agents trained on diverse random unsupervised reward functions can generalize to solve novel tasks in a range of simulated robotic benchmarks, often outperforming previous zero-shot RL and offline RL methods.",
+      "venue": "ICML 2024",
+      "authors": [
+        "Kevin Frans",
+        "Seohong Park",
+        "Pieter Abbeel",
+        "Sergey Levine"
+      ],
+      "paper_id": "33701",
+      "pdf_url": "",
+      "forum_url": "https://ICML.cc/forum?id=2024/poster/33701"
+    },
+    {
+      "title": "Zero-Shot Reinforcement Learning via Function Encoders",
+      "abstract": "Although reinforcement learning (RL) can solve many challenging sequential decision making problems, achieving *zero-shot* transfer across related tasks remains a challenge. The difficulty lies in finding a good representation for the current task so that the agent understands how it relates to previously seen tasks. To achieve zero-shot transfer, we introduce the *function encoder*, a representation learning algorithm which represents a function as a weighted combination of learned, non-linear basis functions. By using a function encoder to represent the reward function or the transition function, the agent has information on how the current task relates to previously seen tasks via a coherent vector representation. Thus, the agent is able to achieve transfer between related tasks at run time with no additional training. We demonstrate state-of-the-art data efficiency, asymptotic performance, and training stability in three RL fields by augmenting basic RL algorithms with a function encoder task representation.",
+      "venue": "ICML 2024",
+      "authors": [
+        "Tyler Ingebrand",
+        "Amy Zhang",
+        "Ufuk Topcu"
+      ],
+      "paper_id": "32872",
+      "pdf_url": "",
+      "forum_url": "https://ICML.cc/forum?id=2024/poster/32872"
+    },
+    {
+      "title": "Compositional Automata Embeddings for Goal-Conditioned Reinforcement Learning",
+      "abstract": "Goal-conditioned reinforcement learning is a powerful way to control an AI agent's behavior at runtime. That said, popular goal representations, e.g., target states or natural language, are either limited to Markovian tasks or rely on ambiguous task semantics. We propose representing temporal goals using compositions of deterministic finite automata (cDFAs) and use cDFAs to guide RL agents. cDFAs balance the need for formal temporal semantics with ease of interpretation: if one can understand a flow chart, one can understand a cDFA. On the other hand, cDFAs form a countably infinite concept class with Boolean semantics, and subtle changes to the automaton can result in very different tasks, making them difficult to condition agent behavior on. To address this, we observe that all paths through a DFA correspond to a series of reach-avoid tasks and propose pre-training graph neural network embeddings on \"reach-avoid derived\" DFAs. Through empirical evaluation, we demonstrate that the proposed pre-training method enables zero-shot generalization to various cDFA task classes and accelerated policy specialization without the myopic suboptimality of hierarchical methods.",
+      "venue": "NeurIPS 2024",
+      "authors": [
+        "Beyazit Yalcinkaya",
+        "Niklas Lauffer",
+        "Marcell Vazquez-Chanlatte",
+        "Sanjit Seshia"
+      ],
+      "paper_id": "96533",
+      "pdf_url": "",
+      "forum_url": "https://neurips.cc/forum?id=2024/poster/96533"
+    },
+    {
+      "title": "Disentangled Unsupervised Skill Discovery for Efficient Hierarchical Reinforcement Learning",
+      "abstract": "A hallmark of intelligent agents is the ability to learn reusable skills purely from unsupervised interaction with the environment. However, existing unsupervised skill discovery methods often learn entangled skills where one skill variable simultaneously influences many entities in the environment, making downstream skill chaining extremely challenging. We propose Disentangled Unsupervised Skill Discovery (DUSDi), a method for learning disentangled skills that can be efficiently reused to solve downstream tasks. DUSDi decomposes skills into disentangled components, where each skill component only affects one factor of the state space. Importantly, these skill components can be concurrently composed to generate low-level actions, and efficiently chained to tackle downstream tasks through hierarchical Reinforcement Learning. DUSDi defines a novel mutual-information-based objective to enforce disentanglement between the influences of different skill components, and utilizes value factorization to optimize this objective efficiently. Evaluated in a set of challenging environments, DUSDi successfully learns disentangled skills, and significantly outperforms previous skill discovery methods when it comes to applying the learned skills to solve downstream tasks.",
+      "venue": "NeurIPS 2024",
+      "authors": [
+        "Jiaheng Hu",
+        "Zizhao Wang",
+        "Peter Stone",
+        "Roberto Martín-Martín"
+      ],
+      "paper_id": "94271",
+      "pdf_url": "",
+      "forum_url": "https://neurips.cc/forum?id=2024/poster/94271"
+    },
+    {
+      "title": "Distributional Successor Features Enable Zero-Shot Policy Optimization",
+      "abstract": "Intelligent agents must be generalists, capable of quickly adapting to various tasks. In reinforcement learning (RL), model-based RL learns a dynamics model of the world, in principle enabling transfer to arbitrary reward functions through planning. However, autoregressive model rollouts suffer from compounding error, making model-based RL ineffective for long-horizon problems. Successor features offer an alternative by modeling a policy's long-term state occupancy, reducing policy evaluation under new rewards to linear regression. Yet, policy optimization with successor features can be challenging. This work proposes a novel class of models, i.e., Distributional Successor Features for Zero-Shot Policy Optimization (DiSPOs), that learn a distribution of successor features of a stationary dataset's behavior policy, along with a policy that acts to realize different successor features within the dataset. By directly modeling long-term outcomes in the dataset, DiSPOs avoid compounding error while enabling a simple scheme for zero-shot policy optimization across reward functions. We present a practical instantiation of DiSPOs using diffusion models and show their efficacy as a new class of transferable models, both theoretically and empirically across various simulated robotics problems. Videos and code are available at https://weirdlabuw.github.io/dispo/.",
+      "venue": "NeurIPS 2024",
+      "authors": [
+        "Chuning Zhu",
+        "Xinqi Wang",
+        "Tyler Han",
+        "Simon Du",
+        "Abhishek Gupta"
+      ],
+      "paper_id": "96379",
+      "pdf_url": "",
+      "forum_url": "https://neurips.cc/forum?id=2024/poster/96379"
+    },
+    {
+      "title": "Interpretable Concept Bottlenecks to Align Reinforcement Learning Agents",
+      "abstract": "Goal misalignment, reward sparsity and difficult credit assignment are only a few of the many issues that make it difficult for deep reinforcement learning (RL) agents to learn optimal policies. Unfortunately, the black-box nature of deep neural networks impedes the inclusion of domain experts for inspecting the model and revising suboptimal policies.To this end, we introduce Successive Concept Bottleneck Agents (SCoBots), that integrate consecutive concept bottleneck (CB) layers. In contrast to current CB models, SCoBots do not just represent concepts as properties of individual objects, but also as relations between objects which is crucial for many RL tasks. Our experimental results provide evidence of SCoBots' competitive performances, but also of their potential for domain experts to understand and regularize their behavior. Among other things, SCoBots enabled us to identify a previously unknown misalignment problem in the iconic video game, Pong, and resolve it. Overall, SCoBots thus result in more human-aligned RL agents.",
+      "venue": "NeurIPS 2024",
+      "authors": [
+        "Quentin Delfosse",
+        "Sebastian Sztwiertnia",
+        "Mark Rothermel",
+        "Wolfgang Stammer",
+        "Kristian Kersting"
+      ],
+      "paper_id": "94653",
+      "pdf_url": "",
+      "forum_url": "https://neurips.cc/forum?id=2024/poster/94653"
+    },
+    {
+      "title": "Learning Distinguishable Trajectory Representation with Contrastive Loss",
+      "abstract": "Policy network parameter sharing is a commonly used technique in advanced deep multi-agent reinforcement learning (MARL) algorithms to improve learning efficiency by reducing the number of policy parameters and sharing experiences among agents. Nevertheless, agents that share the policy parameters tend to learn similar behaviors. To encourage multi-agent diversity, prior works typically maximize the mutual information between trajectories and agent identities using variational inference. However, this category of methods easily leads to inefficient exploration due to limited trajectory visitations. To resolve this limitation, inspired by the learning of pre-trained models, in this paper, we propose a novel Contrastive Trajectory Representation (CTR) method based on learning distinguishable trajectory representations to encourage multi-agent diversity. Specifically, CTR maps the trajectory of an agent into a latent trajectory representation space by an encoder and an autoregressive model. To achieve the distinguishability among trajectory representations of different agents, we introduce contrastive learning to maximize the mutual information between the trajectory representations and learnable identity representations of different agents. We implement CTR on top of QMIX and evaluate its performance in various cooperative multi-agent tasks. The empirical results demonstrate that our proposed CTR yields significant performance improvement over the state-of-the-art methods.",
+      "venue": "NeurIPS 2024",
+      "authors": [
+        "Tianxu Li",
+        "Kun Zhu",
+        "Juan Li",
+        "Yang Zhang"
+      ],
+      "paper_id": "96102",
+      "pdf_url": "",
+      "forum_url": "https://neurips.cc/forum?id=2024/poster/96102"
+    },
+    {
+      "title": "PEAC: Unsupervised Pre-training for Cross-Embodiment Reinforcement Learning",
+      "abstract": "Designing generalizable agents capable of adapting to diverse embodiments has achieved significant attention in Reinforcement Learning (RL), which is critical for deploying RL agents in various real-world applications. Previous Cross-Embodiment RL approaches have focused on transferring knowledge across embodiments within specific tasks. These methods often result in knowledge tightly coupled with those tasks and fail to adequately capture the distinct characteristics of different embodiments. To address this limitation, we introduce the notion of Cross-Embodiment Unsupervised RL (CEURL), which leverages unsupervised learning to enable agents to acquire embodiment-aware and task-agnostic knowledge through online interactions within reward-free environments. We formulate CEURL as a novel Controlled Embodiment Markov Decision Process (CE-MDP) and systematically analyze CEURL's pre-training objectives under CE-MDP. Based on these analyses, we develop a novel algorithm Pre-trained Embodiment-Aware Control (PEAC) for handling CEURL, incorporating an intrinsic reward function specifically designed for cross-embodiment pre-training. PEAC not only provides an intuitive optimization strategy for cross-embodiment pre-training but also can integrate flexibly with existing unsupervised RL methods, facilitating cross-embodiment exploration and skill discovery. Extensive experiments in both simulated (e.g., DMC and Robosuite) and real-world environments (e.g., legged locomotion) demonstrate that PEAC significantly improves adaptation performance and cross-embodiment generalization, demonstrating its effectiveness in overcoming the unique challenges of CEURL. The project page and code are in https://yingchengyang.github.io/ceurl.",
+      "venue": "NeurIPS 2024",
+      "authors": [
+        "Chengyang Ying",
+        "Hao Zhongkai",
+        "Xinning Zhou",
+        "Xuezhou Xu",
+        "Hang Su",
+        "Xingxing Zhang",
+        "Jun Zhu"
+      ],
+      "paper_id": "95555",
+      "pdf_url": "",
+      "forum_url": "https://neurips.cc/forum?id=2024/poster/95555"
+    },
+    {
+      "title": "Reinforcement Learning Under Latent Dynamics: Toward Statistical and Algorithmic Modularity",
+      "abstract": "Real-world applications of reinforcement learning often involve  environments where agents operate on complex, high-dimensional observations, but the underlying (``latent'')  dynamics are comparatively simple. However, beyond restrictive settings  such as tabular latent dynamics,  the fundamental statistical requirements and algorithmic principles for *reinforcement learning under latent dynamics* are poorly  understood.  This paper addresses the question of reinforcement learning under *general latent dynamics* from a  statistical and algorithmic perspective.  On the statistical side, our main negativeresult shows that *most* well-studied settings for reinforcement learning with function approximation become intractable when composed with rich observations; we complement this with a positive result, identifying *latent pushforward coverability* as ageneral condition that enables statistical tractability. Algorithmically, we develop provably efficient *observable-to-latent* reductions ---that is, reductions that transform an arbitrary algorithm for the  latent MDP into an algorithm that can operate on rich observations--- in two settings: one where the agent has access to hindsightobservations of the latent dynamics (Lee et al., 2023) and onewhere the agent can estimate *self-predictive* latent models (Schwarzer et al., 2020). Together, our results serve as a  first step toward a unified statistical and algorithmic theory forreinforcement learning under latent dynamics.",
+      "venue": "NeurIPS 2024",
+      "authors": [
+        "Philip Amortila",
+        "Dylan J Foster",
+        "Nan Jiang",
+        "Akshay Krishnamurthy",
+        "Zak Mhammedi"
+      ],
+      "paper_id": "93479",
+      "pdf_url": "",
+      "forum_url": "https://neurips.cc/forum?id=2024/poster/93479"
+    },
+    {
+      "title": "SkiLD: Unsupervised Skill Discovery Guided by Factor Interactions",
+      "abstract": "Unsupervised skill discovery carries the promise that an intelligent agent can learn reusable skills through autonomous, reward-free interactions with environments. Existing unsupervised skill discovery methods learn skills by encouraging distinguishable behaviors that cover diverse states. However, in complex environments with many state factors (e.g., household environments with many objects), learning skills that cover all possible states is impossible, and naively encouraging state diversity often leads to simple skills that are not ideal for solving downstream tasks. This work introduces Skill Discovery from Local Dependencies (SkiLD), which leverages state factorization as a natural inductive bias to guide the skill learning process. The key intuition guiding SkiLD is that skills that induce \\textbf{diverse interactions} between state factors are often more valuable for solving downstream tasks. To this end, SkiLD develops a novel skill learning objective that explicitly encourages the mastering of skills that effectively induce different interactions within an environment. We evaluate SkiLD in several domains with challenging, long-horizon sparse reward tasks including a realistic simulated household robot domain, where SkiLD successfully learns skills with clear semantic meaning and shows superior performance compared to existing unsupervised reinforcement learning methods that only maximize state coverage.",
+      "venue": "NeurIPS 2024",
+      "authors": [
+        "Zizhao Wang",
+        "Jiaheng Hu",
+        "Caleb Chuck",
+        "Stephen Chen",
+        "Roberto Martín-Martín",
+        "Amy Zhang",
+        "Scott Niekum",
+        "Peter Stone"
+      ],
+      "paper_id": "94028",
+      "pdf_url": "",
+      "forum_url": "https://neurips.cc/forum?id=2024/poster/94028"
+    },
+    {
+      "title": "Skill-aware Mutual Information Optimisation for Zero-shot Generalisation in Reinforcement Learning",
+      "abstract": "Meta-Reinforcement Learning (Meta-RL) agents can struggle to operate across tasks with varying environmental features that require different optimal skills (i.e., different modes of behaviour). Using context encoders based on contrastive learning to enhance the generalisability of Meta-RL agents is now widely studied but faces challenges such as the requirement for a large sample size, also referred to as the $\\log$-$K$ curse. To improve RL generalisation to different tasks, we first introduce Skill-aware Mutual Information (SaMI), an optimisation objective that aids in distinguishing context embeddings according to skills, thereby equipping RL agents with the ability to identify and execute different skills across tasks. We then propose Skill-aware Noise Contrastive Estimation (SaNCE), a $K$-sample estimator used to optimise the SaMI objective. We provide a framework for equipping an RL agent with SaNCE in practice and conduct experimental validation on modified MuJoCo and Panda-gym benchmarks. We empirically find that RL agents that learn by maximising SaMI achieve substantially improved zero-shot generalisation to unseen tasks. Additionally, the context encoder trained with SaNCE demonstrates greater robustness to a reduction in the number of available samples, thus possessing the potential to overcome the $\\log$-$K$ curse.",
+      "venue": "NeurIPS 2024",
+      "authors": [
+        "Xuehui Yu",
+        "Mhairi Dunion",
+        "Xin Li",
+        "Stefano Albrecht"
+      ],
+      "paper_id": "95867",
+      "pdf_url": "",
+      "forum_url": "https://neurips.cc/forum?id=2024/poster/95867"
+    }
+  ]
+}

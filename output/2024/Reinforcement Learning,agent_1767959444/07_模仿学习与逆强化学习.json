@@ -1,0 +1,237 @@
+{
+  "name": "模仿学习与逆强化学习",
+  "paper_count": 16,
+  "summary": "该类别专注于模仿学习（Imitation Learning）及其相关方法的研究，特别是从观察中学习（Learning from Observation）和逆强化学习（Inverse Reinforcement Learning）。研究重点在于使智能体能够通过观察专家演示（可能不包含动作信息）来学习策略，而无需依赖精心设计的奖励函数。相关工作旨在解决任务中的进度依赖性问题、奖励稀疏性挑战，并开发能够有效从大量未标记视频数据中学习的算法框架。",
+  "papers": [
+    {
+      "title": "Imitation Learning from Observation with Automatic Discount Scheduling",
+      "abstract": "Humans often acquire new skills through observation and imitation. For robotic agents, learning from the plethora of unlabeled video demonstration data available on the Internet necessitates imitating the expert without access to its action, presenting a challenge known as Imitation Learning from Observation (ILfO). A common approach to tackle ILfO problems is to convert them into inverse reinforcement learning problems, utilizing a proxy reward computed from the agent's and the expert's observations. Nonetheless, we identify that tasks characterized by a progress dependency property pose significant challenges for such approaches; in these tasks, the agent needs to initially learn the expert's preceding behaviors before mastering the subsequent ones. Our investigation reveals that the main cause is that the reward signals assigned to later steps hinder the learning of initial behaviors. To address this challenge, we present a novel ILfO framework that enables the agent to master earlier behaviors before advancing to later ones. We introduce an Automatic Discount Scheduling (ADS) mechanism that adaptively alters the discount factor in reinforcement learning during the training phase, prioritizing earlier rewards initially and gradually engaging later rewards only when the earlier behaviors have been mastered. Our experiments, conducted on nine Meta-World tasks, demonstrate that our method significantly outperforms state-of-the-art methods across all tasks, including those that are unsolvable by them. Our code is available at https://il-ads.github.io.",
+      "venue": "ICLR 2024",
+      "authors": [
+        "Yuyang Liu",
+        "Weijun Dong",
+        "Yingdong Hu",
+        "Chuan Wen",
+        "Zhao-Heng Yin",
+        "Chongjie Zhang",
+        "Yang Gao"
+      ],
+      "paper_id": "17778",
+      "pdf_url": "",
+      "forum_url": "https://iclr.cc/forum?id=2024/poster/17778"
+    },
+    {
+      "title": "Provable Reward-Agnostic Preference-Based Reinforcement Learning",
+      "abstract": "Preference-based Reinforcement Learning (PbRL) is a paradigm in which an RL agent learns to optimize a task using pair-wise preference-based feedback over trajectories, rather than explicit reward signals. While PbRL has demonstrated practical success in fine-tuning language models, existing theoretical work focuses on regret minimization and fails to capture most of the practical frameworks. In this study, we fill in such a gap between theoretical PbRL and practical algorithms by proposing a theoretical reward-agnostic PbRL framework where exploratory trajectories that enable accurate learning of hidden reward functions are acquired before collecting any human feedback. Theoretical analysis demonstrates that our algorithm requires less human feedback for learning the optimal policy under preference-based models with linear parameterization and unknown transitions, compared to the existing theoretical literature. Specifically, our framework can incorporate linear and low-rank MDPs with efficient sample complexity. Additionally, we investigate reward-agnostic RL with action-based comparison feedback and introduce an efficient querying algorithm tailored to this scenario.",
+      "venue": "ICLR 2024",
+      "authors": [
+        "Wenhao Zhan",
+        "Masatoshi Uehara",
+        "Wen Sun",
+        "Jason Lee"
+      ],
+      "paper_id": "17417",
+      "pdf_url": "",
+      "forum_url": "https://iclr.cc/forum?id=2024/poster/17417"
+    },
+    {
+      "title": "Quantifying the Sensitivity of Inverse Reinforcement Learning to Misspecification",
+      "abstract": "Inverse reinforcement learning (IRL) aims to infer an agent's *preferences* (represented as a reward function $R$) from their *behaviour* (represented as a policy $\\pi$). To do this, we need a *behavioural model* of how $\\pi$ relates to $R$. In the current literature, the most common behavioural models are *optimality*, *Boltzmann-rationality*, and *causal entropy maximisation*. However, the true relationship between a human's preferences and their behaviour is much more complex than any of these behavioural models. This means that the behavioural models are *misspecified*, which raises the concern that they may lead to systematic errors if applied to real data. In this paper, we analyse how sensitive the IRL problem is to misspecification of the behavioural model. Specifically, we provide necessary and sufficient conditions that completely characterise how the observed data may differ from the assumed behavioural model without incurring an error above a given threshold. In addition to this, we also characterise the conditions under which a behavioural model is robust to small perturbations of the observed policy, and we analyse how robust many behavioural models are to misspecification of their parameter values (such as e.g. the discount rate). Our analysis suggests that the IRL problem is highly sensitive to misspecification, in the sense that very mild misspecification can lead to very large errors in the inferred reward function.",
+      "venue": "ICLR 2024",
+      "authors": [
+        "Joar Skalse",
+        "Alessandro Abate"
+      ],
+      "paper_id": "17757",
+      "pdf_url": "",
+      "forum_url": "https://iclr.cc/forum?id=2024/poster/17757"
+    },
+    {
+      "title": "Query-Policy Misalignment in Preference-Based Reinforcement Learning",
+      "abstract": "Preference-based reinforcement learning (PbRL) provides a natural way to align RL agents’ behavior with human desired outcomes, but is often restrained by costly human feedback. To improve feedback efficiency, most existing PbRL methods focus on selecting queries to maximally improve the overall quality of the reward model, but counter-intuitively, we find that this may not necessarily lead to improved performance. To unravel this mystery, we identify a long-neglected issue in the query selection schemes of existing PbRL studies: Query-Policy Misalignment. We show that the seemingly informative queries selected to improve the overall quality of reward model actually may not align with RL agents’ interests, thus offering little help on policy learning and eventually resulting in poor feedback efficiency. We show that this issue can be effectively addressed via policy-aligned query and a specially designed hybrid experience replay, which together enforce the bidirectional query-policy alignment. Simple yet elegant, our method can be easily incorporated into existing approaches by changing only a few lines of code. We showcase in comprehensive experiments that our method achieves substantial gains in both human feedback and RL sample efficiency, demonstrating the importance of addressing query-policy misalignment in PbRL tasks.",
+      "venue": "ICLR 2024",
+      "authors": [
+        "Xiao Hu",
+        "Jianxiong Li",
+        "Xianyuan Zhan",
+        "Qing-Shan Jia",
+        "Ya-Qin Zhang"
+      ],
+      "paper_id": "18517",
+      "pdf_url": "",
+      "forum_url": "https://iclr.cc/forum?id=2024/poster/18517"
+    },
+    {
+      "title": "Towards Imitation Learning to Branch for MIP: A Hybrid Reinforcement Learning based Sample Augmentation Approach",
+      "abstract": "Branch-and-bound (B\\&B) has long been favored for tackling complex Mixed Integer Programming (MIP) problems, where the choice of branching strategy plays a pivotal role. Recently, Imitation Learning (IL)-based policies have emerged as potent alternatives to traditional rule-based approaches. However, it is nontrivial to acquire high-quality training samples, and IL often converges to suboptimal variable choices for branching, restricting the overall performance. In response to these challenges, we propose a novel hybrid online and offline reinforcement learning (RL) approach to enhance the branching policy by cost-effective training sample augmentation. In the online phase, we train an online RL agent to dynamically decide the sample generation processes, drawing from either the learning-based policy or the expert policy. The objective is to strike a balance between exploration and exploitation of the sample generation process. In the offline phase, a value function is trained to fit each decision's cumulative reward and filter the samples with high cumulative returns. This dual-purpose function not only reduces training complexity but also enhances the quality of the samples. To assess the efficacy of our data augmentation mechanism, we conduct comprehensive evaluations across a range of MIP problems. The results consistently show that it excels in making superior branching decisions compared to state-of-the-art learning-based models and the open-source solver SCIP. Notably, it even often outperforms Gurobi.",
+      "venue": "ICLR 2024",
+      "authors": [
+        "Changwen Zhang",
+        "wenli ouyang",
+        "Hao Yuan",
+        "Liming Gong",
+        "Yong Sun",
+        "Ziao Guo",
+        "Zhichen Dong",
+        "Junchi Yan"
+      ],
+      "paper_id": "18781",
+      "pdf_url": "",
+      "forum_url": "https://iclr.cc/forum?id=2024/poster/18781"
+    },
+    {
+      "title": "Uncertainty-aware Constraint Inference in Inverse Constrained Reinforcement Learning",
+      "abstract": "Aiming for safe control, Inverse Constrained Reinforcement Learning (ICRL) considers inferring the constraints respected by expert agents from their demonstrations and learning imitation policies that adhere to these constraints. While previous ICRL works often neglected underlying uncertainties during training, we contend that modeling these uncertainties is crucial for facilitating robust constraint inference. This insight leads to the development of an Uncertainty-aware Inverse Constrained Reinforcement Learning (UAICRL) algorithm. Specifically, 1) aleatoric uncertainty arises from the inherent stochasticity of environment dynamics, leading to constraint-violating behaviors in imitation policies. To address this, UAICRL constructs risk-sensitive constraints by incorporating distributional Bellman updates into the cumulative costs model. 2) Epistemic uncertainty, resulting from the model's limited knowledge of Out-of-Distribution (OoD) samples, affects the accuracy of step-wise cost predictions. To tackle this issue, UAICRL develops an information-theoretic quantification of the epistemic uncertainty and mitigates its impact through flow-based generative data augmentation. Empirical results demonstrate that UAICRL consistently outperforms other baselines in continuous and discrete environments with stochastic dynamics. The code is available at https://github.com/Jasonxu1225/UAICRL.",
+      "venue": "ICLR 2024",
+      "authors": [
+        "Sheng Xu",
+        "Guiliang Liu"
+      ],
+      "paper_id": "18968",
+      "pdf_url": "",
+      "forum_url": "https://iclr.cc/forum?id=2024/poster/18968"
+    },
+    {
+      "title": "Confidence Aware Inverse Constrained Reinforcement Learning",
+      "abstract": "In coming up with solutions to real-world problems, humans implicitly adhere to constraints that are too numerous and complex to be specified completely. However, reinforcement learning (RL) agents need these constraints to learn the correct optimal policy in these settings. The field of Inverse Constraint Reinforcement Learning (ICRL) deals with this problem and provides algorithms that aim to estimate the constraints from expert demonstrations collected offline. Practitioners prefer to know a measure of confidence in the estimated constraints, before deciding to use these constraints, which allows them to only use the constraints that satisfy a desired level of confidence. However, prior works do not allow users to provide the desired level of confidence for the inferred constraints. This work provides a principled ICRL method that can take a confidence level with a set of expert demonstrations and outputs a constraint that is at least as constraining as the true underlying constraint with the desired level of confidence. Further, unlike previous methods, this method allows a user to know if the number of expert trajectories is insufficient to learn a constraint with a desired level of confidence, and therefore collect more expert trajectories as required to simultaneously learn constraints with the desired level of confidence and a policy that achieves the desired level of performance.",
+      "venue": "ICML 2024",
+      "authors": [
+        "Sriram Ganapathi Subramanian",
+        "Guiliang Liu",
+        "Mohammed Elmahgiubi",
+        "Kasra Rezaee",
+        "Pascal Poupart"
+      ],
+      "paper_id": "34920",
+      "pdf_url": "",
+      "forum_url": "https://ICML.cc/forum?id=2024/poster/34920"
+    },
+    {
+      "title": "Offline Inverse RL: New Solution Concepts and Provably Efficient Algorithms",
+      "abstract": "*Inverse reinforcement learning* (IRL) aims to recover the reward function of an *expert* agent from demonstrations of behavior. It is well-known that the IRL problem is fundamentally ill-posed, i.e., many reward functions can explain the demonstrations. For this reason, IRL has been recently reframed in terms of estimating the *feasible reward set* (Metelli et al., 2021), thus, postponing the selection of a single reward. However, so far, the available formulations and algorithmic solutions have been proposed and analyzed mainly for the *online* setting, where the learner can interact with the environment and query the expert at will. This is clearly unrealistic in most practical applications, where the availability of an *offline* dataset is a much more common scenario. In this paper, we introduce a novel notion of feasible reward set capturing the opportunities and limitations of the offline setting and we analyze the complexity of its estimation. This requires the introduction an original learning framework that copes with the intrinsic difficulty of the setting, for which data coverage is not under control. Then, we propose two computationally and statistically efficient algorithms, IRLO and PIRLO, for addressing the problem. In particular, the latter adopts a specific form of *pessimism* to enforce the novel, desirable property of *inclusion monotonicity* of the delivered feasible set. With this work, we aim to provide a panorama of the challenges of the offline IRL problem and how they can be fruitfully addressed.",
+      "venue": "ICML 2024",
+      "authors": [
+        "Filippo Lazzati",
+        "Mirco Mutti",
+        "Alberto Maria Metelli"
+      ],
+      "paper_id": "35121",
+      "pdf_url": "",
+      "forum_url": "https://ICML.cc/forum?id=2024/poster/35121"
+    },
+    {
+      "title": "Carrot and Stick: Eliciting Comparison Data and Beyond",
+      "abstract": "Comparison data elicited from people are fundamental to many machine learning tasks, including reinforcement learning from human feedback for large language models and estimating ranking models. They are typically subjective and not directly verifiable. How to truthfully elicit such comparison data from rational individuals? We design peer prediction mechanisms for eliciting comparison data using a bonus-penalty payment. Our design leverages on the strong stochastic transitivity for comparison data to create symmetrically strongly truthful mechanisms such that truth-telling 1) forms a strict Bayesian Nash equilibrium, and 2) yields the highest payment among all symmetric equilibria. Each individual only needs to evaluate one pair of items and report her comparison in our mechanism.We further extend the bonus-penalty payment concept to eliciting networked data, designing a symmetrically strongly truthful mechanism when agents’ private signals are sampled according to the Ising models. We provide the necessary and sufficient conditions for our bonus-penalty payment to have truth-telling as a strict Bayesian Nash equilibrium. Experiments on two real-world datasets further support our theoretical discoveries.",
+      "venue": "NeurIPS 2024",
+      "authors": [
+        "Yiling Chen",
+        "Shi Feng",
+        "Fang-Yi Yu"
+      ],
+      "paper_id": "93610",
+      "pdf_url": "",
+      "forum_url": "https://neurips.cc/forum?id=2024/poster/93610"
+    },
+    {
+      "title": "GUIDE: Real-Time Human-Shaped Agents",
+      "abstract": "The recent rapid advancement of machine learning has been driven by increasingly powerful models with the growing availability of training data and computational resources. However, real-time decision-making tasks with limited time and sparse learning signals remain challenging. One way of improving the learning speed and performance of these agents is to leverage human guidance. In this work, we introduce GUIDE, a framework for real-time human-guided reinforcement learning by enabling continuous human feedback and grounding such feedback into dense rewards to accelerate policy learning. Additionally, our method features a simulated feedback module that learns and replicates human feedback patterns in an online fashion, effectively reducing the need for human input while allowing continual training. We demonstrate the performance of our framework on challenging tasks with sparse rewards and visual observations. Our human study involving 50 subjects offers strong quantitative and qualitative evidence of the effectiveness of our approach. With only 10 minutes of human feedback, our algorithm achieves up to 30\\% increase in success rate compared to its RL baseline.",
+      "venue": "NeurIPS 2024",
+      "authors": [
+        "Lingyu Zhang",
+        "Zhengran Ji",
+        "Nicholas Waytowich",
+        "Boyuan Chen"
+      ],
+      "paper_id": "95640",
+      "pdf_url": "",
+      "forum_url": "https://neurips.cc/forum?id=2024/poster/95640"
+    },
+    {
+      "title": "Learning to Assist Humans without Inferring Rewards",
+      "abstract": "Assistive agents should make humans' lives easier. Classically, such assistance is studied through the lens of inverse reinforcement learning, where an assistive agent (e.g., a chatbot, a robot) infers a human's intention and then selects actions to help the human reach that goal. This approach requires inferring intentions, which can be difficult in high-dimensional settings. We build upon prior work that studies assistance through the lens of empowerment: an assistive agent aims to maximize the influence of the human's actions such that they exert a greater control over the environmental outcomes and can solve tasks in fewer steps. We lift the major limitation of prior work in this area—scalability to high-dimensional settings—with contrastive successor representations. We formally prove that these representations estimate a similar notion of empowerment to that studied by prior work and provide a ready-made mechanism for optimizing it. Empirically, our proposed method outperforms prior methods on synthetic benchmarks, and scales to Overcooked, a cooperative game setting. Theoretically, our work connects ideas from information theory, neuroscience, and reinforcement learning, and charts a path for representations to play a critical role in solving assistive problems. Our code is available at https://github.com/vivekmyers/empowerment_successor_representations.",
+      "venue": "NeurIPS 2024",
+      "authors": [
+        "Vivek Myers",
+        "Evan Ellis",
+        "Sergey Levine",
+        "Benjamin Eysenbach",
+        "Anca Dragan"
+      ],
+      "paper_id": "94848",
+      "pdf_url": "",
+      "forum_url": "https://neurips.cc/forum?id=2024/poster/94848"
+    },
+    {
+      "title": "Mimicking To Dominate: Imitation Learning Strategies for Success in Multiagent Games",
+      "abstract": "Training agents in multi-agent games presents significant challenges due to their intricate nature. These challenges are exacerbated by dynamics influenced not only by the environment but also by strategies of opponents. Existing methods often struggle with slow convergence and instability.To address these challenges, we harness the potential of imitation learning (IL) to comprehend and anticipate actions of the opponents, aiming to mitigate uncertainties with respect to the game dynamics.Our key contributions include:(i) a new multi-agent IL model for predicting next moves of the opponents - our model works with hidden actions of opponents and local observations;(ii) a new multi-agent reinforcement learning (MARL) algorithm that combines our IL model and policy training into one single training process;and (iii) extensive experiments in three challenging game environments, including an advanced version of the Star-Craft multi-agent challenge (i.e., SMACv2).Experimental results show that our approach achieves superior performance compared to state-of-the-art MARL algorithms.",
+      "venue": "NeurIPS 2024",
+      "authors": [
+        "The Viet Bui",
+        "Tien Mai",
+        "Thanh Nguyen"
+      ],
+      "paper_id": "96954",
+      "pdf_url": "",
+      "forum_url": "https://neurips.cc/forum?id=2024/poster/96954"
+    },
+    {
+      "title": "Policy Learning from Tutorial Books via Understanding, Rehearsing and Introspecting",
+      "abstract": "When humans need to learn a new skill, we can acquire knowledge through written books, including textbooks, tutorials, etc. However, current research for decision-making, like reinforcement learning (RL), has primarily required numerous real interactions with the target environment to learn a skill, while failing to utilize the existing knowledge already summarized in the text. The success of Large Language Models (LLMs) sheds light on utilizing such knowledge behind the books. In this paper, we discuss a new policy learning problem called Policy Learning from tutorial Books (PLfB) upon the shoulders of LLMs’ systems, which aims to leverage rich resources such as tutorial books to derive a policy network. Inspired by how humans learn from books, we solve the problem via a three-stage framework: Understanding, Rehearsing, and Introspecting (URI). In particular, it first rehearses decision-making trajectories based on the derived knowledge after understanding the books, then introspects in the imaginary dataset to distill a policy network.  We build two benchmarks for PLfB~based on Tic-Tac-Toe and Football games. In experiment, URI's policy achieves at least 44% net win rate against GPT-based agents without any real data; In Football game, which is a complex scenario, URI's policy beat the built-in AIs with a 37% while using GPT-based agent can only achieve a 6\\% winning rate. The project page: https://plfb-football.github.io.",
+      "venue": "NeurIPS 2024",
+      "authors": [
+        "Xiong-Hui Chen",
+        "Ziyan Wang",
+        "Yali Du",
+        "Shengyi Jiang",
+        "Meng Fang",
+        "Yang Yu",
+        "Jun Wang"
+      ],
+      "paper_id": "96082",
+      "pdf_url": "",
+      "forum_url": "https://neurips.cc/forum?id=2024/poster/96082"
+    },
+    {
+      "title": "Sequential Decision Making with Expert Demonstrations under Unobserved Heterogeneity",
+      "abstract": "We study the problem of online sequential decision-making given auxiliary demonstrations from _experts_ who made their decisions based on unobserved contextual information. These demonstrations can be viewed as solving related but slightly different tasks than what the learner faces.  This setting arises in many application domains, such as self-driving cars, healthcare, and finance, where expert demonstrations are made using contextual information, which is not recorded in the data available to the learning agent. We model the problem as a zero-shot meta-reinforcement learning setting with an unknown task distribution and a Bayesian regret minimization objective, where the unobserved tasks are encoded as parameters with an unknown prior. We propose the Experts-as-Priors algorithm (ExPerior), an empirical Bayes approach that utilizes expert data to establish an informative prior distribution over the learner's decision-making problem. This prior enables the application of any Bayesian approach for online decision-making, such as posterior sampling. We demonstrate that our strategy surpasses existing behaviour cloning and online algorithms, as well as online-offline baselines for multi-armed bandits, Markov decision processes (MDPs), and partially observable MDPs, showcasing the broad reach and utility of ExPerior in using expert demonstrations across different decision-making setups.",
+      "venue": "NeurIPS 2024",
+      "authors": [
+        "Vahid Balazadeh",
+        "Keertana Chidambaram",
+        "Viet Nguyen",
+        "Rahul Krishnan",
+        "Vasilis Syrgkanis"
+      ],
+      "paper_id": "94442",
+      "pdf_url": "",
+      "forum_url": "https://neurips.cc/forum?id=2024/poster/94442"
+    },
+    {
+      "title": "Simplifying Constraint Inference with Inverse Reinforcement Learning",
+      "abstract": "Learning safe policies has presented a longstanding challenge for the reinforcement learning (RL) community. Various formulations of safe RL have been proposed; However, fundamentally, tabula rasa RL must learn safety constraints through experience, which is problematic for real-world applications. Imitation learning is often preferred in real-world settings because the experts' safety preferences are embedded in the data the agent imitates. However, imitation learning is limited in its extensibility to new tasks, which can only be learned by providing the agent with expert trajectories. For safety-critical applications with sub-optimal or inexact expert data, it would be preferable to learn only the safety aspects of the policy through imitation, while still allowing for task learning with  RL. The field of inverse constrained RL, which seeks to infer constraints from expert data, is a promising step in this direction. However, prior work in this area has relied on complex tri-level optimizations in order to infer safe behavior (constraints). This challenging optimization landscape leads to sub-optimal performance on several benchmark tasks. In this work, we present a simplified version of constraint inference that performs as well or better than prior work across a collection of continuous-control benchmarks. Moreover, besides improving performance, this simplified framework is easier to implement, tune, and more readily lends itself to various extensions, such as offline constraint inference.",
+      "venue": "NeurIPS 2024",
+      "authors": [
+        "Adriana Hugessen",
+        "Harley Wiltzer",
+        "Glen Berseth"
+      ],
+      "paper_id": "95058",
+      "pdf_url": "",
+      "forum_url": "https://neurips.cc/forum?id=2024/poster/95058"
+    },
+    {
+      "title": "Sub-optimal Experts mitigate Ambiguity in Inverse Reinforcement Learning",
+      "abstract": "Inverse Reinforcement Learning (IRL) deals with the problem of deducing a reward function that explains the behavior of an expert agent who is assumed to act *optimally* in an underlying unknown task. Recent works have studied the IRL problem from the perspective of recovering the *feasible reward set*, i.e., the class of reward functions that are compatible with a unique optimal expert. However, in several problems of interest it is possible to observe the behavior of multiple experts with different degree of optimality (e.g., racing drivers whose skills ranges from amateurs to professionals). For this reason, in this work, we focus on the reconstruction of the feasible reward set when, in addition to demonstrations from the optimal expert, we observe the behavior of multiple *sub-optimal experts*. Given this problem, we first study the theoretical properties showing that the presence of multiple sub-optimal experts, in addition to the optimal one, can significantly shrink the set of compatible rewards, ultimately mitigating the inherent ambiguity of IRL.Furthermore, we study the statistical complexity of estimating the feasible reward set with a generative model and analyze a uniform sampling algorithm that turns out to be minimax optimal whenever the sub-optimal experts' performance level is sufficiently close to that of the optimal expert.",
+      "venue": "NeurIPS 2024",
+      "authors": [
+        "Riccardo Poiani",
+        "Curti Gabriele",
+        "Alberto Maria Metelli",
+        "Marcello Restelli"
+      ],
+      "paper_id": "96405",
+      "pdf_url": "",
+      "forum_url": "https://neurips.cc/forum?id=2024/poster/96405"
+    }
+  ]
+}

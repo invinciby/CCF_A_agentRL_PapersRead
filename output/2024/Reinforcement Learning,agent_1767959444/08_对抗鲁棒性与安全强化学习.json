@@ -1,0 +1,223 @@
+{
+  "name": "对抗鲁棒性与安全强化学习",
+  "paper_count": 15,
+  "summary": "该类别专注于强化学习智能体在对抗性环境下的鲁棒性与安全性研究。研究重点在于分析和防御针对智能体感知输入（如观测空间）的对抗攻击，确保策略在存在恶意干扰时的稳定性和可靠性。相关工作旨在设计信息论意义上难以检测的新型攻击方式以评估系统弱点，并探索相应的自动化检测方法、硬件及系统级防御机制，以提升智能体在真实复杂且可能敌对的环境中部署的安全性。",
+  "papers": [
+    {
+      "title": "Illusory Attacks: Information-theoretic detectability matters in adversarial attacks",
+      "abstract": "Autonomous agents deployed in the real world need to be robust against adversarial attacks on sensory inputs. Robustifying agent policies requires anticipating the strongest attacks possible.We demonstrate that existing observation-space attacks on reinforcement learning agents have a common weakness: while effective, their lack of information-theoretic detectability constraints makes them \\textit{detectable} using automated means or human inspection. Detectability is undesirable to adversaries as it may trigger security escalations.We introduce \\textit{\\eattacks{}}, a novel form of adversarial attack on sequential decision-makers that is both effective and of $\\epsilon-$bounded statistical detectability. We propose a novel dual ascent algorithm to learn such attacks end-to-end.Compared to existing attacks, we empirically find \\eattacks{} to be significantly harder to detect with automated methods, and a small study with human participants\\footnote{IRB approval under reference R84123/RE001} suggests they are similarly harder to detect for humans. Our findings suggest the need for better anomaly detectors, as well as effective hardware- and system-level defenses. The project website can be found at https://tinyurl.com/illusory-attacks.",
+      "venue": "ICLR 2024",
+      "authors": [
+        "Tim Franzmeyer",
+        "Stephen McAleer",
+        "Joao F. Henriques",
+        "Jakob Foerster",
+        "Philip Torr",
+        "Adel Bibi",
+        "Christian Schroeder de Witt"
+      ],
+      "paper_id": "19082",
+      "pdf_url": "",
+      "forum_url": "https://iclr.cc/forum?id=2024/poster/19082"
+    },
+    {
+      "title": "Rethinking Adversarial Policies: A Generalized Attack Formulation and Provable Defense in RL",
+      "abstract": "Most existing works focus on direct perturbations to the victim's state/action or the underlying transition dynamics to demonstrate the vulnerability of reinforcement learning agents to adversarial attacks. However, such direct manipulations may not be always realizable.In this paper, we consider a multi-agent setting where a well-trained victim agent $\\nu$ is exploited by an attacker controlling another agent $\\alpha$ with an \\textit{adversarial policy}. Previous models do not account for the possibility that the attacker may only have partial control over $\\alpha$ or that the attack may produce easily detectable ``abnormal'' behaviors. Furthermore, there is a lack of provably efficient defenses against these adversarial policies. To address these limitations, we introduce a generalized attack framework that has the flexibility to model to what extent the adversary is able to control the agent, and allows the attacker to regulate the state distribution shift and produce stealthier adversarial policies. Moreover, we offer a provably efficient defense with polynomial convergence to the most robust victim policy through adversarial training with timescale separation. This stands in sharp contrast to supervised learning, where adversarial training typically provides only \\textit{empirical} defenses.Using the Robosumo competition experiments, we show that our generalized attack formulation results in much stealthier adversarial policies when maintaining the same winning rate as baselines. Additionally, our adversarial training approach yields stable learning dynamics and less exploitable victim policies.",
+      "venue": "ICLR 2024",
+      "authors": [
+        "Xiangyu Liu",
+        "Souradip Chakraborty",
+        "Yanchao Sun",
+        "Furong Huang"
+      ],
+      "paper_id": "17785",
+      "pdf_url": "",
+      "forum_url": "https://iclr.cc/forum?id=2024/poster/17785"
+    },
+    {
+      "title": "Robust Adversarial Reinforcement Learning via Bounded Rationality Curricula",
+      "abstract": "Robustness against adversarial attacks and distribution shifts is a long-standing goal of Reinforcement Learning (RL). To this end, Robust Adversarial Reinforcement Learning (RARL) trains a protagonist against destabilizing forces exercised by an adversary in a competitive zero-sum Markov game, whose optimal solution, i.e., rational strategy, corresponds to a Nash equilibrium. However, finding Nash equilibria requires facing complex saddle point optimization problems, which can be prohibitive to solve, especially for high-dimensional control. In this paper, we propose a novel approach for adversarial RL based on entropy regularization to ease the complexity of the saddle point optimization problem. We show that the solution of this entropy-regularized problem corresponds to a Quantal Response Equilibrium (QRE), a generalization of Nash equilibria that accounts for bounded rationality, i.e., agents sometimes play random actions instead of optimal ones. Crucially, the connection between the entropy-regularized objective and QRE enables free modulation of the rationality of the agents by simply tuning the temperature coefficient. We leverage this insight to propose our novel algorithm, Quantal Adversarial RL (QARL), which gradually increases the rationality of the adversary in a curriculum fashion until it is fully rational, easing the complexity of the optimization problem while retaining robustness. We provide extensive evidence of QARL outperforming RARL and recent baselines across several MuJoCo locomotion and navigation problems in overall performance and robustness.",
+      "venue": "ICLR 2024",
+      "authors": [
+        "Aryaman Reddi",
+        "Maximilian Tölle",
+        "Jan Peters",
+        "Georgia Chalvatzaki",
+        "Carlo D&#x27;Eramo"
+      ],
+      "paper_id": "17780",
+      "pdf_url": "",
+      "forum_url": "https://iclr.cc/forum?id=2024/poster/17780"
+    },
+    {
+      "title": "Breaking the Barrier: Enhanced Utility and Robustness in Smoothed DRL Agents",
+      "abstract": "Robustness remains a paramount concern in deep reinforcement learning (DRL), with randomized smoothing emerging as a key technique for enhancing this attribute. However, a notable gap exists in the performance of current smoothed DRL agents, often characterized by significantly low clean rewards and weak robustness. In response to this challenge, our study introduces innovative algorithms aimed at training effective smoothed robust DRL agents. We propose S-DQN and S-PPO, novel approaches that demonstrate remarkable improvements in clean rewards, empirical robustness, and robustness guarantee across standard RL benchmarks. Notably, our S-DQN and S-PPO agents not only significantly outperform existing smoothed agents by an average factor of $2.16\\times$ under the strongest attack, but also surpass previous robustly-trained agents by an average factor of $2.13\\times$. This represents a significant leap forward in the field. Furthermore, we introduce Smoothed Attack, which is $1.89\\times$ more effective in decreasing the rewards of smoothed agents than existing adversarial attacks. Our code is available at: [https://github.com/Trustworthy-ML-Lab/Robust_HighUtil_Smoothed_DRL](https://github.com/Trustworthy-ML-Lab/Robust_HighUtil_Smoothed_DRL)",
+      "venue": "ICML 2024",
+      "authors": [
+        "Chung-En Sun",
+        "Sicun Gao",
+        "Lily Weng"
+      ],
+      "paper_id": "33878",
+      "pdf_url": "",
+      "forum_url": "https://ICML.cc/forum?id=2024/poster/33878"
+    },
+    {
+      "title": "SHINE: Shielding Backdoors in Deep Reinforcement Learning",
+      "abstract": "Recent studies have discovered that a deep reinforcement learning (DRL) policy is vulnerable to backdoor attacks. Existing defenses against backdoor attacks either do not consider RL's unique mechanism or make unrealistic assumptions, resulting in limited defense efficacy, practicability, and generalizability. We propose SHINE, a backdoor shielding method specific for DRL. SHINE designs novel policy explanation techniques to identify the backdoor triggers and a policy retraining algorithm to eliminate the impact of the triggers on backdoored agents. We theoretically justify that SHINE guarantees to improve a backdoored agent's performance in a poisoned environment while ensuring its performance difference in the clean environment before and after shielding is bounded. We further conduct extensive experiments that evaluate SHINE against three mainstream DRL backdoor attacks in various benchmark RL environments. Our results show that SHINE significantly outperforms existing defenses in mitigating these backdoor attacks.",
+      "venue": "ICML 2024",
+      "authors": [
+        "Zhuowen Yuan",
+        "Wenbo Guo",
+        "Jinyuan Jia",
+        "Bo Li",
+        "Dawn Song"
+      ],
+      "paper_id": "33126",
+      "pdf_url": "",
+      "forum_url": "https://ICML.cc/forum?id=2024/poster/33126"
+    },
+    {
+      "title": "Towards Optimal Adversarial Robust Q-learning with Bellman Infinity-error",
+      "abstract": "Establishing robust policies is essential to counter attacks or disturbances affecting deep reinforcement learning (DRL) agents. Recent studies explore state-adversarial robustness and suggest the potential lack of an optimal robust policy (ORP), posing challenges in setting strict robustness constraints. This work further investigates ORP: At first, we introduce a consistency assumption of policy (CAP) stating that optimal actions in the Markov decision process remain consistent with minor perturbations, supported by empirical and theoretical evidence. Building upon CAP, we crucially prove the existence of a deterministic and stationary ORP that aligns with the Bellman optimal policy. Furthermore, we illustrate the necessity of $L^{\\infty}$-norm when minimizing Bellman error to attain ORP. This finding clarifies the vulnerability of prior DRL algorithms that target the Bellman optimal policy with $L^{1}$-norm and motivates us to train a Consistent Adversarial Robust Deep Q-Network (CAR-DQN) by minimizing a surrogate of Bellman Infinity-error. The top-tier performance of CAR-DQN across various benchmarks validates its practical effectiveness and reinforces the soundness of our theoretical analysis.",
+      "venue": "ICML 2024",
+      "authors": [
+        "Haoran Li",
+        "Zicheng Zhang",
+        "Wang Luo",
+        "Congying Han",
+        "Yudong Hu",
+        "Tiande Guo",
+        "Shichen Liao"
+      ],
+      "paper_id": "33033",
+      "pdf_url": "",
+      "forum_url": "https://ICML.cc/forum?id=2024/poster/33033"
+    },
+    {
+      "title": "Zero-Sum Positional Differential Games as a Framework for Robust Reinforcement Learning: Deep Q-Learning Approach",
+      "abstract": "Robust Reinforcement Learning (RRL) is a promising Reinforcement Learning (RL) paradigm aimed at training robust to uncertainty or disturbances models, making them more efficient for real-world applications. Following this paradigm, uncertainty or disturbances are interpreted as actions of a second adversarial agent, and thus, the problem is reduced to seeking the agents' policies robust to any opponent's actions. This paper is the first to propose considering the RRL problems within the positional differential game theory, which helps us to obtain theoretically justified intuition to develop a centralized Q-learning approach. Namely, we prove that under Isaacs's condition (sufficiently general for real-world dynamical systems), the same Q-function can be utilized as an approximate solution of both minimax and maximin Bellman equations. Based on these results, we present the Isaacs Deep Q-Network algorithms and demonstrate their superiority compared to other baseline RRL and Multi-Agent RL algorithms in various environments.",
+      "venue": "ICML 2024",
+      "authors": [
+        "Anton Plaksin",
+        "Vitaly Kalev"
+      ],
+      "paper_id": "33937",
+      "pdf_url": "",
+      "forum_url": "https://ICML.cc/forum?id=2024/poster/33937"
+    },
+    {
+      "title": "Adversarial Environment Design via Regret-Guided Diffusion Models",
+      "abstract": "Training agents that are robust to environmental changes remains a significant challenge in deep reinforcement learning (RL). Unsupervised environment design (UED) has recently emerged to address this issue by generating a set of training environments tailored to the agent's capabilities. While prior works demonstrate that UED has the potential to learn a robust policy, their performance is constrained by the capabilities of the environment generation. To this end, we propose a novel UED algorithm, adversarial environment design via regret-guided diffusion models (ADD). The proposed method guides the diffusion-based environment generator with the regret of the agent to produce environments that the agent finds challenging but conducive to further improvement. By exploiting the representation power of diffusion models, ADD can directly generate adversarial environments while maintaining the diversity of training environments, enabling the agent to effectively learn a robust policy. Our experimental results demonstrate that the proposed method successfully generates an instructive curriculum of environments, outperforming UED baselines in zero-shot generalization across novel, out-of-distribution environments.",
+      "venue": "NeurIPS 2024",
+      "authors": [
+        "Hojun Chung",
+        "Junseo Lee",
+        "Minsoo Kim",
+        "Dohyeong Kim",
+        "Songhwai Oh"
+      ],
+      "paper_id": "94254",
+      "pdf_url": "",
+      "forum_url": "https://neurips.cc/forum?id=2024/poster/94254"
+    },
+    {
+      "title": "Enhancing Efficiency of Safe Reinforcement Learning via Sample Manipulation",
+      "abstract": "Safe reinforcement learning (RL) is crucial for deploying RL agents in real-world applications, as it aims to maximize long-term rewards while satisfying safety constraints. However, safe RL often suffers from sample inefficiency, requiring extensive interactions with the environment to learn a safe policy. We propose Efficient Safe Policy Optimization (ESPO), a novel approach that enhances the efficiency of safe RL through sample manipulation. ESPO employs an optimization framework with three modes: maximizing rewards, minimizing costs, and balancing the trade-off between the two. By dynamically adjusting the sampling process based on the observed conflict between reward and safety gradients, ESPO theoretically guarantees convergence, optimization stability, and improved sample complexity bounds. Experiments on the Safety-MuJoCo and Omnisafe benchmarks demonstrate that ESPO significantly outperforms existing primal-based and primal-dual-based baselines in terms of reward maximization and constraint satisfaction. Moreover, ESPO achieves substantial gains in sample efficiency, requiring 25--29\\% fewer samples than baselines, and reduces training time by 21--38\\%.",
+      "venue": "NeurIPS 2024",
+      "authors": [
+        "Shangding Gu",
+        "Laixi Shi",
+        "Yuhao Ding",
+        "Alois Knoll",
+        "Costas J Spanos",
+        "Adam Wierman",
+        "Ming Jin"
+      ],
+      "paper_id": "93629",
+      "pdf_url": "",
+      "forum_url": "https://neurips.cc/forum?id=2024/poster/93629"
+    },
+    {
+      "title": "Enhancing Robustness in Deep Reinforcement Learning: A Lyapunov Exponent Approach",
+      "abstract": "Deep reinforcement learning agents achieve state-of-the-art performance in a wide range of simulated control tasks. However, successful applications to real-world problems remain limited. One reason for this dichotomy is because the learnt policies are not robust to observation noise or adversarial attacks. In this paper, we investigate the robustness of deep RL policies to a single small state perturbation in deterministic continuous control tasks. We demonstrate that RL policies can be deterministically chaotic, as small perturbations to the system state have a large impact on subsequent state and reward trajectories. This unstable non-linear behaviour has two consequences: first, inaccuracies in sensor readings, or adversarial attacks, can cause significant performance degradation; second, even policies that show robust performance in terms of rewards may have unpredictable behaviour in practice. These two facets of chaos in RL policies drastically restrict the application of deep RL to real-world problems. To address this issue, we propose an improvement on the successful Dreamer V3 architecture, implementing Maximal Lyapunov Exponent regularisation. This new approach reduces the chaotic state dynamics, rendering the learnt policies more resilient to sensor noise or adversarial attacks and thereby improving the suitability of deep reinforcement learning for real-world applications.",
+      "venue": "NeurIPS 2024",
+      "authors": [
+        "Rory Young",
+        "Nicolas Pugeault"
+      ],
+      "paper_id": "95847",
+      "pdf_url": "",
+      "forum_url": "https://neurips.cc/forum?id=2024/poster/95847"
+    },
+    {
+      "title": "From Text to Trajectory: Exploring Complex Constraint Representation and Decomposition in Safe Reinforcement Learning",
+      "abstract": "Safe reinforcement learning (RL) requires the agent to finish a given task while obeying specific constraints. Giving constraints in natural language form has great potential for practical scenarios due to its flexible transfer capability and accessibility. Previous safe RL methods with natural language constraints typically need to design cost functions manually for each constraint, which requires domain expertise and lacks flexibility. In this paper, we harness the dual role of text in this task, using it not only to provide constraint but also as a training signal. We introduce the Trajectory-level Textual Constraints Translator (TTCT) to replace the manually designed cost function. Our empirical results demonstrate that TTCT effectively comprehends textual constraint and trajectory, and the policies trained by TTCT can achieve a lower violation rate than the standard cost function. Extra studies are conducted to demonstrate that the TTCT has zero-shot transfer capability to adapt to constraint-shift environments.",
+      "venue": "NeurIPS 2024",
+      "authors": [
+        "Pusen Dong",
+        "Tianchen Zhu",
+        "yue qiu",
+        "Haoyi Zhou",
+        "Jianxin Li"
+      ],
+      "paper_id": "95538",
+      "pdf_url": "",
+      "forum_url": "https://neurips.cc/forum?id=2024/poster/95538"
+    },
+    {
+      "title": "Online Control with Adversarial Disturbance for Continuous-time Linear Systems",
+      "abstract": "We study online control for continuous-time linear systems with finite sampling rates, where the objective is to design an online procedure that learns under non-stochastic noise and performs comparably to a fixed optimal linear controller. We present a novel two-level online algorithm, by integrating a higher-level learning strategy and a lower-level feedback control strategy. This method offers a practical and robust solution for online control, which achieves sublinear regret. Our work provides the first nonasymptotic results for controlling continuous-time linear systems with finite number of interactions with the system. Moreover, we examine how to train an agent in domain randomization environments from a non-stochastic control perspective. By applying our method to the SAC (Soft Actor-Critic) algorithm, we achieved improved results in multiple reinforcement learning tasks within domain randomization environments. Our work provides new insights into non-asymptotic analyses of controlling continuous-time systems. Furthermore, our work brings practical intuition into controller learning under non-stochastic environments.",
+      "venue": "NeurIPS 2024",
+      "authors": [
+        "Jingwei Li",
+        "Jing Dong",
+        "Can Chang",
+        "Baoxiang Wang",
+        "Jingzhao Zhang"
+      ],
+      "paper_id": "95695",
+      "pdf_url": "",
+      "forum_url": "https://neurips.cc/forum?id=2024/poster/95695"
+    },
+    {
+      "title": "SleeperNets: Universal Backdoor Poisoning Attacks Against  Reinforcement Learning Agents",
+      "abstract": "Reinforcement learning (RL) is an actively growing field that is seeing increased usage in real-world, safety-critical applications -- making it paramount to ensure the robustness of RL algorithms against adversarial attacks. In this work we explore a particularly stealthy form of training-time attacks against RL -- backdoor poisoning. Here the adversary intercepts the training of an RL agent with the goal of reliably inducing a particular action when the agent observes a pre-determined trigger at inference time. We uncover theoretical limitations of prior work by proving their inability to generalize across domains and MDPs. Motivated by this, we formulate a novel poisoning attack framework which interlinks the adversary's objectives with those of finding an optimal policy -- guaranteeing attack success in the limit. Using insights from our theoretical analysis we develop \"SleeperNets\" as a universal backdoor attack which exploits a newly proposed threat model and leverages dynamic reward poisoning techniques. We evaluate our attack in 6 environments spanning multiple domains and demonstrate significant improvements in attack success over existing methods, while preserving benign episodic return.",
+      "venue": "NeurIPS 2024",
+      "authors": [
+        "Ethan Rathbun",
+        "Christopher Amato",
+        "Alina Oprea"
+      ],
+      "paper_id": "95806",
+      "pdf_url": "",
+      "forum_url": "https://neurips.cc/forum?id=2024/poster/95806"
+    },
+    {
+      "title": "Test Where Decisions Matter: Importance-driven Testing for Deep Reinforcement Learning",
+      "abstract": "In many Deep Reinforcement Learning (RL) problems, decisions in a trained policy vary in significance for the expected safety and performance of the policy. Since RL policies are very complex, testing efforts should concentrate on states in which the agent's decisions have the highest impact on the expected outcome. In this paper, we propose a novel model-based method to rigorously compute a ranking of state importance across the entire state space. We then focus our testing efforts on the highest-ranked states. In this paper, we focus on testing for safety. However, the proposed methods can be easily adapted to test for performance. In each iteration, our testing framework computes optimistic and pessimistic safety estimates. These estimates provide lower and upper bounds on the expected outcomes of the policy execution across all modeled states in the state space. Our approach divides the state space into safe and unsafe regions upon convergence, providing clear insights into the policy's weaknesses. Two important properties characterize our approach. (1) Optimal Test-Case Selection: At any time in the testing process, our approach evaluates the policy in the states that are most critical for safety. (2) Guaranteed Safety: Our approach can provide formal verification guarantees over the entire state space by sampling only a fraction of the policy. Any safety properties assured by the pessimistic estimate are formally proven to hold for the policy. We provide a detailed evaluation of our framework on several examples, showing that our method discovers unsafe policy behavior with low testing effort.",
+      "venue": "NeurIPS 2024",
+      "authors": [
+        "Stefan Pranger",
+        "Hana Chockler",
+        "Martin Tappler",
+        "Bettina Könighofer"
+      ],
+      "paper_id": "95000",
+      "pdf_url": "",
+      "forum_url": "https://neurips.cc/forum?id=2024/poster/95000"
+    },
+    {
+      "title": "Understanding Model Selection for Learning in Strategic Environments",
+      "abstract": "The deployment of ever-larger machine learning models reflects a growing consensus that the more expressive the model class one optimizes over—and the more data one has access to—the more one can improve performance. As models get deployed in a variety of real-world scenarios, they inevitably face strategic environments. In this work, we consider the natural question of how the interplay of models and strategic interactions affects the relationship between performance at equilibrium and the expressivity of model classes. We find that strategic interactions can break the conventional view—meaning that performance does not necessarily monotonically improve as model classes get larger or more expressive (even with infinite data).  We show the implications of this result in several contexts including strategic regression, strategic classification, and multi-agent reinforcement learning. In particular, we show that each of these settings admits a Braess' paradox-like phenomenon in which optimizing over less expressive model classes allows one to achieve strictly better equilibrium outcomes. Motivated by these examples, we then propose a new paradigm for model selection in games wherein an agent seeks to choose amongst different model classes to use as their action set in a game.",
+      "venue": "NeurIPS 2024",
+      "authors": [
+        "Tinashe Handina",
+        "Eric Mazumdar"
+      ],
+      "paper_id": "95199",
+      "pdf_url": "",
+      "forum_url": "https://neurips.cc/forum?id=2024/poster/95199"
+    }
+  ]
+}

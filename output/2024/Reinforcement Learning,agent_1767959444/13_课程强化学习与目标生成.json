@@ -1,0 +1,50 @@
+{
+  "name": "课程强化学习与目标生成",
+  "paper_count": 3,
+  "summary": "该类别专注于课程强化学习（Curriculum RL）以及如何自动生成合适的学习目标或任务序列的研究。课程强化学习旨在通过设计一系列难度递增的任务来引导智能体学习，从而解决稀疏奖励、探索困难等问题。本类别的研究重点在于开发无需领域先验知识的自动化课程生成方法，例如利用生成模型（如扩散模型）来合成具有适当挑战性的中间目标，以高效地引导策略学习朝着最终目标前进。相关工作旨在构建通用、环境无关的课程学习框架，以提升智能体的学习效率、最终性能以及泛化能力。",
+  "papers": [
+    {
+      "title": "Diffusion-based Curriculum Reinforcement Learning",
+      "abstract": "Curriculum Reinforcement Learning (CRL) is an approach to facilitate the learning process of agents by structuring tasks in a sequence of increasing complexity. Despite its potential, many existing CRL methods struggle to efficiently guide agents toward desired outcomes, particularly in the absence of domain knowledge. This paper introduces DiCuRL (Diffusion Curriculum Reinforcement Learning), a novel method that leverages conditional diffusion models to generate curriculum goals. To estimate how close an agent is to achieving its goal, our method uniquely incorporates a $Q$-function and a trainable reward function based on Adversarial Intrinsic Motivation within the diffusion model. Furthermore, it promotes exploration through the inherent noising and denoising mechanism present in the diffusion models and is environment-agnostic. This combination allows for the generation of challenging yet achievable goals, enabling agents to learn effectively without relying on domain knowledge. We demonstrate the effectiveness of DiCuRL in three different maze environments and two robotic manipulation tasks simulated in MuJoCo, where it outperforms or matches nine state-of-the-art CRL algorithms from the literature.",
+      "venue": "NeurIPS 2024",
+      "authors": [
+        "Erdi Sayar",
+        "Giovanni Iacca",
+        "Ozgur S. Oguz",
+        "Alois Knoll"
+      ],
+      "paper_id": "93021",
+      "pdf_url": "",
+      "forum_url": "https://neurips.cc/forum?id=2024/poster/93021"
+    },
+    {
+      "title": "Implicit Curriculum in Procgen Made Explicit",
+      "abstract": "Procedurally generated environments such as Procgen Benchmark provide a testbed for evaluating the agent's ability to robustly learn a relevant skill, by situating the agent in ever-changing levels. The diverse levels associated with varying contexts are naturally connected to curriculum learning. Existing works mainly focus on arranging the levels to explicitly form a curriculum. In this work, we take a close look at the learning process itself under the multi-level training in Procgen. Interestingly, the learning process exhibits a gradual shift from easy contexts to hard contexts, suggesting an implicit curriculum in multi-level training. Our analysis is made possible through C-Procgen, a benchmark we build upon Procgen that enables explicit control of the contexts. We believe our findings will foster a deeper understanding of learning in diverse contexts, and our benchmark will benefit future research in curriculum reinforcement learning.",
+      "venue": "NeurIPS 2024",
+      "authors": [
+        "Zhenxiong Tan",
+        "Kaixin Wang",
+        "Xinchao Wang"
+      ],
+      "paper_id": "93682",
+      "pdf_url": "",
+      "forum_url": "https://neurips.cc/forum?id=2024/poster/93682"
+    },
+    {
+      "title": "No Regrets: Investigating and Improving Regret Approximations for Curriculum Discovery",
+      "abstract": "What data or environments to use for training to improve downstream performance is a longstanding and very topical question in reinforcement learning. In particular, Unsupervised Environment Design (UED) methods have gained recent attention as their adaptive curricula promise to enable agents to be robust to in- and out-of-distribution tasks.This work investigates how existing UED methods select training environments, focusing on task prioritisation metrics.Surprisingly, despite methods aiming to maximise regret in theory, the practical approximations do not correlate with regret but with success rate.As a result, a significant portion of an agent's experience comes from environments it has already mastered, offering little to no contribution toward enhancing its abilities. Put differently, current methods fail to predict intuitive measures of *learnability*. Specifically, they are unable to consistently identify those scenarios that the agent can sometimes solve, but not always.Based on our analysis, we develop a method that directly trains on scenarios with high learnability. This simple and intuitive approach outperforms existing UED methods in several binary-outcome environments, including the standard domain of Minigrid and a novel setting closely inspired by a real-world robotics problem. We further introduce a new adversarial evaluation procedure for directly measuring robustness, closely mirroring the conditional value at risk (CVaR).We open-source all our code and present visualisations of final policies here: https://github.com/amacrutherford/sampling-for-learnability.",
+      "venue": "NeurIPS 2024",
+      "authors": [
+        "Alexander Rutherford",
+        "Michael Beukman",
+        "Timon Willi",
+        "Bruno Lacerda",
+        "Nick Hawes",
+        "Jakob Foerster"
+      ],
+      "paper_id": "94019",
+      "pdf_url": "",
+      "forum_url": "https://neurips.cc/forum?id=2024/poster/94019"
+    }
+  ]
+}

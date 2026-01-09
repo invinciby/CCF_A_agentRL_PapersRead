@@ -1,0 +1,68 @@
+{
+  "name": "智能体行为分析与可解释性",
+  "paper_count": 4,
+  "summary": "本类别聚焦于运用来自神经科学、动物行为学等领域的分析工具，对深度强化学习智能体的行为模式、内部表示和决策机制进行深入、定量的研究，旨在超越简单的奖励曲线比较，揭示智能体在复杂、开放环境中的结构化行为、隐式规划和涌现的动态。研究内容包括：设计新颖的复杂环境（如ForageWorld）来模拟现实世界的挑战（如稀疏资源、捕食者威胁）；开发结合行为分析和神经分析（如RNN动力学分析）的通用框架，以诊断智能体的策略、记忆和规划能力；探索模型无关智能体如何通过涌现动态表现出类似规划的行为，而无需显式的世界模型或记忆模块。此类研究对于理解日益复杂的智能体、确保其安全对齐以及最大化难以通过奖励衡量的期望行为至关重要。",
+  "papers": [
+    {
+      "title": "Deep RL Needs Deep Behavior Analysis: Exploring Implicit Planning by Model-Free Agents in Open-Ended Environments",
+      "abstract": "Understanding the behavior of deep reinforcement learning (DRL) agents—particularly as task and agent sophistication increase—requires more than simple comparison of reward curves, yet standard methods for behavioral analysis remain underdeveloped in DRL.\nWe apply tools from neuroscience and ethology to study DRL agents in a novel, complex, partially observable environment, ForageWorld, designed to capture key aspects of real-world animal foraging—including sparse, depleting resource patches, predator threats, and spatially extended arenas.\nWe use this environment as a platform for applying joint behavioral and neural analysis to agents, revealing detailed, quantitatively grounded insights into agent strategies, memory, and planning.\nContrary to common assumptions, we find that model-free RNN-based DRL agents can exhibit structured, planning-like behavior purely through emergent dynamics—without requiring explicit memory modules or world models.\nOur results show that studying DRL agents like animals—analyzing them with neuroethology-inspired tools that reveal structure in both behavior and neural dynamics—uncovers rich structure in their learning dynamics that would otherwise remain invisible.\nWe distill these tools into a general analysis framework linking core behavioral and representational features to diagnostic methods, which can be reused for a wide range of tasks and agents.\nAs agents grow more complex and autonomous, bridging neuroscience, cognitive science, and AI will be essential—not just for understanding their behavior, but for ensuring safe alignment and maximizing desirable behaviors that are hard to measure via reward.\nWe show how this can be done by drawing on lessons from how biological intelligence is studied.",
+      "venue": "NeurIPS 2025",
+      "authors": [
+        "Riley Simmons-Edler",
+        "Ryan Paul Badman",
+        "Felix Baastad Berg",
+        "Raymond Chua",
+        "John Vastola",
+        "Joshua Lunger",
+        "William Qian",
+        "Kanaka Rajan"
+      ],
+      "paper_id": "QD06Qv7O0P",
+      "pdf_url": "https://openreview.net/pdf/928d63d7fd5d5b2056d6aa39c03ffc3bf3207b50.pdf",
+      "forum_url": "https://openreview.net/forum?id=QD06Qv7O0P"
+    },
+    {
+      "title": "Approximating Shapley Explanations in Reinforcement Learning",
+      "abstract": "Reinforcement learning has achieved remarkable success in complex decision-making environments, yet its lack of transparency limits its deployment in practice, especially in safety-critical settings. Shapley values from cooperative game theory provide a principled framework for explaining reinforcement learning; however, the computational cost of Shapley explanations is an obstacle for their use. We introduce FastSVERL, a scalable method for explaining reinforcement learning by approximating Shapley values. FastSVERL is designed to handle the unique challenges of reinforcement learning, including temporal dependencies across multi-step trajectories, learning from off-policy data, and adapting to evolving agent behaviours in real time. FastSVERL introduces a practical, scalable approach for principled and rigourous interpretability in reinforcement learning.",
+      "venue": "NeurIPS 2025",
+      "authors": [
+        "Daniel Beechey",
+        "Özgür Şimşek"
+      ],
+      "paper_id": "lJYwfYcoZX",
+      "pdf_url": "https://openreview.net/pdf/6c913cd56d6095773f672039fc5186213bcc0b42.pdf",
+      "forum_url": "https://openreview.net/forum?id=lJYwfYcoZX"
+    },
+    {
+      "title": "A Multi-Region Brain Model to Elucidate the Role of Hippocampus in Spatially Embedded Decision-Making",
+      "abstract": "Brains excel at robust decision-making and data-efficient learning. Understanding the architectures and dynamics underlying these capabilities can inform inductive biases for deep learning. We present a multi-region brain model that explores the normative role of structured memory circuits in a spatially embedded binary decision-making task from neuroscience.We counterfactually compare the learning performance and neural representations of reinforcement learning (RL) agents with brain models of different interaction architectures between grid and place cells in the entorhinal cortex and hippocampus, coupled with an action-selection cortical recurrent neural network. We demonstrate that a specific architecture--where grid cells receive and jointly encode self-movement velocity signals and decision evidence increments--optimizes learning efficiency while best reproducing experimental observations relative to alternative architectures.Our findings thus suggest brain-inspired structured architectures for efficient RL. Importantly, the models make novel, testable predictions about organization and information flow within the entorhinal-hippocampal-neocortical circuit: we predict that grid cells must conjunctively encode position and evidence for effective spatial decision-making, directly motivating new neurophysiological experiments.",
+      "venue": "ICML 2025",
+      "authors": [
+        "Yi Xie",
+        "Jaedong Hwang",
+        "Carlos Brody",
+        "David Tank",
+        "Ila R. Fiete"
+      ],
+      "paper_id": "43834",
+      "pdf_url": "",
+      "forum_url": "https://ICML.cc/forum?id=2025/poster/43834"
+    },
+    {
+      "title": "Of Mice and Machines: A Comparison of Learning Between Real World Mice and RL Agents",
+      "abstract": "Recent advances in reinforcement learning (RL) have demonstrated impressive capabilities in complex decision-making tasks. This progress raises a natural question: how do these artificial systems compare to biological agents, which have been shaped by millions of years of evolution? To help answer this question, we undertake a comparative study of biological mice and RL agents in a predator-avoidance maze environment. Through this analysis, we identify a striking disparity: RL agents consistently demonstrate a lack of self-preservation instinct, readily risking ``death'' for marginal efficiency gains. These risk-taking strategies are in contrast to biological agents, which exhibit sophisticated risk-assessment and avoidance behaviors. Towards bridging this gap between the biological and artificial, we propose two novel mechanisms that encourage more naturalistic risk-avoidance behaviors in RL agents. Our approach leads to the emergence of naturalistic behaviors, including strategic environment assessment, cautious path planning, and predator avoidance patterns that closely mirror those observed in biological systems.",
+      "venue": "ICML 2025",
+      "authors": [
+        "Shuo Han",
+        "German Espinosa",
+        "Junda Huang",
+        "Daniel A. Dombeck",
+        "Malcolm MacIver",
+        "Bradly Stadie"
+      ],
+      "paper_id": "43969",
+      "pdf_url": "",
+      "forum_url": "https://ICML.cc/forum?id=2025/poster/43969"
+    }
+  ]
+}

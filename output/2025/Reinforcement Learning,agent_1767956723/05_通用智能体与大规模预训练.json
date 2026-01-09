@@ -1,0 +1,455 @@
+{
+  "name": "通用智能体与大规模预训练",
+  "paper_count": 27,
+  "summary": "本类别探索通过大规模、多样化的任务训练来获得具有广泛物理推理和零样本泛化能力的通用智能体。代表性工作Kinetix构建了一个开放的、基于物理的2D控制任务空间，并利用硬件加速的物理引擎生成了数千万个任务用于训练一个通用的RL智能体。该智能体展现出强大的物理推理能力，能够零样本解决未见过的、由人类设计的环境，并且在特定任务上微调后性能显著优于从头训练的智能体。这项研究证明了为在线RL进行大规模、混合质量预训练的可行性，是迈向通用序列决策智能体的重要一步。",
+  "papers": [
+    {
+      "title": "Kinetix: Investigating the Training of General Agents through Open-Ended Physics-Based Control Tasks",
+      "abstract": "While large models trained with self-supervised learning on offline datasets have shown remarkable capabilities in text and image domains, achieving the same generalisation for agents that act in sequential decision problems remains an open challenge.\nIn this work, we take a step towards this goal by procedurally generating tens of millions of 2D physics-based tasks and using these to train a general reinforcement learning (RL) agent for physical control.\nTo this end, we introduce Kinetix: an open-ended space of physics-based RL environments that can represent tasks ranging from robotic locomotion and grasping to video games and classic RL environments, all within a unified framework.\nKinetix makes use of our novel hardware-accelerated physics engine Jax2D that allows us to cheaply simulate billions of environment steps during training.\nOur trained agent exhibits strong physical reasoning capabilities in 2D space, being able to zero-shot solve unseen human-designed environments.  Furthermore, fine-tuning this general agent on tasks of interest shows significantly stronger performance than training an RL agent *tabula rasa*.  This includes solving some environments that standard RL training completely fails at.\nWe believe this demonstrates the feasibility of large scale, mixed-quality pre-training for online RL and we hope that Kinetix will serve as a useful framework to investigate this further.",
+      "venue": "ICLR 2025",
+      "authors": [
+        "Michael Matthews",
+        "Michael Beukman",
+        "Chris Lu",
+        "Jakob Nicolaus Foerster"
+      ],
+      "paper_id": "zCxGCdzreM",
+      "pdf_url": "https://openreview.net/pdf/1c9333bd485fcf46a3c7b3a1420dd36b55476d63.pdf",
+      "forum_url": "https://openreview.net/forum?id=zCxGCdzreM"
+    },
+    {
+      "title": "WebRL: Training LLM Web Agents via Self-Evolving Online Curriculum Reinforcement Learning",
+      "abstract": "Large language models (LLMs) have shown remarkable potential as autonomous agents, particularly in web-based tasks. \nHowever, existing LLM web agents face significant limitations: high-performing agents rely on expensive proprietary LLM APIs, while open LLMs lack the necessary decision-making capabilities. \nThis paper introduces WebRL, a novel self-evolving online curriculum reinforcement learning framework designed to train high-performance web agents using open LLMs. \nOur approach addresses key challenges in this domain, including the scarcity of training tasks, sparse feedback signals, and policy distribution drift in online learning. \nWebRL incorporates a self-evolving curriculum that generates new tasks from unsuccessful attempts, a robust outcome-supervised reward model (ORM), and adaptive reinforcement learning strategies to ensure consistent improvement. \nWe apply WebRL to transform Llama-3.1 models into proficient web agents, achieving remarkable results on the WebArena-Lite benchmark. \nOur Llama-3.1-8B agent improves from an initial 4.8\\% success rate to 42.4\\%, while the Llama-3.1-70B agent achieves a 47.3\\% success rate across five diverse websites. \nThese results surpass the performance of GPT-4-Turbo (17.6\\%) by over 160\\% relatively and significantly outperform previous state-of-the-art web agents trained on open LLMs (AutoWebGLM, 18.2\\%). \nOur findings demonstrate WebRL's effectiveness in bridging the gap between open and proprietary LLM-based web agents, paving the way for more accessible and powerful autonomous web interaction systems.",
+      "venue": "ICLR 2025",
+      "authors": [
+        "Zehan Qi",
+        "Xiao Liu",
+        "Iat Long Iong",
+        "Hanyu Lai",
+        "Xueqiao Sun",
+        "Jiadai Sun",
+        "Xinyue Yang",
+        "Yu Yang",
+        "Shuntian Yao",
+        "Wei Xu",
+        "Jie Tang",
+        "Yuxiao Dong"
+      ],
+      "paper_id": "oVKEAFjEqv",
+      "pdf_url": "https://openreview.net/pdf/2970fd3dfac12fd402a00cdffe2910c669f35c76.pdf",
+      "forum_url": "https://openreview.net/forum?id=oVKEAFjEqv"
+    },
+    {
+      "title": "Learning Robust Representations with Long-Term Information for Generalization in Visual Reinforcement Learning",
+      "abstract": "Generalization in visual reinforcement learning (VRL) aims to learn agents that can adapt to test environments with unseen visual distractions. Despite advances in robust representations learning, many methods do not take into account the essential downstream task of sequential decision-making. This leads to representations that lack critical long-term information, impairing decision-making abilities in test environments. To tackle this problem, we propose a novel robust action-value representation learning (ROUSER) under the information bottleneck (IB) framework. ROUSER learns robust representations to capture long-term information from the decision-making objective (i.e., action values). Specifically, ROUSER uses IB to encode robust representations by maximizing their mutual information with action values for long-term information, while minimizing mutual information with state-action pairs to discard irrelevant features. As action values are unknown, ROUSER proposes to decompose robust representations of state-action pairs into one-step rewards and robust representations of subsequent pairs. Thus, it can use known rewards to compute the loss for robust representation learning. Moreover, we show that ROUSER accurately estimates action values using learned robust representations, making it applicable to various VRL algorithms. Experiments demonstrate that ROUSER outperforms several state-of-the-art methods in eleven out of twelve tasks, across both unseen background and color distractions.",
+      "venue": "ICLR 2025",
+      "authors": [
+        "Rui Yang",
+        "Jie Wang",
+        "Qijie Peng",
+        "Ruibo Guo",
+        "Guoping Wu",
+        "Bin Li"
+      ],
+      "paper_id": "PDtMrogheZ",
+      "pdf_url": "https://openreview.net/pdf/3590a55591ae9901fc397f9a26dac843a9551116.pdf",
+      "forum_url": "https://openreview.net/forum?id=PDtMrogheZ"
+    },
+    {
+      "title": "Digi-Q: Learning VLM Q-Value Functions for Training Device-Control Agents",
+      "abstract": "While a number of existing approaches for building foundation model agents rely on prompting or fine-tuning with human demonstrations, it is not sufficient in dynamic environments (e.g., mobile device control). On-policy reinforcement learning (RL) should address these limitations, but collecting actual rollouts in an environment is often undesirable in truly open-ended agentic problems such as mobile device control or interacting with humans, where each unit of interaction is associated with a cost. In such scenarios, a method for policy learning that can utilize off-policy experience by learning a trained action-value function is much more effective. In this paper, we develop an approach, called Digi-Q, to train VLM-based action-value Q-functions which are then used to extract the agent policy. We study our approach in the mobile device control setting. Digi-Q trains the Q-function using offline temporal-difference (TD) learning, on top of frozen, intermediate-layer features of a VLM. Compared to fine-tuning the whole VLM, this approach saves us compute and enhances scalability. To make the VLM features amenable for representing the Q-function, we need to employ an initial phase of fine-tuning to amplify coverage over actionable information needed for value function. Once trained, we use this Q-function via a Best-of-N policy extraction operator that imitates the best action out of multiple candidate actions from the current policy as ranked by the value function, enabling policy improvement without environment interaction. Digi-Q outperforms several prior methods on user-scale device control tasks in Android-in-the-Wild, attaining 21.2% improvement over prior best-performing method. In some cases, our Digi-Q ap-\nproach already matches state-of-the-art RL methods that require interaction. The project is open-sourced at https://github.com/DigiRL-agent/digiq",
+      "venue": "ICLR 2025",
+      "authors": [
+        "Hao Bai",
+        "Yifei Zhou",
+        "Li Erran Li",
+        "Sergey Levine",
+        "Aviral Kumar"
+      ],
+      "paper_id": "CjfQssZtAb",
+      "pdf_url": "https://openreview.net/pdf/d6565f7372a86552f16d861c9fe4fedde5378037.pdf",
+      "forum_url": "https://openreview.net/forum?id=CjfQssZtAb"
+    },
+    {
+      "title": "BALROG: Benchmarking Agentic LLM and VLM Reasoning On Games",
+      "abstract": "Large Language Models (LLMs) and Vision Language Models (VLMs) possess extensive knowledge and exhibit promising reasoning abilities, however, they still struggle to perform well in complex, dynamic environments. Real-world tasks require handling intricate interactions, advanced spatial reasoning, long-term planning, and continuous exploration of new strategies—areas in which we lack effective methodologies for comprehensively evaluating these capabilities. To address this gap, we introduce BALROG, a novel benchmark designed to assess the agentic capabilities of LLMs and VLMs through a diverse set of challenging games. Our benchmark incorporates a range of existing reinforcement learning environments with varying levels of difficulty, including tasks that are solvable by non-expert humans in seconds to extremely challenging ones that may take years to master (e.g., the NetHack Learning Environment). \nWe devise fine-grained metrics to measure performance and conduct an extensive evaluation of several popular open-source and closed-source LLMs and VLMs. Our findings indicate that while current models achieve partial success in the easier games, they struggle significantly with more challenging tasks. Notably, we observe severe deficiencies in vision-based decision-making, as several models perform worse when visual representations of the environments are provided. We release BALROG as an open and user-friendly benchmark to facilitate future research and development in the agentic community. Code and Leaderboard at balrogai.com",
+      "venue": "ICLR 2025",
+      "authors": [
+        "Davide Paglieri",
+        "Bartłomiej Cupiał",
+        "Samuel Coward",
+        "Ulyana Piterbarg",
+        "Maciej Wolczyk",
+        "Akbir Khan",
+        "Eduardo Pignatelli",
+        "Łukasz Kuciński",
+        "Lerrel Pinto",
+        "Rob Fergus",
+        "Jakob Nicolaus Foerster",
+        "Jack Parker-Holder",
+        "Tim Rocktäschel"
+      ],
+      "paper_id": "fp6t3F669F",
+      "pdf_url": "https://openreview.net/pdf/35b37f490670a7fbcbd3500720ae9ca23a44f468.pdf",
+      "forum_url": "https://openreview.net/forum?id=fp6t3F669F"
+    },
+    {
+      "title": "LLM-Explorer: A Plug-in Reinforcement Learning Policy Exploration Enhancement Driven by Large Language Models",
+      "abstract": "Policy exploration is critical in reinforcement learning (RL), where existing approaches include $\\epsilon$-greedy, Gaussian process, etc.\nHowever, these approaches utilize preset stochastic processes and are indiscriminately applied in all kinds of RL tasks without considering task-specific features that influence policy exploration. Moreover, during RL training, the evolution of such stochastic processes is rigid, which typically only incorporates a decay in the variance, failing to adjust flexibly according to the agent's real-time learning status.\nInspired by the analyzing and reasoning capability of large language models (LLMs), we design **LLM-Explorer** to adaptively generate task-specific exploration strategies with LLMs, enhancing the policy exploration in RL. In our design, we sample the learning trajectory of the agent during the RL training in a given task and prompt the LLM to analyze the agent's current policy learning status and then generate a probability distribution for future policy exploration. Updating the probability distribution periodically, we derive a stochastic process specialized for the particular task and dynamically adjusted to adapt to the learning process. Our design is a plug-in module compatible with various widely applied RL algorithms, including the DQN series, DDPG, TD3, and any possible variants developed based on them. Through extensive experiments on the Atari and MuJoCo benchmarks, we demonstrate LLM-Explorer's capability to enhance RL policy exploration, achieving an average performance improvement up to 37.27%. Our code is open-source at https://github.com/tsinghua-fib-lab/LLM-Explorer for reproducibility.",
+      "venue": "NeurIPS 2025",
+      "authors": [
+        "Qianyue Hao",
+        "Yiwen Song",
+        "Qingmin Liao",
+        "Jian Yuan",
+        "Yong Li"
+      ],
+      "paper_id": "VA5P0rUZPx",
+      "pdf_url": "https://openreview.net/pdf/64ba671c860d8032b21824e28d00916c3e613964.pdf",
+      "forum_url": "https://openreview.net/forum?id=VA5P0rUZPx"
+    },
+    {
+      "title": "AlphaZero Neural Scaling and Zipf's Law: a Tale of Board Games and Power Laws",
+      "abstract": "Neural scaling laws are observed in a range of domains, to date with no universal understanding of why they occur. Recent theories suggest that loss power laws arise from Zipf's law, a power law observed in domains like natural language. One theory suggests that language scaling laws emerge when Zipf-distributed task quanta are learned in descending order of frequency. In this paper we examine power-law scaling in AlphaZero, a reinforcement learning algorithm, using a model of language-model scaling. We find that game states in training and inference data scale with Zipf's law, which is known to arise from the tree structure of the environment, and examine the correlation between scaling-law  and Zipf's-law exponents. In agreement with the quanta scaling model, we find that agents optimize state loss in descending order of frequency, even though this order scales inversely with modelling complexity. We also find that inverse scaling, the failure of models to improve with size, is correlated with unusual Zipf curves where end-game states are among the most frequent states. We show evidence that larger models shift their focus to these less-important states, sacrificing their understanding of important early-game states.",
+      "venue": "NeurIPS 2025",
+      "authors": [
+        "Oren Neumann",
+        "Claudius Gros"
+      ],
+      "paper_id": "IMmkDMqFMU",
+      "pdf_url": "https://openreview.net/pdf/7dc8d92a6a98e5cfc4b8cc93b594cb6e9e65bc5f.pdf",
+      "forum_url": "https://openreview.net/forum?id=IMmkDMqFMU"
+    },
+    {
+      "title": "CURE: Co-Evolving Coders and Unit Testers via Reinforcement Learning",
+      "abstract": "Mathematical reasoning in large language models has been successfully incentivized through reinforcement learning with verifiable rewards, leading to improved one-shot precision. In this work, we turn our focus to the coding domain. Beyond one-shot precision, we highlight unit test generation as another key factor for enhancing coding ability, since accurate unit tests are essential for enabling self-checking and self-correction during inference.\nTraditional approaches for fine-tuning LLMs on unit test generation rely heavily on ground-truth code solutions in the training data. We propose CURE, a novel reinforcement learning framework with a dedicated reward design that co-evolves coding and unit test generation capabilities based on their interaction outcomes—without any ground-truth code as supervision. This approach enables flexible and scalable training and allows the unit tester to learn directly from the coder’s mistakes.\nThrough extensive evaluations, we demonstrate that our CURE models, derived from base models of varying sizes, excel in both code generation and unit test generation. They naturally extend to downstream tasks such as test-time scaling—achieving a 6.2\\% improvement over the base model—and agentic unit test generation, with a 25.1\\% improvement. Our 4B model consistently outperforms Qwen3-4B while achieving 64.8\\% inference efficiency in unit test generation. Notably, we also find that the CURE model can serve as an effective reward model for reinforcement learning on base models, even in the absence of any labeled supervision.",
+      "venue": "NeurIPS 2025",
+      "authors": [
+        "Yinjie Wang",
+        "Ling Yang",
+        "Ye Tian",
+        "Ke Shen",
+        "Mengdi Wang"
+      ],
+      "paper_id": "wPdBe9zxNr",
+      "pdf_url": "https://openreview.net/pdf/6be4b1f5dff8b39f2e222dc06ccafec29b4f4ec0.pdf",
+      "forum_url": "https://openreview.net/forum?id=wPdBe9zxNr"
+    },
+    {
+      "title": "Scent of Knowledge: Optimizing Search-Enhanced Reasoning with Information Foraging",
+      "abstract": "Augmenting large language models (LLMs) with external retrieval has become a standard method to address their inherent knowledge cutoff limitations. However, traditional retrieval-augmented generation methods employ static, pre-inference retrieval strategies, making them inadequate for complex tasks involving ambiguous, multi-step, or evolving information needs. Recent advances in test-time scaling techniques have demonstrated significant potential in enabling LLMs to dynamically interact with external tools, motivating the shift toward adaptive inference-time retrieval.\nInspired by Information Foraging Theory (IFT), we propose InForage, a reinforcement learning framework that formalizes retrieval-augmented reasoning as a dynamic information-seeking process. Unlike existing approaches, InForage explicitly rewards intermediate retrieval quality, encouraging LLMs to iteratively gather and integrate information through adaptive search behaviors. To facilitate training, we construct a human-guided dataset capturing iterative search and reasoning trajectories for complex, real-world web tasks. Extensive evaluations across general question answering, multi-hop reasoning tasks, and a newly developed real-time web QA dataset demonstrate InForage's superior performance over baseline methods. \nThese results highlight InForage's effectiveness in building robust, adaptive, and efficient reasoning agents. \nWe provide all codes and datasets in the supplementary materials.",
+      "venue": "NeurIPS 2025",
+      "authors": [
+        "Hongjin Qian",
+        "Zheng Liu"
+      ],
+      "paper_id": "26kUrQm4zw",
+      "pdf_url": "https://openreview.net/pdf/a39cc30f01a1626169906a2a00ee2c02c20ae1c9.pdf",
+      "forum_url": "https://openreview.net/forum?id=26kUrQm4zw"
+    },
+    {
+      "title": "WebDancer: Towards Autonomous Information Seeking Agency",
+      "abstract": "Addressing intricate real-world problems necessitates in-depth information seeking and multi-step reasoning. \nRecent progress in agentic systems, exemplified by Deep Research, underscores the potential for autonomous multi-step research. \nIn this work, we present a cohesive paradigm for building end-to-end agentic information seeking agents from a data-centric and training-stage perspective.\nOur approach consists of four key stages: (1) browsing data construction, (2) trajectories sampling, (3) supervised fine-tuning for effective cold start, and (4) reinforcement learning for enhanced generalisation.\nWe instantiate this framework in a web agent based on the ReAct format, WebDancer.\nEmpirical evaluations on the challenging GAIA and WebWalkerQA benchmarks demonstrate the strong performance of WebDancer, achieving considerable results and highlighting the efficacy of our training paradigm. \nFurther analysis of agent training provides valuable insights and actionable, systematic pathways for developing more capable agentic models.",
+      "venue": "NeurIPS 2025",
+      "authors": [
+        "Jialong Wu",
+        "Baixuan Li",
+        "Runnan Fang",
+        "Wenbiao Yin",
+        "Liwen Zhang",
+        "Zhenglin Wang",
+        "Zhengwei Tao",
+        "Ding-Chu Zhang",
+        "Zekun Xi",
+        "Xiangru Tang",
+        "Yong Jiang",
+        "Pengjun Xie",
+        "Fei Huang",
+        "Jingren Zhou"
+      ],
+      "paper_id": "quJdphBcdP",
+      "pdf_url": "https://openreview.net/pdf/7c886fbc63b09377d123254d93907b41820d72d7.pdf",
+      "forum_url": "https://openreview.net/forum?id=quJdphBcdP"
+    },
+    {
+      "title": "RLZero: Direct Policy Inference from Language Without In-Domain Supervision",
+      "abstract": "The reward hypothesis states that all goals and purposes can be understood as the maximization of a received scalar reward signal.  However,  in practice, defining such a reward signal is notoriously difficult, as humans are often unable to predict the optimal behavior corresponding to a reward function.  Natural language offers an intuitive alternative for instructing reinforcement learning (RL) agents, yet previous language-conditioned approaches either require costly supervision or test-time training given a language instruction. In this work, we present a new approach that uses a pretrained RL agent trained using only unlabeled, offline interactions—without task-specific supervision or labeled trajectories—to get zero-shot test-time policy inference from arbitrary natural language instructions. We introduce a framework comprising three steps: *imagine*, *project*, and *imitate*. First, the agent imagines a sequence of observations corresponding to the provided language description using video generative models. Next, these imagined observations are projected into the target environment domain. Finally, an agent pretrained in the target environment with unsupervised RL instantly imitates the projected observation sequence through a closed-form solution. To the best of our knowledge, our method, RLZero, is the first approach to show direct language-to-behavior generation abilities on a variety of tasks and environments without any in-domain supervision. We further show that components of RLZero can be used to generate policies zero-shot from cross-embodied videos, such as those available on YouTube, even for complex embodiments like humanoids.",
+      "venue": "NeurIPS 2025",
+      "authors": [
+        "Harshit Sikchi",
+        "Siddhant Agarwal",
+        "Pranaya Jajoo",
+        "Samyak Parajuli",
+        "Caleb Chuck",
+        "Max Rudolph",
+        "Peter Stone",
+        "Amy Zhang",
+        "Scott Niekum"
+      ],
+      "paper_id": "eyH8QLn2Qx",
+      "pdf_url": "https://openreview.net/pdf/0ddd9844e359307d41ee4330b38d8795ac1c279a.pdf",
+      "forum_url": "https://openreview.net/forum?id=eyH8QLn2Qx"
+    },
+    {
+      "title": "Bigger, Regularized, Categorical: High-Capacity Value Functions are Efficient Multi-Task Learners",
+      "abstract": "Recent advances in language modeling and vision stem from training large models on diverse, multi‑task data. This paradigm has had limited impact in value-based reinforcement learning (RL), where improvements are often driven by small models trained in a single-task context. This is because in multi-task RL sparse rewards and gradient conflicts make optimization of temporal difference brittle. Practical workflows for generalist policies therefore avoid online training, instead cloning expert trajectories or distilling collections of single‑task policies into one agent. In this work, we show that the use of high-capacity value models trained via cross-entropy and conditioned on learnable task embeddings addresses the problem of task interference in online RL, allowing for robust and scalable multi‑task training. We test our approach on 7 multi-task benchmarks with over 280 unique tasks, spanning high degree-of-freedom humanoid control and discrete vision-based RL. We find that, despite its simplicity, the proposed approach leads to state-of-the-art single and multi-task performance, as well as sample-efficient transfer to new tasks.",
+      "venue": "NeurIPS 2025",
+      "authors": [
+        "Michal Nauman",
+        "Marek Cygan",
+        "Carmelo Sferrazza",
+        "Aviral Kumar",
+        "Pieter Abbeel"
+      ],
+      "paper_id": "zhOUfuOIzA",
+      "pdf_url": "https://openreview.net/pdf/4d9faa0144d5943958abaa2a19e8693bfe3e2013.pdf",
+      "forum_url": "https://openreview.net/forum?id=zhOUfuOIzA"
+    },
+    {
+      "title": "Towards Provable Emergence of In-Context Reinforcement Learning",
+      "abstract": "Typically, a modern reinforcement learning (RL) agent solves a task by updating its neural network parameters to adapt its policy to the task. Recently, it has been observed that some RL agents can solve a wide range of new out-of-distribution tasks without parameter updates after pretraining on some task distribution. When evaluated in a new task, instead of making parameter updates, the pretrained agent conditions its policy on additional input called the context, e.g., the agent's interaction history in the new task. The agent's performance increases as the information in the context increases, with the agent's parameters fixed. This phenomenon is typically called in-context RL (ICRL). The pretrained parameters of the agent network enable the remarkable ICRL phenomenon. However, many ICRL works perform the pretraining with standard RL algorithms. This raises the central question this paper aims to address: Why can the RL pretraining algorithm generate network parameters that enable ICRL? We hypothesize that the parameters capable of ICRL are minimizers of the pretraining loss. This work provides initial support for this hypothesis through a case study. In particular, we prove that when a Transformer is pretrained for policy evaluation, one of the global minimizers of the pretraining loss can enable in-context temporal difference learning.",
+      "venue": "NeurIPS 2025",
+      "authors": [
+        "Jiuqi Wang",
+        "Rohan Chandra",
+        "Shangtong Zhang"
+      ],
+      "paper_id": "bdFJbP7542",
+      "pdf_url": "https://openreview.net/pdf/7dd9f4568481ae00042118a15615835735797219.pdf",
+      "forum_url": "https://openreview.net/forum?id=bdFJbP7542"
+    },
+    {
+      "title": "Self-Challenging Language Model Agents",
+      "abstract": "Large language models  are quickly becoming the foundation for intelligent agents that are capable of using tools. However, training such agents is challenging because it requires human creation and annotation of a diverse set of tasks, tools, and evaluation criteria. In this paper, we propose  the Self-Challenging Agent framework for training an agent on high-quality tasks that are generated by itself. The agent first plays the role of challenger and generates a task after interacting with the given tools. The tasks take the form of a novel general class of problems termed Code-as-Task, which are defined by an instruction, a verification function and solution and failure cases which serve as tests, allowing to filter only for high-quality tasks.  \nThe agent then takes an executor role and trains on those tasks with reinforcement learning using the evaluation feedback as a reward.  We show our method improves the performance of Llama-3.1-8B-Instruct on two existing multi-turn tool-use agent benchmarks, M$^3$ToolEval and TauBench, with a two-fold average success rate increase, despite using only self-generated training data.",
+      "venue": "NeurIPS 2025",
+      "authors": [
+        "Yifei Zhou",
+        "Sergey Levine",
+        "Jason E Weston",
+        "Xian Li",
+        "Sainbayar Sukhbaatar"
+      ],
+      "paper_id": "9yusqX9DpR",
+      "pdf_url": "https://openreview.net/pdf/d7856a8a4e991dab71814a3f39f28fe17b6b93bd.pdf",
+      "forum_url": "https://openreview.net/forum?id=9yusqX9DpR"
+    },
+    {
+      "title": "Towards Large-Scale In-Context Reinforcement Learning by Meta-Training in Randomized Worlds",
+      "abstract": "In-Context Reinforcement Learning (ICRL) enables agents to learn automatically and on-the-fly from their interactive experiences. However, a major challenge in scaling up ICRL is the lack of scalable task collections. To address this, we propose the procedurally generated tabular Markov Decision Processes, named AnyMDP. Through a carefully designed randomization process, AnyMDP is capable of generating high-quality tasks on a large scale while maintaining relatively low structural biases. To facilitate efficient meta-training at scale, we further introduce decoupled policy distillation and induce prior information in the ICRL framework. Our results demonstrate that, with a sufficiently large scale of AnyMDP tasks, the proposed model can generalize to tasks that were not considered in the training set through versatile in-context learning paradigms. The scalable task set provided by AnyMDP also enables a more thorough empirical investigation of the relationship between data distribution and ICRL performance. We further show that the generalization of ICRL potentially comes at the cost of increased task diversity and longer adaptation periods. This finding carries critical implications for scaling robust ICRL capabilities, highlighting the necessity of diverse and extensive task design, and prioritizing asymptotic performance over few-shot adaptation.",
+      "venue": "NeurIPS 2025",
+      "authors": [
+        "Fan Wang",
+        "Pengtao Shao",
+        "Yiming Zhang",
+        "Bo Yu",
+        "Shaoshan Liu",
+        "Ning Ding",
+        "Yang Cao",
+        "Yu Kang",
+        "Haifeng Wang"
+      ],
+      "paper_id": "b6ASJBXtgP",
+      "pdf_url": "https://openreview.net/pdf/b3548e439acd6e48fb329061745a28ae848fe4d3.pdf",
+      "forum_url": "https://openreview.net/forum?id=b6ASJBXtgP"
+    },
+    {
+      "title": "ReAgent-V: A Reward-Driven Multi-Agent Framework for Video Understanding",
+      "abstract": "Video understanding is fundamental to tasks such as action recognition, video reasoning, and robotic control. Early video understanding methods based on large vision-language models (LVLMs) typically adopt a single-pass reasoning paradigm without dynamic feedback, limiting the model’s capacity to self-correct and adapt in complex scenarios. Recent efforts have attempted to address this limitation by incorporating reward models and reinforcement learning to enhance reasoning, or by employing tool-agent frameworks. However, these approaches face several challenges, including high annotation costs, reward signals that fail to capture real-time reasoning states, and low inference efficiency. To overcome these issues, we propose ReAgent-V, a novel agentic video understanding framework that integrates efficient frame selection with real-time reward generation during inference. These reward signals not only guide iterative answer refinement through a multi-perspective reflection mechanism—adjusting predictions from conservative, neutral, and aggressive viewpoints—but also enable automatic filtering of high-quality data for supervised fine-tuning (SFT), direct preference optimization (DPO), and group relative policy optimization (GRPO). ReAgent-V is lightweight, modular, and extensible, supporting flexible tool integration tailored to diverse tasks. Extensive experiments on 12 datasets across three core applications—video understanding, video reasoning enhancement, and vision-language-action model alignment—demonstrate significant gains in generalization and reasoning, with improvements of up to 6.9%, 2.1%, and 9.8%, respectively, highlighting the effectiveness and versatility of the proposed framework.",
+      "venue": "NeurIPS 2025",
+      "authors": [
+        "Yiyang Zhou",
+        "Yangfan He",
+        "Yaofeng Su",
+        "Siwei Han",
+        "Joel Jang",
+        "Gedas Bertasius",
+        "Mohit Bansal",
+        "Huaxiu Yao"
+      ],
+      "paper_id": "D1Iw4Unvfc",
+      "pdf_url": "https://openreview.net/pdf/6d161d5f3d882ca658ad735bc6b9ad5b35e62169.pdf",
+      "forum_url": "https://openreview.net/forum?id=D1Iw4Unvfc"
+    },
+    {
+      "title": "DAIL: Beyond Task Ambiguity for Language-Conditioned Reinforcement Learning",
+      "abstract": "Comprehending natural language and following human instructions are critical capabilities for intelligent agents. \nHowever, the flexibility of linguistic instructions induces substantial ambiguity across language-conditioned tasks, severely degrading algorithmic performance.\nTo address these limitations, we present a novel method named DAIL (Distributional Aligned Learning), featuring two key components: distributional policy and semantic alignment.\nSpecifically, we provide theoretical results that the value distribution estimation mechanism enhances task differentiability.\nMeanwhile, the semantic alignment module captures the correspondence between trajectories and linguistic instructions.\nExtensive experimental results on both structured and visual observation benchmarks demonstrate that DAIL effectively resolves instruction ambiguities, achieving superior performance to baseline methods. Our implementation is available at https://github.com/RunpengXie/Distributional-Aligned-Learning.",
+      "venue": "NeurIPS 2025",
+      "authors": [
+        "Runpeng Xie",
+        "Quanwei Wang",
+        "Hao Hu",
+        "Zherui Zhou",
+        "Ni Mu",
+        "Xiyun Li",
+        "Yiqin Yang",
+        "Shuang Xu",
+        "Qianchuan Zhao",
+        "Bo XU"
+      ],
+      "paper_id": "gzQYPO0d7b",
+      "pdf_url": "https://openreview.net/pdf/cf488432ac9f67f48ef2c73ebdfc5898d49cfa66.pdf",
+      "forum_url": "https://openreview.net/forum?id=gzQYPO0d7b"
+    },
+    {
+      "title": "GUI-Rise: Structured Reasoning and History Summarization for GUI Navigation",
+      "abstract": "While Multimodal Large Language Models (MLLMs) have advanced GUI navigation agents, current approaches face limitations in cross-domain generalization and effective history utilization. We present a reasoning-enhanced framework that systematically integrates structured reasoning, action prediction, and history summarization. The structured reasoning component generates coherent Chain-of-Thought analyses combining progress estimation and decision reasoning, which inform both immediate action predictions and compact history summaries for future steps. Based on this framework, we train a GUI agent, GUI-Rise, through supervised fine-tuning on pseudo-labeled trajectories and reinforcement learning with Group Relative Policy Optimization (GRPO). This framework employs specialized rewards, including a history-aware objective, directly linking summary quality to subsequent action performance. Comprehensive evaluations on standard benchmarks demonstrate state-of-the-art results under identical training data conditions, with particularly strong performance in out-of-domain scenarios. These findings validate our framework's ability to maintain robust reasoning and generalization across diverse GUI navigation tasks.",
+      "venue": "NeurIPS 2025",
+      "authors": [
+        "Tao Liu",
+        "Chongyu Wang",
+        "Rongjie Li",
+        "Yingchen Yu",
+        "Xuming He",
+        "Song Bai"
+      ],
+      "paper_id": "YMPYLesItf",
+      "pdf_url": "https://openreview.net/pdf/1bf93b51f662398375afb467c152f1d1bca48c3e.pdf",
+      "forum_url": "https://openreview.net/forum?id=YMPYLesItf"
+    },
+    {
+      "title": "Generalizing Experience for Language Agents with Hierarchical MetaFlows",
+      "abstract": "Recent efforts to employ large language models (LLMs) as agents have demonstrated promising results in a wide range of multi-step agent tasks. However, existing agents lack an effective experience reuse approach to leverage historical completed tasks. In this paper, we propose a novel experience reuse framework MetaFlowLLM, which constructs a hierarchical experience tree from historically completed tasks. Each node in this experience tree is presented as a MetaFlow which contains static execution workflow and subtask required by agents to complete dynamically. Then, we propose a Hierarchical MetaFlow Merging algorithm to construct the hierarchical experience tree. When accomplishing a new task, MetaFlowLLM can first retrieve the most relevant MetaFlow node from the experience tree and then execute it accordingly. To effectively generate valid MetaFlows from historical data, we further propose a reinforcement learning pipeline to train the MetaFlowGen. Extensive experimental results on AppWorld and WorkBench demonstrate that integrating with MetaFlowLLM, existing agents (e.g., ReAct, Reflexion) can gain substantial performance improvement with reducing execution costs. Notably, MetaFlowLLM achieves an average success rate improvement of 32.3% on AppWorld and 6.2% on WorkBench, respectively.",
+      "venue": "NeurIPS 2025",
+      "authors": [
+        "Shengda Fan",
+        "Xin Cong",
+        "Zhong Zhang",
+        "Yuepeng Fu",
+        "Yesai Wu",
+        "Hao Wang",
+        "Xinyu Zhang",
+        "Enrui Hu",
+        "Yankai Lin"
+      ],
+      "paper_id": "QsQGMijLhL",
+      "pdf_url": "https://openreview.net/pdf/e5e7cd3c074c77adae516f8d392136a8fe8657f5.pdf",
+      "forum_url": "https://openreview.net/forum?id=QsQGMijLhL"
+    },
+    {
+      "title": "Text-to-Decision Agent: Offline Meta-Reinforcement Learning from Natural Language Supervision",
+      "abstract": "Offline meta-RL usually tackles generalization by inferring task beliefs from high-quality samples or warmup explorations. The restricted form limits their generality and usability since these supervision signals are expensive and even infeasible to acquire in advance for unseen tasks. Learning directly from the raw text about decision tasks is a promising alternative to leverage a much broader source of supervision. In the paper, we propose **T**ext-to-**D**ecision **A**gent (**T2DA**), a simple and scalable framework that supervises offline meta-RL with natural language. We first introduce a generalized world model to encode multi-task decision data into a dynamics-aware embedding space. Then, inspired by CLIP, we predict which textual description goes with which decision embedding, effectively bridging their semantic gap via contrastive language-decision pre-training and aligning the text embeddings to comprehend the environment dynamics. After training the text-conditioned generalist policy, the agent can directly realize zero-shot text-to-decision generation in response to language instructions. Comprehensive experiments on MuJoCo and Meta-World benchmarks show that T2DA facilitates high-capacity zero-shot generalization and outperforms various types of baselines. Our code is available at [https://github.com/NJU-RL/T2DA](https://github.com/NJU-RL/T2DA).",
+      "venue": "NeurIPS 2025",
+      "authors": [
+        "Shilin Zhang",
+        "Zican Hu",
+        "Wenhao Wu",
+        "Xinyi Xie",
+        "Jianxiang Tang",
+        "Chunlin Chen",
+        "Daoyi Dong",
+        "Yu Cheng",
+        "Zhenhong Sun",
+        "Zhi Wang"
+      ],
+      "paper_id": "9qCejdqPXa",
+      "pdf_url": "https://openreview.net/pdf/c33fdc82e3fa9e31b19dd8f58667e752537f7439.pdf",
+      "forum_url": "https://openreview.net/forum?id=9qCejdqPXa"
+    },
+    {
+      "title": "LARM: Large Auto-Regressive Model for Long-Horizon Embodied Intelligence",
+      "abstract": "Recent embodied agents are primarily built based on reinforcement learning (RL) or large language models (LLMs). Among them, RL agents are efficient for deployment but only perform very few tasks. By contrast, giant LLM agents (often more than 1000B parameters) present strong generalization while demanding enormous computing resources. In this work, we combine their advantages while avoiding the drawbacks by conducting the proposed referee RL on our developed large auto-regressive model (LARM). Specifically, LARM is built upon a lightweight LLM (fewer than 5B parameters) and directly outputs the next action to execute rather than text. We mathematically reveal that classic RL feedbacks vanish in long-horizon embodied exploration and introduce a giant LLM based referee to handle this reward vanishment during training LARM. In this way, LARM learns to complete diverse open-world tasks without human intervention. Especially, LARM successfully harvests enchanted diamond equipment in Minecraft, which demands significantly longer decision-making chains than the highest achievements of prior best methods.",
+      "venue": "ICML 2025",
+      "authors": [
+        "Zhuoling Li",
+        "Xiaogang Xu",
+        "Zhenhua Xu",
+        "Ser-Nam Lim",
+        "Hengshuang Zhao"
+      ],
+      "paper_id": "43466",
+      "pdf_url": "",
+      "forum_url": "https://ICML.cc/forum?id=2025/poster/43466"
+    },
+    {
+      "title": "Mastering Massive Multi-Task Reinforcement Learning via Mixture-of-Expert Decision Transformer",
+      "abstract": "Despite recent advancements in offline multi-task reinforcement learning (MTRL) have harnessed the powerful capabilities of the Transformer architecture, most approaches focus on a limited number of tasks, with scaling to extremely massive tasks remaining a formidable challenge. In this paper,  we first revisit the key impact of task numbers on current MTRL method, and further reveal that naively expanding the parameters proves insufficient to counteract the performance degradation as the number of tasks escalates. Building upon these insights, we propose M3DT, a novel mixture-of-experts (MoE) framework that tackles task scalability by further unlocking the model’s parameter scalability.  Specifically, we enhance both the architecture and the optimization of the agent, where we strengthen the Decision Transformer (DT) backbone with MoE to reduce task load on parameter subsets, and introduce a three-stage training mechanism to facilitate efficient training with optimal performance. Experimental results show that, by increasing the number of experts, M3DT not only consistently enhances its performance as model expansion on the fixed task numbers, but also exhibits remarkable task scalability, successfully extending to 160 tasks with superior performance.",
+      "venue": "ICML 2025",
+      "authors": [
+        "Yilun Kong",
+        "Guozheng Ma",
+        "Qi Zhao",
+        "Haoyu Wang",
+        "Li Shen",
+        "Xueqian Wang",
+        "Dacheng Tao"
+      ],
+      "paper_id": "43936",
+      "pdf_url": "",
+      "forum_url": "https://ICML.cc/forum?id=2025/poster/43936"
+    },
+    {
+      "title": "Provable Zero-Shot Generalization in Offline Reinforcement Learning",
+      "abstract": "In this work, we study offline reinforcement learning (RL) with zero-shot generalization property (ZSG), where the agent has access to an offline dataset including experiences from different environments, and the goal of the agent is to train a policy over the training environments which performs well on test environments without further interaction. Existing work showed that classical offline RL fails to generalize to new, unseen environments. We propose pessimistic empirical risk minimization (PERM) and pessimistic proximal policy optimization (PPPO), which leverage pessimistic policy evaluation to guide policy learning and enhance generalization. We show that both PERM and PPPO are capable of finding a near-optimal policy with ZSG. Our result serves as a first step in understanding the foundation of the generalization phenomenon in offline reinforcement learning.",
+      "venue": "ICML 2025",
+      "authors": [
+        "Zhiyong Wang",
+        "Chen Yang",
+        "John C. S. Lui",
+        "Dongruo Zhou"
+      ],
+      "paper_id": "46618",
+      "pdf_url": "",
+      "forum_url": "https://ICML.cc/forum?id=2025/poster/46618"
+    },
+    {
+      "title": "SENSEI: Semantic Exploration Guided by Foundation Models to Learn Versatile World Models",
+      "abstract": "Exploration is a cornerstone of reinforcement learning (RL). Intrinsic motivation attempts to decouple exploration from external, task-based rewards. However, established approaches to intrinsic motivation that follow general principles such as information gain, often only uncover low-level interactions. In contrast, children’s play suggests that they engage in meaningful high-level behavior by imitating or interacting with their caregivers. Recent work has focused on using foundation models to inject these semantic biases into exploration. However, these methods often rely on unrealistic assumptions, such as language-embedded environments or access to high-level actions. We propose SEmaNtically Sensible ExploratIon (SENSEI), a framework to equip model-based RL agents with an intrinsic motivation for semantically meaningful behavior. SENSEI distills a reward signal of interestingness from Vision Language Model (VLM) annotations, enabling an agent to predict these rewards through a world model. Using model-based RL, SENSEI trains an exploration policy that jointly maximizes semantic rewards and uncertainty. We show that in both robotic and video game-like simulations SENSEI discovers a variety of meaningful behaviors from image observations and low-level actions. SENSEI provides a general tool for learning from foundation model feedback, a crucial research direction, as VLMs become more powerful.",
+      "venue": "ICML 2025",
+      "authors": [
+        "Cansu Sancaktar",
+        "Christian Gumbsch",
+        "Andrii Zadaianchuk",
+        "Pavel Kolev",
+        "Georg Martius"
+      ],
+      "paper_id": "44870",
+      "pdf_url": "",
+      "forum_url": "https://ICML.cc/forum?id=2025/poster/44870"
+    },
+    {
+      "title": "The Synergy of LLMs & RL Unlocks Offline Learning of Generalizable Language-Conditioned Policies with Low-fidelity Data",
+      "abstract": "Developing autonomous agents capable of performing complex, multi-step decision-making tasks specified in natural language remains a significant challenge, particularly in realistic settings where labeled data is scarce and real-time experimentation is impractical. Existing reinforcement learning (RL) approaches often struggle to generalize to unseen goals and states, limiting their applicability. In this paper, we introduce $\\textit{TEDUO}$, a novel training pipeline for offline language-conditioned policy learning in symbolic environments. Unlike conventional methods, $\\textit{TEDUO}$ operates on readily available, unlabeled datasets and addresses the challenge of generalization to previously unseen goals and states. Our approach harnesses large language models (LLMs) in a dual capacity: first, as automatization tools augmenting offline datasets with richer annotations, and second, as generalizable instruction-following agents. Empirical results demonstrate that $\\textit{TEDUO}$ achieves data-efficient learning of robust language-conditioned policies, accomplishing tasks beyond the reach of conventional RL frameworks or out-of-the-box LLMs alone.",
+      "venue": "ICML 2025",
+      "authors": [
+        "Thomas Pouplin",
+        "Katarzyna Kobalczyk",
+        "Hao Sun",
+        "Mihaela van der Schaar"
+      ],
+      "paper_id": "46412",
+      "pdf_url": "",
+      "forum_url": "https://ICML.cc/forum?id=2025/poster/46412"
+    },
+    {
+      "title": "Think Twice, Act Once: A Co-Evolution Framework of LLM and RL for Large-Scale Decision Making",
+      "abstract": "Recent advancements in Large Language Models (LLMs) and Reinforcement Learning (RL) have shown significant promise in decision-making tasks. Nevertheless, for large-scale industrial decision problems, both approaches face distinct challenges: LLMs lack real-time long-sequence decision-making capabilities, while RL struggles with sample efficiency in vast action spaces. To bridge this gap, we propose **A**gents **C**o-**E**volution (ACE), a synergistic framework between LLMs and RL agent for large-scale decision-making scenarios. ACE introduces a dual-role trajectory refinement mechanism where LLMs act as both Policy Actor and Value Critic during RL's training: the Actor refines suboptimal actions via multi-step reasoning and environment validation, while the Critic performs temporal credit assignment through trajectory-level reward shaping. Concurrently, RL agent enhance LLMs' task-specific decision-making via prioritized experience replay.Through extensive experiments across multiple power grid operation challenges with action spaces exceeding 60K discrete actions, ACE demonstrates superior performance over existing RL methods and LLM-based methods.",
+      "venue": "ICML 2025",
+      "authors": [
+        "Xu Wan",
+        "Wenyue Xu",
+        "Chao Yang",
+        "Mingyang Sun"
+      ],
+      "paper_id": "43534",
+      "pdf_url": "",
+      "forum_url": "https://ICML.cc/forum?id=2025/poster/43534"
+    },
+    {
+      "title": "Vintix: Action Model via In-Context Reinforcement Learning",
+      "abstract": "In-Context Reinforcement Learning (ICRL) represents a promising paradigm for developing generalist agents that learn at inference time through trial-and-error interactions, analogous to how large language models adapt contextually, but with a focus on reward maximization. However, the scalability of ICRL beyond toy tasks and single-domain settings remains an open challenge. In this work, we present the first steps toward scaling ICRL by introducing a fixed, cross-domain model capable of learning behaviors through in-context reinforcement learning. Our results demonstrate that Algorithm Distillation, a framework designed to facilitate ICRL, offers a compelling and competitive alternative to expert distillation to construct versatile action models. These findings highlight the potential of ICRL as a scalable approach for generalist decision-making systems.",
+      "venue": "ICML 2025",
+      "authors": [
+        "Andrei Polubarov",
+        "Nikita Lyubaykin",
+        "Alexander Derevyagin",
+        "Ilya Zisman",
+        "Denis Tarasov",
+        "Alexander Nikulin",
+        "Vladislav Kurenkov"
+      ],
+      "paper_id": "44459",
+      "pdf_url": "",
+      "forum_url": "https://ICML.cc/forum?id=2025/poster/44459"
+    }
+  ]
+}

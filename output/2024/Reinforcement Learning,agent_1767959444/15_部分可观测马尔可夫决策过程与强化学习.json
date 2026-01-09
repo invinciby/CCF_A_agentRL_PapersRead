@@ -1,0 +1,60 @@
+{
+  "name": "部分可观测马尔可夫决策过程与强化学习",
+  "paper_count": 4,
+  "summary": "该类别专注于部分可观测马尔可夫决策过程（POMDP）中的强化学习理论与算法研究。研究重点在于解决智能体在无法直接获取完整环境状态信息时的决策问题，包括设计适用于POMDP的模型无关RL算法（如基于代理状态的Q学习）、分析信息结构对学习复杂性的影响，以及探索利用特权信息（如模拟器状态）来提升训练效率的理论框架。相关工作旨在为现实世界中普遍存在的部分可观测场景提供可证明高效且实用的学习方案。",
+  "papers": [
+    {
+      "title": "On the Role of Information Structure in Reinforcement Learning for Partially-Observable Sequential Teams and Games",
+      "abstract": "In sequential decision-making problems, the *information structure* describes the causal dependencies between system variables, encompassing the dynamics of the environment and the agents' actions. Classical models of reinforcement learning (e.g., MDPs, POMDPs) assume a restricted and highly regular information structure, while more general models like predictive state representations do not explicitly model the information structure. By contrast, real-world sequential decision-making problems typically involve a complex and time-varying interdependence of system variables, requiring a rich and flexible representation of information structure. In this paper, we formalize a novel reinforcement learning model which explicitly represents the information structure.We then use this model to carry out an information-structural analysis of the statistical complexity of general sequential decision-making problems, obtaining a characterization via a graph-theoretic quantity of the DAG representation of the information structure. We prove an upper bound on the sample complexity of learning a general sequential decision-making problem in terms of its information structure by exhibiting an algorithm achieving the upper bound. This recovers known tractability results and gives a novel perspective on reinforcement learning in general sequential decision-making problems, providing a systematic way of identifying new tractable classes of problems.",
+      "venue": "NeurIPS 2024",
+      "authors": [
+        "Awni Altabaa",
+        "Zhuoran Yang"
+      ],
+      "paper_id": "95220",
+      "pdf_url": "",
+      "forum_url": "https://neurips.cc/forum?id=2024/poster/95220"
+    },
+    {
+      "title": "Periodic agent-state based Q-learning for POMDPs",
+      "abstract": "The standard approach for Partially Observable Markov Decision Processes (POMDPs) is to convert them to a fully observed belief-state MDP. However, the belief state depends on the system model and is therefore not viable in reinforcement learning (RL) settings. A widely used alternative is to use an agent state, which is a model-free, recursively updateable function of the observation history. Examples include frame stacking and recurrent neural networks. Since the agent state is model-free, it is used to adapt standard RL algorithms to POMDPs. However, standard RL algorithms like Q-learning learn a stationary policy. Our main thesis that we illustrate via examples is that because the agent state does not satisfy the Markov property, non-stationary agent-state based policies can outperform stationary ones. To leverage this feature, we propose PASQL (periodic agent-state based Q-learning), which is a variant of agent-state-based Q-learning that learns periodic policies. By combining ideas from periodic Markov chains and stochastic approximation, we rigorously establish that PASQL converges to a cyclic limit and characterize the approximation error of the converged periodic policy. Finally, we present a numerical experiment to highlight the salient features of PASQL and demonstrate the benefit of learning periodic policies over stationary policies.",
+      "venue": "NeurIPS 2024",
+      "authors": [
+        "Amit Sinha",
+        "Matthieu Geist",
+        "Aditya Mahajan"
+      ],
+      "paper_id": "95802",
+      "pdf_url": "",
+      "forum_url": "https://neurips.cc/forum?id=2024/poster/95802"
+    },
+    {
+      "title": "Provable Partially Observable Reinforcement Learning with Privileged Information",
+      "abstract": "Partial observability of the underlying states generally presents significant challenges for reinforcement learning (RL). In practice, certain *privileged information* , e.g., the access to states from simulators, has been exploited in training and achieved prominent empirical successes. To better understand the benefits of privileged information, we revisit and examine several simple and practically used paradigms in this setting, with both computation and sample efficiency analyses. Specifically, we first formalize the empirical paradigm of *expert distillation* (also known as  *teacher-student* learning), demonstrating its pitfall in finding near-optimal policies. We then identify a condition of the partially observable environment, the deterministic filter condition, under which expert distillation achieves sample and computational complexities that are *both* polynomial. Furthermore, we investigate another successful empirical paradigm of *asymmetric actor-critic*, and focus on the more challenging setting of observable partially observable Markov decision processes. We develop a belief-weighted optimistic asymmetric actor-critic algorithm with polynomial sample and quasi-polynomial computational complexities, where one key component is a new provable oracle for learning belief states that preserve *filter stability* under a misspecified model, which may be of independent interest. Finally, we also investigate the provable efficiency of partially observable multi-agent RL (MARL) with privileged information. We develop algorithms with the feature of centralized-training-with-decentralized-execution, a popular framework in empirical MARL, with polynomial sample and (quasi-)polynomial computational complexity in both paradigms above. Compared with a few recent related theoretical studies, our focus is on understanding practically inspired algorithmic paradigms, without computationally intractable oracles.",
+      "venue": "NeurIPS 2024",
+      "authors": [
+        "Yang Cai",
+        "Xiangyu Liu",
+        "Argyris Oikonomou",
+        "Kaiqing Zhang"
+      ],
+      "paper_id": "93646",
+      "pdf_url": "",
+      "forum_url": "https://neurips.cc/forum?id=2024/poster/93646"
+    },
+    {
+      "title": "Real-Time Recurrent Learning using Trace Units in Reinforcement Learning",
+      "abstract": "Recurrent Neural Networks (RNNs) are used to learn representations in partially observable environments. For agents that learn online and continually interact with the environment, it is desirable to train RNNs with real-time recurrent learning (RTRL); unfortunately, RTRL is prohibitively expensive for standard RNNs. A promising direction is to use linear recurrent architectures (LRUs), where dense recurrent weights are replaced with a complex-valued diagonal, making RTRL efficient. In this work, we build on these insights to provide a lightweight but effective approach for training RNNs in online RL. We introduce Recurrent Trace Units (RTUs), a small modification on LRUs that we nonetheless find to have significant performance benefits over LRUs when trained with RTRL. We find RTUs significantly outperform GRUs and Transformers across several partially observable environments while using significantly less computation.",
+      "venue": "NeurIPS 2024",
+      "authors": [
+        "Esraa Elelimy",
+        "Adam White",
+        "Michael Bowling",
+        "Martha White"
+      ],
+      "paper_id": "96663",
+      "pdf_url": "",
+      "forum_url": "https://neurips.cc/forum?id=2024/poster/96663"
+    }
+  ]
+}

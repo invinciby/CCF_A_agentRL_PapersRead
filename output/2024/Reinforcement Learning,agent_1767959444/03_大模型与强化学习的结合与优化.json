@@ -1,0 +1,669 @@
+{
+  "name": "大模型与强化学习的结合与优化",
+  "paper_count": 41,
+  "summary": "",
+  "papers": [
+    {
+      "title": "AlignDiff: Aligning Diverse Human Preferences via Behavior-Customisable Diffusion Model",
+      "abstract": "Aligning agent behaviors with diverse human preferences remains a challenging problem in reinforcement learning (RL), owing to the inherent abstractness and mutability of human preferences. To address these issues, we propose AlignDiff, a novel framework that leverages RLHF to quantify human preferences, covering abstractness, and utilizes them to guide diffusion planning for zero-shot behavior customizing, covering mutability. AlignDiff can accurately match user-customized behaviors and efficiently switch from one to another. To build the framework, we first establish the multi-perspective human feedback datasets, which contain comparisons for the attributes of diverse behaviors, and then train an attribute strength model to predict quantified relative strengths. After relabeling behavioral datasets with relative strengths, we proceed to train an attribute-conditioned diffusion model, which serves as a planner with the attribute strength model as a director for preference aligning at the inference phase. We evaluate AlignDiff on various locomotion tasks and demonstrate its superior performance on preference matching, switching, and covering compared to other baselines. Its capability of completing unseen downstream tasks under human instructions also showcases the promising potential for human-AI collaboration. More visualization videos are released on https://aligndiff.github.io/.",
+      "venue": "ICLR 2024",
+      "authors": [
+        "Zibin Dong",
+        "Yifu Yuan",
+        "Jianye HAO",
+        "Fei Ni",
+        "Yao Mu",
+        "YAN ZHENG",
+        "Yujing Hu",
+        "Tangjie Lv",
+        "Changjie Fan",
+        "Zhipeng Hu"
+      ],
+      "paper_id": "18315",
+      "pdf_url": "",
+      "forum_url": "https://iclr.cc/forum?id=2024/poster/18315"
+    },
+    {
+      "title": "AMAGO: Scalable In-Context Reinforcement Learning for Adaptive Agents",
+      "abstract": "We introduce AMAGO, an in-context Reinforcement Learning (RL) agent that uses sequence models to tackle the challenges of generalization, long-term memory, and meta-learning. Recent works have shown that off-policy learning can make in-context RL with recurrent policies viable. Nonetheless, these approaches require extensive tuning and limit scalability by creating key bottlenecks in agents' memory capacity, planning horizon, and model size. AMAGO revisits and redesigns the off-policy in-context approach to successfully train long-sequence Transformers over entire rollouts in parallel with end-to-end RL. Our agent is scalable and applicable to a wide range of problems, and we demonstrate its strong performance empirically in meta-RL and long-term memory domains. AMAGO's focus on sparse rewards and off-policy data also allows in-context learning to extend to goal-conditioned problems with challenging exploration. When combined with a multi-goal hindsight relabeling scheme, AMAGO can solve a previously difficult category of open-world domains, where agents complete many possible instructions in procedurally generated environments.",
+      "venue": "ICLR 2024",
+      "authors": [
+        "Jake Grigsby",
+        "Jim Fan",
+        "Yuke Zhu"
+      ],
+      "paper_id": "18839",
+      "pdf_url": "",
+      "forum_url": "https://iclr.cc/forum?id=2024/poster/18839"
+    },
+    {
+      "title": "Confronting Reward Model Overoptimization with Constrained RLHF",
+      "abstract": "Large language models are typically aligned with human preferences by optimizing reward models (RMs) fitted to human feedback. However, human preferences are multi-faceted, and it is increasingly common to derive reward from a composition of simpler reward models which each capture a different aspect of language quality. This itself presents a challenge, as it is difficult to appropriately weight these component RMs when combining them. Compounding this difficulty, because any RM is only a proxy for human evaluation, this process is vulnerable to *overoptimization*, wherein past a certain point, accumulating higher reward is associated with worse human ratings. In this paper, we perform the first study on overoptimization in composite RMs, showing that correlation between component RMs has a significant effect on the locations of these points. We then introduce an approach to solve this issue using constrained reinforcement learning as a means of preventing the agent from exceeding each RM's threshold of usefulness. Our method addresses the problem of weighting component RMs by learning dynamic weights, naturally given by the Lagrange multipliers. As a result, each RM stays within the range at which it is an effective proxy, improving evaluation performance. Finally, we introduce an adaptive method using gradient-free optimization to identify and optimize towards these points during a single run.",
+      "venue": "ICLR 2024",
+      "authors": [
+        "Ted Moskovitz",
+        "Aaditya Singh",
+        "DJ Strouse",
+        "Tuomas Sandholm",
+        "Ruslan Salakhutdinov",
+        "Anca Dragan",
+        "Stephen McAleer"
+      ],
+      "paper_id": "18133",
+      "pdf_url": "",
+      "forum_url": "https://iclr.cc/forum?id=2024/poster/18133"
+    },
+    {
+      "title": "DiLu: A Knowledge-Driven Approach to Autonomous Driving with Large Language Models",
+      "abstract": "Recent advancements in autonomous driving have relied on data-driven approaches, which are widely adopted but face challenges including dataset bias, overfitting, and uninterpretability. Drawing inspiration from the knowledge-driven nature of human driving, we explore the question of how to instill similar capabilities into autonomous driving systems and summarize a paradigm that integrates an interactive environment, a driver agent, as well as a memory component to address this question. Leveraging large language models (LLMs) with emergent abilities, we propose the DiLu framework, which combines a Reasoning and a Reflection module to enable the system to perform decision-making based on common-sense knowledge and evolve continuously. Extensive experiments prove DiLu's capability to accumulate experience and demonstrate a significant advantage in generalization ability over reinforcement learning-based methods.Moreover, DiLu is able to directly acquire experiences from real-world datasets which highlights its potential to be deployed on practical autonomous driving systems.To the best of our knowledge, we are the first to leverage knowledge-driven capability in decision-making for autonomous vehicles. Through the proposed DiLu framework, LLM is strengthened to apply knowledge and to reason causally in the autonomous driving domain.Project page: https://pjlab-adg.github.io/DiLu/",
+      "venue": "ICLR 2024",
+      "authors": [
+        "Licheng Wen",
+        "DAOCHENG FU",
+        "Xin Li",
+        "Xinyu Cai",
+        "Tao MA",
+        "Pinlong Cai",
+        "Min Dou",
+        "Botian Shi",
+        "Liang He",
+        "Yu Qiao"
+      ],
+      "paper_id": "18729",
+      "pdf_url": "",
+      "forum_url": "https://iclr.cc/forum?id=2024/poster/18729"
+    },
+    {
+      "title": "Dynamic Layer Tying for Parameter-Efficient Transformers",
+      "abstract": "In the pursuit of reducing the number of trainable parameters in deep transformer networks, we employ Reinforcement Learning to dynamically select layers during training and tie them together. Every few iterations, the RL agent is asked whether to train each layer $i$ independently or to copy the weights of a previous layer $j<i$. This facilitates weight sharing, reduces the number of trainable parameters, and also serves as an effective regularization technique. Experimental evaluations validate that our model modestly outperforms the baseline transformer model with regard to perplexity and drastically reduces the number of trainable parameters. In particular, the memory consumption during training is up to one order of magnitude less than the conventional training method.",
+      "venue": "ICLR 2024",
+      "authors": [
+        "Tamir David-Hay",
+        "Lior Wolf"
+      ],
+      "paper_id": "18276",
+      "pdf_url": "",
+      "forum_url": "https://iclr.cc/forum?id=2024/poster/18276"
+    },
+    {
+      "title": "Fast Imitation via Behavior Foundation Models",
+      "abstract": "Imitation learning (IL) aims at producing agents that can imitate any behavior given a few expert demonstrations. Yet existing approaches require many demonstrations and/or running (online or offline) reinforcement learning (RL) algorithms for each new imitation task. Here we show that recent RL foundation models based on successor measures can imitate any expert behavior almost instantly with just a few demonstrations and no need for RL or fine-tuning, while accommodating several IL principles (behavioral cloning, feature matching, reward-based, and goal-based reductions). In our experiments, imitation via RL foundation models matches, and often surpasses, the performance of SOTA offline IL algorithms, and produces imitation policies from new demonstrations within seconds instead of hours.",
+      "venue": "ICLR 2024",
+      "authors": [
+        "Matteo Pirotta",
+        "Andrea Tirinzoni",
+        "Ahmed Touati",
+        "Alessandro Lazaric",
+        "Yann Ollivier"
+      ],
+      "paper_id": "17717",
+      "pdf_url": "",
+      "forum_url": "https://iclr.cc/forum?id=2024/poster/17717"
+    },
+    {
+      "title": "HAZARD Challenge: Embodied Decision Making in Dynamically Changing Environments",
+      "abstract": "Recent advances in high-fidelity virtual environments serve as one of the major driving forces for building intelligent embodied agents to perceive, reason and interact with the physical world. Typically, these environments remain unchanged unless agents interact with them. However, in real-world scenarios, agents might also face dynamically changing environments characterized by unexpected events and need to rapidly take action accordingly. To remedy this gap, we propose a new simulated embodied benchmark, called HAZARD, specifically designed to assess the decision-making abilities of embodied agents in dynamic situations. HAZARD consists of three unexpected disaster scenarios, including fire, flood, and wind, and specifically supports the utilization of large language models (LLMs) to assist common sense reasoning and decision-making. This benchmark enables us to evaluate autonomous agents' decision-making capabilities across various pipelines, including reinforcement learning (RL), rule-based, and search-based methods in dynamically changing environments. As a first step toward addressing this challenge using large language models, we further develop an LLM-based agent and perform an in-depth analysis of its promise and challenge of solving these challenging tasks. HAZARD is available at https://vis-www.cs.umass.edu/hazard/.",
+      "venue": "ICLR 2024",
+      "authors": [
+        "Qinhong Zhou",
+        "Sunli Chen",
+        "Yisong Wang",
+        "Haozhe Xu",
+        "Weihua Du",
+        "Hongxin Zhang",
+        "Yilun Du",
+        "Joshua B Tenenbaum",
+        "Chuang Gan"
+      ],
+      "paper_id": "17872",
+      "pdf_url": "",
+      "forum_url": "https://iclr.cc/forum?id=2024/poster/17872"
+    },
+    {
+      "title": "Motif: Intrinsic Motivation from Artificial Intelligence Feedback",
+      "abstract": "Exploring rich environments and evaluating one's actions without prior knowledge is immensely challenging. In this paper, we propose Motif, a general method to interface such prior knowledge from a Large Language Model (LLM) with an agent. Motif is based on the idea of grounding LLMs for decision-making without requiring them to interact with the environment: it elicits preferences from an LLM over pairs of captions to construct an intrinsic reward, which is then used to train agents with reinforcement learning. We evaluate Motif's performance and behavior on the challenging, open-ended and procedurally-generated NetHack game. Surprisingly, by only learning to maximize its intrinsic reward, Motif achieves a higher game score than an algorithm directly trained to maximize the score itself. When combining Motif's intrinsic reward with the environment reward, our method significantly outperforms existing approaches and makes progress on tasks where no advancements have ever been made without demonstrations. Finally, we show that Motif mostly generates intuitive human-aligned behaviors which can be steered easily through prompt modifications, while scaling well with the LLM size and the amount of information given in the prompt.",
+      "venue": "ICLR 2024",
+      "authors": [
+        "Martin Klissarov",
+        "Pierluca D&#x27;Oro",
+        "Shagun Sodhani",
+        "Roberta Raileanu",
+        "Pierre-Luc Bacon",
+        "Pascal Vincent",
+        "Amy Zhang",
+        "Mikael Henaff"
+      ],
+      "paper_id": "17604",
+      "pdf_url": "",
+      "forum_url": "https://iclr.cc/forum?id=2024/poster/17604"
+    },
+    {
+      "title": "Multimodal Web Navigation with Instruction-Finetuned Foundation Models",
+      "abstract": "The progress of autonomous web navigation has been hindered by the dependence on billions of exploratory interactions via online reinforcement learning, and domain-specific model designs that make it difficult to leverage generalization from rich out-of-domain data.In this work, we study data-driven offline training for web agents with vision-language foundation models.We propose an instruction-following multimodal agent, WebGUM, that observes both webpage screenshots and HTML pages and outputs web navigation actions, such as click and type.WebGUM is trained by jointly finetuning an instruction-finetuned language model and a vision encoder with temporal and local perception on a large corpus of demonstrations.We empirically demonstrate this recipe improves the agent's ability of grounded multimodal perception, HTML comprehension, and multi-step reasoning, outperforming prior works by a significant margin. On the MiniWoB, we improve over the previous best offline methods by more than 45.8%, even outperforming online-finetuned SoTA, humans, and GPT-4-based agent. On the WebShop benchmark, our 3-billion-parameter model achieves superior performance to the existing SoTA, PaLM-540B.Furthermore, WebGUM exhibits strong positive transfer to the real-world planning tasks on the Mind2Web.We also collect 347K high-quality demonstrations using our trained models, 38 times larger than prior work, and make them available to promote future research in this direction.",
+      "venue": "ICLR 2024",
+      "authors": [
+        "Hiroki Furuta",
+        "Kuang-Huei Lee",
+        "Ofir Nachum",
+        "Yutaka Matsuo",
+        "Aleksandra Faust",
+        "Shixiang Gu",
+        "Izzeddin Gur"
+      ],
+      "paper_id": "18215",
+      "pdf_url": "",
+      "forum_url": "https://iclr.cc/forum?id=2024/poster/18215"
+    },
+    {
+      "title": "Plan-Seq-Learn: Language Model Guided RL for Solving Long Horizon Robotics Tasks",
+      "abstract": "Large Language Models (LLMs) are highly capable of performing planning for long-horizon robotics tasks, yet existing methods require access to a pre-defined skill library (*e.g.* picking, placing, pulling, pushing, navigating). However, LLM planning does not address how to design or learn those behaviors, which remains challenging particularly in long-horizon settings. Furthermore, for many tasks of interest, the robot needs to be able to adjust its behavior in a fine-grained manner, requiring the agent to be capable of modifying *low-level* control actions. Can we instead use the internet-scale knowledge from LLMs for high-level policies, guiding reinforcement learning (RL) policies to efficiently solve robotic control tasks online without requiring a pre-determined set of skills? In this paper, we propose **Plan-Seq-Learn** (PSL): a modular approach that uses motion planning to bridge the gap between abstract language and learned low-level control for solving long-horizon robotics tasks from scratch. We demonstrate that PSL is capable of solving 20+ challenging single and multi-stage robotics tasks on four benchmarks at success rates of over 80% from raw visual input, out-performing language-based, classical, and end-to-end approaches. Video results and code at https://planseqlearn.github.io/",
+      "venue": "ICLR 2024",
+      "authors": [
+        "Murtaza Dalal",
+        "Tarun Chiruvolu",
+        "Devendra Chaplot",
+        "Ruslan Salakhutdinov"
+      ],
+      "paper_id": "18096",
+      "pdf_url": "",
+      "forum_url": "https://iclr.cc/forum?id=2024/poster/18096"
+    },
+    {
+      "title": "Plug-and-Play Policy Planner for Large Language Model Powered Dialogue Agents",
+      "abstract": "Proactive dialogues serve as a practical yet challenging dialogue problem in the era of large language models (LLMs), where the dialogue policy planning is the key to improving the proactivity of LLMs. Most existing studies enable the dialogue policy planning of LLMs using various prompting schemes or iteratively enhance this capability in handling the given case with verbal AI feedback. However, these approaches are either bounded by the policy planning capability of the frozen LLMs or hard to be transferred to new cases. In this work, we introduce a new dialogue policy planning paradigm to strategize LLMs for proactive dialogue problems with a tunable language model plug-in as a plug-and-play dialogue policy planner, named PPDPP. Specifically, we develop a novel training framework to facilitate supervised fine-tuning over available human-annotated data as well as reinforcement learning from goal-oriented AI feedback with dynamic interaction data collected by the LLM-based self-play simulation. In this manner, the LLM-powered dialogue agent can not only be generalized to different cases after the training, but also be applicable to different applications by just substituting the learned plug-in. In addition, we propose to evaluate the policy planning capability of dialogue systems under the interactive setting. Experimental results demonstrate that PPDPP consistently and substantially outperforms existing approaches on three different proactive dialogue applications, including negotiation, emotional support, and tutoring dialogues.",
+      "venue": "ICLR 2024",
+      "authors": [
+        "Yang Deng",
+        "Wenxuan Zhang",
+        "Wai Lam",
+        "See-Kiong Ng",
+        "Tat-Seng Chua"
+      ],
+      "paper_id": "18838",
+      "pdf_url": "",
+      "forum_url": "https://iclr.cc/forum?id=2024/poster/18838"
+    },
+    {
+      "title": "SALMON: Self-Alignment with Instructable Reward Models",
+      "abstract": "Supervised Fine-Tuning (SFT) on response demonstrations combined with Reinforcement Learning from Human Feedback (RLHF) constitutes a powerful paradigm for aligning LLM-based AI agents. However, a significant limitation of such an approach is its dependency on high-quality human annotations, making its application to intricate tasks challenging due to difficulties in obtaining consistent response demonstrations and in-distribution response preferences. This paper presents a novel approach, namely SALMON, to align base language models with minimal human supervision, using only a small set of human-defined principles, yet achieving superior performance. Central to our approach is an instructable reward model. Trained on synthetic preference data, this model can generate reward scores based on arbitrary human-defined principles. By merely adjusting these principles during the RL training phase, we gain full control over the preferences with the instructable reward model, subsequently influencing the behavior of the RL-trained policy models, and reducing the reliance on the collection of online human preferences. Applying our method to the LLaMA-2-70b base language model, we developed an AI assistant named Dromedary-2. With only 6 exemplars for in-context learning and 31 human-defined principles, Dromedary-2 significantly surpasses the performance of several state-of-the-art AI systems, including LLaMA-2-Chat-70b, on various benchmark datasets. We have open-sourced the code and model weights to encourage further research into aligning LLM-based AI agents with enhanced supervision efficiency, improved controllability, and scalable oversight.",
+      "venue": "ICLR 2024",
+      "authors": [
+        "Zhiqing Sun",
+        "Yikang Shen",
+        "Hongxin Zhang",
+        "Qinhong Zhou",
+        "Zhenfang Chen",
+        "David Cox",
+        "Yiming Yang",
+        "Chuang Gan"
+      ],
+      "paper_id": "17454",
+      "pdf_url": "",
+      "forum_url": "https://iclr.cc/forum?id=2024/poster/17454"
+    },
+    {
+      "title": "True Knowledge Comes from Practice: Aligning Large Language Models with Embodied Environments via Reinforcement Learning",
+      "abstract": "Despite the impressive performance across numerous tasks, large language models (LLMs) often fail in solving simple decision-making tasks due to the misalignment of the knowledge in LLMs with environments. On the contrary, reinforcement learning (RL) agents learn policies from scratch, which makes them always align with environments but difficult to incorporate prior knowledge for efficient explorations. To narrow the gap, we propose TWOSOME, a novel general online framework that deploys LLMs as decision-making agents to efficiently interact and align with embodied environments via RL without requiring any prepared datasets or prior knowledge of the environments. Firstly, we query the joint probabilities of each valid action with LLMs to form behavior policies. Then, to enhance the stability and robustness of the policies, we propose two normalization methods and summarize four prompt design principles. Finally, we design a novel parameter-efficient training architecture where the actor and critic share one frozen LLM equipped with low-rank adapters (LoRA) updated by PPO. We conduct extensive experiments to evaluate TWOSOME. i) TWOSOME exhibits significantly better sample efficiency and performance compared to the conventional RL method, PPO, and prompt tuning method, SayCan, in both classical decision-making environment, Overcooked, and simulated household environment, VirtualHome. ii) Benefiting from LLMs' open-vocabulary feature, TWOSOME shows superior generalization ability to unseen tasks. iii) Under our framework, there is no significant loss of the LLMs' original ability during online PPO finetuning.",
+      "venue": "ICLR 2024",
+      "authors": [
+        "Weihao Tan",
+        "Wentao Zhang",
+        "Shanqi Liu",
+        "Longtao Zheng",
+        "Xinrun Wang",
+        "Bo An"
+      ],
+      "paper_id": "18102",
+      "pdf_url": "",
+      "forum_url": "https://iclr.cc/forum?id=2024/poster/18102"
+    },
+    {
+      "title": "Vision-Language Models are Zero-Shot Reward Models for Reinforcement Learning",
+      "abstract": "Reinforcement learning (RL) requires either manually specifying a reward function, which is often infeasible, or learning a reward model from a large amount of human feedback, which is often very expensive. We study a more sample-efficient alternative: using pretrained vision-language models (VLMs) as zero-shot reward models (RMs) to specify tasks via natural language. We propose a natural and general approach to using VLMs as reward models, which we call VLM-RMs. We use VLM-RMs based on CLIP to train a MuJoCo humanoid to learn complex tasks without a manually specified reward function, such as kneeling, doing the splits, and sitting in a lotus position. For each of these tasks, we only provide _a single sentence text prompt_ describing the desired task with minimal prompt engineering. We provide videos of the trained agents at: https://sites.google.com/view/vlm-rm. We can improve performance by providing a second \"baseline\" prompt and projecting out parts of the CLIP embedding space irrelevant to distinguish between goal and baseline. Further, we find a strong scaling effect for VLM-RMs: larger VLMs trained with more compute and data are better reward models. The failure modes of VLM-RMs we encountered are all related to known capability limitations of current VLMs, such as limited spatial reasoning ability or visually unrealistic environments that are far off-distribution for the VLM. We find that VLM-RMs are remarkably robust as long as the VLM is large enough. This suggests that future VLMs will become more and more useful reward models for a wide range of RL applications.",
+      "venue": "ICLR 2024",
+      "authors": [
+        "Juan Rocamonde",
+        "Victoriano Montesinos",
+        "Elvis Nava",
+        "Ethan Perez",
+        "David Lindner"
+      ],
+      "paper_id": "18802",
+      "pdf_url": "",
+      "forum_url": "https://iclr.cc/forum?id=2024/poster/18802"
+    },
+    {
+      "title": "ArCHer: Training Language Model Agents via Hierarchical Multi-Turn RL",
+      "abstract": "Large language models (LLMs) have the potential to tackle sequential decision-making problems due to their generalist capabilities. Instead of optimizing ``myopic'' surrogate objectives such as human preferences within a single turn, in such problems, we wish to directly optimize long-term objectives, such as user satisfaction over an entire dialogue with an LLM or delayed success metrics in web navigation. Multi-turn reinforcement learning (RL) provides an appealing approach to directly optimize long-term objectives, but how can we design effective and efficient multi-turn RL algorithms for LLMs? In this work, we propose an algorithmic framework to multi-turn RL for LLMs that preserves the flexibility of token-by-token RL used in single-turn RL problems, while still accommodating long horizons and delayed rewards more effectively. Our framework, the **A**cto**r**-**C**ritic Framework with a **H**i**e**rarchical Structu**r**e (**ArCHer**), combines a high-level off-policy RL algorithm that trains a value function with a low-level RL algorithm that trains a token-by-token policy. While ArCHer can be instantiated with multiple RL algorithms, a particularly convenient instantiation is to use temporal difference (TD) learning at the high level and on-policy token-level policy gradient at the low level. Empirically, we show that ArCHer significantly improves efficiency and performance of multi-turn LLM tasks, attaining sample efficiency boosts of about **100x** over prior on-policy methods and converging to a much better performance than other off-policy methods.",
+      "venue": "ICML 2024",
+      "authors": [
+        "Yifei Zhou",
+        "Andrea Zanette",
+        "Jiayi Pan",
+        "Sergey Levine",
+        "Aviral Kumar"
+      ],
+      "paper_id": "33654",
+      "pdf_url": "",
+      "forum_url": "https://ICML.cc/forum?id=2024/poster/33654"
+    },
+    {
+      "title": "Bridging Environments and Language with Rendering Functions and Vision-Language Models",
+      "abstract": "Vision-language models (VLMs) have tremendous potential for *grounding* language, and thus enabling *language-conditioned agents (LCAs)* to perform diverse tasks specified with text. This has motivated the study of LCAs based on reinforcement learning (RL) with rewards given by rendering images of an environment and evaluating those images with VLMs. If single-task RL is employed, such approaches are limited by the cost and time required to train a policy for each new task. Multi-task RL (MTRL) is a natural alternative, but requires a carefully designed corpus of training tasks and does not always generalize reliably to new tasks. Therefore, this paper introduces a novel decomposition of the problem of building an LCA: first find an *environment configuration* that has a high VLM score for text describing a task; then use a (pretrained) goal-conditioned policy to reach that configuration. We also explore several enhancements to the speed and quality of VLM-based LCAs, notably, the use of distilled models, and the evaluation of configurations from multiple viewpoints to resolve the ambiguities inherent in a single 2D view. We demonstrate our approach on the Humanoid environment, showing that it results in LCAs that outperform MTRL baselines in zero-shot generalization, without requiring any textual task descriptions or other forms of environment-specific annotation during training.",
+      "venue": "ICML 2024",
+      "authors": [
+        "Théo Cachet",
+        "Christopher Dance",
+        "Olivier Sigaud"
+      ],
+      "paper_id": "33722",
+      "pdf_url": "",
+      "forum_url": "https://ICML.cc/forum?id=2024/poster/33722"
+    },
+    {
+      "title": "Code as Reward: Empowering Reinforcement Learning with VLMs",
+      "abstract": "Pre-trained Vision-Language Models (VLMs) are able to understand visual concepts, describe and decompose complex tasks into sub-tasks, and provide feedback on task completion. In this paper, we aim to leverage these capabilities to support the training of reinforcement learning (RL) agents. In principle, VLMs are well suited for this purpose, as they can naturally analyze image-based observations and provide feedback (reward) on learning progress. However, inference in VLMs is computationally expensive, so querying them frequently to compute rewards would significantly slowdown the training of an RL agent. To address this challenge, we propose a framework named Code as Reward (VLM-CaR). VLM-CaR produces dense reward functions from VLMs through code generation, thereby significantly reducing the computational burden of querying the VLM directly. We show that the dense rewards generated through our approach are very accurate across a diverse set of discrete and continuous environments, and can be more effective in training RL policies than the original sparse environment rewards.",
+      "venue": "ICML 2024",
+      "authors": [
+        "David Venuto",
+        "Mohammad Sami Nur Islam",
+        "Martin Klissarov",
+        "Doina Precup",
+        "Sherry Yang",
+        "Ankit Anand"
+      ],
+      "paper_id": "34923",
+      "pdf_url": "",
+      "forum_url": "https://ICML.cc/forum?id=2024/poster/34923"
+    },
+    {
+      "title": "From Words to Actions: Unveiling the Theoretical Underpinnings of LLM-Driven Autonomous Systems",
+      "abstract": "In this work, from a theoretical lens, we aim to understand why large language model (LLM) empowered agents are able to solve decision-making problems in the physical world. To this end, consider a hierarchical reinforcement learning (RL) model where the LLM Planner and the Actor perform high-level task planning and low-level execution, respectively. Under this model, the LLM Planner navigates a partially observable Markov decision process (POMDP) by iteratively generating language-based subgoals via prompting. Under proper assumptions on the pretraining data, we prove that the pretrained LLM Planner effectively performs Bayesian aggregated imitation learning (BAIL) through in-context learning. Additionally, we highlight the necessity for exploration beyond the subgoals derived from BAIL by proving that naively executing the subgoals returned by LLM leads to a linear regret. As a remedy, we introduce an $\\epsilon$-greedy exploration strategy to BAIL, which is proven to incur sublinear regret when the pretraining error is small. Finally, we extend our theoretical framework to include scenarios where the LLM Planner serves as a world model for inferring the transition model of the environment and to multi-agent settings, enabling coordination among multiple Actors.",
+      "venue": "ICML 2024",
+      "authors": [
+        "Jianliang He",
+        "Siyu Chen",
+        "Fengzhuo Zhang",
+        "Zhuoran Yang"
+      ],
+      "paper_id": "32980",
+      "pdf_url": "",
+      "forum_url": "https://ICML.cc/forum?id=2024/poster/32980"
+    },
+    {
+      "title": "FuRL: Visual-Language Models as Fuzzy Rewards for Reinforcement Learning",
+      "abstract": "In this work, we investigate how to leverage pre-trained visual-language models (VLM) for online Reinforcement Learning (RL). In particular, we focus on sparse reward tasks with pre-defined textual task descriptions. We first identify the problem of reward misalignment when applying VLM as a reward in RL tasks. To address this issue, we introduce a lightweight fine-tuning method, named Fuzzy VLM reward-aided RL (FuRL), based on reward alignment and relay RL. Specifically, we enhance the performance of SAC/DrQ baseline agents on sparse reward tasks by fine-tuning VLM representations and using relay RL to avoid local minima. Extensive experiments on the Meta-world benchmark tasks demonstrate the efficacy of the proposed method. Code is available at: https://github.com/fuyw/FuRL.",
+      "venue": "ICML 2024",
+      "authors": [
+        "Yuwei Fu",
+        "Haichao Zhang",
+        "di wu",
+        "Wei Xu",
+        "Benoit Boulet"
+      ],
+      "paper_id": "34712",
+      "pdf_url": "",
+      "forum_url": "https://ICML.cc/forum?id=2024/poster/34712"
+    },
+    {
+      "title": "In-Context Learning Agents Are Asymmetric Belief Updaters",
+      "abstract": "We study the in-context learning dynamics of large language models (LLMs) using three instrumental learning tasks adapted from cognitive psychology. We find that LLMs update their beliefs in an asymmetric manner and learn more from better-than-expected outcomes than from worse-than-expected ones. Furthermore, we show that this effect reverses when learning about counterfactual feedback and disappears when no agency is implied. We corroborate these findings by investigating idealized in-context learning agents derived through meta-reinforcement learning, where we observe similar patterns. Taken together, our results contribute to our understanding of how in-context learning works by highlighting that the framing of a problem significantly influences how learning occurs, a phenomenon also observed in human cognition.",
+      "venue": "ICML 2024",
+      "authors": [
+        "Johannes A. Schubert",
+        "Akshay Kumar Jagadish",
+        "Marcel Binz",
+        "Eric Schulz"
+      ],
+      "paper_id": "34730",
+      "pdf_url": "",
+      "forum_url": "https://ICML.cc/forum?id=2024/poster/34730"
+    },
+    {
+      "title": "Language Agents with Reinforcement Learning for Strategic Play in the Werewolf Game",
+      "abstract": "Agents built with large language models (LLMs) have shown great potential across a wide range of domains. However, in complex decision-making tasks, pure LLM-based agents tend to exhibit intrinsic bias in their choice of actions, which is inherited from the model's training data and results in suboptimal performance. To develop *strategic language agents*, i.e., agents that generate flexible language actions and possess strong decision-making abilities, we propose a novel framework that powers LLM-based agents with reinforcement learning (RL). We consider Werewolf, a popular social deduction game, as a challenging testbed that emphasizes versatile communication and strategic gameplay. To mitigate the intrinsic bias in language actions, our agents use an LLM to perform deductive reasoning and generate a diverse set of action candidates. Then an RL policy trained to optimize the decision-making ability chooses an action from the candidates to play in the game. Extensive experiments show that our agents overcome the intrinsic bias and outperform existing LLM-based agents in the Werewolf game. We also conduct human-agent experiments and find that our agents achieve human-level performance and demonstrate strong strategic play.",
+      "venue": "ICML 2024",
+      "authors": [
+        "Zelai Xu",
+        "Chao Yu",
+        "Fei Fang",
+        "Yu Wang",
+        "Yi Wu"
+      ],
+      "paper_id": "32805",
+      "pdf_url": "",
+      "forum_url": "https://ICML.cc/forum?id=2024/poster/32805"
+    },
+    {
+      "title": "Position: Video as the New Language for Real-World Decision Making",
+      "abstract": "Both text and video data are abundant on the internet and support large-scale self-supervised learning through next token or frame prediction. However, they have not been equally leveraged: language models have had significant real-world impact, whereas video generation has remained largely limited to media entertainment. Yet video data captures important information about the physical world that is difficult to express in language. To address this gap, we discuss an under-appreciated opportunity to extend video generation to solve tasks in the real world. We observe how, akin to language, video can serve as a unified interface that can absorb internet knowledge and represent diverse tasks. Moreover, we demonstrate how, like language models, video generation can serve as planners, agents, compute engines, and environment simulators through techniques such as in-context learning, planning and reinforcement learning. We identify major impact opportunities in domains such as robotics, self-driving, and science, supported by recent work that demonstrates how such advanced capabilities in video generation are plausibly within reach. Lastly, we identify key challenges in video generation that mitigate progress. Addressing these challenges will enable video generation models to demonstrate unique value alongside language models in a wider array of AI applications.",
+      "venue": "ICML 2024",
+      "authors": [
+        "Sherry Yang",
+        "Jacob C Walker",
+        "Jack Parker-Holder",
+        "Yilun Du",
+        "Jake Bruce",
+        "Andre Barreto",
+        "Pieter Abbeel",
+        "Dale Schuurmans"
+      ],
+      "paper_id": "34577",
+      "pdf_url": "",
+      "forum_url": "https://ICML.cc/forum?id=2024/poster/34577"
+    },
+    {
+      "title": "RL-VLM-F: Reinforcement Learning from Vision Language Foundation Model Feedback",
+      "abstract": "Reward engineering has long been a challenge in Reinforcement Learning (RL) research, as it often requires extensive human effort and iterative processes of trial-and-error to design effective reward functions. In this paper, we propose RL-VLM-F, a method that automatically generates reward functions for agents to learn new tasks, using only a text description of the task goal and the agent's visual observations, by leveraging feedbacks from vision language foundation models (VLMs). The key to our approach is to query these models to give preferences over pairs of the agent's image observations based on the text description of the task goal, and then learn a reward function from the preference labels, rather than directly prompting these models to output a raw reward score, which can be noisy and inconsistent. We demonstrate that RL-VLM-F successfully produces effective rewards and policies across various domains — including classic control, as well as manipulation of rigid, articulated, and deformable objects — without the need for human supervision, outperforming prior methods that use large pretrained models for reward generation under the same assumptions. Videos can be found on our project website: https://rlvlmf2024.github.io/",
+      "venue": "ICML 2024",
+      "authors": [
+        "Yufei Wang",
+        "Zhanyi Sun",
+        "Jesse Zhang",
+        "Zhou Xian",
+        "Erdem Biyik",
+        "David Held",
+        "Zackory Erickson"
+      ],
+      "paper_id": "33772",
+      "pdf_url": "",
+      "forum_url": "https://ICML.cc/forum?id=2024/poster/33772"
+    },
+    {
+      "title": "Trustworthy Alignment of Retrieval-Augmented Large Language Models via Reinforcement Learning",
+      "abstract": "Trustworthiness is an essential prerequisite for the real-world application of large language models. In this paper, we focus on the trustworthiness of language models with respect to retrieval augmentation. Despite being supported with external evidence, retrieval-augmented generation still suffers from hallucinations, one primary cause of which is the conflict between contextual and parametric knowledge. We deem that retrieval-augmented language models have the inherent capabilities of supplying response according to both contextual and parametric knowledge. Inspired by aligning language models with human preference, we take the first step towards aligning retrieval-augmented language models to a status where it responds relying merely on the external evidence and disregards the interference of parametric knowledge. Specifically, we propose a reinforcement learning based algorithm Trustworthy-Alignment, theoretically and experimentally demonstrating large language models' capability of reaching a trustworthy status without explicit supervision on how to respond. Our work highlights the potential of large language models on exploring its intrinsic abilities by its own and expands the application scenarios of alignment from fulfilling human preference to creating trustworthy agents.",
+      "venue": "ICML 2024",
+      "authors": [
+        "Zongmeng Zhang",
+        "Yufeng Shi",
+        "Jinhua Zhu",
+        "Wengang Zhou",
+        "Xiang Qi",
+        "peng zhang",
+        "Houqiang Li"
+      ],
+      "paper_id": "33796",
+      "pdf_url": "",
+      "forum_url": "https://ICML.cc/forum?id=2024/poster/33796"
+    },
+    {
+      "title": "AGILE: A Novel Reinforcement Learning Framework of LLM Agents",
+      "abstract": "We introduce a novel reinforcement learning framework of LLM agents named AGILE (AGent that Interacts and Learns from Environments)  designed to perform complex conversational tasks with users, leveraging LLMs, memory, tools, and interactions with experts. The agent possesses capabilities beyond conversation, including reflection, tool usage, and expert consultation. We formulate the construction of such an LLM agent as a reinforcement learning (RL) problem, in which the LLM serves as the policy model. We fine-tune the LLM using labeled data of actions and the PPO algorithm. We focus on question answering and release a dataset for agents called ProductQA, comprising challenging questions in online shopping. Our extensive experiments on ProductQA, MedMCQA and HotPotQA show that AGILE agents based on 7B and 13B LLMs trained with PPO can outperform GPT-4 agents. Our ablation study highlights the indispensability of memory, tools, consultation, reflection, and reinforcement learning in achieving the agent's strong performance. Datasets and code are available at https://github.com/bytarnish/AGILE.",
+      "venue": "NeurIPS 2024",
+      "authors": [
+        "Feng Peiyuan",
+        "Yichen He",
+        "Guanhua Huang",
+        "Yuan Lin",
+        "Hanchong Zhang",
+        "Yuchen Zhang",
+        "Hang Li"
+      ],
+      "paper_id": "94945",
+      "pdf_url": "",
+      "forum_url": "https://neurips.cc/forum?id=2024/poster/94945"
+    },
+    {
+      "title": "Can large language models explore in-context?",
+      "abstract": "We investigate the extent to which contemporary Large Language Models (LLMs) can engage in exploration, a core capability in reinforcement learning and decision making. We focus on native performance of existing LLMs, without training interventions. We deploy LLMs as agents in simple multi-armed bandit environments, specifying the environment description and interaction history entirely in-context, i.e., within the LLM prompt. We experiment with GPT-3.5, GPT-4, and Llama2, using a variety of prompt designs, and find that the models do not robustly engage in exploration without substantial interventions: i) Only one configuration resulted in satisfactory exploratory behavior: GPT-4 with chain-of-thought reasoning and an externally summarized interaction history; ii) All other configurations did not result in robust exploratory behavior, including those with chain-of-thought reasoning but unsummarized history. While these findings can be interpreted positively, they suggest that external summarization—which may not be possible in more complex settings—is essential for desirable LLM behavior. We conclude that non-trivial algorithmic interventions, such as fine-tuning or dataset curation, may be required to empower LLM-based decision making agents in complex settings.",
+      "venue": "NeurIPS 2024",
+      "authors": [
+        "Akshay Krishnamurthy",
+        "Keegan Harris",
+        "Dylan J Foster",
+        "Cyril Zhang",
+        "Aleksandrs Slivkins"
+      ],
+      "paper_id": "95364",
+      "pdf_url": "",
+      "forum_url": "https://neurips.cc/forum?id=2024/poster/95364"
+    },
+    {
+      "title": "Coevolving with the Other You: Fine-Tuning LLM with Sequential Cooperative Multi-Agent Reinforcement Learning",
+      "abstract": "Reinforcement learning (RL) has emerged as a pivotal technique for fine-tuning large language models (LLMs) on specific tasks. However, prevailing RL fine-tuning methods predominantly rely on PPO and its variants. Though these algorithms are effective in general RL settings, they often exhibit suboptimal performance and vulnerability to distribution collapse when applied to the fine-tuning of LLMs. In this paper, we propose CORY, extending the RL fine-tuning of LLMs to a sequential cooperative multi-agent reinforcement learning framework, to leverage the inherent coevolution and emergent capabilities of multi-agent systems. In CORY, the LLM to be fine-tuned is initially duplicated into two autonomous agents: a pioneer and an observer. The pioneer generates responses based on queries, while the observer generates responses using both the queries and the pioneer’s responses. The two agents are trained together. During training, the agents exchange roles periodically, fostering cooperation and coevolution between them. Experiments evaluate CORY's performance by fine-tuning GPT-2 and Llama-2 under subjective and objective reward functions on the IMDB Review and GSM8K datasets, respectively. Results show that CORY outperforms PPO in terms of policy optimality, resistance to distribution collapse, and training robustness, thereby underscoring its potential as a superior methodology for refining LLMs in real-world applications.",
+      "venue": "NeurIPS 2024",
+      "authors": [
+        "Hao Ma",
+        "Tianyi Hu",
+        "Zhiqiang Pu",
+        "Liu Boyin",
+        "Xiaolin Ai",
+        "Yanyan Liang",
+        "Min Chen"
+      ],
+      "paper_id": "95347",
+      "pdf_url": "",
+      "forum_url": "https://neurips.cc/forum?id=2024/poster/95347"
+    },
+    {
+      "title": "Do LLMs Build World Representations? Probing Through the Lens of State Abstraction",
+      "abstract": "How do large language models (LLMs) encode the state of the world, including the status of entities and their relations, as described by a text? While existing work directly probes for a complete state of the world, our research explores whether and how LLMs abstract this world state in their internal representations. We propose a new framework for probing for world representations through the lens of state abstraction theory from reinforcement learning, which emphasizes different levels of abstraction, distinguishing between general abstractions that facilitate predicting future states and goal-oriented abstractions that guide the subsequent actions to accomplish tasks. To instantiate this framework, we design a text-based planning task, where an LLM acts as an agent in an environment and interacts with objects in containers to achieve a specified goal state. Our experiments reveal that fine-tuning as well as advanced pre-training strengthens LLM-built representations' tendency of maintaining goal-oriented abstractions during decoding, prioritizing task completion over recovery of the world's state and dynamics.",
+      "venue": "NeurIPS 2024",
+      "authors": [
+        "Zichao Li",
+        "Yanshuai Cao",
+        "Jackie CK Cheung"
+      ],
+      "paper_id": "93786",
+      "pdf_url": "",
+      "forum_url": "https://neurips.cc/forum?id=2024/poster/93786"
+    },
+    {
+      "title": "Embedding-Aligned Language Models",
+      "abstract": "We propose a novel approach for training large language models (LLMs) to adhere to objectives defined within a latent embedding space. Our method leverages reinforcement learning (RL), treating a pre-trained LLM as an environment. Our embedding-aligned guided language (EAGLE) agent is trained to iteratively steer the LLM's generation towards optimal regions of the latent embedding space, w.r.t. some predefined criterion. We demonstrate the effectiveness of the EAGLE agent using the MovieLens 25M and Amazon Review datasets to surface content gaps that satisfy latent user demand. We also demonstrate the benefit of using an optimal design of a state-dependent action set to improve EAGLE's efficiency. Our work paves the way for controlled and grounded text generation using LLMs, ensuring consistency with domain-specific knowledge and data representations.",
+      "venue": "NeurIPS 2024",
+      "authors": [
+        "Guy Tennenholtz",
+        "Yinlam Chow",
+        "Chih-wei Hsu",
+        "Lior Shani",
+        "Yi Liang",
+        "Craig Boutilier"
+      ],
+      "paper_id": "94829",
+      "pdf_url": "",
+      "forum_url": "https://neurips.cc/forum?id=2024/poster/94829"
+    },
+    {
+      "title": "Fine-Tuning Large Vision-Language Models as Decision-Making Agents via Reinforcement Learning",
+      "abstract": "Large vision-language models (VLMs) fine-tuned on specialized visual instruction-following data have exhibited impressive language reasoning capabilities across various scenarios. However, this fine-tuning paradigm may not be able to efficiently learn optimal decision-making agents in multi-step goal-directed tasks from interactive environments. To address this challenge, we propose an algorithmic framework that fine-tunes VLMs with reinforcement learning (RL). Specifically, our framework provides a task description and then prompts the VLM to generate chain-of-thought (CoT) reasoning, enabling the VLM to efficiently explore intermediate reasoning steps that lead to the final text-based action. Next, the open-ended text output is parsed into an executable action to interact with the environment to obtain goal-directed task rewards. Finally, our framework uses these task rewards to fine-tune the entire VLM with RL. Empirically, we demonstrate that our proposed framework enhances the decision-making capabilities of VLM agents across various tasks, enabling 7b models to outperform commercial models such as GPT4-V or Gemini. Furthermore, we find that CoT reasoning is a crucial component for performance improvement, as removing the CoT reasoning results in a significant decrease in the overall performance of our method.",
+      "venue": "NeurIPS 2024",
+      "authors": [
+        "Simon Zhai",
+        "Hao Bai",
+        "Zipeng Lin",
+        "Jiayi Pan",
+        "Peter Tong",
+        "Yifei Zhou",
+        "Alane Suhr",
+        "Saining Xie",
+        "Yann LeCun",
+        "Yi Ma",
+        "Sergey Levine"
+      ],
+      "paper_id": "93706",
+      "pdf_url": "",
+      "forum_url": "https://neurips.cc/forum?id=2024/poster/93706"
+    },
+    {
+      "title": "Generating Code World Models with Large Language Models Guided by Monte Carlo Tree Search",
+      "abstract": "In this work we consider Code World Models, world models generated by a Large Language Model (LLM) in the form of Python code for model-based Reinforcement Learning (RL). Calling code instead of LLMs for planning has potential to be more precise, reliable, interpretable, and extremely efficient.However, writing appropriate Code World Models requires the ability to understand complex instructions, to generate exact code with non-trivial logic and to self-debug a long program with feedback from unit tests and environment trajectories. To address these challenges, we propose Generate, Improve and Fix with Monte Carlo Tree Search (GIF-MCTS), a new code generation strategy for LLMs. To test our approach in an offline RL setting, we introduce the Code World Models Benchmark (CWMB), a suite of program synthesis and planning tasks comprised of 18 diverse RL environments paired with corresponding textual descriptions and curated trajectories. GIF-MCTS surpasses all baselines on the CWMB and two other benchmarks, and we show that the Code World Models synthesized with it can be successfully used for planning, resulting in model-based RL agents with greatly improved sample efficiency and inference speed.",
+      "venue": "NeurIPS 2024",
+      "authors": [
+        "Nicola Dainese",
+        "Matteo Merler",
+        "Minttu Alakuijala",
+        "Pekka Marttinen"
+      ],
+      "paper_id": "96309",
+      "pdf_url": "",
+      "forum_url": "https://neurips.cc/forum?id=2024/poster/96309"
+    },
+    {
+      "title": "GenRL: Multimodal-foundation world models for generalization in embodied agents",
+      "abstract": "Learning generalist embodied agents, able to solve multitudes of tasks in different domains is a long-standing problem. Reinforcement learning (RL) is hard to scale up as it requires a complex reward design for each task. In contrast, language can specify tasks in a more natural way. Current foundation vision-language models (VLMs) generally require fine-tuning or other adaptations to be adopted in embodied contexts, due to the significant domain gap. However, the lack of multimodal data in such domains represents an obstacle to developing foundation models for embodied applications. In this work, we overcome these problems by presenting multimodal-foundation world models, able to connect and align the representation of foundation VLMs with the latent space of generative world models for RL, without any language annotations. The resulting agent learning framework, GenRL, allows one to specify tasks through vision and/or language prompts, ground them in the embodied domain’s dynamics, and learn the corresponding behaviors in imagination.As assessed through large-scale multi-task benchmarking in locomotion and manipulation domains, GenRL enables multi-task generalization from language and visual prompts. Furthermore, by introducing a data-free policy learning strategy, our approach lays the groundwork for foundational policy learning using generative world models. Website, code and data: https://mazpie.github.io/genrl/",
+      "venue": "NeurIPS 2024",
+      "authors": [
+        "Pietro Mazzaglia",
+        "Tim Verbelen",
+        "Bart Dhoedt",
+        "Aaron Courville",
+        "Sai Rajeswar Mudumba"
+      ],
+      "paper_id": "92947",
+      "pdf_url": "",
+      "forum_url": "https://neurips.cc/forum?id=2024/poster/92947"
+    },
+    {
+      "title": "KALM: Knowledgeable Agents by Offline Reinforcement Learning from Large Language Model Rollouts",
+      "abstract": "Reinforcement learning (RL) traditionally trains agents using interaction data, which limits their capabilities to the scope of the training data. To create more knowledgeable agents, leveraging knowledge from large language models (LLMs) has shown a promising way. Despite various attempts to combine LLMs with RL, there is commonly a semantic gap between action signals and LLM tokens, which hinders their integration. This paper introduces a novel approach, KALM (Knowledgeable Agents from Language Model Rollouts), to learn knowledgeable agents by bridging this gap. KALM extracts knowledge from LLMs in the form of imaginary rollouts, which agents can learn through offline RL. To overcome the limitation that LLMs are inherently text-based and may be incompatible with numerical environmental data, KALM fine-tunes the LLM to perform bidirectional translation between textual goals and rollouts. This process enables the LLM to understand the environment better, facilitating the generation of meaningful rollouts. Experiments on robotic manipulation tasks demonstrate that KALM allows agents to rephrase complex goals and tackle novel tasks requiring new optimal behaviors. KALM achieves a 46% success rate in completing 1400 various novel goals, significantly outperforming the 26% success rate of baseline methods. Project homepage: https://kalmneurips2024.github.io.",
+      "venue": "NeurIPS 2024",
+      "authors": [
+        "Jing-Cheng Pang",
+        "Si-Hang Yang",
+        "Kaiyuan Li",
+        "Jiaji Zhang",
+        "Xiong-Hui Chen",
+        "Nan Tang",
+        "Yang Yu"
+      ],
+      "paper_id": "93321",
+      "pdf_url": "",
+      "forum_url": "https://neurips.cc/forum?id=2024/poster/93321"
+    },
+    {
+      "title": "Learning to Discuss Strategically: A Case Study on One Night Ultimate Werewolf",
+      "abstract": "Communication is a fundamental aspect of human society, facilitating the exchange of information and beliefs among people. Despite the advancements in large language models (LLMs), recent agents built with these often neglect the control over discussion tactics, which are essential in communication scenarios and games. As a variant of the famous communication game Werewolf, *One Night Ultimate Werewolf* (ONUW) requires players to develop strategic discussion policies due to the potential role changes that increase the uncertainty and complexity of the game. In this work, we first present the existence of the Perfect Bayesian Equilibria (PBEs) in two scenarios of the ONUW game: one with discussion and one without. The results showcase that the discussion greatly changes players' utilities by affecting their beliefs, emphasizing the significance of discussion tactics. Based on the insights obtained from the analyses, we propose an RL-instructed language agent framework, where a discussion policy trained by reinforcement learning (RL) is employed to determine appropriate discussion tactics to adopt. Our experimental results on several ONUW game settings demonstrate the effectiveness and generalizability of our proposed framework.",
+      "venue": "NeurIPS 2024",
+      "authors": [
+        "Xuanfa Jin",
+        "Ziyan Wang",
+        "Yali Du",
+        "Meng Fang",
+        "Haifeng Zhang",
+        "Jun Wang"
+      ],
+      "paper_id": "96856",
+      "pdf_url": "",
+      "forum_url": "https://neurips.cc/forum?id=2024/poster/96856"
+    },
+    {
+      "title": "Multi-turn Reinforcement Learning with Preference Human Feedback",
+      "abstract": "Reinforcement Learning from Human Feedback (RLHF) has become the standard approach for aligning Large Language Models (LLMs) with human preferences, allowing LLMs to demonstrate remarkable abilities in various tasks.  Existing methods work by emulating the human preference at the single decision (turn) level, limiting their capabilities in settings that require planning or multi-turn interactions to achieve a long-term goal. In this paper, we address this issue by developing novel methods for Reinforcement Learning (RL) from preference feedback between two full multi-turn conversations.  In the tabular setting, we present a novel mirror-descent-based policy optimization algorithm for the general multi-turn preference-based RL problem, and prove its convergence to Nash equilibrium.  To evaluate performance, we create a new environment, Education Dialogue, where a teacher agent  guides  a  student  in  learning  a  random  topic,  and  show  that  a  deep  RL variant of our algorithm outperforms RLHF baselines. Finally, we show that in an environment with explicit rewards, our algorithm recovers the same performance as a reward-based RL baseline, despite relying solely on a weaker preference signal.",
+      "venue": "NeurIPS 2024",
+      "authors": [
+        "Lior Shani",
+        "Aviv Rosenberg",
+        "Asaf Cassel",
+        "Oran Lang",
+        "Daniele Calandriello",
+        "Avital Zipori",
+        "Hila Noga",
+        "Orgad Keller",
+        "Bilal Piot",
+        "Idan Szpektor",
+        "Avinatan Hassidim",
+        "Yossi Matias",
+        "Remi Munos"
+      ],
+      "paper_id": "93434",
+      "pdf_url": "",
+      "forum_url": "https://neurips.cc/forum?id=2024/poster/93434"
+    },
+    {
+      "title": "Recursive Introspection: Teaching Language Model Agents How to Self-Improve",
+      "abstract": "A central piece in enabling intelligent agentic behavior in foundation models is to make them capable of introspecting upon their behavior, reasoning, and correcting their mistakes as more computation or interaction is available. Even the strongest proprietary large language models (LLMs) do not quite exhibit the ability of continually improving their responses sequentially. In this paper, we develop $\\textbf{RISE:}$ $\\textbf{R}$ecursive $\\textbf{I}$ntro$\\textbf{S}$p$\\textbf{E}$ction, an approach for fine-tuning LLMs to introduce this capability, despite prior work hypothesizing that this capability may not be possible to attain. Our approach prescribes an iterative fine-tuning procedure, which attempts to teach the model how to alter its response after having executed previously unsuccessful attempts to solve a hard test-time problem, with optionally additional environment feedback. RISE poses fine-tuning for a single-turn prompt as solving a multi-turn Markov decision process (MDP), where the initial state is the prompt. Inspired by principles in online imitation and offline reinforcement learning, we propose strategies for multi-turn data collection and training so as to imbue an LLM with the capability to recursively detect and correct its previous mistakes in subsequent iterations. Our experiments show that RISE enables Llama2, Llama3, and Mistral models to improve themselves with more turns on reasoning tasks, outperforming several single-turn strategies given an equal amount of inference-time computation. We also find that RISE scales well, often attaining larger benefits with more capable models, without disrupting one-turn abilities as a result of expressing more complex distributions.",
+      "venue": "NeurIPS 2024",
+      "authors": [
+        "Yuxiao Qu",
+        "Tianjun Zhang",
+        "Naman Garg",
+        "Aviral Kumar"
+      ],
+      "paper_id": "96089",
+      "pdf_url": "",
+      "forum_url": "https://neurips.cc/forum?id=2024/poster/96089"
+    },
+    {
+      "title": "Reinforcing LLM Agents via Policy Optimization with Action Decomposition",
+      "abstract": "Language models as intelligent agents push the boundaries of sequential decision-making agents but struggle with limited knowledge of environmental dynamics and exponentially huge action space. Recent efforts like GLAM and TWOSOME manually constrain the action space to a restricted subset and employ reinforcement learning to align agents' knowledge with specific environments. However, they overlook fine-grained credit assignments for intra-action tokens, which is essential for efficient language agent optimization, and rely on human's prior knowledge to restrict action space. This paper proposes decomposing language agent optimization from the action level to the token level, offering finer supervision for each intra-action token and manageable optimization complexity in environments with unrestricted action spaces. Beginning with the simplification of flattening all actions, we theoretically explore the discrepancies between action-level optimization and this naive token-level optimization. We then derive the Bellman backup with Action Decomposition (BAD) to integrate credit assignments for both intra-action and inter-action tokens, effectively eliminating the discrepancies. Implementing BAD within the PPO algorithm, we introduce Policy Optimization with Action Decomposition (POAD). POAD benefits from a finer-grained credit assignment process and lower optimization complexity, leading to enhanced learning efficiency and generalization abilities in aligning language agents with interactive environments. We validate POAD across diverse testbeds, with results affirming the advantages of our approach and the correctness of our theoretical analysis. The source code can be accessed directly with this link: https://github.com/morning9393/ADRL.",
+      "venue": "NeurIPS 2024",
+      "authors": [
+        "Muning Wen",
+        "Ziyu Wan",
+        "Jun Wang",
+        "Weinan Zhang",
+        "Ying Wen"
+      ],
+      "paper_id": "95795",
+      "pdf_url": "",
+      "forum_url": "https://neurips.cc/forum?id=2024/poster/95795"
+    },
+    {
+      "title": "RL-GPT: Integrating Reinforcement Learning and Code-as-policy",
+      "abstract": "Large Language Models (LLMs) have demonstrated proficiency in utilizing various tools by coding, yet they face limitations in handling intricate logic and precise control. In embodied tasks, high-level planning is amenable to direct coding, while low-level actions often necessitate task-specific refinement, such as Reinforcement Learning (RL). To seamlessly integrate both modalities, we introduce a two-level hierarchical framework, RL-GPT, comprising a slow agent and a fast agent. The slow agent analyzes actions suitable for coding, while the fast agent executes coding tasks. This decomposition effectively focuses each agent on specific tasks, proving highly efficient within our pipeline. Our approach outperforms traditional RL methods and existing GPT agents, demonstrating superior efficiency. In the Minecraft game, it rapidly obtains diamonds within a single day on an RTX3090. Additionally, it achieves SOTA performance across all designated MineDojo tasks.",
+      "venue": "NeurIPS 2024",
+      "authors": [
+        "Shaoteng Liu",
+        "Haoqi Yuan",
+        "Minda Hu",
+        "Yanwei Li",
+        "Yukang Chen",
+        "Shu Liu",
+        "Zongqing Lu",
+        "Jiaya Jia"
+      ],
+      "paper_id": "95611",
+      "pdf_url": "",
+      "forum_url": "https://neurips.cc/forum?id=2024/poster/95611"
+    },
+    {
+      "title": "Synatra: Turning Indirect Knowledge into Direct Demonstrations for Digital Agents at Scale",
+      "abstract": "LLMs can now act as autonomous agents that interact with digital environments and complete specific objectives (e.g., arranging an online meeting). However, accuracy is still far from satisfactory, partly due to a lack of large-scale, direct demonstrations for digital tasks. Obtaining supervised data from humans is costly, and automatic data collection through exploration or reinforcement learning relies on complex environmental and content setup, resulting in datasets that lack comprehensive coverage of various scenarios. On the other hand, there is abundant knowledge that may indirectly assist task completion, such as online tutorials that were created for human consumption. In this work, we present Synatra, an approach that effectively transforms this indirect knowledge into direct supervision at scale. We define different types of indirect knowledge, and carefully study the available sources to obtain it, methods to encode the structure of direct demonstrations, and finally methods to transform indirect knowledge into direct demonstrations. We use 100k such synthetically-created demonstrations to finetune a 7B CodeLlama, and demonstrate that the resulting agent surpasses all comparably sized models on three web-based task benchmarks Mind2Web, MiniWoB++ and WebArena, as well as surpassing GPT-3.5 on WebArena and Mind2Web. In addition, while synthetic demonstrations prove to be only 3% the cost of human demonstrations (at $0.031 each), we show that the synthetic demonstrations can be more effective than an identical number of human demonstrations collected from limited domains.",
+      "venue": "NeurIPS 2024",
+      "authors": [
+        "Tianyue Ou",
+        "Frank (Fangzheng) Xu",
+        "Aman Madaan",
+        "Jiarui Liu",
+        "Robert Lo",
+        "Abishek Sridhar",
+        "Sudipta Sengupta",
+        "Dan Roth",
+        "Graham Neubig",
+        "Shuyan Zhou"
+      ],
+      "paper_id": "95647",
+      "pdf_url": "",
+      "forum_url": "https://neurips.cc/forum?id=2024/poster/95647"
+    },
+    {
+      "title": "Text-Aware Diffusion for Policy Learning",
+      "abstract": "Training an agent to achieve particular goals or perform desired behaviors is often accomplished through reinforcement learning, especially in the absence of expert demonstrations.  However, supporting novel goals or behaviors through reinforcement learning requires the ad-hoc design of appropriate reward functions, which quickly becomes intractable. To address this challenge, we propose Text-Aware Diffusion for Policy Learning (TADPoLe), which uses a pretrained, frozen text-conditioned diffusion model to compute dense zero-shot reward signals for text-aligned policy learning.  We hypothesize that large-scale pretrained generative models encode rich priors that can supervise a policy to behave not only in a text-aligned manner, but also in alignment with a notion of naturalness summarized from internet-scale training data.  In our experiments, we demonstrate that TADPoLe is able to learn policies for novel goal-achievement and continuous locomotion behaviors specified by natural language, in both Humanoid and Dog environments. The behaviors are learned zero-shot without ground-truth rewards or expert demonstrations, and are qualitatively more natural according to human evaluation. We further show that TADPoLe performs competitively when applied to robotic manipulation tasks in the Meta-World environment, without having access to any in-domain demonstrations.",
+      "venue": "NeurIPS 2024",
+      "authors": [
+        "Calvin Luo",
+        "Mandy He",
+        "Zilai Zeng",
+        "Chen Sun"
+      ],
+      "paper_id": "93698",
+      "pdf_url": "",
+      "forum_url": "https://neurips.cc/forum?id=2024/poster/93698"
+    },
+    {
+      "title": "When LLM Meets DRL: Advancing Jailbreaking Efficiency via DRL-guided Search",
+      "abstract": "Recent studies developed jailbreaking attacks, which construct jailbreaking prompts to \"fool\" LLMs into responding to harmful questions.Early-stage jailbreaking attacks require access to model internals or significant human efforts. More advanced attacks utilize genetic algorithms for automatic and black-box attacks.However, the random nature of genetic algorithms significantly limits the effectiveness of these attacks.In this paper, we propose RLbreaker, a black-box jailbreaking attack driven by deep reinforcement learning (DRL).We model jailbreaking as a search problem and design an RL agent to guide the search, which is more effective and has less randomness than stochastic search, such as genetic algorithms.Specifically, we design a customized DRL system for the jailbreaking problem, including a novel reward function and a customized proximal policy optimization (PPO) algorithm.Through extensive experiments, we demonstrate that RLbreaker is much more effective than existing jailbreaking attacks against six state-of-the-art (SOTA) LLMs. We also show that RLbreaker is robust against three SOTA defenses and its trained agents can transfer across different LLMs.We further validate the key design choices of RLbreaker via a comprehensive ablation study.",
+      "venue": "NeurIPS 2024",
+      "authors": [
+        "Xuan Chen",
+        "Yuzhou Nie",
+        "Wenbo Guo",
+        "Xiangyu Zhang"
+      ],
+      "paper_id": "95953",
+      "pdf_url": "",
+      "forum_url": "https://neurips.cc/forum?id=2024/poster/95953"
+    }
+  ]
+}

@@ -1,0 +1,249 @@
+{
+  "name": "具身智能与人机交互",
+  "paper_count": 14,
+  "summary": "本类别关注具身智能体（如机器人）在动态、社交化环境中的感知、决策与交互问题，特别是与人类的协作。代表性研究“Following the Human Thread in Social Navigation”针对社交导航中机器人需要实时适应人类运动轨迹的挑战，提出了首个基于智能体状态-动作历史来推断社会动态的模型（SDA）。该研究采用两阶段强化学习框架：第一阶段在拥有完全轨迹信息（特权信息）的条件下学习编码社会动态并训练策略；第二阶段策略仅依靠自身历史状态和动作实时推断社会动态来操作。在Habitat 3.0平台上的测试表明，该方法在寻找和跟随人类任务上达到了新的最先进性能。",
+  "papers": [
+    {
+      "title": "Following the Human Thread in Social Navigation",
+      "abstract": "The success of collaboration between humans and robots in shared environments relies on the robot's real-time adaptation to human motion. Specifically, in Social Navigation, the agent should be close enough to assist but ready to back up to let the human move freely, avoiding collisions. Human trajectories emerge as crucial cues in Social Navigation, but they are partially observable from the robot's egocentric view and computationally complex to process.\n\nWe present the first Social Dynamics Adaptation model (SDA) based on the robot's state-action history to infer the social dynamics. We propose a two-stage Reinforcement Learning framework: the first learns to encode the human trajectories into social dynamics and learns a motion policy conditioned on this encoded information, the current status, and the previous action. Here, the trajectories are fully visible, i.e.,  assumed as privileged information. In the second stage, the trained policy operates without direct access to trajectories. Instead, the model infers the social dynamics solely from the history of previous actions and statuses in real-time.\nTested on the novel Habitat 3.0 platform, SDA sets a novel state-of-the-art (SotA) performance in finding and following humans. \n\nThe code can be found at https://github.com/L-Scofano/SDA.",
+      "venue": "ICLR 2025",
+      "authors": [
+        "Luca Scofano",
+        "Alessio Sampieri",
+        "Tommaso Campari",
+        "Valentino Sacco",
+        "Indro Spinelli",
+        "Lamberto Ballan",
+        "Fabio Galasso"
+      ],
+      "paper_id": "M8OGl34Pmg",
+      "pdf_url": "https://openreview.net/pdf/0db5d2cbc4fbe93fe6fdc7b8a41fa656793badae.pdf",
+      "forum_url": "https://openreview.net/forum?id=M8OGl34Pmg"
+    },
+    {
+      "title": "MetaUrban: An Embodied AI Simulation Platform for Urban Micromobility",
+      "abstract": "Public urban spaces such as streetscapes and plazas serve residents and accommodate social life in all its vibrant variations. Recent advances in robotics and embodied AI make public urban spaces no longer exclusive to humans. Food delivery bots and electric wheelchairs have started sharing sidewalks with pedestrians, while robot dogs and humanoids have recently emerged in the street. **Micromobility** enabled by AI for short-distance travel in public urban spaces plays a crucial component in future transportation systems. It is essential to ensure the generalizability and safety of AI models used for maneuvering mobile machines. In this work, we present **MetaUrban**, a *compositional* simulation platform for the AI-driven urban micromobility research. MetaUrban can construct an *infinite* number of interactive urban scenes from compositional elements, covering a vast array of ground plans, object placements, pedestrians, vulnerable road users, and other mobile agents' appearances and dynamics. We design point navigation and social navigation tasks as the pilot study using MetaUrban for urban micromobility research and establish various baselines of Reinforcement Learning and Imitation Learning. We conduct extensive evaluation across mobile machines, demonstrating that heterogeneous mechanical structures significantly influence the learning and execution of AI policies. We perform a thorough ablation study, showing that the compositional nature of the simulated environments can substantially improve the generalizability and safety of the trained mobile agents. MetaUrban will be made publicly available to provide research opportunities and foster safe and trustworthy embodied AI and micromobility in cities. The code and data have been released.",
+      "venue": "ICLR 2025",
+      "authors": [
+        "Wayne Wu",
+        "Honglin He",
+        "Jack He",
+        "Yiran Wang",
+        "Chenda Duan",
+        "Zhizheng Liu",
+        "Quanyi Li",
+        "Bolei Zhou"
+      ],
+      "paper_id": "kFsWpSxkFz",
+      "pdf_url": "https://openreview.net/pdf/2148ac06726c822348288a8487f9675686820d83.pdf",
+      "forum_url": "https://openreview.net/forum?id=kFsWpSxkFz"
+    },
+    {
+      "title": "Subtask-Aware Visual Reward Learning from Segmented Demonstrations",
+      "abstract": "Reinforcement Learning (RL) agents have demonstrated their potential across various robotic tasks. However, they still heavily rely on human-engineered reward functions, requiring extensive trial-and-error and access to target behavior information, often unavailable in real-world settings. This paper introduces REDS: REward learning from Demonstration with Segmentations, a novel reward learning framework that leverages action-free videos with minimal supervision. Specifically, REDS employs video demonstrations segmented into subtasks from diverse sources and treats these segments as ground-truth rewards. We train a dense reward function conditioned on video segments and their corresponding subtasks to ensure alignment with ground-truth reward signals by minimizing the Equivalent-Policy Invariant Comparison distance. Additionally, we employ contrastive learning objectives to align video representations with subtasks, ensuring precise subtask inference during online interactions. Our experiments show that REDS significantly outperforms baseline methods on complex robotic manipulation tasks in Meta-World and more challenging real-world tasks, such as furniture assembly in FurnitureBench, with minimal human intervention. Moreover, REDS facilitates generalization to unseen tasks and robot embodiments, highlighting its potential for scalable deployment in diverse environments.",
+      "venue": "ICLR 2025",
+      "authors": [
+        "Changyeon Kim",
+        "Minho Heo",
+        "Doohyun Lee",
+        "Honglak Lee",
+        "Jinwoo Shin",
+        "Joseph J Lim",
+        "Kimin Lee"
+      ],
+      "paper_id": "mqKVe6F3Up",
+      "pdf_url": "https://openreview.net/pdf/18d7fe7853d07ace357a88ffd892f59889d69123.pdf",
+      "forum_url": "https://openreview.net/forum?id=mqKVe6F3Up"
+    },
+    {
+      "title": "Memo: Training Memory-Efficient Embodied Agents with Reinforcement Learning",
+      "abstract": "To enable embodied agents to operate effectively over extended timeframes, it is crucial to develop models that form and access memories to stay contextualized in their environment. In the current paradigm of training transformer-based policies for embodied sequential decision-making tasks, visual inputs often overwhelm the context limits of transformers, while humans can maintain and utilize a lifetime of experience compressed as memories. Significant compression is possible in principle, as much of the input is irrelevant and can be abstracted. However, existing approaches predominantly focus on either recurrent models with fixed-size memory or transformers with full-context reliance. In this work, we propose Memo, a transformer-based architecture and training recipe for reinforcement learning (RL) on memory-intensive, long-horizon tasks. Memo incorporates the creation and retrieval of memory by interleaving periodic summarization tokens with the inputs of a model during training. We demonstrate Memo’s effectiveness on a grid-world meta-RL benchmark and a multi-object navigation task in photo-realistic indoor settings. Memo outperforms naive long-context transformer baselines while being more compute and storage efficient. Additionally, Memo generalizes better to longer contexts at inference time and remains robust in streaming settings, where historical context must be truncated to fit inference constraints.",
+      "venue": "NeurIPS 2025",
+      "authors": [
+        "Gunshi Gupta",
+        "Karmesh Yadav",
+        "Zsolt Kira",
+        "Yarin Gal",
+        "Rahaf Aljundi"
+      ],
+      "paper_id": "9eIntNc69t",
+      "pdf_url": "https://openreview.net/pdf/4877c8c9446b72d733a5677610304c04fd55f44d.pdf",
+      "forum_url": "https://openreview.net/forum?id=9eIntNc69t"
+    },
+    {
+      "title": "Estimating cognitive biases with attention-aware inverse planning",
+      "abstract": "People's goal-directed behaviors are influenced by their cognitive biases, and autonomous systems that interact with people should be aware of this. For example, people's attention to objects in their environment will be biased in a way that systematically affects how they perform everyday tasks such as driving to work. Here, building on recent work in computational cognitive science, we formally articulate the \\textit{attention-aware inverse planning problem}, in which the goal is to estimate a person's attentional biases from their actions. We demonstrate how attention-aware inverse planning systematically differs from standard inverse reinforcement learning and how cognitive biases can be inferred from behavior. Finally, we present an approach to attention-aware inverse planning that combines deep reinforcement learning with computational cognitive modeling. We use this approach to infer the attentional strategies of RL agents in real-life driving scenarios selected from the Waymo Open Dataset, demonstrating the scalability of estimating cognitive biases with attention-aware inverse planning.",
+      "venue": "NeurIPS 2025",
+      "authors": [
+        "Sounak Banerjee",
+        "Daphne Cornelisse",
+        "Deepak Edakkattil Gopinath",
+        "Emily Sumner",
+        "Jonathan DeCastro",
+        "Guy Rosman",
+        "Eugene Vinitsky",
+        "Mark K Ho"
+      ],
+      "paper_id": "lNPo3FAMsl",
+      "pdf_url": "https://openreview.net/pdf/26c227bff564620c76c0588be4a3eb981138d940.pdf",
+      "forum_url": "https://openreview.net/forum?id=lNPo3FAMsl"
+    },
+    {
+      "title": "Enhancing Tactile-based Reinforcement Learning for Robotic Control",
+      "abstract": "Achieving safe, reliable real-world robotic manipulation requires agents to evolve beyond vision and incorporate tactile sensing to overcome sensory deficits and reliance on idealised state information. Despite its potential, the efficacy of tactile sensing in reinforcement learning (RL) remains inconsistent. We address this by developing self-supervised learning (SSL) methodologies to more effectively harness tactile observations, focusing on a scalable setup of proprioception and sparse binary contacts. We empirically demonstrate that sparse binary tactile signals are critical for dexterity, particularly for interactions that proprioceptive control errors do not register, such as decoupled robot-object motions. Our agents achieve superhuman dexterity in complex contact tasks (ball bouncing and Baoding ball rotation). Furthermore, we find that decoupling the SSL memory from the on-policy memory can improve performance. We release the Robot Tactile Olympiad ($\\texttt{RoTO}$) benchmark to standardise and promote future research in tactile-based manipulation. Project page: https://elle-miller.github.io/tactile_rl.",
+      "venue": "NeurIPS 2025",
+      "authors": [
+        "Elle Miller",
+        "Trevor McInroe",
+        "David Abel",
+        "Oisin Mac Aodha",
+        "Sethu Vijayakumar"
+      ],
+      "paper_id": "Toy96yYopR",
+      "pdf_url": "https://openreview.net/pdf/768a2743685c0eedc89d66ff9a06bd2430f49db7.pdf",
+      "forum_url": "https://openreview.net/forum?id=Toy96yYopR"
+    },
+    {
+      "title": "Open-World Drone Active Tracking with Goal-Centered Rewards",
+      "abstract": "Drone Visual Active Tracking aims to autonomously follow a target object by controlling the motion system based on visual observations, providing a more practical solution for effective tracking in dynamic environments. However, accurate Drone Visual Active Tracking using reinforcement learning remains challenging due to the absence of a unified benchmark and the complexity of open-world environments with frequent interference. To address these issues, we pioneer a systematic solution. First, we propose DAT, the first open-world drone active air-to-ground tracking benchmark. It encompasses 24 city-scale scenes, featuring targets with human-like behaviors and high-fidelity dynamics simulation. DAT also provides a digital twin tool for unlimited scene generation. Additionally, we propose a novel reinforcement learning method called GC-VAT, which aims to improve the performance of drone tracking targets in complex scenarios. Specifically, we design a Goal-Centered Reward to provide precise feedback across viewpoints to the agent, enabling it to expand perception and movement range through unrestricted perspectives. Inspired by curriculum learning, we introduce a Curriculum-Based Training strategy that progressively enhances the tracking performance in complex environments. Besides, experiments on simulator and real-world images demonstrate the superior performance of GC-VAT, achieving a Tracking Success Rate of approximately 72% on the simulator. The benchmark and code are available at https://github.com/SHWplus/DAT_Benchmark.",
+      "venue": "NeurIPS 2025",
+      "authors": [
+        "Haowei Sun",
+        "Jinwu Hu",
+        "Zhirui Zhang",
+        "Haoyuan Tian",
+        "Xinze Xie",
+        "Yufeng Wang",
+        "Xiaohua Xie",
+        "Yun Lin",
+        "Zhuliang Yu",
+        "Mingkui Tan"
+      ],
+      "paper_id": "Ly2wXKIByI",
+      "pdf_url": "https://openreview.net/pdf/6fcbc579a0a3edd88f8e78e160c9f3833d2b7c1e.pdf",
+      "forum_url": "https://openreview.net/forum?id=Ly2wXKIByI"
+    },
+    {
+      "title": "BTL-UI: Blink-Think-Link Reasoning Model for GUI Agent",
+      "abstract": "In the field of AI-driven human-GUI interaction automation, while rapid advances in multimodal large language models and reinforcement fine-tuning techniques have yielded remarkable progress, a fundamental challenge persists: their interaction logic significantly deviates from natural human-GUI communication patterns. To address this gap, we propose Blink–Think–Link (BTL), a brain-inspired framework for human-GUI interaction that mimics the human cognitive process between users and graphical interfaces. The system decomposes interactions into three biologically plausible phases: (1) \\textbf{Blink} - rapid detection and attention to relevant screen areas, analogous to saccadic eye movements; (2) \\textbf{Think} - higher-level reasoning and decision-making, mirroring cognitive planning; and (3) \\textbf{Link} - generation of executable commands for precise motor control, emulating human action selection mechanisms. Additionally, we introduce two key technical innovations for BTL framework:\n(1) Blink Data Generation - an automated annotation pipeline specifically optimized for blink data, and\n(2) {BTL Reward – the first rule-based reward mechanism that enables reinforcement learning driven by both process and outcome.}\nBuilding upon this framework, we develop a GUI agent model named BTL-UI, which demonstrates competitive performance across both static GUI understanding and dynamic interaction tasks in comprehensive benchmarks. These results provide conclusive empirical validation of the framework's efficacy in developing advanced GUI agents.",
+      "venue": "NeurIPS 2025",
+      "authors": [
+        "Shaojie Zhang",
+        "Ruoceng Zhang",
+        "Pei Fu",
+        "Shaokang Wang",
+        "Jiahui Yang",
+        "Xin Du",
+        "ShiqiCui",
+        "Bin Qin",
+        "Ying Huang",
+        "Zhenbo Luo",
+        "Jian Luan"
+      ],
+      "paper_id": "B0Gfxhr8V5",
+      "pdf_url": "https://openreview.net/pdf/ba5902ee29175bd53969957abcfa4c2349bdef9d.pdf",
+      "forum_url": "https://openreview.net/forum?id=B0Gfxhr8V5"
+    },
+    {
+      "title": "GUI Exploration Lab: Enhancing Screen Navigation in Agents via Multi-Turn Reinforcement Learning",
+      "abstract": "With the rapid development of Large Vision Language Models, the focus of Graphical User Interface (GUI) agent tasks shifts from single-screen tasks to complex screen navigation challenges. \nHowever, real-world GUI environments, such as PC software and mobile Apps, are often complex and proprietary, making it difficult to obtain the comprehensive environment information needed for agent training and evaluation. This limitation hinders systematic investigation and benchmarking of agent navigation capabilities.\nTo address this limitation, we introduce GUI Exploration Lab, a simulation environment engine for GUI agent navigation research that enables flexible definition and composition of screens, icons, and navigation graphs, while providing full access to environment information for comprehensive agent training and evaluation.\nThrough extensive experiments, we find that supervised fine-tuning enables effective memorization of fundamental knowledge, serving as a crucial foundation for subsequent training. Building on this, single-turn reinforcement learning further enhances generalization to unseen scenarios. Finally, multi-turn reinforcement learning encourages the development of exploration strategies through interactive trial and error, leading to further improvements in screen navigation performance.\nWe validate our methods on both static and interactive benchmarks, demonstrating that our findings generalize effectively to real-world scenarios.\nThese findings demonstrate the advantages of reinforcement learning approaches in GUI navigation and offer practical guidance for building more capable and generalizable GUI agents.",
+      "venue": "NeurIPS 2025",
+      "authors": [
+        "Haolong Yan",
+        "Yeqing Shen",
+        "Xin Huang",
+        "Jia Wang",
+        "Kaijun Tan",
+        "Zhixuan Liang",
+        "Hongxin Li",
+        "Zheng Ge",
+        "Osamu Yoshie",
+        "Si Li",
+        "Xiangyu Zhang",
+        "Daxin Jiang"
+      ],
+      "paper_id": "XVm8KOO3Ri",
+      "pdf_url": "https://openreview.net/pdf/ce35fb684e3b11b9c0f1fcc38598cfb3504c728e.pdf",
+      "forum_url": "https://openreview.net/forum?id=XVm8KOO3Ri"
+    },
+    {
+      "title": "Hierarchical Semantic-Augmented Navigation: Optimal Transport and Graph-Driven Reasoning for Vision-Language Navigation",
+      "abstract": "Vision-Language Navigation in Continuous Environments (VLN-CE) poses a formidable challenge for autonomous agents, requiring seamless integration of natural language instructions and visual observations to navigate complex 3D indoor spaces. Existing approaches often falter in long-horizon tasks due to limited scene understanding, inefficient planning, and lack of robust decision-making frameworks. We introduce the \\textbf{Hierarchical Semantic-Augmented Navigation (HSAN)} framework, a groundbreaking approach that redefines VLN-CE through three synergistic innovations. First, HSAN constructs a dynamic hierarchical semantic scene graph, leveraging vision-language models to capture multi-level environmental representations—from objects to regions to zones—enabling nuanced spatial reasoning. Second, it employs an optimal transport-based topological planner, grounded in Kantorovich's duality, to select long-term goals by balancing semantic relevance and spatial accessibility with theoretical guarantees of optimality. Third, a graph-aware reinforcement learning policy ensures precise low-level control, navigating subgoals while robustly avoiding obstacles. By integrating spectral graph theory, optimal transport, and advanced multi-modal learning, HSAN addresses the shortcomings of static maps and heuristic planners prevalent in prior work. Extensive experiments on multiple challenging VLN-CE datasets demonstrate that HSAN achieves state-of-the-art performance, with significant improvements in navigation success and generalization to unseen environments.",
+      "venue": "NeurIPS 2025",
+      "authors": [
+        "Xiang Fang",
+        "Wanlong Fang",
+        "Changshuo Wang"
+      ],
+      "paper_id": "ypVW5jvguX",
+      "pdf_url": "https://openreview.net/pdf/3c1559912c84273313e48439092a4be6a25c2f13.pdf",
+      "forum_url": "https://openreview.net/forum?id=ypVW5jvguX"
+    },
+    {
+      "title": "Diversifying Robot Locomotion Behaviors with Extrinsic Behavioral Curiosity",
+      "abstract": "Imitation learning (IL) has shown promise in robot locomotion but is often limited to learning a single expert policy, constraining behavior diversity and robustness in unpredictable real-world scenarios. To address this, we introduce Quality Diversity Inverse Reinforcement Learning (QD-IRL), a novel framework that integrates quality-diversity optimization with IRL methods, enabling agents to learn diverse behaviors from limited demonstrations. This work introduces Extrinsic Behavioral Curiosity (EBC), which allows agents to receive additional curiosity rewards from an external critic based on how novel the behaviors are with respect to a large behavioral archive. To validate the effectiveness of EBC in exploring diverse locomotion behaviors, we evaluate our method on multiple robot locomotion tasks. EBC improves the performance of QD-IRL instances with GAIL, VAIL, and DiffAIL across all included environments by up to 185\\%, 42\\%, and 150\\%, even surpassing expert performance by 20\\% in Humanoid. Furthermore, we demonstrate that EBC is applicable to Gradient-Arborescence-based Quality Diversity Reinforcement Learning  (QD-RL) algorithms, where it substantially improves performance and provides a generic technique for diverse robot locomotion. The source code of this work is provided at https://github.com/vanzll/EBC.",
+      "venue": "ICML 2025",
+      "authors": [
+        "Zhenglin Wan",
+        "Xingrui Yu",
+        "David Bossens",
+        "Yueming LYU",
+        "Qing Guo",
+        "Flint Xiaofeng Fan",
+        "Yew Soon ONG",
+        "Ivor Tsang"
+      ],
+      "paper_id": "43824",
+      "pdf_url": "",
+      "forum_url": "https://ICML.cc/forum?id=2025/poster/43824"
+    },
+    {
+      "title": "Learning Fused State Representations for Control from Multi-View Observations",
+      "abstract": "Multi-View Reinforcement Learning (MVRL) seeks to provide agents with multi-view observations, enabling them to perceive environment with greater effectiveness and precision. Recent advancements in MVRL focus on extracting latent representations from multiview observations and leveraging them in control tasks. However, it is not straightforward to learn compact and task-relevant representations, particularly in the presence of redundancy, distracting information, or missing views. In this paper, we propose **M**ulti-view **F**usion **S**tate for **C**ontrol (**MFSC**), firstly incorporating bisimulation metric learning into MVRL to learn task-relevant representations. Furthermore, we propose a multiview-based mask and latent reconstruction auxiliary task that exploits shared information across views and improves MFSC’s robustness in missing views by introducing a mask token. Extensive experimental results demonstrate that our method outperforms existing approaches in MVRL tasks. Even in more realistic scenarios with interference or missing views, MFSC consistently maintains high performance. The project code is available at [https://github.com/zpwdev/MFSC](https://github.com/zpwdev/MFSC).",
+      "venue": "ICML 2025",
+      "authors": [
+        "Zeyu Wang",
+        "Yao-Hui Li",
+        "Xin Li",
+        "Hongyu Zang",
+        "Romain Laroche",
+        "Riashat Islam"
+      ],
+      "paper_id": "44691",
+      "pdf_url": "",
+      "forum_url": "https://ICML.cc/forum?id=2025/poster/44691"
+    },
+    {
+      "title": "Reinforced Learning Explicit Circuit Representations for Quantum State Characterization from Local Measurements",
+      "abstract": "Characterizing quantum states is essential for advancing many quantum technologies. Recently, deep neural networks have been applied to learn quantum states by generating compressed implicit representations. Despite their success in predicting properties of the states, these representations remain a black box, lacking insights into strategies for experimental reconstruction. In this work, we aim to open this black box by developing explicit representations through generating surrogate state preparation circuits for property estimation. We design a reinforcement learning agent equipped with a Transformer-based architecture and a local fidelity reward function. Relying solely on measurement data from a few neighboring qubits, our agent accurately recovers properties of target states. We also theoretically analyze the global fidelity the agent can achieve when it learns a good local approximation. Extensive experiments demonstrate the effectiveness of our framework in learning various states of up to 100 qubits, including those generated by shallow Instantaneous Quantum Polynomial circuits, evolved by Ising Hamiltonians, and many-body ground states. Furthermore, the learned circuit representations can be applied to Hamiltonian learning as a downstream task utilizing a simple linear model.",
+      "venue": "ICML 2025",
+      "authors": [
+        "Manwen Liao",
+        "Yan Zhu",
+        "Weitian Zhang",
+        "Yuxiang Yang"
+      ],
+      "paper_id": "45430",
+      "pdf_url": "",
+      "forum_url": "https://ICML.cc/forum?id=2025/poster/45430"
+    },
+    {
+      "title": "Test-Time Adaptation for Online Vision-Language Navigation with Feedback-based Reinforcement Learning",
+      "abstract": "Navigating in an unfamiliar environment during deployment poses a critical challenge for a vision-language navigation (VLN) agent. Yet, test-time adaptation (TTA) remains relatively underexplored in robotic navigation, leading us to the fundamental question: what are the key properties of TTA for online VLN? In our view, effective adaptation requires three qualities: 1) flexibility in handling different navigation outcomes, 2) interactivity with external environment, and 3) maintaining a harmony between plasticity and stability. To address this, we introduce FeedTTA, a novel TTA framework for online VLN utilizing feedback-based reinforcement learning. Specifically, FeedTTA learns by maximizing binary episodic feedback, a practical setup in which the agent receives a binary scalar after each episode that indicates the success or failure of the navigation. Additionally, we propose a gradient regularization technique that leverages the binary structure of FeedTTA to achieve a balance between plasticity and stability during adaptation. Our extensive experiments on challenging VLN benchmarks demonstrate the superior adaptability of FeedTTA, even outperforming the state-of-the-art offline training methods in REVERIE benchmark with a single stream of learning.",
+      "venue": "ICML 2025",
+      "authors": [
+        "Sung June Kim",
+        "Gyeongrok Oh",
+        "Heeju Ko",
+        "Daehyun Ji",
+        "Dongwook Lee",
+        "Byung-Jun Lee",
+        "Sujin Jang",
+        "Sangpil Kim"
+      ],
+      "paper_id": "45655",
+      "pdf_url": "",
+      "forum_url": "https://ICML.cc/forum?id=2025/poster/45655"
+    }
+  ]
+}

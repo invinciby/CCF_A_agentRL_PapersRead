@@ -1,0 +1,43 @@
+{
+  "name": "扩散模型与强化学习算法融合",
+  "paper_count": 2,
+  "summary": "该类别专注于将扩散模型（Diffusion Models）深度整合到在线强化学习算法框架中的研究。扩散模型因其强大的表达能力和多模态特性，在作为策略表示时能克服传统单模态策略（如高斯策略）的局限性，并提供更丰富的探索能力。本类别的研究重点在于解决将扩散模型的训练目标（如变分下界）与在线RL的交互式学习范式相协调的核心挑战。相关工作旨在设计新颖的模型无关在线RL算法，通过引入Q值加权的变分目标、设计适用于扩散策略的熵正则化项以及高效的行为策略采样机制，以充分发挥扩散策略在探索和性能上的优势，并实现最先进的样本效率和最终回报。",
+  "papers": [
+    {
+      "title": "Diffusion-based Reinforcement Learning via Q-weighted Variational Policy Optimization",
+      "abstract": "Diffusion models have garnered widespread attention in Reinforcement Learning (RL) for their powerful expressiveness and multimodality. It has been verified that utilizing diffusion policies can significantly improve the performance of RL algorithms in continuous control tasks by overcoming the limitations of unimodal policies, such as Gaussian policies. Furthermore, the multimodality of diffusion policies also shows the potential of providing the agent with enhanced exploration capabilities. However, existing works mainly focus on applying diffusion policies in offline RL, while their incorporation into online RL has been less investigated. The diffusion model's training objective, known as the variational lower bound, cannot be applied directly in online RL due to the unavailability of 'good' samples (actions). To harmonize the diffusion model with online RL, we propose a novel model-free diffusion-based online RL algorithm named Q-weighted Variational Policy Optimization (QVPO). Specifically, we introduce the Q-weighted variational loss and its approximate implementation in practice. Notably, this loss is shown to be a tight lower bound of the policy objective. To further enhance the exploration capability of the diffusion policy, we design a special entropy regularization term. Unlike Gaussian policies, the log-likelihood in diffusion policies is inaccessible; thus this entropy term is nontrivial. Moreover, to reduce the large variance of diffusion policies, we also develop an efficient behavior policy through action selection. This can further improve its sample efficiency during online interaction. Consequently, the QVPO algorithm leverages the exploration capabilities and multimodality of diffusion policies, preventing the RL agent from converging to a sub-optimal policy. To verify the effectiveness of QVPO, we conduct comprehensive experiments on MuJoCo continuous control benchmarks. The final results demonstrate that QVPO achieves state-of-the-art performance in terms of both cumulative reward and sample efficiency.",
+      "venue": "NeurIPS 2024",
+      "authors": [
+        "Shutong Ding",
+        "Ke Hu",
+        "Zhenhao Zhang",
+        "Kan Ren",
+        "Weinan Zhang",
+        "Jingyi Yu",
+        "Jingya Wang",
+        "Ye Shi"
+      ],
+      "paper_id": "94963",
+      "pdf_url": "",
+      "forum_url": "https://neurips.cc/forum?id=2024/poster/94963"
+    },
+    {
+      "title": "MADiff: Offline Multi-agent Learning with Diffusion Models",
+      "abstract": "Offline reinforcement learning (RL) aims to learn policies from pre-existing datasets without further interactions, making it a challenging task. Q-learning algorithms struggle with extrapolation errors in offline settings, while supervised learning methods are constrained by model expressiveness. Recently, diffusion models (DMs) have shown promise in overcoming these limitations in single-agent learning, but their application in multi-agent scenarios remains unclear. Generating trajectories for each agent with independent DMs may impede coordination, while concatenating all agents’ information can lead to low sample efficiency. Accordingly, we propose MADiff, which is realized with an attention-based diffusion model to model the complex coordination among behaviors of multiple agents. To our knowledge, MADiff is the first diffusion-based multi-agent learning framework, functioning as both a decentralized policy and a centralized controller. During decentralized executions, MADiff simultaneously performs teammate modeling, and the centralized controller can also be applied in multi-agent trajectory predictions. Our experiments demonstrate that MADiff outperforms baseline algorithms across various multi-agent learning tasks, highlighting its effectiveness in modeling complex multi-agent interactions.",
+      "venue": "NeurIPS 2024",
+      "authors": [
+        "Zhengbang Zhu",
+        "Minghuan Liu",
+        "Liyuan Mao",
+        "Bingyi Kang",
+        "Minkai Xu",
+        "Yong Yu",
+        "Stefano Ermon",
+        "Weinan Zhang"
+      ],
+      "paper_id": "95274",
+      "pdf_url": "",
+      "forum_url": "https://neurips.cc/forum?id=2024/poster/95274"
+    }
+  ]
+}

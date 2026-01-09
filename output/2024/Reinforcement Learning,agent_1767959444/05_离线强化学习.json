@@ -1,0 +1,388 @@
+{
+  "name": "离线强化学习",
+  "paper_count": 25,
+  "summary": "该类别专注于离线强化学习（Offline RL）的研究，即仅利用预先收集的静态数据集进行训练，而不与环境进行在线交互。研究重点在于解决离线设置下的独特挑战，例如分布偏移、外推误差以及由未观测混杂变量引起的因果推断问题。相关工作旨在开发更鲁棒、更高效、更具泛化能力的离线RL算法，以应对现实世界数据中的噪声、对抗性攻击和观测不完整性，推动RL在数据驱动领域的实际应用。",
+  "papers": [
+    {
+      "title": "Delphic Offline Reinforcement Learning under Nonidentifiable Hidden Confounding",
+      "abstract": "A prominent challenge of offline reinforcement learning (RL) is the issue of hidden confounding: unobserved variables may influence both the actions taken by the agent and the observed outcomes. Hidden confounding can compromise the validity of any causal conclusion drawn from data and presents a major obstacle to effective offline RL. In the present paper, we tackle the problem of hidden confounding in the nonidentifiable setting. We propose a definition of uncertainty due to hidden confounding bias, termed delphic uncertainty, which uses variation over world models compatible with the observations, and differentiate it from the well-known epistemic and aleatoric uncertainties. We derive a practical method for estimating the three types of uncertainties, and construct a pessimistic offline RL algorithm to account for them. Our method does not assume identifiability of the unobserved confounders, and attempts to reduce the amount of confounding bias. We demonstrate through extensive experiments and ablations the efficacy of our approach on a sepsis management benchmark, as well as on electronic health records. Our results suggest that nonidentifiable hidden confounding bias can be mitigated to improve offline RL solutions in practice.",
+      "venue": "ICLR 2024",
+      "authors": [
+        "Alizée Pace",
+        "Hugo Yèche",
+        "David Ha",
+        "Gunnar Ratsch",
+        "Guy Tennenholtz"
+      ],
+      "paper_id": "17928",
+      "pdf_url": "",
+      "forum_url": "https://iclr.cc/forum?id=2024/poster/17928"
+    },
+    {
+      "title": "DMBP: Diffusion model-based predictor for robust offline reinforcement learning against state observation perturbations",
+      "abstract": "Offline reinforcement learning (RL), which aims to fully explore offline datasets for training without interaction with environments, has attracted growing recent attention. A major challenge for the real-world application of offline RL stems from the robustness against state observation perturbations, e.g., as a result of sensor errors or adversarial attacks. Unlike online robust RL, agents cannot be adversarially trained in the offline setting. In this work, we propose Diffusion Model-Based Predictor (DMBP) in a new framework that recovers the actual states with conditional diffusion models for state-based RL tasks. To mitigate the error accumulation issue in model-based estimation resulting from the classical training of conventional diffusion models, we propose a non-Markovian training objective to minimize the sum entropy of denoised states in RL trajectory. Experiments on standard benchmark problems demonstrate that DMBP can significantly enhance the robustness of existing offline RL algorithms against different scales of ran- dom noises and adversarial attacks on state observations. Further, the proposed framework can effectively deal with incomplete state observations with random combinations of multiple unobserved dimensions in the test. Our implementation is available at https://github.com/zhyang2226/DMBP.",
+      "venue": "ICLR 2024",
+      "authors": [
+        "Zhihe Yang",
+        "Yunjian Xu"
+      ],
+      "paper_id": "18394",
+      "pdf_url": "",
+      "forum_url": "https://iclr.cc/forum?id=2024/poster/18394"
+    },
+    {
+      "title": "Flow to Better: Offline Preference-based Reinforcement Learning via Preferred Trajectory Generation",
+      "abstract": "Offline preference-based reinforcement learning (PbRL) offers an effective solution to overcome the challenges associated with designing rewards and the high costs of online interactions. In offline PbRL, agents are provided with a fixed dataset containing human preferences between pairs of trajectories. Previous studies mainly focus on recovering the rewards from the preferences, followed by policy optimization with an off-the-shelf offline RL algorithm. However, given that preference label in PbRL is inherently trajectory-based, accurately learning transition-wise rewards from such label can be challenging, potentially leading to misguidance during subsequent offline RL training. To address this issue, we introduce our method named $\\textit{Flow-to-Better (FTB)}$, which leverages the pairwise preference relationship to guide a generative model in producing preferred trajectories, avoiding Temporal Difference (TD) learning with inaccurate rewards. Conditioning on a low-preference trajectory, $\\textit{FTB}$ uses a diffusion model to generate a better one with a higher preference, achieving high-fidelity full-horizon trajectory improvement. During diffusion training, we propose a technique called $\\textit{Preference Augmentation}$ to alleviate the problem of insufficient preference data. As a result, we surprisingly find that the model-generated trajectories not only exhibit increased preference and consistency with the real transition but also introduce elements of $\\textit{novelty}$ and $\\textit{diversity}$, from which we can derive a desirable policy through imitation learning. Experimental results on D4RL benchmarks demonstrate that FTB achieves a remarkable improvement compared to state-of-the-art offline PbRL methods. Furthermore, we show that FTB can also serve as an effective data augmentation method for offline RL.",
+      "venue": "ICLR 2024",
+      "authors": [
+        "Zhilong Zhang",
+        "Yihao Sun",
+        "Junyin Ye",
+        "Tian-Shuo Liu",
+        "Jiaji Zhang",
+        "Yang Yu"
+      ],
+      "paper_id": "19112",
+      "pdf_url": "",
+      "forum_url": "https://iclr.cc/forum?id=2024/poster/19112"
+    },
+    {
+      "title": "Pessimistic Nonlinear Least-Squares Value Iteration for Offline Reinforcement Learning",
+      "abstract": "Offline reinforcement learning (RL), where the agent aims to learn the optimal policy based on the data collected by a behavior policy, has attracted increasing attention in recent years. While offline RL with linear function approximation has been extensively studied with optimal results achieved under certain assumptions, many works shift their interest to offline RL with non-linear function approximation.However, limited works on offline RL with non-linear function approximation have instance-dependent regret guarantees.    In this paper, we propose an oracle-efficient algorithm, dubbed Pessimistic Nonlinear Least-Square Value Iteration (PNLSVI), for offline RL with non-linear function approximation. Our algorithmic design comprises three innovative components: (1) a variance-based weighted regression scheme that can be applied to a wide range of function classes, (2) a subroutine for variance estimation, and (3) a planning phase that utilizes a pessimistic value iteration approach. Our algorithm enjoys a regret bound that has a tight dependency on the function class complexity and achieves minimax optimal instance-dependent regret when specialized to linear function approximation. Our work extends the previous instance-dependent results within simpler function classes, such as linear and differentiable function to a more general framework. To the best of our knowledge, this is the first statistically optimal algorithm for nonlinear offline RL.",
+      "venue": "ICLR 2024",
+      "authors": [
+        "Qiwei Di",
+        "Heyang Zhao",
+        "Jiafan He",
+        "Quanquan Gu"
+      ],
+      "paper_id": "19449",
+      "pdf_url": "",
+      "forum_url": "https://iclr.cc/forum?id=2024/poster/19449"
+    },
+    {
+      "title": "Score Models for Offline Goal-Conditioned Reinforcement Learning",
+      "abstract": "Offline Goal-Conditioned Reinforcement Learning (GCRL) is tasked with learning to achieve multiple goals in an environment purely from offline datasets using sparse reward functions. Offline GCRL is pivotal for developing generalist agents capable of leveraging pre-existing datasets to learn diverse and reusable skills without hand-engineering reward functions. However, contemporary approaches to GCRL based on supervised learning and contrastive learning are often suboptimal in the offline setting. An alternative perspective on GCRL optimizes for occupancy matching, but necessitates learning a discriminator, which subsequently serves as a pseudo-reward for downstream RL. Inaccuracies in the learned discriminator can cascade, negatively influencing the resulting policy. We present a novel approach to GCRL under a new lens of mixture-distribution matching, leading to our discriminator-free method: SMORe. The key insight is combining the occupancy matching perspective of GCRL with a convex dual formulation to derive a learning objective that can better leverage suboptimal offline data. SMORe learns *scores* or unnormalized densities representing the importance of taking an action at a state for reaching a particular goal. SMORe is principled and our extensive experiments on the fully offline GCRL benchmark composed of robot manipulation and locomotion tasks, including high-dimensional observations, show that SMORe can outperform state-of-the-art baselines by a significant margin.",
+      "venue": "ICLR 2024",
+      "authors": [
+        "Harshit Sikchi",
+        "Rohan Chitnis",
+        "Ahmed Touati",
+        "Alborz Geramifard",
+        "Amy Zhang",
+        "Scott Niekum"
+      ],
+      "paper_id": "17815",
+      "pdf_url": "",
+      "forum_url": "https://iclr.cc/forum?id=2024/poster/17815"
+    },
+    {
+      "title": "The Generalization Gap in Offline Reinforcement Learning",
+      "abstract": "Despite recent progress in offline learning, these methods are still trained and tested on the same environment. In this paper, we compare the generalization abilities of widely used online and offline learning methods such as online reinforcement learning (RL), offline RL, sequence modeling, and behavioral cloning. Our experiments show that offline learning algorithms perform worse on new environments than online learning ones. We also introduce the first benchmark for evaluating generalization in offline learning, collecting datasets of varying sizes and skill-levels from Procgen (2D video games) and WebShop (e-commerce websites). The datasets contain trajectories for a limited number of game levels or natural language instructions and at test time, the agent has to generalize to new levels or instructions. Our experiments reveal that existing offline learning algorithms struggle to match the performance of online RL on both train and test environments. Behavioral cloning is a strong baseline, outperforming state-of-the-art offline RL and sequence modeling approaches when trained on data from multiple environments and tested on new ones. Finally, we find that increasing the diversity of the data, rather than its size, improves performance on new environments for all offline learning algorithms. Our study demonstrates the limited generalization of current offline learning algorithms highlighting the need for more research in this area.",
+      "venue": "ICLR 2024",
+      "authors": [
+        "Ishita Mediratta",
+        "Qingfei You",
+        "Minqi Jiang",
+        "Roberta Raileanu"
+      ],
+      "paper_id": "19490",
+      "pdf_url": "",
+      "forum_url": "https://iclr.cc/forum?id=2024/poster/19490"
+    },
+    {
+      "title": "Uni-O4: Unifying Online and Offline Deep Reinforcement Learning with Multi-Step On-Policy Optimization",
+      "abstract": "Combining offline and online reinforcement learning (RL) is crucial for efficient and safe learning. However, previous approaches treat offline and online learning as separate procedures, resulting in redundant designs and limited performance. We ask: *Can we achieve straightforward yet effective offline and online learning without introducing extra conservatism or regularization?* In this study, we propose Uni-O4, which utilizes an on-policy objective for both offline and online learning. Owning to the alignment of objectives in two phases, the RL agent can transfer between offline and online learning seamlessly. This property enhances the flexibility of the learning paradigm, allowing for arbitrary combinations of pretraining, fine-tuning, offline, and online learning. In the offline phase, specifically, Uni-O4 leverages diverse ensemble policies to address the mismatch issues between the estimated behavior policy and the offline dataset. Through a simple offline policy evaluation (OPE) approach, Uni-O4 can achieve multi-step policy improvement safely. We demonstrate that by employing the method above, the fusion of these two paradigms can yield superior offline initialization as well as stable and rapid online fine-tuning capabilities. Through real-world robot tasks, we highlight the benefits of this paradigm for rapid deployment in challenging, previously unseen real-world environments. Additionally, through comprehensive evaluations using numerous simulated benchmarks, we substantiate that our method achieves state-of-the-art performance in both offline and offline-to-online fine-tuning learning. [Our website](uni-o4.github.io)",
+      "venue": "ICLR 2024",
+      "authors": [
+        "Kun LEI",
+        "Zhengmao He",
+        "Chenhao Lu",
+        "Kaizhe Hu",
+        "Yang Gao",
+        "Huazhe Xu"
+      ],
+      "paper_id": "17610",
+      "pdf_url": "",
+      "forum_url": "https://iclr.cc/forum?id=2024/poster/17610"
+    },
+    {
+      "title": "When should we prefer Decision Transformers for Offline Reinforcement Learning?",
+      "abstract": "Offline reinforcement learning (RL) allows agents to learn effective, return-maximizing policies from a static dataset. Three popular algorithms for offline RL are Conservative Q-Learning (CQL), Behavior Cloning (BC), and Decision Transformer (DT), from the class of Q-Learning, Imitation Learning, and Sequence Modeling respectively. A key open question is: which algorithm is preferred under what conditions? We study this question empirically by exploring the performance of these algorithms across the commonly used D4RL and Robomimic benchmarks. We design targeted experiments to understand their behavior concerning data suboptimality, task complexity, and stochasticity. Our key findings are: (1) DT requires more data than CQL to learn competitive policies but is more robust; (2) DT is a substantially better choice than both CQL and BC in sparse-reward and low-quality data settings; (3) DT and BC are preferable as task horizon increases, or when data is obtained from human demonstrators; and (4) CQL excels in situations characterized by the combination of high stochasticity and low data quality. We also investigate architectural choices and scaling trends for DT on \\textsc{atari} and D4RL and make design/scaling recommendations. We find that scaling the amount of data for DT by 5x gives a 2.5x average score improvement on Atari.",
+      "venue": "ICLR 2024",
+      "authors": [
+        "Prajjwal Bhargava",
+        "Rohan Chitnis",
+        "Alborz Geramifard",
+        "Shagun Sodhani",
+        "Amy Zhang"
+      ],
+      "paper_id": "17519",
+      "pdf_url": "",
+      "forum_url": "https://iclr.cc/forum?id=2024/poster/17519"
+    },
+    {
+      "title": "Bayesian Design Principles for Offline-to-Online Reinforcement Learning",
+      "abstract": "Offline reinforcement learning (RL) is crucial for real-world applications where exploration can be costly or unsafe. However, offline learned policies are often suboptimal, and further online fine-tuning is required. In this paper, we tackle the fundamental dilemma of offline-to-online fine-tuning: if the agent remains pessimistic, it may fail to learn a better policy, while if it becomes optimistic directly, performance may suffer from a sudden drop. We show that Bayesian design principles are crucial in solving such a dilemma. Instead of adopting optimistic or pessimistic policies, the agent should act in a way that matches its belief in optimal policies. Such a probability-matching agent can avoid a sudden performance drop while still being guaranteed to find the optimal policy. Based on our theoretical findings, we introduce a novel algorithm that outperforms existing methods on various benchmarks, demonstrating the efficacy of our approach. Overall, the proposed approach provides a new perspective on offline-to-online RL that has the potential to enable more effective learning from offline data.",
+      "venue": "ICML 2024",
+      "authors": [
+        "Hao Hu",
+        "yiqin yang",
+        "Jianing Ye",
+        "Chengjie Wu",
+        "Ziqing Mai",
+        "Yujing Hu",
+        "Tangjie Lv",
+        "Changjie Fan",
+        "Qianchuan Zhao",
+        "Chongjie Zhang"
+      ],
+      "paper_id": "34472",
+      "pdf_url": "",
+      "forum_url": "https://ICML.cc/forum?id=2024/poster/34472"
+    },
+    {
+      "title": "DiffStitch: Boosting Offline Reinforcement Learning with Diffusion-based Trajectory Stitching",
+      "abstract": "In offline reinforcement learning (RL), the performance of the learned policy highly depends on the quality of offline datasets. However, the offline dataset contains very limited optimal trajectories in many cases. This poses a challenge for offline RL algorithms, as agents must acquire the ability to transit to high-reward regions. To address this issue, we introduce Diffusionbased Trajectory Stitching (DiffStitch), a novel diffusion-based data augmentation pipeline that systematically generates stitching transitions between trajectories. DiffStitch effectively connects low-reward trajectories with high-reward trajectories, forming globally optimal trajectories and thereby mitigating the challenges faced by offline RL algorithms in learning trajectory stitching. Empirical experiments conducted on D4RL datasets demonstrate the effectiveness of our pipeline across RL methodologies. Notably, DiffStitch demonstrates substantial enhancements in the performance of one-step methods(IQL), imitation learning methods(TD3+BC) and trajectory optimization methods(DT). Our code is publicly available at https://github.com/guangheli12/DiffStitch",
+      "venue": "ICML 2024",
+      "authors": [
+        "Guanghe Li",
+        "Yixiang Shan",
+        "Zhengbang Zhu",
+        "Ting Long",
+        "Weinan Zhang"
+      ],
+      "paper_id": "33032",
+      "pdf_url": "",
+      "forum_url": "https://ICML.cc/forum?id=2024/poster/33032"
+    },
+    {
+      "title": "Federated Offline Reinforcement Learning: Collaborative Single-Policy Coverage Suffices",
+      "abstract": "Offline reinforcement learning (RL), which seeks to learn an optimal policy using offline data, has garnered significant interest due to its potential in critical applications where online data collection is infeasible or expensive. This work explores the benefit of federated learning for offline RL, aiming at collaboratively leveraging offline datasets at multiple agents. Focusing on finite-horizon episodic tabular Markov decision processes (MDPs), we design FedLCB-Q, a variant of the popular model-free Q-learning algorithm tailored for federated offline RL. FedLCB-Q updates local Q-functions at agents with novel learning rate schedules and aggregates them at a central server using importance averaging and a carefully designed pessimistic penalty term. Our sample complexity analysis reveals that, with appropriately chosen parameters and synchronization schedules, FedLCB-Q achieves linear speedup in terms of the number of agents without requiring high-quality datasets at individual agents, as long as the local datasets collectively cover the state-action space visited by the optimal policy, highlighting the power of collaboration in the federated setting. In fact, the sample complexity almost matches that of the single-agent counterpart, as if all the data are stored at a central location, up to polynomial factors of the horizon length. Furthermore, FedLCB-Q is communication-efficient, where the number of communication rounds is only linear with respect to the horizon length up to logarithmic factors.",
+      "venue": "ICML 2024",
+      "authors": [
+        "Jiin Woo",
+        "Laixi Shi",
+        "Gauri Joshi",
+        "Yuejie Chi"
+      ],
+      "paper_id": "34303",
+      "pdf_url": "",
+      "forum_url": "https://ICML.cc/forum?id=2024/poster/34303"
+    },
+    {
+      "title": "Hybrid Reinforcement Learning from Offline Observation Alone",
+      "abstract": "We consider the hybrid reinforcement learning setting where the agent has access to both offline data and online interactive access. While RL research typically assumes offline data contains complete action, reward and transition information, datasets with only state information (also known as *observation-only* datasets) are more general, abundant and practical. This motivates our study of the *hybrid RL with observation-only offline dataset* framework. While the task of competing with the best policy ``covered'' by the offline data can be solved if a *reset* model of the environment is provided (i.e., one that can be reset to any state), we show evidence of hardness of competing when only given the weaker *trace* model (i.e., one can only reset to the initial states and must produce full traces through the environment), without further assumption of *admissibility* of the offline data. Under the admissibility assumptions-- that the offline data could actually be produced by the policy class we consider-- we propose the first algorithm in the trace model setting that provably matches the performance of algorithms that leverage a reset model. We also perform proof-of-concept experiments that suggest the effectiveness of our algorithm in practice.",
+      "venue": "ICML 2024",
+      "authors": [
+        "Yuda Song",
+        "J. Bagnell",
+        "Aarti Singh"
+      ],
+      "paper_id": "33606",
+      "pdf_url": "",
+      "forum_url": "https://ICML.cc/forum?id=2024/poster/33606"
+    },
+    {
+      "title": "Temporal Logic Specification-Conditioned Decision Transformer for Offline Safe Reinforcement Learning",
+      "abstract": "Offline safe reinforcement learning (RL) aims to train a constraint satisfaction policy from a fixed dataset. Current state-of-the-art approaches are based on supervised learning with a conditioned policy. However, these approaches fall short in real-world applications that involve complex tasks with rich temporal and logical structures. In this paper, we propose temporal logic Specification-conditioned Decision Transformer (SDT), a novel framework that harnesses the expressive power of signal temporal logic (STL) to specify complex temporal rules that an agent should follow and the sequential modeling capability of Decision Transformer (DT). Empirical evaluations on the DSRL benchmarks demonstrate the better capacity of SDT in learning safe and high-reward policies compared with existing approaches. In addition, SDT shows good alignment with respect to different desired degrees of satisfaction of the STL specification that it is conditioned on.",
+      "venue": "ICML 2024",
+      "authors": [
+        "Zijian Guo",
+        "Weichao Zhou",
+        "Wenchao Li"
+      ],
+      "paper_id": "34879",
+      "pdf_url": "",
+      "forum_url": "https://ICML.cc/forum?id=2024/poster/34879"
+    },
+    {
+      "title": "A2PO: Towards Effective Offline Reinforcement Learning from an Advantage-aware Perspective",
+      "abstract": "Offline reinforcement learning endeavors to leverage offline datasets to craft effective agent policy without online interaction, which imposes proper conservative constraints with the support of behavior policies to tackle the out-of-distribution problem. However, existing works often suffer from the constraint conflict issue when offline datasets are collected from multiple behavior policies, i.e., different behavior policies may exhibit inconsistent actions with distinct returns across the state space. To remedy this issue, recent advantage-weighted methods prioritize samples with high advantage values for agent training while inevitably ignoring the diversity of behavior policy. In this paper, we introduce a novel Advantage-Aware Policy Optimization (A2PO) method to explicitly construct advantage-aware policy constraints for offline learning under mixed-quality datasets. Specifically, A2PO employs a conditional variational auto-encoder to disentangle the action distributions of intertwined behavior policies by modeling the advantage values of all training data as conditional variables. Then the agent can follow such disentangled action distribution constraints to optimize the advantage-aware policy towards high advantage values. Extensive experiments conducted on both the single-quality and mixed-quality datasets of the D4RL benchmark demonstrate that A2PO yields results superior to the counterparts. Our code is available at https://github.com/Plankson/A2PO.",
+      "venue": "NeurIPS 2024",
+      "authors": [
+        "Yunpeng Qing",
+        "Shunyu Liu",
+        "Jingyuan Cong",
+        "Kaixuan Chen",
+        "Yihe Zhou",
+        "Mingli Song"
+      ],
+      "paper_id": "94058",
+      "pdf_url": "",
+      "forum_url": "https://neurips.cc/forum?id=2024/poster/94058"
+    },
+    {
+      "title": "A Unified Principle of Pessimism for Offline Reinforcement Learning under Model Mismatch",
+      "abstract": "In this paper, we address the challenges of offline reinforcement learning (RL) under model mismatch, where the agent aims to optimize its performance through an offline dataset that may not accurately represent the deployment environment. We identify two primary challenges under the setting: inaccurate model estimation due to limited data and performance degradation caused by the model mismatch between the dataset-collecting environment and the target deployment one. To tackle these issues, we propose a unified principle of pessimism using distributionally robust Markov decision processes. We carefully construct a robust MDP with a single uncertainty set to tackle both data sparsity and model mismatch, and demonstrate that the optimal robust policy enjoys a near-optimal sub-optimality gap under the target environment across three widely used uncertainty models: total variation, $\\chi^2$ divergence, and KL divergence. Our results improve upon or match the state-of-the-art performance under the total variation and KL divergence models, and provide the first result for the $\\chi^2$ divergence model.",
+      "venue": "NeurIPS 2024",
+      "authors": [
+        "Yue Wang",
+        "Zhongchang Sun",
+        "Shaofeng Zou"
+      ],
+      "paper_id": "94438",
+      "pdf_url": "",
+      "forum_url": "https://neurips.cc/forum?id=2024/poster/94438"
+    },
+    {
+      "title": "Federated Ensemble-Directed Offline Reinforcement Learning",
+      "abstract": "We consider the problem of federated offline reinforcement learning (RL), a scenario under which distributed learning agents must collaboratively learn a high-quality control policy only using small pre-collected datasets generated according to different unknown behavior policies. Na\\\"{i}vely combining a standard offline RL approach with a standard federated learning approach to solve this problem can lead to poorly performing policies.  In response, we develop the Federated Ensemble-Directed Offline Reinforcement Learning  Algorithm (FEDORA), which distills the collective wisdom of the clients using an ensemble learning approach.  We develop the FEDORA codebase to utilize distributed compute resources on a federated learning platform. We show that FEDORA significantly outperforms other approaches, including offline RL over the combined data pool, in various complex continuous control environments and real-world datasets. Finally, we demonstrate the performance of FEDORA in the real-world on a mobile robot. We provide our code and a video of our experiments at \\url{https://github.com/DesikRengarajan/FEDORA}.",
+      "venue": "NeurIPS 2024",
+      "authors": [
+        "Desik Rengarajan",
+        "Nitin Ragothaman",
+        "Dileep Kalathil",
+        "Srinivas Shakkottai"
+      ],
+      "paper_id": "92989",
+      "pdf_url": "",
+      "forum_url": "https://neurips.cc/forum?id=2024/poster/92989"
+    },
+    {
+      "title": "MADiff: Offline Multi-agent Learning with Diffusion Models",
+      "abstract": "Offline reinforcement learning (RL) aims to learn policies from pre-existing datasets without further interactions, making it a challenging task. Q-learning algorithms struggle with extrapolation errors in offline settings, while supervised learning methods are constrained by model expressiveness. Recently, diffusion models (DMs) have shown promise in overcoming these limitations in single-agent learning, but their application in multi-agent scenarios remains unclear. Generating trajectories for each agent with independent DMs may impede coordination, while concatenating all agents’ information can lead to low sample efficiency. Accordingly, we propose MADiff, which is realized with an attention-based diffusion model to model the complex coordination among behaviors of multiple agents. To our knowledge, MADiff is the first diffusion-based multi-agent learning framework, functioning as both a decentralized policy and a centralized controller. During decentralized executions, MADiff simultaneously performs teammate modeling, and the centralized controller can also be applied in multi-agent trajectory predictions. Our experiments demonstrate that MADiff outperforms baseline algorithms across various multi-agent learning tasks, highlighting its effectiveness in modeling complex multi-agent interactions.",
+      "venue": "NeurIPS 2024",
+      "authors": [
+        "Zhengbang Zhu",
+        "Minghuan Liu",
+        "Liyuan Mao",
+        "Bingyi Kang",
+        "Minkai Xu",
+        "Yong Yu",
+        "Stefano Ermon",
+        "Weinan Zhang"
+      ],
+      "paper_id": "95274",
+      "pdf_url": "",
+      "forum_url": "https://neurips.cc/forum?id=2024/poster/95274"
+    },
+    {
+      "title": "OASIS: Conditional Distribution Shaping for Offline Safe Reinforcement Learning",
+      "abstract": "Offline safe reinforcement learning (RL) aims to train a policy that satisfies con- straints using a pre-collected dataset. Most current methods struggle with the mismatch between imperfect demonstrations and the desired safe and rewarding performance. In this paper, we mitigate this issue from a data-centric perspective and introduce OASIS (cOnditionAl diStributIon Shaping), a new paradigm in offline safe RL designed to overcome these critical limitations. OASIS utilizes a conditional diffusion model to synthesize offline datasets, thus shaping the data dis- tribution toward a beneficial target domain. Our approach makes compliance with safety constraints through effective data utilization and regularization techniques to benefit offline safe RL training. Comprehensive evaluations on public benchmarks and varying datasets showcase OASIS’s superiority in benefiting offline safe RL agents to achieve high-reward behavior while satisfying the safety constraints, out- performing established baselines. Furthermore, OASIS exhibits high data efficiency and robustness, making it suitable for real-world applications, particularly in tasks where safety is imperative and high-quality demonstrations are scarce. More details are available at the website https://sites.google.com/view/saferl-oasis/home.",
+      "venue": "NeurIPS 2024",
+      "authors": [
+        "Yihang Yao",
+        "Zhepeng Cen",
+        "Wenhao Ding",
+        "Haohong Lin",
+        "Shiqi Liu",
+        "Tingnan Zhang",
+        "Wenhao Yu",
+        "DING ZHAO"
+      ],
+      "paper_id": "96709",
+      "pdf_url": "",
+      "forum_url": "https://neurips.cc/forum?id=2024/poster/96709"
+    },
+    {
+      "title": "ODRL: A Benchmark for Off-Dynamics Reinforcement Learning",
+      "abstract": "We consider off-dynamics reinforcement learning (RL) where one needs to transfer policies across different domains with dynamics mismatch. Despite the focus on developing dynamics-aware algorithms, this field is hindered due to the lack of a standard benchmark. To bridge this gap, we introduce ODRL, the first benchmark tailored for evaluating off-dynamics RL methods. ODRL contains four experimental settings where the source and target domains can be either online or offline, and provides diverse tasks and a broad spectrum of dynamics shifts, making it a reliable platform to comprehensively evaluate the agent's adaptation ability to the target domain. Furthermore, ODRL includes recent off-dynamics RL algorithms in a unified framework and introduces some extra baselines for different settings, all implemented in a single-file manner. To unpack the true adaptation capability of existing methods, we conduct extensive benchmarking experiments, which show that no method has universal advantages across varied dynamics shifts. We hope this benchmark can serve as a cornerstone for future research endeavors. Our code is publicly available at https://github.com/OffDynamicsRL/off-dynamics-rl.",
+      "venue": "NeurIPS 2024",
+      "authors": [
+        "Jiafei Lyu",
+        "Kang Xu",
+        "Jiacheng Xu",
+        "yan",
+        "Jing-Wen Yang",
+        "Zongzhang Zhang",
+        "Chenjia Bai",
+        "Zongqing Lu",
+        "Xiu Li"
+      ],
+      "paper_id": "97619",
+      "pdf_url": "",
+      "forum_url": "https://neurips.cc/forum?id=2024/poster/97619"
+    },
+    {
+      "title": "Offline Multitask Representation Learning for Reinforcement Learning",
+      "abstract": "We study offline multitask representation learning in reinforcement learning (RL), where a learner is provided with an offline dataset from different tasks that share a common representation and is asked to learn the shared representation. We theoretically investigate offline multitask low-rank RL, and propose a new algorithm called MORL for offline multitask representation learning. Furthermore, we examine downstream RL in reward-free, offline and online scenarios, where a new task is introduced to the agent that shares the same representation as the upstream offline tasks. Our theoretical results demonstrate the benefits of using the learned representation from the upstream offline task instead of directly learning the representation of the low-rank model.",
+      "venue": "NeurIPS 2024",
+      "authors": [
+        "Haque Ishfaq",
+        "Thanh Nguyen-Tang",
+        "Songtao Feng",
+        "Raman Arora",
+        "Mengdi Wang",
+        "Ming Yin",
+        "Doina Precup"
+      ],
+      "paper_id": "96488",
+      "pdf_url": "",
+      "forum_url": "https://neurips.cc/forum?id=2024/poster/96488"
+    },
+    {
+      "title": "Offline Reinforcement Learning with OOD State Correction and OOD Action Suppression",
+      "abstract": "In offline reinforcement learning (RL), addressing the out-of-distribution (OOD) action issue has been a focus, but we argue that there exists an OOD state issue that also impairs performance yet has been underexplored. Such an issue describes the scenario when the agent encounters states out of the offline dataset during the test phase, leading to uncontrolled behavior and performance degradation. To this end, we propose SCAS, a simple yet effective approach that unifies OOD state correction and OOD action suppression in offline RL. Technically, SCAS achieves value-aware OOD state correction, capable of correcting the agent from OOD states to high-value in-distribution states. Theoretical and empirical results show that SCAS also exhibits the effect of suppressing OOD actions. On standard offline RL benchmarks, SCAS achieves excellent performance without additional hyperparameter tuning. Moreover, benefiting from its OOD state correction feature, SCAS demonstrates enhanced robustness against environmental perturbations.",
+      "venue": "NeurIPS 2024",
+      "authors": [
+        "Yixiu Mao",
+        "Qi Wang",
+        "Chen Chen",
+        "Yun Qu",
+        "Xiangyang Ji"
+      ],
+      "paper_id": "94532",
+      "pdf_url": "",
+      "forum_url": "https://neurips.cc/forum?id=2024/poster/94532"
+    },
+    {
+      "title": "The Edge-of-Reach Problem in Offline Model-Based Reinforcement Learning",
+      "abstract": "Offline reinforcement learning (RL) aims to train agents from pre-collected datasets. However, this comes with the added challenge of estimating the value of behaviors not covered in the dataset. Model-based methods offer a potential solution by training an approximate dynamics model, which then allows collection of additional synthetic data via rollouts in this model. The prevailing theory treats this approach as online RL in an approximate dynamics model, and any remaining performance gap is therefore understood as being due to dynamics model errors. In this paper, we analyze this assumption and investigate how popular algorithms perform as the learned dynamics model is improved. In contrast to both intuition and theory, if the learned dynamics model is replaced by the true error-free dynamics, existing model-based methods completely fail. This reveals a key oversight: The theoretical foundations assume sampling of full horizon rollouts in the learned dynamics model; however, in practice, the number of model-rollout steps is aggressively reduced to prevent accumulating errors. We show that this truncation of rollouts results in a set of edge-of-reach states at which we are effectively \"bootstrapping from the void.\" This triggers pathological value overestimation and complete performance collapse. We term this the edge-of-reach problem. Based on this new insight, we fill important gaps in existing theory, and reveal how prior model-based methods are primarily addressing the edge-of-reach problem, rather than model-inaccuracy as claimed. Finally, we propose Reach-Aware Value Learning (RAVL), a simple and robust method that directly addresses the edge-of-reach problem and hence - unlike existing methods - does not fail as the dynamics model is improved. Since world models will inevitably improve, we believe this is a key step towards future-proofing offline RL.",
+      "venue": "NeurIPS 2024",
+      "authors": [
+        "Anya Sims",
+        "Cong Lu",
+        "Jakob Foerster",
+        "Yee Whye Teh"
+      ],
+      "paper_id": "96730",
+      "pdf_url": "",
+      "forum_url": "https://neurips.cc/forum?id=2024/poster/96730"
+    },
+    {
+      "title": "Towards an Information Theoretic Framework of Context-Based Offline Meta-Reinforcement Learning",
+      "abstract": "As a marriage between offline RL and meta-RL, the advent of offline meta-reinforcement learning (OMRL) has shown great promise in enabling RL agents to multi-task and quickly adapt while acquiring knowledge safely. Among which, context-based OMRL (COMRL) as a popular paradigm, aims to learn a universal policy conditioned on effective task representations. In this work, by examining several key milestones in the field of COMRL, we propose to integrate these seemingly independent methodologies into a unified framework. Most importantly, we show that the pre-existing COMRL algorithms are essentially optimizing the same mutual information objective between the task variable $M$ and its latent representation $Z$ by implementing various approximate bounds. Such theoretical insight offers ample design freedom for novel algorithms. As demonstrations, we propose a supervised and a self-supervised implementation of $I(Z; M)$, and empirically show that the corresponding optimization algorithms exhibit remarkable generalization across a broad spectrum of RL benchmarks, context shift scenarios, data qualities and deep learning architectures. This work lays the information theoretic foundation for COMRL methods, leading to a better understanding of task representation learning in the context of reinforcement learning. Given itsgenerality, we envision our framework as a promising offline pre-training paradigm of foundation models for decision making.",
+      "venue": "NeurIPS 2024",
+      "authors": [
+        "Lanqing Li",
+        "Hai Zhang",
+        "Xinyu Zhang",
+        "Shatong Zhu",
+        "Yang YU",
+        "Junqiao Zhao",
+        "Pheng-Ann Heng"
+      ],
+      "paper_id": "95247",
+      "pdf_url": "",
+      "forum_url": "https://neurips.cc/forum?id=2024/poster/95247"
+    },
+    {
+      "title": "Uncertainty-based Offline Variational Bayesian Reinforcement Learning for Robustness under Diverse Data Corruptions",
+      "abstract": "Real-world offline datasets are often subject to data corruptions (such as noise or adversarial attacks) due to sensor failures or malicious attacks. Despite advances in robust offline reinforcement learning (RL), existing methods struggle to learn robust agents under high uncertainty caused by the diverse corrupted data (i.e., corrupted states, actions, rewards, and dynamics), leading to performance degradation in clean environments. To tackle this problem, we propose a novel robust variational Bayesian inference for offline RL (TRACER). It introduces Bayesian inference for the first time to capture the uncertainty via offline data for robustness against all types of data corruptions. Specifically, TRACER first models all corruptions as the uncertainty in the action-value function. Then, to capture such uncertainty, it uses all offline data as the observations to approximate the posterior distribution of the action-value function under a Bayesian inference framework. An appealing feature of TRACER is that it can distinguish corrupted data from clean data using an entropy-based uncertainty measure, since corrupted data often induces higher uncertainty and entropy. Based on the aforementioned measure, TRACER can regulate the loss associated with corrupted data to reduce its influence, thereby enhancing robustness and performance in clean environments. Experiments demonstrate that TRACER significantly outperforms several state-of-the-art approaches across both individual and simultaneous data corruptions.",
+      "venue": "NeurIPS 2024",
+      "authors": [
+        "Rui Yang",
+        "Jie Wang",
+        "Guoping Wu",
+        "Bin Li"
+      ],
+      "paper_id": "93435",
+      "pdf_url": "",
+      "forum_url": "https://neurips.cc/forum?id=2024/poster/93435"
+    },
+    {
+      "title": "Zero-Shot Reinforcement Learning from Low Quality Data",
+      "abstract": "Zero-shot reinforcement learning (RL) promises to provide agents that can perform _any_ task in an environment after an offline, reward-free pre-training phase. Methods leveraging successor measures and successor features have shown strong performance in this setting, but require access to large heterogenous datasets for pre-training which cannot be expected for most real problems. Here, we explore how the performance of zero-shot RL methods degrades when trained on small homogeneous datasets, and propose fixes inspired by _conservatism_, a well-established feature of performant single-task offline RL algorithms. We evaluate our proposals across various datasets, domains and tasks, and show that conservative zero-shot RL algorithms outperform their non-conservative counterparts on low quality datasets, and perform no worse on high quality datasets. Somewhat surprisingly, our proposals also outperform baselines that get to see the task during training. Our code is available via the project page https://enjeeneer.io/projects/zero-shot-rl/.",
+      "venue": "NeurIPS 2024",
+      "authors": [
+        "Scott Jeen",
+        "Tom Bewley",
+        "Jonathan Cullen"
+      ],
+      "paper_id": "96479",
+      "pdf_url": "",
+      "forum_url": "https://neurips.cc/forum?id=2024/poster/96479"
+    }
+  ]
+}

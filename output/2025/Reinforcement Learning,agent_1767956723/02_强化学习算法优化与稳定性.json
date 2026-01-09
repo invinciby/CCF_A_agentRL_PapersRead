@@ -1,0 +1,1064 @@
+{
+  "name": "强化学习算法优化与稳定性",
+  "paper_count": 70,
+  "summary": "本类别关注于改进深度强化学习（RL）算法的核心训练过程，以解决样本效率低、训练不稳定和非平稳环境适应等问题。具体研究方向包括：提出优先生成回放（Prioritized Generative Replay）方法，利用生成模型和相关性函数来高效复用和增强经验，防止过拟合；针对非平稳环境中的灾难性遗忘问题，提出局部约束策略优化（LCPO）方法，通过锚定旧经验来稳定在线学习；以及为了解决高更新数据比（UTD）训练中的价值函数泛化问题，引入模型增强数据（MAD-TD）来稳定训练并提升性能。这些工作旨在使RL算法更鲁棒、更高效。",
+  "papers": [
+    {
+      "title": "Prioritized Generative Replay",
+      "abstract": "Sample-efficient online reinforcement learning often uses replay buffers to store experience for reuse when updating the value function. \nHowever, uniform replay is inefficient, since certain classes of transitions can be more relevant to learning. While prioritization of more useful samples is helpful, this strategy can also lead to overfitting, as useful samples are likely to be more rare. In this work, we instead propose a prioritized, parametric version of an agent's memory, using generative models to capture online experience. This paradigm enables (1) densification of past experience, with new generations that benefit from the generative model's generalization capacity and (2) guidance via a family of \"relevance functions\" that push these generations towards more useful parts of an agent's acquired history. We show this recipe can be instantiated using conditional diffusion models and simple relevance functions such as curiosity- or value-based metrics. Our approach consistently improves performance and sample efficiency in both state- and pixel-based domains. We expose the mechanisms underlying these gains, showing how guidance promotes diversity in our generated transitions and reduces overfitting. We also showcase how our approach can train policies with even higher update-to-data ratios than before, opening up avenues to better scale online RL agents. Project page available at: https://pgenreplay.github.io",
+      "venue": "ICLR 2025",
+      "authors": [
+        "Renhao Wang",
+        "Kevin Frans",
+        "Pieter Abbeel",
+        "Sergey Levine",
+        "Alexei A Efros"
+      ],
+      "paper_id": "5IkDAfabuo",
+      "pdf_url": "https://openreview.net/pdf/91656a28cf5212c8420cbc988c091242ca54c57f.pdf",
+      "forum_url": "https://openreview.net/forum?id=5IkDAfabuo"
+    },
+    {
+      "title": "Online Reinforcement Learning in Non-Stationary Context-Driven Environments",
+      "abstract": "We study online reinforcement learning (RL) in non-stationary environments, where a time-varying exogenous context process affects the environment dynamics. Online RL is challenging in such environments due to \"catastrophic forgetting\" (CF). The agent tends to forget prior knowledge as it trains on new experiences. Prior approaches to mitigate this issue assume task labels (which are often not available in practice), employ brittle regularization heuristics, or use off-policy methods that suffer from instability and poor performance.\n\nWe present Locally Constrained Policy Optimization (LCPO), an online RL approach that combats CF by anchoring policy outputs on old experiences while optimizing the return on current experiences. To perform this anchoring, LCPO locally constrains policy optimization using samples from experiences that lie outside of the current context distribution. We evaluate LCPO in Mujoco, classic control and computer systems environments with a variety of synthetic and real context traces, and find that it outperforms a variety of baselines in the non-stationary setting, while achieving results on-par with a \"prescient\" agent trained offline across all context traces.\n\nLCPO's source code is available at https://github.com/pouyahmdn/LCPO.",
+      "venue": "ICLR 2025",
+      "authors": [
+        "Pouya Hamadanian",
+        "Arash Nasr-Esfahany",
+        "Malte Schwarzkopf",
+        "Siddhartha Sen",
+        "Mohammad Alizadeh"
+      ],
+      "paper_id": "l6QnSQizmN",
+      "pdf_url": "https://openreview.net/pdf/2d424145948035bb22771991d3024411b2817d1d.pdf",
+      "forum_url": "https://openreview.net/forum?id=l6QnSQizmN"
+    },
+    {
+      "title": "MAD-TD: Model-Augmented Data stabilizes High Update Ratio RL",
+      "abstract": "Building deep reinforcement learning (RL) agents that find a good policy with few samples has proven notoriously challenging. To achieve sample efficiency, recent work has explored updating neural networks with large numbers of gradient steps for every new sample. While such high update-to-data (UTD) ratios have shown strong empirical performance, they also introduce instability to the training process.  Previous approaches need to rely on periodic neural network parameter resets to address this instability, but restarting the training process is infeasible in many real-world applications and requires tuning the resetting interval. In this paper, we focus on one of the core difficulties of stable training with limited samples: the inability of learned value functions to generalize to unobserved on-policy actions. We mitigate this issue directly by augmenting the off-policy RL training process with a small amount of data generated from a learned world model. Our method, Model-Augmented Data for TD Learning (MAD-TD) uses small amounts of generated data to stabilize high UTD training and achieve competitive performance on the most challenging tasks in the DeepMind control suite. Our experiments further highlight the importance of employing a good model to generate data, MAD-TD's ability to combat value overestimation, and its practical stability gains for continued learning.",
+      "venue": "ICLR 2025",
+      "authors": [
+        "Claas A Voelcker",
+        "Marcel Hussing",
+        "Eric Eaton",
+        "Amir-massoud Farahmand",
+        "Igor Gilitschenski"
+      ],
+      "paper_id": "6RtRsg8ZV1",
+      "pdf_url": "https://openreview.net/pdf/292eeb835de3767356950100cb9f950e8b726040.pdf",
+      "forum_url": "https://openreview.net/forum?id=6RtRsg8ZV1"
+    },
+    {
+      "title": "Accelerating Goal-Conditioned Reinforcement Learning Algorithms and Research",
+      "abstract": "Self-supervision has the potential to transform reinforcement learning (RL), paralleling the breakthroughs it has enabled in other areas of machine learning. While self-supervised learning in other domains aims to find patterns in a fixed dataset, self-supervised goal-conditioned reinforcement learning (GCRL) agents discover *new* behaviors by learning from the goals achieved during unstructured interaction with the environment. However, these methods have failed to see similar success, both due to a lack of data from slow environment simulations as well as a lack of stable algorithms. We take a step toward addressing both of these issues by releasing a high-performance codebase and benchmark (`JaxGCRL`) for self-supervised GCRL, enabling researchers to train agents for millions of environment steps in minutes on a single GPU. By utilizing GPU-accelerated replay buffers, environments, and a stable contrastive RL algorithm, we reduce training time by up to $22\\times$. Additionally, we assess key design choices in contrastive RL, identifying those that most effectively stabilize and enhance training performance. With this approach, we provide a foundation for future research in self-supervised GCRL, enabling researchers to quickly iterate on new ideas and evaluate them in diverse and challenging environments. Code: [https://anonymous.4open.science/r/JaxGCRL-2316/README.md](https://anonymous.4open.science/r/JaxGCRL-2316/README.md)",
+      "venue": "ICLR 2025",
+      "authors": [
+        "Michał Bortkiewicz",
+        "Władysław Pałucki",
+        "Vivek Myers",
+        "Tadeusz Dziarmaga",
+        "Tomasz Arczewski",
+        "Łukasz Kuciński",
+        "Benjamin Eysenbach"
+      ],
+      "paper_id": "4gaySj8kvX",
+      "pdf_url": "https://openreview.net/pdf/bb8201157b3804ad8e2f1620232d49d5dc6acec7.pdf",
+      "forum_url": "https://openreview.net/forum?id=4gaySj8kvX"
+    },
+    {
+      "title": "Mitigating Information Loss in Tree-Based Reinforcement Learning via Direct Optimization",
+      "abstract": "Reinforcement learning (RL) has seen significant success across various domains, but its adoption is often limited by the black-box nature of neural network policies, making them difficult to interpret. In contrast, symbolic policies allow representing decision-making strategies in a compact and interpretable way. However, learning symbolic policies directly within on-policy methods remains challenging.\nIn this paper, we introduce SYMPOL, a novel method for SYMbolic tree-based on-POLicy RL. SYMPOL employs a tree-based model integrated with a policy gradient method, enabling the agent to learn and adapt its actions while maintaining a high level of interpretability.\nWe evaluate SYMPOL on a set of benchmark RL tasks, demonstrating its superiority over alternative tree-based RL approaches in terms of performance and interpretability. Unlike existing methods, it enables gradient-based, end-to-end learning of interpretable, axis-aligned decision trees within standard on-policy RL algorithms. Therefore, SYMPOL can become the foundation for a new class of interpretable RL based on decision trees. Our implementation is available under: https://github.com/s-marton/sympol",
+      "venue": "ICLR 2025",
+      "authors": [
+        "Sascha Marton",
+        "Tim Grams",
+        "Florian Vogt",
+        "Stefan Lüdtke",
+        "Christian Bartelt",
+        "Heiner Stuckenschmidt"
+      ],
+      "paper_id": "qpXctF2aLZ",
+      "pdf_url": "https://openreview.net/pdf/88c2e06fe1c49d6ab8a194a428ceafe950e135e5.pdf",
+      "forum_url": "https://openreview.net/forum?id=qpXctF2aLZ"
+    },
+    {
+      "title": "Safety-Prioritizing Curricula for Constrained Reinforcement Learning",
+      "abstract": "Curriculum learning aims to accelerate reinforcement learning (RL) by generating curricula, i.e., sequences of tasks of increasing difficulty. \nAlthough existing curriculum generation approaches provide benefits in sample efficiency, they overlook safety-critical settings where an RL agent must adhere to safety constraints.\nThus, these approaches may generate tasks that cause RL agents to violate safety constraints during training and behave suboptimally after. \nWe develop a safe curriculum generation approach (SCG) that aligns the objectives of constrained RL and curriculum learning: improving safety during training and boosting sample efficiency.\nSCG generates sequences of tasks where the RL agent can be safe and performant by initially generating tasks with minimum safety violations over high-reward ones.\nWe empirically show that compared to the state-of-the-art curriculum learning approaches and their naively modified safe versions, SCG achieves optimal performance and the lowest amount of constraint violations during training.",
+      "venue": "ICLR 2025",
+      "authors": [
+        "Cevahir Koprulu",
+        "Thiago D. Simão",
+        "Nils Jansen",
+        "ufuk topcu"
+      ],
+      "paper_id": "f3QR9TEERH",
+      "pdf_url": "https://openreview.net/pdf/bfc5b916d195d67ba69ecf2d2619a25b9b05a297.pdf",
+      "forum_url": "https://openreview.net/forum?id=f3QR9TEERH"
+    },
+    {
+      "title": "SEMDICE: Off-policy State Entropy Maximization via Stationary Distribution Correction Estimation",
+      "abstract": "In the unsupervised pre-training for reinforcement learning, the agent aims to learn a prior policy for downstream tasks without relying on task-specific reward functions. We focus on state entropy maximization (SEM), where the goal is to learn a policy that maximizes the entropy of the state's stationary distribution. In this paper, we introduce SEMDICE, a principled off-policy algorithm that computes an SEM policy from an arbitrary off-policy dataset, which optimizes the policy directly within the space of stationary distributions. SEMDICE computes a single, stationary Markov state-entropy-maximizing policy from an arbitrary off-policy dataset. Experimental results demonstrate that SEMDICE outperforms baseline algorithms in maximizing state entropy while achieving the best adaptation efficiency for downstream tasks among SEM-based unsupervised RL pre-training methods.",
+      "venue": "ICLR 2025",
+      "authors": [
+        "Jongmin Lee",
+        "Meiqi Sun",
+        "Pieter Abbeel"
+      ],
+      "paper_id": "rJ5g8ueQaI",
+      "pdf_url": "https://openreview.net/pdf/264e8b68d7c6a275a0596ca00fa24f0438545362.pdf",
+      "forum_url": "https://openreview.net/forum?id=rJ5g8ueQaI"
+    },
+    {
+      "title": "Behavioral Entropy-Guided Dataset Generation for Offline Reinforcement Learning",
+      "abstract": "Entropy-based objectives are widely used to perform state space exploration in reinforcement learning (RL) and dataset generation for offline RL. Behavioral entropy (BE), a rigorous generalization of classical entropies that incorporates cognitive and perceptual biases of agents, was recently proposed for discrete settings and shown to be a promising metric for robotic exploration problems. In this work, we propose using BE as a principled exploration objective for systematically generating datasets that provide diverse state space coverage in complex, continuous, potentially high-dimensional domains. To achieve this, we extend the notion of BE to continuous settings, derive tractable $k$-nearest neighbor estimators, provide theoretical guarantees for these estimators, and develop practical reward functions that can be used with standard RL methods to learn BE-maximizing policies. Using standard MuJoCo environments, we experimentally compare the performance of offline RL algorithms for a variety of downstream tasks on datasets generated using BE, R\\'{e}nyi, and Shannon entropy-maximizing policies, as well as the SMM and RND algorithms. We find that offline RL algorithms trained on datasets collected using BE outperform those trained on datasets collected using Shannon entropy, SMM, and RND on all tasks considered, and on 80\\% of the tasks compared to datasets collected using Renyi entropy.",
+      "venue": "ICLR 2025",
+      "authors": [
+        "Wesley A. Suttle",
+        "Aamodh Suresh",
+        "Carlos Nieto-Granda"
+      ],
+      "paper_id": "LuT2CVrlpU",
+      "pdf_url": "https://openreview.net/pdf/d6c216167f7241662c11240bedeb226dd4b840bd.pdf",
+      "forum_url": "https://openreview.net/forum?id=LuT2CVrlpU"
+    },
+    {
+      "title": "Enabling Realtime Reinforcement Learning at Scale with Staggered Asynchronous Inference",
+      "abstract": "Realtime environments change even as agents perform action inference and learning, thus requiring high interaction frequencies to effectively minimize regret. However, recent advances in machine learning involve larger neural networks with longer inference times, raising questions about their applicability in realtime systems where reaction time is crucial. We present an analysis of lower bounds on regret in realtime reinforcement learning (RL) environments to show that minimizing long-term regret is generally impossible within the typical sequential interaction and learning paradigm, but often becomes possible when sufficient asynchronous compute is available. We propose novel algorithms for staggering asynchronous inference processes to ensure that actions are taken at consistent time intervals, and demonstrate that use of models with high action inference times is only constrained by the environment's effective stochasticity over the inference horizon, and not by action frequency. Our analysis shows that the number of inference processes needed scales linearly with increasing inference times while enabling use of models that are multiple orders of magnitude larger than existing approaches when learning from a realtime simulation of Game Boy games such as Pokemon and Tetris.",
+      "venue": "ICLR 2025",
+      "authors": [
+        "Matthew Riemer",
+        "Gopeshh Subbaraj",
+        "Glen Berseth",
+        "Irina Rish"
+      ],
+      "paper_id": "fXb9BbuyAD",
+      "pdf_url": "https://openreview.net/pdf/029877b6045b1e6411e8357be363ea5f054cc74d.pdf",
+      "forum_url": "https://openreview.net/forum?id=fXb9BbuyAD"
+    },
+    {
+      "title": "Non-Adversarial Inverse Reinforcement Learning via Successor Feature Matching",
+      "abstract": "In inverse reinforcement learning (IRL), an agent seeks to replicate expert demonstrations through interactions with the environment.\nTraditionally, IRL is treated as an adversarial game, where an adversary searches over reward models, and a learner optimizes the reward through repeated RL procedures.\nThis game-solving approach is both computationally expensive and difficult to stabilize.\nIn this work, we propose a novel approach to IRL by _direct policy search_: \nby exploiting a linear factorization of the return as the inner product of successor features and a reward vector, we design an IRL algorithm by policy gradient descent on the gap between the learner and expert features.\nOur non-adversarial method does not require learning an explicit reward function and can be solved seamlessly with existing RL algorithms.\nRemarkably, our approach works in state-only settings without expert action labels, a setting which behavior cloning (BC) cannot solve.\nEmpirical results demonstrate that our method learns from as few as a single expert demonstration and achieves improved performance on various control tasks.",
+      "venue": "ICLR 2025",
+      "authors": [
+        "Arnav Kumar Jain",
+        "Harley Wiltzer",
+        "Jesse Farebrother",
+        "Irina Rish",
+        "Glen Berseth",
+        "Sanjiban Choudhury"
+      ],
+      "paper_id": "LvRQgsvd5V",
+      "pdf_url": "https://openreview.net/pdf/cee10392d36be0060eb5bed42654409f48454b7b.pdf",
+      "forum_url": "https://openreview.net/forum?id=LvRQgsvd5V"
+    },
+    {
+      "title": "Reinforcement Learning from Imperfect Corrective Actions and Proxy Rewards",
+      "abstract": "In practice, reinforcement learning (RL) agents are often trained with a possibly imperfect proxy reward function, which may lead to a human-agent alignment issue (i.e., the learned policy either converges to non-optimal performance with low cumulative rewards, or achieves high cumulative rewards but in an undesired manner). To tackle this issue, we consider a framework where a human labeler can provide additional feedback in the form of corrective actions, which expresses the labeler's action preferences although this feedback may possibly be imperfect as well. \nIn this setting, to obtain a better-aligned policy guided by both learning signals, we propose a novel value-based deep RL algorithm called **I**terative learning from **Co**rrective actions and **Pro**xy rewards (ICoPro), which cycles through three phases: \n(1) Solicit sparse corrective actions from a human labeler on the agent's demonstrated trajectories; \n(2) Incorporate these corrective actions into the Q-function using a margin loss to enforce adherence to labeler's preferences; \n(3) Train the agent with standard RL losses regularized with a margin loss to learn from proxy rewards and propagate the Q-values learned from human feedback. Moreover, another novel design in our approach is to integrate pseudo-labels from the target Q-network to reduce human labor and further stabilize training. \nWe experimentally validate our proposition on a variety of tasks (Atari games and autonomous driving on highway). On the one hand, using proxy rewards with different levels of imperfection, our method can better align with human and is more sample-efficient than baseline methods. On the other hand, facing corrective actions with different types of imperfection, our method can overcome the non-optimality of this feedback thanks to the guidance from proxy rewards.",
+      "venue": "ICLR 2025",
+      "authors": [
+        "Zhaohui JIANG",
+        "Xuening Feng",
+        "Paul Weng",
+        "Yifei Zhu",
+        "Yan Song",
+        "Tianze Zhou",
+        "Yujing Hu",
+        "Tangjie Lv",
+        "Changjie Fan"
+      ],
+      "paper_id": "JTji0Jfh5a",
+      "pdf_url": "https://openreview.net/pdf/4773503be0e549573803336961ab561ce334d18d.pdf",
+      "forum_url": "https://openreview.net/forum?id=JTji0Jfh5a"
+    },
+    {
+      "title": "Neuroplastic Expansion in Deep Reinforcement Learning",
+      "abstract": "The loss of plasticity in learning agents, analogous to the solidification of neural pathways in biological brains, significantly impedes learning and adaptation in reinforcement learning due to its non-stationary nature. To address this fundamental challenge, we propose a novel approach, *Neuroplastic Expansion* (NE), inspired by cortical expansion in cognitive science. NE maintains learnability and adaptability throughout the entire training process by dynamically growing the network from a smaller initial size to its full dimension. Our method is designed with three key components: (1) elastic neuron generation based on potential gradients, (2) dormant neuron pruning to optimize network expressivity, and (3) neuron consolidation via experience review to strike a balance in the plasticity-stability dilemma. Extensive experiments demonstrate that NE effectively mitigates plasticity loss and outperforms state-of-the-art methods across various tasks in MuJoCo and DeepMind Control Suite environments. NE enables more adaptive learning in complex, dynamic environments, which represents a crucial step towards transitioning deep reinforcement learning from static, one-time training paradigms to more flexible, continually adapting models.",
+      "venue": "ICLR 2025",
+      "authors": [
+        "Jiashun Liu",
+        "Johan Samir Obando Ceron",
+        "Aaron Courville",
+        "Ling Pan"
+      ],
+      "paper_id": "20qZK2T7fa",
+      "pdf_url": "https://openreview.net/pdf/6ce0c2b51efe6970ebe277a0fa97607f11e75615.pdf",
+      "forum_url": "https://openreview.net/forum?id=20qZK2T7fa"
+    },
+    {
+      "title": "Handling Delay in Real-Time Reinforcement Learning",
+      "abstract": "Real-time reinforcement learning (RL) introduces several challenges. First, policies are constrained to a fixed number of actions per second due to hardware limitations. Second, the environment may change while the network is still computing an action, leading to observational delay. The first issue can partly be addressed with pipelining, leading to higher throughput and potentially better policies. However, the second issue remains: if each neuron operates in parallel with an execution time of $\\tau$, an $N$-layer feed-forward network experiences observation delay of $\\tau N$.\nReducing the number of layers can decrease this delay, but at the cost of the network's expressivity. In this work, we explore the trade-off between minimizing delay and network's expressivity. We present a theoretically motivated solution that leverages temporal skip connections combined with history-augmented observations.  We evaluate several architectures and show that those incorporating temporal skip connections achieve strong performance across various neuron execution times, reinforcement learning algorithms, and environments, including four Mujoco tasks and all MinAtar games. Moreover, we demonstrate parallel neuron computation can accelerate inference by 6-350\\% on standard hardware.  Our investigation into temporal skip connections and parallel computations paves the way for more efficient RL agents in real-time setting.",
+      "venue": "ICLR 2025",
+      "authors": [
+        "Ivan Anokhin",
+        "Rishav Rishav",
+        "Matthew Riemer",
+        "Stephen Chung",
+        "Irina Rish",
+        "Samira Ebrahimi Kahou"
+      ],
+      "paper_id": "YOc5t8PHf2",
+      "pdf_url": "https://openreview.net/pdf/fc1d7fd6f63c6d45743503b21c9e3a571a805cb8.pdf",
+      "forum_url": "https://openreview.net/forum?id=YOc5t8PHf2"
+    },
+    {
+      "title": "Stable Hadamard Memory: Revitalizing Memory-Augmented Agents for Reinforcement Learning",
+      "abstract": "Effective decision-making in partially observable environments demands robust memory management. Despite their success in supervised learning, current deep-learning memory models struggle in reinforcement learning environments that are partially observable and long-term. They fail to efficiently capture relevant past information, adapt flexibly to changing observations, and maintain stable updates over long episodes. We theoretically analyze the limitations of existing memory models within a unified framework and introduce the Stable Hadamard Memory, a novel memory model for reinforcement learning agents. Our model dynamically adjusts memory by erasing no longer needed experiences and reinforcing crucial ones computationally efficiently. To this end, we leverage the Hadamard product for calibrating and updating memory, specifically designed to enhance memory capacity while mitigating numerical and learning challenges. Our approach significantly outperforms state-of-the-art memory-based methods on challenging partially observable benchmarks, such as meta-reinforcement learning, long-horizon credit assignment, and POPGym, demonstrating superior performance in handling long-term and evolving contexts.",
+      "venue": "ICLR 2025",
+      "authors": [
+        "Hung Le",
+        "Dung Nguyen",
+        "Kien Do",
+        "Sunil Gupta",
+        "Svetha Venkatesh"
+      ],
+      "paper_id": "We5z3UEnUY",
+      "pdf_url": "https://openreview.net/pdf/a19c94ed1d1c833ed6000adc82a8ba6671d79e30.pdf",
+      "forum_url": "https://openreview.net/forum?id=We5z3UEnUY"
+    },
+    {
+      "title": "Prevalence of Negative Transfer in Continual Reinforcement Learning: Analyses and a Simple Baseline",
+      "abstract": "We argue that the negative transfer problem occurring when the new task to learn arrives is an important problem that needs not be overlooked when developing effective Continual Reinforcement Learning (CRL) algorithms. Through comprehensive experimental validation, we demonstrate that such issue frequently exists in CRL and cannot be effectively addressed by several recent work on either mitigating plasticity loss of RL agents or enhancing the positive transfer in CRL scenario. To that end, we develop Reset & Distill (R&D), a simple yet highly effective baseline method, to overcome the negative transfer problem in CRL. R&D combines a strategy of resetting the agent's online actor and critic networks to learn a new task and an offline learning step for distilling the knowledge from the online actor and previous expert's action probabilities. We carried out extensive experiments on long sequence of Meta World tasks and show that our simple baseline method consistently outperforms recent approaches, achieving significantly higher success rates across a range of tasks. Our findings highlight the importance of considering negative transfer in CRL and emphasize the need for robust strategies like R&D to mitigate its detrimental effects.",
+      "venue": "ICLR 2025",
+      "authors": [
+        "Hongjoon Ahn",
+        "Jinu Hyeon",
+        "Youngmin Oh",
+        "Bosun Hwang",
+        "Taesup Moon"
+      ],
+      "paper_id": "KAIqwkB3dT",
+      "pdf_url": "https://openreview.net/pdf/b99c6a2b0b40b07593a9a6b27cb8a012cd63aea1.pdf",
+      "forum_url": "https://openreview.net/forum?id=KAIqwkB3dT"
+    },
+    {
+      "title": "Transformers Can Learn Temporal Difference Methods for In-Context Reinforcement Learning",
+      "abstract": "Traditionally, reinforcement learning (RL) agents learn to solve new tasks by updating their neural network parameters through interactions with the task environment. However, recent works demonstrate that some RL agents, after certain pretraining procedures, can learn to solve unseen new tasks without parameter updates, a phenomenon known as in-context reinforcement learning (ICRL). The empirical success of ICRL is widely attributed to the hypothesis that the forward pass of the pretrained agent neural network implements an RL algorithm. In this paper, we support this hypothesis by showing, both empirically and theoretically, that when a transformer is trained for policy evaluation tasks, it can discover and learn to implement temporal difference learning in its forward pass.",
+      "venue": "ICLR 2025",
+      "authors": [
+        "Jiuqi Wang",
+        "Ethan Blaser",
+        "Hadi Daneshmand",
+        "Shangtong Zhang"
+      ],
+      "paper_id": "Pj06mxCXPl",
+      "pdf_url": "https://openreview.net/pdf/d695e4aabc6900d54419945e95455be9a26cba27.pdf",
+      "forum_url": "https://openreview.net/forum?id=Pj06mxCXPl"
+    },
+    {
+      "title": "Efficient Off-Policy Learning for High-Dimensional Action Spaces",
+      "abstract": "Existing off-policy reinforcement learning algorithms often rely on an explicit state-action-value function representation, which can be problematic in high-dimensional action spaces due to the curse of dimensionality.\nThis reliance results in data inefficiency as maintaining a state-action-value function in such spaces is challenging. \nWe present an efficient approach that utilizes only a state-value function as the critic for off-policy deep reinforcement learning.\nThis approach, which we refer to as Vlearn, effectively circumvents the limitations of existing methods by eliminating the necessity for an explicit state-action-value function. \nTo this end, we leverage a weighted importance sampling loss for learning deep value functions from off-policy data. \nWhile this is common for linear methods, it has not been combined with deep value function networks. \nThis transfer to deep methods is not straightforward and requires novel design choices such as robust policy updates, twin value function networks to avoid an optimization bias, and importance weight clipping.\nWe also present a novel analysis of the variance of our estimate compared to commonly used importance sampling estimators such as V-trace. \nOur approach improves sample complexity as well as final performance and ensures consistent and robust performance across various benchmark tasks.\nEliminating the state-action-value function in Vlearn facilitates a streamlined learning process, yielding high-return agents.",
+      "venue": "ICLR 2025",
+      "authors": [
+        "Fabian Otto",
+        "Philipp Becker",
+        "Vien Anh Ngo",
+        "Gerhard Neumann"
+      ],
+      "paper_id": "JDzTI9rKls",
+      "pdf_url": "https://openreview.net/pdf/741b72e6b769ecd823243606708682aa5b7ba086.pdf",
+      "forum_url": "https://openreview.net/forum?id=JDzTI9rKls"
+    },
+    {
+      "title": "Efficient Cross-Episode Meta-RL",
+      "abstract": "We introduce Efficient Cross-Episodic Transformers (ECET), a new algorithm for online Meta-Reinforcement Learning that addresses the challenge of enabling reinforcement learning agents to perform effectively in previously unseen tasks. We demonstrate how past episodes serve as a rich source of in-context information, which our model effectively distills and applies to new contexts. Our learned algorithm is capable of outperforming the previous state-of-the-art and provides more efficient meta-training while significantly improving generalization capabilities. Experimental results, obtained across various simulated tasks of the MuJoCo, Meta-World and ManiSkill benchmarks, indicate a significant improvement in learning efficiency and adaptability compared to the state-of-the-art. Our approach enhances the agent's ability to generalize from limited data and paves the way for more robust and versatile AI systems.",
+      "venue": "ICLR 2025",
+      "authors": [
+        "Gresa Shala",
+        "André Biedenkapp",
+        "Pierre Krack",
+        "Florian Walter",
+        "Josif Grabocka"
+      ],
+      "paper_id": "UENQuayzr1",
+      "pdf_url": "https://openreview.net/pdf/a62d81e6a4a8cedf21d2193fd2699333c27b7ccf.pdf",
+      "forum_url": "https://openreview.net/forum?id=UENQuayzr1"
+    },
+    {
+      "title": "UTILITY: Utilizing Explainable Reinforcement Learning to Improve Reinforcement Learning",
+      "abstract": "Reinforcement learning (RL) faces two challenges: (1) The RL agent lacks explainability. (2) The trained RL agent is, in many cases, non-optimal and even far from optimal. To address the first challenge, explainable reinforcement learning (XRL) is proposed to explain the decision-making of the RL agent. In this paper, we demonstrate that XRL can also be used to address the second challenge, i.e., improve RL performance. Our method has two parts. The first part provides a two-level explanation for why the RL agent is not optimal by identifying the mistakes made by the RL agent. Since this explanation includes the mistakes of the RL agent, it has the potential to help correct the mistakes and thus improve RL performance. The second part formulates a constrained bi-level optimization problem to learn how to best utilize the two-level explanation to improve RL performance. In specific, the upper level learns how to use the high-level explanation to shape the reward so that the corresponding policy can maximize the cumulative ground truth reward, and the lower level learns the corresponding policy by solving a constrained RL problem formulated using the low-level explanation. We propose a novel algorithm to solve this constrained bi-level optimization problem, and theoretically guarantee that the algorithm attains global optimality. We use MuJoCo experiments to show that our method outperforms state-of-the-art baselines.",
+      "venue": "ICLR 2025",
+      "authors": [
+        "Shicheng Liu",
+        "Minghui Zhu"
+      ],
+      "paper_id": "Tk1VQDadfL",
+      "pdf_url": "https://openreview.net/pdf/62f767d8d72b656da7ea0f432716fe9d643aab81.pdf",
+      "forum_url": "https://openreview.net/forum?id=Tk1VQDadfL"
+    },
+    {
+      "title": "RTDiff: Reverse Trajectory Synthesis via Diffusion for Offline Reinforcement Learning",
+      "abstract": "In offline reinforcement learning (RL), managing the distribution shift between the learned policy and the static offline dataset is a persistent challenge that can result in overestimated values and suboptimal policies. Traditional offline RL methods address this by introducing conservative biases that limit exploration to well-understood regions, but they often overly restrict the agent's generalization capabilities. Recent work has sought to generate trajectories using generative models to augment the offline dataset, yet these methods still struggle with overestimating synthesized data, especially when out-of-distribution samples are produced. To overcome this issue, we propose RTDiff, a novel diffusion-based data augmentation technique that synthesizes trajectories *in reverse*, moving from unknown to known states. Such reverse generation naturally mitigates the risk of overestimation by ensuring that the agent avoids planning through unknown states. Additionally, reverse trajectory synthesis allows us to generate longer, more informative trajectories that take full advantage of diffusion models' generative strengths while ensuring reliability. We further enhance RTDiff by introducing flexible trajectory length control and improving the efficiency of the generation process through noise management. Our empirical results show that RTDiff significantly improves the performance of several state-of-the-art offline RL algorithms across diverse environments, achieving consistent and superior results by effectively overcoming distribution shift.",
+      "venue": "ICLR 2025",
+      "authors": [
+        "Qianlan Yang",
+        "Yu-Xiong Wang"
+      ],
+      "paper_id": "0FK6tzqV76",
+      "pdf_url": "https://openreview.net/pdf/148b8387321b7e4b640b74802074ee7b608c5435.pdf",
+      "forum_url": "https://openreview.net/forum?id=0FK6tzqV76"
+    },
+    {
+      "title": "Revisiting a Design Choice in Gradient Temporal Difference Learning",
+      "abstract": "Off-policy learning enables a reinforcement learning (RL) agent to reason counterfactually about policies that are not executed and is one of the most important ideas in RL. It, however, can lead to instability when combined with function approximation and bootstrapping, two arguably indispensable ingredients for large-scale reinforcement learning. This is the notorious deadly triad. The seminal work Sutton et al. (2008) pioneers Gradient Temporal Difference learning (GTD) as the first solution to the deadly triad, which has enjoyed massive success thereafter. During the derivation of GTD, some intermediate algorithm, called $A^\\top$TD, was invented but soon deemed inferior. In this paper, we revisit this $A^\\top$TD and prove that a variant of $A^\\top$TD, called $A_t^\\top$TD, is also an effective solution to the deadly triad. Furthermore, this $A_t^\\top$TD only needs one set of parameters and one learning rate. By contrast, GTD has two sets of parameters and two learning rates, making it hard to tune in practice.  We provide asymptotic analysis for $A^\\top_t$TD and finite sample analysis for a variant of $A^\\top_t$TD that additionally involves a projection operator. The convergence rate of this variant is on par with the canonical on-policy temporal difference learning.",
+      "venue": "ICLR 2025",
+      "authors": [
+        "Xiaochi Qian",
+        "Shangtong Zhang"
+      ],
+      "paper_id": "38BBWrXUhP",
+      "pdf_url": "https://openreview.net/pdf/c887c0a3e84c7b253a39c0afbf77d29c920eae0a.pdf",
+      "forum_url": "https://openreview.net/forum?id=38BBWrXUhP"
+    },
+    {
+      "title": "Studying the Interplay Between the Actor and Critic Representations in Reinforcement Learning",
+      "abstract": "Extracting relevant information from a stream of high-dimensional observations is a central challenge for deep reinforcement learning agents. Actor-critic algorithms add further complexity to this challenge, as it is often unclear whether the same information will be relevant to both the actor and the critic. To this end, we here explore the principles that underlie effective representations for the actor and for the critic in on-policy algorithms. We focus our study on understanding whether the actor and critic will benefit from separate, rather than shared, representations. Our primary finding is that when separated, the representations for the actor and critic systematically specialise in extracting different types of information from the environment---the actor's representation tends to focus on action-relevant information, while the critic's representation specialises in encoding value and dynamics information. We conduct a rigourous empirical study to understand how different representation learning approaches affect the actor and critic's specialisations and their downstream performance, in terms of sample efficiency and generation capabilities. Finally, we discover that a separated critic plays an important role in exploration and data collection during training. Our code, trained models and data are accessible at https://github.com/francelico/deac-rep.",
+      "venue": "ICLR 2025",
+      "authors": [
+        "Samuel Garcin",
+        "Trevor McInroe",
+        "Pablo Samuel Castro",
+        "Christopher G. Lucas",
+        "David Abel",
+        "Prakash Panangaden",
+        "Stefano V Albrecht"
+      ],
+      "paper_id": "tErHYBGlWc",
+      "pdf_url": "https://openreview.net/pdf/25d95240ec6d8d83c827fbc120d08ede827b001e.pdf",
+      "forum_url": "https://openreview.net/forum?id=tErHYBGlWc"
+    },
+    {
+      "title": "ContraDiff: Planning Towards High Return States via Contrastive Learning",
+      "abstract": "The performance of offline reinforcement learning (RL) is sensitive to the proportion of high-return trajectories in the offline dataset. However, in many simulation environments and real-world scenarios, there are large ratios of low-return trajectories rather than high-return trajectories, which makes learning an efficient policy challenging. In this paper, we propose a method called Contrastive Diffuser (ContraDiff) to make full use of low-return trajectories and improve the performance of offline RL algorithms. Specifically, ContraDiff groups the states of trajectories in the offline dataset into high-return states and low-return states and treats them as positive and negative samples correspondingly. Then, it designs a contrastive mechanism to pull the planned trajectory of an agent toward high-return states and push them away from low-return states. Through the contrast mechanism, trajectories with low returns can serve as negative examples for policy learning, guiding the agent to avoid areas associated with low returns and achieve better performance. Through the contrast mechanism, trajectories with low returns provide a ``counteracting force'' guides the agent to avoid areas associated with low returns and achieve better performance.\nExperiments on 27 sub-optimal datasets demonstrate the effectiveness of our proposed method. Our code is publicly available at https://github.com/Looomo/contradiff.",
+      "venue": "ICLR 2025",
+      "authors": [
+        "Yixiang Shan",
+        "Zhengbang Zhu",
+        "Ting Long",
+        "Liang Qifan",
+        "Yi Chang",
+        "Weinan Zhang",
+        "Liang Yin"
+      ],
+      "paper_id": "XMOaOigOQo",
+      "pdf_url": "https://openreview.net/pdf/467bd6f1fc750f52777613a067d0c91bd852574b.pdf",
+      "forum_url": "https://openreview.net/forum?id=XMOaOigOQo"
+    },
+    {
+      "title": "1000 Layer Networks for Self-Supervised RL: Scaling Depth Can Enable New Goal-Reaching Capabilities",
+      "abstract": "Scaling up self-supervised learning has driven breakthroughs in language and vision, yet comparable progress has remained elusive in reinforcement learning (RL). In this paper, we study building blocks for self-supervised RL that unlock substantial improvements in scalability, with network depth serving as a critical factor. Whereas most RL papers in recent years have relied on shallow architectures (around 2 -- 5 layers), we demonstrate that increasing the depth up to 1024 layers can significantly boost performance.\nOur experiments are conducted in an unsupervised goal-conditioned setting, where no demonstrations or rewards are provided, so an agent must explore (from scratch) and learn how to maximize the likelihood of reaching commanded goals.\nEvaluated on simulated locomotion and manipulation tasks, our approach increases performance on the self-supervised contrastive RL algorithm by $2\\times$ -- $50\\times$, outperforming other goal-conditioned baselines.\nIncreasing the model depth not only increases success rates but also qualitatively changes the behaviors learned.",
+      "venue": "NeurIPS 2025",
+      "authors": [
+        "Kevin Wang",
+        "Ishaan Javali",
+        "Michał Bortkiewicz",
+        "Tomasz Trzcinski",
+        "Benjamin Eysenbach"
+      ],
+      "paper_id": "s0JVsx3bx1",
+      "pdf_url": "https://openreview.net/pdf/d8f9da5e245cdd9a35d572aad95616457c5d3d19.pdf",
+      "forum_url": "https://openreview.net/forum?id=s0JVsx3bx1"
+    },
+    {
+      "title": "A Snapshot of Influence: A Local Data Attribution Framework for Online Reinforcement Learning",
+      "abstract": "Online reinforcement learning (RL) excels in complex, safety-critical domains but suffers from sample inefficiency, training instability, and limited interpretability. Data attribution provides a principled way to trace model behavior back to training samples, yet existing methods assume fixed datasets, which is violated in online RL where each experience both updates the policy and shapes future data collection.\nIn this paper, we initiate the study of data attribution for online RL, focusing on the widely used Proximal Policy Optimization (PPO) algorithm. We start by establishing a *local* attribution framework, interpreting model checkpoints with respect to the records in the recent training buffer. We design two target functions, capturing agent action and cumulative return respectively, and measure each record's contribution through gradient similarity between its training loss and these targets. We demonstrate the power of this framework through three concrete applications: diagnosis of learning, temporal analysis of behavior formation, and targeted intervention during training. Leveraging this framework, we further propose an algorithm, iterative influence-based filtering (IIF), for online RL training that iteratively performs experience filtering to refine policy updates. Across standard RL benchmarks (classic control, navigation, locomotion) to RLHF for large language models, IIF reduces sample complexity, speeds up training, and achieves higher returns. Together, these results open a new direction for making online RL more interpretable, efficient, and effective.",
+      "venue": "NeurIPS 2025",
+      "authors": [
+        "Yuzheng Hu",
+        "Fan Wu",
+        "Haotian Ye",
+        "David Forsyth",
+        "James Zou",
+        "Nan Jiang",
+        "Jiaqi W. Ma",
+        "Han Zhao"
+      ],
+      "paper_id": "sYK4yPDuT1",
+      "pdf_url": "https://openreview.net/pdf/bd76d1744a451019158783f99fadcadc7c044b40.pdf",
+      "forum_url": "https://openreview.net/forum?id=sYK4yPDuT1"
+    },
+    {
+      "title": "Counteractive RL: Rethinking Core Principles for Efficient and Scalable Deep Reinforcement Learning",
+      "abstract": "Following the pivotal success of learning strategies to win at tasks, solely by interacting with an environment without any supervision, agents have gained the ability to make sequential decisions in complex MDPs. Yet, reinforcement learning policies face exponentially growing state spaces in high dimensional MDPs resulting in a dichotomy between computational complexity and policy success. In our paper we focus on the agent’s interaction with the environment in a high-dimensional MDP during the learning phase and we introduce a theoretically-founded novel paradigm based on experiences obtained through counteractive actions. Our analysis and method provide a theoretical basis for efficient, effective, scalable and accelerated learning, and further comes with zero additional computational complexity while leading to significant acceleration in training. We conduct extensive experiments in the Arcade Learning Environment with high-dimensional state representation MDPs. The experimental results further verify our theoretical analysis, and our method achieves significant performance increase with substantial sample-efficiency in high-dimensional environments.",
+      "venue": "NeurIPS 2025",
+      "authors": [
+        "Ezgi Korkmaz"
+      ],
+      "paper_id": "qaHrpITIvB",
+      "pdf_url": "https://openreview.net/pdf/93ff64a0c1950f7cecb6ccbafc93ca9fd95464be.pdf",
+      "forum_url": "https://openreview.net/forum?id=qaHrpITIvB"
+    },
+    {
+      "title": "Stable Gradients for Stable Learning at Scale in Deep Reinforcement Learning",
+      "abstract": "Scaling deep reinforcement learning networks is challenging and often results in degraded performance, yet the root causes of this failure mode remain poorly understood. Several recent works have proposed mechanisms to address this, but they are often complex and fail to highlight the causes underlying this difficulty. In this work, we conduct a series of empirical analyses which suggest that the combination of non-stationarity with gradient pathologies, due to suboptimal architectural choices, underlie the challenges of scale. We propose a series of direct interventions that stabilize gradient flow, enabling robust performance across a range of network depths and widths. Our interventions are simple to implement and compatible with well-established algorithms, and result in an effective mechanism that enables strong performance even at large scales. We validate our findings on a variety of agents and suites of environments.",
+      "venue": "NeurIPS 2025",
+      "authors": [
+        "Roger Creus Castanyer",
+        "Johan Obando-Ceron",
+        "Lu Li",
+        "Pierre-Luc Bacon",
+        "Glen Berseth",
+        "Aaron Courville",
+        "Pablo Samuel Castro"
+      ],
+      "paper_id": "Vqj65VeDOu",
+      "pdf_url": "https://openreview.net/pdf/0ab1004f74606918f59ba0e3c2ed4a84321b9305.pdf",
+      "forum_url": "https://openreview.net/forum?id=Vqj65VeDOu"
+    },
+    {
+      "title": "Provably Efficient RL under Episode-Wise Safety in Constrained MDPs with Linear Function Approximation",
+      "abstract": "We study the reinforcement learning (RL) problem in a constrained Markov decision process (CMDP), where an agent explores the environment to maximize the expected cumulative reward while satisfying a single constraint on the expected total utility value in every episode. While this problem is well understood in the tabular setting, theoretical results for function approximation remain scarce. This paper closes the gap by proposing an RL algorithm for linear CMDPs that achieves $\\widetilde{\\mathcal{O}}(\\sqrt{K})$ regret with an episode-wise zero-violation guarantee. Furthermore, our method is computationally efficient, scaling polynomially with problem-dependent parameters while remaining independent of the state space size. Our results significantly improve upon recent linear CMDP algorithms, which either violate the constraint or incur exponential computational costs.",
+      "venue": "NeurIPS 2025",
+      "authors": [
+        "Toshinori Kitamura",
+        "Arnob Ghosh",
+        "Tadashi Kozuno",
+        "Wataru Kumagai",
+        "Kazumi Kasaura",
+        "Kenta Hoshino",
+        "Yohei Hosoe",
+        "Yutaka Matsuo"
+      ],
+      "paper_id": "rgoSyTCTkn",
+      "pdf_url": "https://openreview.net/pdf/49dd1bd1c4ef2feaa34fdf83170f7034e989767e.pdf",
+      "forum_url": "https://openreview.net/forum?id=rgoSyTCTkn"
+    },
+    {
+      "title": "STAR: Efficient Preference-based Reinforcement Learning via Dual Regularization",
+      "abstract": "Preference-based reinforcement learning (PbRL) bypasses complex reward engineering by learning from human feedback. However, due to the high cost of obtaining feedback, PbRL typically relies on a limited set of preference-labeled samples. This data scarcity introduces two key inefficiencies: (1) the reward model overfits to the limited feedback, leading to poor generalization to unseen samples, and (2) the agent exploits the learned reward model, exacerbating overestimation of action values in temporal difference (TD) learning. To address these issues, we propose STAR, an efficient PbRL method that integrates preference margin regularization and policy regularization. Preference margin regularization mitigates overfitting by introducing a bounded margin in reward optimization, preventing excessive bias toward specific feedback. Policy regularization bootstraps a conservative estimate $\\widehat{Q}$ from well-supported state-action pairs in the replay memory, reducing overestimation during policy learning. Experimental results show that STAR improves feedback efficiency, achieving 34.8\\% higher performance in online settings and 29.7\\% in offline settings compared to state-of-the-art methods. Ablation studies confirm that STAR facilitates more robust reward and value function learning. The videos of this project are released at https://sites.google.com/view/pbrl-star.",
+      "venue": "NeurIPS 2025",
+      "authors": [
+        "Fengshuo Bai",
+        "Rui Zhao",
+        "Hongming Zhang",
+        "Sijia Cui",
+        "Shao Zhang",
+        "bo xu",
+        "Lei Han",
+        "Ying Wen",
+        "Yaodong Yang"
+      ],
+      "paper_id": "E9EwDc45f8",
+      "pdf_url": "https://openreview.net/pdf/816de5e71586cb85fa0371c65e55d438930026ba.pdf",
+      "forum_url": "https://openreview.net/forum?id=E9EwDc45f8"
+    },
+    {
+      "title": "Efficient Preference-Based Reinforcement Learning: Randomized Exploration meets Experimental Design",
+      "abstract": "We study reinforcement learning from human feedback in general Markov decision processes, where agents learn from trajectory-level preference comparisons. A central challenge in this setting is to design algorithms that select informative preference queries to identify the underlying reward while ensuring theoretical guarantees. We propose a meta-algorithm based on randomized exploration, which avoids the computational challenges associated with optimistic approaches and remains tractable. We establish both regret and last-iterate guarantees under mild reinforcement learning oracle assumptions. To improve query complexity, we introduce and analyze an improved algorithm that collects batches of trajectory pairs and applies optimal experimental design to select informative comparison queries. The batch structure also enables parallelization of preference queries, which is relevant in practical deployment as feedback can be gathered concurrently. Empirical evaluation confirms that the proposed method is competitive with reward-based reinforcement learning while requiring a small number of preference queries.",
+      "venue": "NeurIPS 2025",
+      "authors": [
+        "Andreas Schlaginhaufen",
+        "Reda Ouhamma",
+        "Maryam Kamgarpour"
+      ],
+      "paper_id": "qEfgajdKea",
+      "pdf_url": "https://openreview.net/pdf/496e4b94b22e33aa8ed0badc8d9f6405e55b4913.pdf",
+      "forum_url": "https://openreview.net/forum?id=qEfgajdKea"
+    },
+    {
+      "title": "Reinforcement Learning with Action Chunking",
+      "abstract": "We present Q-chunking, a simple yet effective recipe for improving reinforcement learning (RL) algorithms for long-horizon, sparse-reward tasks. Our recipe is designed for the offline-to-online RL setting, where the goal is to leverage an offline prior dataset to maximize the sample-efficiency of online learning. Effective exploration and sample-efficient learning remain central challenges in this setting, as it is not obvious how the offline data should be utilized to acquire a good exploratory policy. Our key insight is that action chunking, a technique popularized in imitation learning where sequences of future actions are predicted rather than a single action at each timestep, can be applied to temporal difference (TD)-based RL methods to mitigate the exploration challenge. Q-chunking adopts action chunking by directly running RL in a *chunked* action space, enabling the agent to (1) leverage temporally consistent behaviors from offline data for more effective online exploration and (2) use unbiased $n$-step backups for more stable and efficient TD learning. Our experimental results demonstrate that Q-chunking exhibits strong offline performance and online sample efficiency, outperforming prior best offline-to-online methods on a range of long-horizon, sparse-reward manipulation tasks.",
+      "venue": "NeurIPS 2025",
+      "authors": [
+        "Qiyang Li",
+        "Zhiyuan Zhou",
+        "Sergey Levine"
+      ],
+      "paper_id": "XUks1Y96NR",
+      "pdf_url": "https://openreview.net/pdf/135bcf397192fe967b2919142b723e9782691533.pdf",
+      "forum_url": "https://openreview.net/forum?id=XUks1Y96NR"
+    },
+    {
+      "title": "Off-policy Reinforcement Learning with Model-based Exploration Augmentation",
+      "abstract": "Exploration is crucial in Reinforcement Learning (RL) as it enables the agent to understand the environment for better decision-making. Existing exploration methods fall into two paradigms: active exploration, which injects stochasticity into the policy but struggles in high-dimensional environments, and passive exploration, which manages the replay buffer to prioritize under-explored regions but lacks sample diversity. To address the limitation in passive exploration, we propose Modelic Generative Exploration (MoGE), which augments exploration through the generation of under-explored critical states and synthesis of dynamics-consistent experiences. MoGE consists of two components: (1) a diffusion generator for critical states under the guidance of entropy and TD error, and (2) a one-step imagination world model for constructing critical transitions for agent learning. Our method is simple to implement and seamlessly integrates with mainstream off-policy RL algorithms without structural modifications. Experiments on OpenAI Gym and DeepMind Control Suite demonstrate that MoGE, as an exploration augmentation, significantly enhances efficiency and performance in complex tasks.",
+      "venue": "NeurIPS 2025",
+      "authors": [
+        "Likun Wang",
+        "Xiangteng Zhang",
+        "Yinuo Wang",
+        "Guojian Zhan",
+        "Wenxuan Wang",
+        "Haoyu Gao",
+        "Jingliang Duan",
+        "Shengbo Eben Li"
+      ],
+      "paper_id": "JGkZgEEjiM",
+      "pdf_url": "https://openreview.net/pdf/1d564bb310e7dc95aee93e2f632028f3c5c123d7.pdf",
+      "forum_url": "https://openreview.net/forum?id=JGkZgEEjiM"
+    },
+    {
+      "title": "How Ensembles of Distilled Policies Improve Generalisation in Reinforcement Learning",
+      "abstract": "In the zero-shot policy transfer setting in reinforcement learning, the goal is to train an agent on a fixed set of training environments so that it can generalise to similar, but unseen, testing environments. Previous work has shown that policy distillation after training can sometimes produce a policy that outperforms the original in the testing environments. However, it is not yet entirely clear why that is, or what data should be used to distil the policy. In this paper, we prove, under certain assumptions, a generalisation bound for policy distillation after training. The theory provides two practical insights: for improved generalisation, you should 1) train an ensemble of distilled policies, and 2) distil it on as much data from the training environments as possible. We empirically verify that these insights hold in more general settings, when the assumptions required for the theory no longer hold. Finally, we demonstrate that an ensemble of policies distilled on a diverse dataset can generalise significantly better than the original agent.",
+      "venue": "NeurIPS 2025",
+      "authors": [
+        "Max Weltevrede",
+        "Moritz Akiya Zanger",
+        "Matthijs T. J. Spaan",
+        "Wendelin Boehmer"
+      ],
+      "paper_id": "9wQNsSiLV0",
+      "pdf_url": "https://openreview.net/pdf/62f728181132889ab24c12315bdfb830c59a025e.pdf",
+      "forum_url": "https://openreview.net/forum?id=9wQNsSiLV0"
+    },
+    {
+      "title": "LILO: Learning to Reason at the Frontier of Learnability",
+      "abstract": "Reinforcement learning is widely adopted in post-training large language models, especially for reasoning-style tasks such as maths questions. However, as we show, most existing methods will provably fail to learn from questions that are too hard, where the model always fails, or too easy, where the model always succeeds. Much human effort is therefore spent continually producing datasets of questions of a suitable difficulty for state-of-the-art models. Given this, we consider how to algorithmically identify questions that allow for maximally efficient training. We introduce a method, LILO (Learnability Improves LLMs Optimally), that prioritises training on questions with high variance of success, known as learnability, and we provide theory proving LILO maximises the expected improvement of the model. We run a wide range of experiments over multiple base models, algorithms and reasoning datasets to demonstrate that LILO consistently improves final test accuracy and can yield a 3x reduction in the number of training steps required to reach it. We explore how questions with high learnability can be efficiently identified, and discuss how learnability can be scaled to produce LLM agents that autonomously and open-endedly expand the frontier of human knowledge.",
+      "venue": "NeurIPS 2025",
+      "authors": [
+        "Thomas Foster",
+        "Anya Sims",
+        "Johannes Forkel",
+        "Jakob Nicolaus Foerster"
+      ],
+      "paper_id": "8HYeWMf0W3",
+      "pdf_url": "https://openreview.net/pdf/81c8ea42739bd8be2077f7a518eeedc3ad8b7d5c.pdf",
+      "forum_url": "https://openreview.net/forum?id=8HYeWMf0W3"
+    },
+    {
+      "title": "Robust and Scalable Autonomous Reinforcement Learning in Irreversible Environments",
+      "abstract": "Reinforcement learning (RL) typically assumes repetitive resets to provide an agent with diverse and unbiased experiences. These resets require significant human intervention and result in poor training efficiency in real-world settings. Autonomous RL (ARL) addresses this challenge by jointly training forward and reset policies. While recent ARL algorithms have shown promise in reducing human intervention, they assume narrow support over the distributions of initial or goal states and rely on task-specific knowledge to identify irreversible states. In this paper, we propose a robust and scalable ARL algorithm, called RSA, that enables an agent to handle diverse initial and goal states and to avoid irreversible states without task-specific knowledge. RSA generates a curriculum by identifying informative states based on the learning progress of an agent. We hypothesize that informative states are neither overly difficult nor trivially easy for the agent being trained. To detect and avoid irreversible states without task-specific knowledge, RSA encodes the behaviors exhibited in those states rather than the states themselves. Experimental results demonstrate that RSA outperforms existing ARL algorithms with fewer manual resets in both reversible and irreversible environments.",
+      "venue": "NeurIPS 2025",
+      "authors": [
+        "Sang-Hyun Lee"
+      ],
+      "paper_id": "dAAz7afWJR",
+      "pdf_url": "https://openreview.net/pdf/8c1c6543b0cdd620c38fc8ea14fc1c7f3e9fa54f.pdf",
+      "forum_url": "https://openreview.net/forum?id=dAAz7afWJR"
+    },
+    {
+      "title": "Thinking vs. Doing: Improving Agent Reasoning by  Scaling Test-Time Interaction",
+      "abstract": "Test-time scaling in agentic tasks often relies on generating long reasoning traces (\"think\" more) before acting, but this does not allow agents to acquire new information from the environment or adapt behavior over time. In this work, we propose scaling test-time interaction, an untapped dimension for test-time scaling that increases the agent's interaction horizon to enable rich behaviors such as exploration, backtracking, and dynamic re-planning within a single rollout. To demonstrate the promise of this scaling dimension, we situate our study in the domain of web agents. We first show that even prompting-based interaction scaling can improve task success on web benchmarks non-trivially. Building on this, we introduce TTI, a curriculum-based online reinforcement learning (RL) approach that trains agents by adaptively adjusting their interaction lengths during rollout. Using a Gemma 3 12B model, TTI sets a new state-of-the-art among open-source agents trained on public data on WebVoyager and WebArena. Case studies further reveal that TTI enables agents to balance exploration and exploitation adaptively. Our results establish interaction scaling as a powerful, complementary axis to scaling per-action compute, offering new avenues for training robust and adaptive agents.",
+      "venue": "NeurIPS 2025",
+      "authors": [
+        "Junhong Shen",
+        "Hao Bai",
+        "Lunjun Zhang",
+        "Yifei Zhou",
+        "Amrith Setlur",
+        "Shengbang Tong",
+        "Diego Caples",
+        "Nan Jiang",
+        "Tong Zhang",
+        "Ameet Talwalkar",
+        "Aviral Kumar"
+      ],
+      "paper_id": "un1TRwNgiv",
+      "pdf_url": "https://openreview.net/pdf/20cba89765ebda48a0c183f17ceb68d13f90d0dc.pdf",
+      "forum_url": "https://openreview.net/forum?id=un1TRwNgiv"
+    },
+    {
+      "title": "Continuous Soft Actor-Critic: An Off-Policy Learning Method Robust to Time Discretization",
+      "abstract": "Many \\textit{Deep Reinforcement Learning} (DRL) algorithms are sensitive to time discretization, which reduces their performance in real-world scenarios. We propose Continuous Soft Actor-Critic, an off-policy actor-critic DRL algorithm in continuous time and space. It is robust to environment time discretization. We also extend the framework to multi-agent scenarios. This \\textit{Multi-Agent Reinforcement Learning} (MARL) algorithm is suitable for both competitive and cooperative settings. Policy evaluation employs stochastic control theory, with loss functions derived from martingale orthogonality conditions. We establish scaling principles for hyperparameters of the algorithm as the environment time discretization $\\delta t$ changes ($\\delta t \\rightarrow 0$). We provide theoretical proofs for the relevant theorems. To validate the algorithm's effectiveness, we conduct comparative experiments between the proposed algorithm and other mainstream methods across multiple tasks in \\textit{Virtual Multi-Agent System} (VMAS). Experimental results demonstrate that the proposed algorithm achieves robust performance across various environments with different time discretization parameter settings, outperforming other methods.",
+      "venue": "NeurIPS 2025",
+      "authors": [
+        "Huimin Han",
+        "Shaolin Ji"
+      ],
+      "paper_id": "Ey0mro4vJ6",
+      "pdf_url": "https://openreview.net/pdf/a23c3437ca227f32f586000c959a825f9fc94fbd.pdf",
+      "forum_url": "https://openreview.net/forum?id=Ey0mro4vJ6"
+    },
+    {
+      "title": "Think or Not? Selective Reasoning via Reinforcement Learning for Vision-Language Models",
+      "abstract": "Reinforcement Learning (RL) has proven to be an effective post-training strategy for enhancing reasoning in vision–language models (VLMs). Group Relative Policy Optimization (GRPO) is a recent prominent method that encourages models to generate complete reasoning traces before answering, leading to increased token usage and computational cost. Inspired by the human-like thinking process—where people skip reasoning for easy questions but think carefully when needed—we explore how to enable VLMs to first decide *when reasoning is necessary*.\nTo realize this, we propose \\ours, a two-stage training strategy:\n**(i)** a supervised fine-tuning (SFT) stage with a simple yet effective “**thought dropout**” operation, where reasoning traces are randomly replaced with empty thoughts. This introduces a think-or-not format that serves as a cold start for selective reasoning;  **(ii)** a GRPO stage that enables the model to freely explore when to think or not, while maximizing task-aware outcome rewards.\nExperimental results show that \\ours can *reduce the completion length by up to **90%** compared to vanilla GRPO, without sacrificing performance or even improving it*. Further evaluations across LLM (GSM8K), VLM (CLEVR, Super-CLEVR, GeoQA), and Agentic (AITZ) tasks—covering a range of reasoning difficulties under both 3B and 7B models—consistently reveal that the \\textit{model progressively learns to bypass unnecessary reasoning steps as training advances}.\nThese findings shed light on the path toward human-like reasoning patterns in RL approaches.\nOur code is available at https://github.com/kokolerk/TON.",
+      "venue": "NeurIPS 2025",
+      "authors": [
+        "Jiaqi WANG",
+        "Kevin Qinghong Lin",
+        "James Cheng",
+        "Mike Zheng Shou"
+      ],
+      "paper_id": "qI95wZZCWh",
+      "pdf_url": "https://openreview.net/pdf/62bc8f6585ecc381363cf32ea8c833c4ef08d00e.pdf",
+      "forum_url": "https://openreview.net/forum?id=qI95wZZCWh"
+    },
+    {
+      "title": "Continual Knowledge Adaptation for Reinforcement Learning",
+      "abstract": "Reinforcement Learning enables agents to learn optimal behaviors through interactions with environments. However, real-world environments are typically non-stationary, requiring agents to continuously adapt to new tasks and changing conditions. Although Continual Reinforcement Learning facilitates learning across multiple tasks, existing methods often suffer from catastrophic forgetting and inefficient knowledge utilization. To address these challenges, we propose Continual Knowledge Adaptation for Reinforcement Learning (CKA-RL), which enables the accumulation and effective utilization of historical knowledge. Specifically, we introduce a Continual Knowledge Adaptation strategy, which involves maintaining a task-specific knowledge vector pool and dynamically using historical knowledge to adapt the agent to new tasks. This process mitigates catastrophic forgetting and enables efficient knowledge transfer across tasks by preserving and adapting critical model parameters. Additionally, we propose an Adaptive Knowledge Merging mechanism that combines similar knowledge vectors to address scalability challenges, reducing memory requirements while ensuring the retention of essential knowledge. Experiments on three benchmarks demonstrate that the proposed CKA-RL outperforms state-of-the-art methods, achieving an improvement of 4.20% in overall performance and 8.02% in forward transfer. The source code is available at https://github.com/Fhujinwu/CKA-RL.",
+      "venue": "NeurIPS 2025",
+      "authors": [
+        "Jinwu Hu",
+        "ZiHao Lian",
+        "Zhiquan Wen",
+        "ChenghaoLi",
+        "Guohao Chen",
+        "Xutao Wen",
+        "Bin Xiao",
+        "Mingkui Tan"
+      ],
+      "paper_id": "QRlVickNdN",
+      "pdf_url": "https://openreview.net/pdf/c72391e754ba2504b859d1c0d6306f6865f0a24c.pdf",
+      "forum_url": "https://openreview.net/forum?id=QRlVickNdN"
+    },
+    {
+      "title": "Uncertainty-Based Smooth Policy Regularisation for Reinforcement Learning with Few Demonstrations",
+      "abstract": "In reinforcement learning with sparse rewards, demonstrations can accelerate learning, but determining when to imitate them remains challenging. We propose Smooth Policy Regularisation from Demonstrations (SPReD), a framework that addresses the fundamental question: when should an agent imitate a demonstration versus follow its own policy? SPReD uses ensemble methods to explicitly model Q-value distributions for both demonstration and policy actions, quantifying uncertainty for comparisons. We develop two complementary uncertainty-aware methods: a probabilistic approach estimating the likelihood of demonstration superiority, and an advantage-based approach scaling imitation by statistical significance. Unlike prevailing methods (e.g. Q-filter) that make binary imitation decisions, SPReD applies continuous, uncertainty-proportional regularisation weights, reducing gradient variance during training. Despite its computational simplicity, SPReD achieves remarkable gains in experiments across eight robotics tasks, outperforming existing approaches by up to a factor of 14 in complex tasks while maintaining robustness to demonstration quality and quantity. Our code is available at https://github.com/YujieZhu7/SPReD.",
+      "venue": "NeurIPS 2025",
+      "authors": [
+        "Yujie Zhu",
+        "Charles Alexander Hepburn",
+        "Matthew Thorpe",
+        "Giovanni Montana"
+      ],
+      "paper_id": "MWikv8GJfY",
+      "pdf_url": "https://openreview.net/pdf/8140fc3708cb907f4dc0e22a6e12460d41af0632.pdf",
+      "forum_url": "https://openreview.net/forum?id=MWikv8GJfY"
+    },
+    {
+      "title": "A Bayesian Fast-Slow Framework to Mitigate Interference in Non-Stationary Reinforcement Learning",
+      "abstract": "Given the ever-changing nature of the world and its inhabitants, agents must possess the ability to adapt and evolve over time. Recent research in Given the ever-changing nature of the world and its inhabitants, agents must possess the ability to adapt and evolve over time. Recent research in non-stationary MDPs has focused on addressing this challenge, providing algorithms inspired by task inference techniques. However, these methods ignore the detrimental effects of interference, which particularly harm performance in contradictory tasks, leading to low efficiency in some environments. To address this issue, we propose a Bayesian Fast-Slow Framework (BFSF) that tackles both cross-task generalization and resistance to cross-task interference. Our framework consists of two components: a 'fast' policy, learned from recent data, and a 'slow' policy, learned through meta-reinforcement learning (meta-RL) using data from all previous tasks. A Bayesian estimation mechanism determines the current choice of 'fast' or 'slow' policy, balancing exploration and exploitation. Additionally, in the 'fast' policy, we introduce a dual-reset mechanism and a data relabeling technique to further accelerate convergence when encountering new tasks. Experiments demonstrate that our algorithm effectively mitigates interference and outperforms baseline approaches.",
+      "venue": "NeurIPS 2025",
+      "authors": [
+        "Yihuan Mao",
+        "Chongjie Zhang"
+      ],
+      "paper_id": "MmjW4VGKbh",
+      "pdf_url": "https://openreview.net/pdf/c0ab8cb8c2ba9b5de1d5b09066d72cf745776bca.pdf",
+      "forum_url": "https://openreview.net/forum?id=MmjW4VGKbh"
+    },
+    {
+      "title": "Measure gradients, not activations! Enhancing neuronal activity in deep reinforcement learning",
+      "abstract": "Deep reinforcement learning (RL) agents frequently suffer from neuronal activity loss, which impairs their ability to adapt to new data and learn continually. A common method to quantify and address this issue is the $\\tau$-dormant neuron ratio, which uses activation statistics to measure the expressive ability of neurons. While effective for simple MLP-based agents, this approach loses statistical power in more complex architectures. To address this, we argue that in advanced RL agents, maintaining a neuron's **learning capacity**, its ability to adapt via gradient updates, is more critical than preserving its expressive ability. Based on this insight, we shift the statistical objective from activations to gradients, and introduce **GraMa** (**Gra**dient **Ma**gnitude Neural Activity Metric), a lightweight, architecture-agnostic metric for quantifying neuron-level learning capacity. We show that **GraMa** effectively reveals persistent neuron inactivity across diverse architectures, including residual networks, diffusion models, and agents with varied activation functions. Moreover, **re**setting neurons guided by **GraMa** (**ReGraMa**) consistently improves learning performance across multiple deep RL algorithms and benchmarks, such as MuJoCo and the DeepMind Control Suite. **We make our code available.**",
+      "venue": "NeurIPS 2025",
+      "authors": [
+        "Jiashun Liu",
+        "Zihao Wu",
+        "Johan Obando-Ceron",
+        "Pablo Samuel Castro",
+        "Aaron Courville",
+        "Ling Pan"
+      ],
+      "paper_id": "FjNHmO39pp",
+      "pdf_url": "https://openreview.net/pdf/0975eb31d878ab1d31f8214120d95183f4e5a218.pdf",
+      "forum_url": "https://openreview.net/forum?id=FjNHmO39pp"
+    },
+    {
+      "title": "Tackling Continual Offline RL through Selective Weights Activation on Aligned Spaces",
+      "abstract": "Continual offline reinforcement learning (CORL) has shown impressive ability in diffusion-based continual learning systems by modeling the joint distributions of trajectories. However, most research only focuses on limited continual task settings where the tasks have the same observation and action space, which deviates from the realistic demands of training agents in various environments. In view of this, we propose Vector-Quantized Continual Diffuser, named VQ-CD, to break the barrier of different spaces between various tasks. Specifically, our method contains two complementary sections, where the quantization spaces alignment provides a unified basis for the selective weights activation. In the quantized spaces alignment, we leverage vector quantization to align the different state and action spaces of various tasks, facilitating continual training in the same space. Then, we propose to leverage a unified diffusion model attached by the inverse dynamic model to master all tasks by selectively activating different weights according to the task-related sparse masks. Finally, we conduct extensive experiments on 15 continual learning (CL) tasks, including conventional CL task settings (identical state and action spaces) and general CL task settings (various state and action spaces). Compared with 17 baselines, our method reaches the SOTA performance.",
+      "venue": "NeurIPS 2025",
+      "authors": [
+        "Jifeng Hu",
+        "Sili Huang",
+        "Li Shen",
+        "Zhejian Yang",
+        "Shengchao Hu",
+        "Shisong Tang",
+        "Hechang Chen",
+        "Lichao Sun",
+        "Yi Chang",
+        "Dacheng Tao"
+      ],
+      "paper_id": "KfRfTAJpjh",
+      "pdf_url": "https://openreview.net/pdf/66d488dcd1fe0c41ab29f7b6c286eb16f546f443.pdf",
+      "forum_url": "https://openreview.net/forum?id=KfRfTAJpjh"
+    },
+    {
+      "title": "Turning Sand to Gold: Recycling Data to Bridge On-Policy and Off-Policy Learning via Causal Bound",
+      "abstract": "Deep reinforcement learning (DRL) agents excel in solving complex decision-making tasks across various domains.\nHowever, they often require a substantial number of training steps and a vast experience replay buffer, leading to significant computational and resource demands.\nTo address these challenges, we introduce a novel theoretical result that leverages the Neyman-Rubin potential outcomes framework into DRL.\nUnlike most methods that focus on bounding the counterfactual loss, we establish a causal bound on the factual loss, which is analogous to the on-policy loss in DRL.\nThis bound is computed by storing past value network outputs in the experience replay buffer, effectively utilizing data that is usually discarded.\nExtensive experiments across the Atari 2600 and MuJoCo domains on various agents, such as DQN and SAC, achieve *up to 383%* higher reward ratio, outperforming the same agents without our proposed term, and reducing the experience replay buffer size by *up to 96%*, significantly improving *sample efficiency at a negligible cost*.",
+      "venue": "NeurIPS 2025",
+      "authors": [
+        "Tal Fiskus",
+        "Uri Shaham"
+      ],
+      "paper_id": "5UtsjOGsDx",
+      "pdf_url": "https://openreview.net/pdf/3df5696c01323f84e2680739e55cb174a75126e6.pdf",
+      "forum_url": "https://openreview.net/forum?id=5UtsjOGsDx"
+    },
+    {
+      "title": "Proxy Target: Bridging the Gap Between Discrete Spiking Neural Networks and Continuous Control",
+      "abstract": "Spiking Neural Networks (SNNs) offer low-latency and energy-efficient decision making on neuromorphic hardware, making them attractive for Reinforcement Learning (RL) in resource-constrained edge devices. However, most RL algorithms for continuous control are designed for Artificial Neural Networks (ANNs), particularly the target network soft update mechanism, which conflicts with the discrete and non-differentiable dynamics of spiking neurons. We show that this mismatch destabilizes SNN training and degrades performance. To bridge the gap between discrete SNNs and continuous-control algorithms, we propose a novel proxy target framework. The proxy network introduces continuous and differentiable dynamics that enable smooth target updates, stabilizing the learning process. Since the proxy operates only during training, the deployed SNN remains fully energy-efficient with no additional inference overhead. Extensive experiments on continuous control benchmarks demonstrate that our framework consistently improves stability and achieves up to $32$% higher performance across various spiking neuron models. Notably, to the best of our knowledge, this is the first approach that enables SNNs with simple Leaky Integrate and Fire (LIF) neurons to surpass their ANN counterparts in continuous control. This work highlights the importance of SNN-tailored RL algorithms and paves the way for neuromorphic agents that combine high performance with low power consumption. Code is available at https://github.com/xuzijie32/Proxy-Target.",
+      "venue": "NeurIPS 2025",
+      "authors": [
+        "Zijie Xu",
+        "Tong Bu",
+        "Zecheng Hao",
+        "Jianhao Ding",
+        "Zhaofei Yu"
+      ],
+      "paper_id": "RRBve5GwjS",
+      "pdf_url": "https://openreview.net/pdf/4b3bb93e00b990027e02c63e14664bee94c5af04.pdf",
+      "forum_url": "https://openreview.net/forum?id=RRBve5GwjS"
+    },
+    {
+      "title": "Group-in-Group Policy Optimization for LLM Agent Training",
+      "abstract": "Recent advances in group-based reinforcement learning (RL) have driven frontier large language models (LLMs) in single-turn tasks like mathematical reasoning. However, their scalability to multi-turn LLM agent training remains limited. Unlike static tasks, agent-environment interactions unfold over many steps and often yield sparse or delayed rewards, making credit assignment across individual steps significantly more challenging. In this work, we propose Group-in-Group Policy Optimization (GiGPO), a novel RL algorithm that achieves fine-grained credit assignment for LLM agents while preserving the appealing properties of group-based RL: critic-free, low memory, and stable convergence. GiGPO introduces a two-level structure for estimating relative advantage: (i) At the episode-level, GiGPO computes macro relative advantages based on groups of complete trajectories; (ii) At the step-level, GiGPO introduces an anchor state grouping mechanism that retroactively constructs step-level groups by identifying repeated environment states across trajectories. Actions stemming from the same state are grouped together, enabling micro relative advantage estimation. This hierarchical structure effectively captures both global trajectory quality and local step effectiveness without relying on auxiliary models or additional rollouts. We evaluate GiGPO on challenging agent benchmarks, including ALFWorld and WebShop, as well as tool-integrated reasoning on search-augmented QA tasks, using Qwen2.5-1.5B/3B/7B-Instruct. Crucially, GiGPO delivers fine-grained per-step credit signals, achieves performance gains of > 12\\% on ALFWorld and > 9\\% on WebShop over GRPO, and obtains superior performance on QA tasks (42.1\\% on 3B and 47.2\\% on 7B): all while maintaining the same GPU memory overhead, identical LLM rollout, and incurring little to no additional time cost.",
+      "venue": "NeurIPS 2025",
+      "authors": [
+        "Lang Feng",
+        "Zhenghai Xue",
+        "Tingcong Liu",
+        "Bo An"
+      ],
+      "paper_id": "QXEhBMNrCW",
+      "pdf_url": "https://openreview.net/pdf/c28e200ee92ae5eef9869fe35dbd6fc859cd04cf.pdf",
+      "forum_url": "https://openreview.net/forum?id=QXEhBMNrCW"
+    },
+    {
+      "title": "A Forget-and-Grow Strategy for Deep Reinforcement Learning Scaling in Continuous Control",
+      "abstract": "Deep reinforcement learning for continuous control has recently achieved impressive progress. However, existing methods often suffer from primacy bias—a tendency to overfit early experiences stored in the replay buffer—which limits an RL agent’s sample efficiency and generalizability. A common existing approach to mitigate this issue is periodically resetting the agent during training. Yet, even after multiple resets, RL agents could still be impacted by early experiences. In contrast, humans are less susceptible to such bias, partly due to *infantile amnesia*, where the formation of new neurons disrupts early memory traces, leading to the forgetting of initial experiences. Inspired by this dual processes of forgetting and growing in neuroscience, in this paper, we propose *Forget and Grow* (**FoG**), a new deep RL algorithm with two mechanisms introduced. First, *Experience Replay Decay (ER Decay)*—\"forgetting early experience''—which balances memory by gradually reducing the influence of early experiences. Second, *Network Expansion*—\"growing neural capacity''—which enhances agents' capability to exploit the patterns of existing data by dynamically adding new parameters during training. Empirical results on four major continuous control benchmarks with more than 40 tasks demonstrate the superior performance of **FoG** against SoTA existing deep RL algorithms, including BRO, SimBa and TD-MPC2.",
+      "venue": "ICML 2025",
+      "authors": [
+        "Zilin Kang",
+        "Chenyuan Hu",
+        "Yu Luo",
+        "Zhecheng Yuan",
+        "Ruijie Zheng",
+        "Huazhe Xu"
+      ],
+      "paper_id": "45054",
+      "pdf_url": "",
+      "forum_url": "https://ICML.cc/forum?id=2025/poster/45054"
+    },
+    {
+      "title": "A Theoretical Justification for Asymmetric Actor-Critic Algorithms",
+      "abstract": "In reinforcement learning for partially observable environments, many successful algorithms have been developed within the asymmetric learning paradigm. This paradigm leverages additional state information available at training time for faster learning. Although the proposed learning objectives are usually theoretically sound, these methods still lack a precise theoretical justification for their potential benefits. We propose such a justification for asymmetric actor-critic algorithms with linear function approximators by adapting a finite-time convergence analysis to this setting. The resulting finite-time bound reveals that the asymmetric critic eliminates error terms arising from aliasing in the agent state.",
+      "venue": "ICML 2025",
+      "authors": [
+        "Gaspard Lambrechts",
+        "Damien Ernst",
+        "Aditya Mahajan"
+      ],
+      "paper_id": "45909",
+      "pdf_url": "",
+      "forum_url": "https://ICML.cc/forum?id=2025/poster/45909"
+    },
+    {
+      "title": "Automatic Reward Shaping from Confounded Offline Data",
+      "abstract": "Reward shaping has been demonstrated to be an effective technique for accelerating the learning process of reinforcement learning (RL) agents. While successful in empirical applications, the design of a good shaping function is less well understood in principle and thus often relies on domain expertise and manual design. To overcome this limitation, we propose a novel automated approach for designing reward functions from offline data, possibly contaminated with the unobserved confounding bias.We propose to use causal state value upper bounds calculated from offline datasets as a conservative optimistic estimation of the optimal state value, which is then used as state potentials in Potential-Based Reward Shaping (PBRS). When applying our shaping function to a model-free learner based on UCB principles, we show that it enjoys a better gap-dependent regret bound than the learner without shaping. To the best of our knowledge, this is the first gap-dependent regret bound for PBRS in model-free learning with online exploration.Simulations support the theoretical findings.",
+      "venue": "ICML 2025",
+      "authors": [
+        "Mingxuan Li",
+        "Junzhe Zhang",
+        "Elias Bareinboim"
+      ],
+      "paper_id": "45757",
+      "pdf_url": "",
+      "forum_url": "https://ICML.cc/forum?id=2025/poster/45757"
+    },
+    {
+      "title": "Beyond The Rainbow: High Performance Deep Reinforcement Learning on a Desktop PC",
+      "abstract": "Rainbow Deep Q-Network (DQN) demonstrated combining multiple independent enhancements could significantly boost a reinforcement learning (RL) agent’s performance. In this paper, we present “Beyond The Rainbow” (BTR), a novel algorithm that integrates six improvements from across the RL literature to Rainbow DQN, establishing a new state-of-the-art for RL using a desktop PC, with a human-normalized interquartile mean (IQM) of 7.6 on Atari-60. Beyond Atari, we demonstrate BTR’s capability to handle complex 3D games, successfully training agents to play Super Mario Galaxy, Mario Kart, and Mortal Kombat with minimal algorithmic changes. Designing BTR with computational efficiency in mind, agents can be trained using a high-end desktop PC on 200 million Atari frames within 12 hours. Additionally, we conduct detailed ablation studies of each component, analyzing the performance and impact using numerous measures.",
+      "venue": "ICML 2025",
+      "authors": [
+        "Tyler Clark",
+        "Mark Towers",
+        "Christine Evers",
+        "Jonathon Hare"
+      ],
+      "paper_id": "45085",
+      "pdf_url": "",
+      "forum_url": "https://ICML.cc/forum?id=2025/poster/45085"
+    },
+    {
+      "title": "Calibrated Value-Aware Model Learning with Probabilistic Environment Models",
+      "abstract": "The idea of value-aware model learning, that models should produce accurate value estimates, has gained prominence in model-based reinforcement learning.The MuZero loss, which penalizes a model's value function prediction compared to the ground-truth value function, has been utilized in several prominent empirical works in the literature.However, theoretical investigation into its strengths and weaknesses is limited.In this paper, we analyze the family of value-aware model learning losses, which includes the popular MuZero loss.We show that these losses, as normally used, are uncalibrated surrogate losses, which means that they do not always recover the correct model and value function.Building on this insight, we propose corrections to solve this issue.Furthermore, we investigate the interplay between the loss calibration, latent model architectures, and auxiliary losses that are commonly employed when training MuZero-style agents.We show that while deterministic models can be sufficient to predict accurate values, learning calibrated stochastic models is still advantageous.",
+      "venue": "ICML 2025",
+      "authors": [
+        "Claas Voelcker",
+        "Anastasiia Pedan",
+        "Arash Ahmadian",
+        "Romina Abachi",
+        "Igor Gilitschenski",
+        "Amir-massoud Farahmand"
+      ],
+      "paper_id": "44513",
+      "pdf_url": "",
+      "forum_url": "https://ICML.cc/forum?id=2025/poster/44513"
+    },
+    {
+      "title": "Concurrent Reinforcement Learning with Aggregated States via  Randomized Least Squares Value Iteration",
+      "abstract": "Designing learning agents that explore efficiently in a complex environment has been widely recognized as a fundamental challenge in reinforcement learning. While a number of works have demonstrated the effectiveness of  techniques based on randomized value functions on a single agent, it remains unclear, from a theoretical point of view, whether injecting randomization can help a society of agents concurently explore an environment. The theoretical results established in this work tender an affirmative answer to this question. We adapt the concurrent learning framework to randomized least-squares value iteration (RLSVI) with aggregated state representation. We demonstrate polynomial worst-case regret bounds in both finite- and infinite-horizon environments.In both setups the per-agent regret decreases at an optimal rate of $\\Theta\\left(\\frac{1}{\\sqrt{N}}\\right)$, highlighting the advantage of concurent learning. Our algorithm exhibits significantly lower space complexity compared to Russo (2019) and Agrawal et. al (2021). We reduce the space complexity by a factor of $K$ while incurring only a $\\sqrt{K}$ increase in the worst-case regret bound, compared to Russo (2019) and Agrawal et. al (2021). Interestingly, our algorithm improves the worst-case regret bound of Russo (2019) by a factor of $H^{1/2}$, matching the improvement in Agrawal et. al (2021). However, this result is achieved through a fundamentally different algorithmic enhancement and proof technique. Additionally, we conduct numerical experiments to demonstrate our theoretical findings.",
+      "venue": "ICML 2025",
+      "authors": [
+        "Yan Chen",
+        "Jerry Bai",
+        "Yiteng Zhang",
+        "Maria Dimakopoulou",
+        "Shi Dong",
+        "Qi Sun",
+        "Zhengyuan Zhou"
+      ],
+      "paper_id": "45535",
+      "pdf_url": "",
+      "forum_url": "https://ICML.cc/forum?id=2025/poster/45535"
+    },
+    {
+      "title": "Directly Forecasting Belief for Reinforcement Learning with Delays",
+      "abstract": "Reinforcement learning (RL) with delays is challenging as sensory perceptions lag behind the actual events: the RL agent needs to estimate the real state of its environment based on past observations. State-of-the-art (SOTA) methods typically employ recursive, step-by-step forecasting of states. This can cause the accumulation of compounding errors. To tackle this problem, our novel belief estimation method, named Directly Forecasting Belief Transformer (DFBT), directly forecasts states from observations without incrementally estimating intermediate states step-by-step. We theoretically demonstrate that DFBT greatly reduces compounding errors of existing recursively forecasting methods, yielding stronger performance guarantees. In experiments with D4RL offline datasets, DFBT reduces compounding errors with remarkable prediction accuracy. DFBT's capability to forecast state sequences also facilitates multi-step bootstrapping, thus greatly improving learning efficiency. On the MuJoCo benchmark, our DFBT-based method substantially outperforms SOTA baselines. Code is available at \\href{https://github.com/QingyuanWuNothing/DFBT}{https://github.com/QingyuanWuNothing/DFBT}.",
+      "venue": "ICML 2025",
+      "authors": [
+        "Qingyuan Wu",
+        "Yuhui Wang",
+        "Simon Zhan",
+        "Yixuan Wang",
+        "Chung-Wei Lin",
+        "Chen Lv",
+        "Qi Zhu",
+        "Jürgen Schmidhuber",
+        "Chao Huang"
+      ],
+      "paper_id": "45241",
+      "pdf_url": "",
+      "forum_url": "https://ICML.cc/forum?id=2025/poster/45241"
+    },
+    {
+      "title": "EARL-BO: Reinforcement Learning for Multi-Step Lookahead, High-Dimensional Bayesian Optimization",
+      "abstract": "To avoid myopic behavior, multi-step lookahead Bayesian optimization (BO) algorithms consider the sequential nature of BO and have demonstrated promising results in recent years. However, owing to the curse of dimensionality, most of these methods make significant approximations or suffer scalability issues. This paper presents a novel reinforcement learning (RL)-based framework for multi-step lookahead BO in high-dimensional black-box optimization problems. The proposed method enhances the scalability and decision-making quality of multi-step lookahead BO by efficiently solving the sequential dynamic program of the BO process in a near-optimal manner using RL. We first introduce an Attention-DeepSets encoder to represent the state of knowledge to the RL agent and subsequently propose a multi-task, fine-tuning procedure based on end-to-end (encoder-RL) on-policy learning. We evaluate the proposed method, EARL-BO (Encoder Augmented RL for BO), on synthetic benchmark functions and hyperparameter tuning problems, finding significantly improved performance compared to existing multi-step lookahead and high-dimensional BO methods.",
+      "venue": "ICML 2025",
+      "authors": [
+        "Mujin Cheon",
+        "Jay Lee",
+        "Dong-Yeun Koh",
+        "Calvin Tsay"
+      ],
+      "paper_id": "44958",
+      "pdf_url": "",
+      "forum_url": "https://ICML.cc/forum?id=2025/poster/44958"
+    },
+    {
+      "title": "Embedding Safety into RL: A New Take on Trust Region Methods",
+      "abstract": "Reinforcement Learning (RL) agents can solve diverse tasks but often exhibit unsafe behavior. Constrained Markov Decision Processes (CMDPs) address this by enforcing safety constraints, yet existing methods either sacrifice reward maximization or allow unsafe training. We introduce Constrained Trust Region Policy Optimization (C-TRPO), which reshapes the policy space geometry to ensure trust regions contain only safe policies, guaranteeing constraint satisfaction throughout training. We analyze its theoretical properties and connections to TRPO, Natural Policy Gradient (NPG), and Constrained Policy Optimization (CPO). Experiments show that C-TRPO reduces constraint violations while maintaining competitive returns.",
+      "venue": "ICML 2025",
+      "authors": [
+        "Nikola Milosevic",
+        "Johannes Müller",
+        "Nico Scherf"
+      ],
+      "paper_id": "46451",
+      "pdf_url": "",
+      "forum_url": "https://ICML.cc/forum?id=2025/poster/46451"
+    },
+    {
+      "title": "Enhancing Diversity In Parallel Agents: A Maximum State Entropy Exploration Story",
+      "abstract": "Parallel data collection has redefined Reinforcement Learning (RL), unlocking unprecedented efficiency and powering breakthroughs in large-scale real-world applications. In this paradigm, $N$ identical agents operate in $N$ replicas of an environment simulator, accelerating data collection by a factor of $N$. A critical question arises: *Does specializing the policies of the parallel agents hold the key to surpass the $N$ factor acceleration?*In this paper, we introduce a novel learning framework that maximizes the entropy of collected data in a parallel setting. Our approach carefully balances the entropy of individual agents with inter-agent diversity, effectively minimizing redundancies. The latter idea is implemented with a centralized policy gradient method, which shows promise when evaluated empirically against systems of identical agents, as well as synergy with batch RL techniques that can exploit data diversity.Finally, we provide an original concentration analysis that shows faster rates for specialized parallel sampling distributions, which supports our methodology and may be of independent interest.",
+      "venue": "ICML 2025",
+      "authors": [
+        "Vincenzo De Paola",
+        "Riccardo Zamboni",
+        "Mirco Mutti",
+        "Marcello Restelli"
+      ],
+      "paper_id": "46450",
+      "pdf_url": "",
+      "forum_url": "https://ICML.cc/forum?id=2025/poster/46450"
+    },
+    {
+      "title": "Hyper: Hyperparameter Robust Efficient Exploration in Reinforcement Learning",
+      "abstract": "The exploration \\& exploitation dilemma poses significant challenges in reinforcement learning (RL). Recently, curiosity-based exploration methods achieved great success in tackling hard-exploration problems. However, they necessitate extensive hyperparameter tuning on different environments, which heavily limits the applicability and accessibility of this line of methods. In this paper, we characterize this problem via analysis of the agent behavior, concluding the fundamental difficulty of choosing a proper hyperparameter. We then identify the difficulty and the instability of the optimization when the agent learns with curiosity. We propose our method, hyperparameter robust exploration (\\textbf{Hyper}), which extensively mitigates the problem by effectively regularizing the visitation of the exploration and decoupling the exploitation to ensure stable training. We theoretically justify that \\textbf{Hyper} is provably efficient under function approximation setting and empirically demonstrate its appealing performance and robustness in various environments.",
+      "venue": "ICML 2025",
+      "authors": [
+        "Yiran Wang",
+        "Chenshu Liu",
+        "Yunfan Li",
+        "Sanae Amani",
+        "Bolei Zhou",
+        "Lin Yang"
+      ],
+      "paper_id": "44124",
+      "pdf_url": "",
+      "forum_url": "https://ICML.cc/forum?id=2025/poster/44124"
+    },
+    {
+      "title": "MENTOR: Mixture-of-Experts Network with Task-Oriented Perturbation for Visual Reinforcement Learning",
+      "abstract": "Visual deep reinforcement learning (RL) enables robots to acquire skills from visual input for unstructured tasks. However, current algorithms suffer from low sample efficiency, limiting their practical applicability. In this work, we present MENTOR, a method that improves both the *architecture* and *optimization* of RL agents. Specifically, MENTOR replaces the standard multi-layer perceptron (MLP) with a mixture-of-experts (MoE) backbone and introduces a task-oriented perturbation mechanism. MENTOR outperforms state-of-the-art methods across three simulation benchmarks and achieves an average of 83\\% success rate on three challenging real-world robotic manipulation tasks, significantly surpassing the 32% success rate of the strongest existing model-free visual RL algorithm. These results underscore the importance of sample efficiency in advancing visual RL for real-world robotics. Experimental videos are available at https://suninghuang19.github.io/mentor_page/.",
+      "venue": "ICML 2025",
+      "authors": [
+        "Suning Huang",
+        "Zheyu Zhang",
+        "Tianhai Liang",
+        "Yihan Xu",
+        "Zhehao Kou",
+        "Chenhao Lu",
+        "Guowei Xu",
+        "Zhengrong Xue",
+        "Huazhe Xu"
+      ],
+      "paper_id": "43793",
+      "pdf_url": "",
+      "forum_url": "https://ICML.cc/forum?id=2025/poster/43793"
+    },
+    {
+      "title": "Minimax Optimal Regret Bound for Reinforcement Learning with Trajectory Feedback",
+      "abstract": "In this work, we study reinforcement learning (RL) with trajectory feedback. Compared to the standard RL setting, in RL with trajectory feedback, the agent only observes the accumulative reward along the trajectory, and therefore, this model is particularly suitable for scenarios where querying the reward in each single step incurs prohibitive cost. For a finite-horizon Markov Decision Process (MDP) with $S$ states, $A$ actions and a horizon length of $H$, we develop an algorithm that enjoys an asymptotically nearly optimal regret of $\\tilde{O}\\left(\\sqrt{SAH^3K}\\right)$ in $K$ episodes.To achieve this result, our new technical ingredients include(i) constructing a tighter confidence region for the reward function by incorporating the RL with trajectory feedback setting with techniques in linear bandits and  (ii) constructing a reference transition model to better guide the exploration process.",
+      "venue": "ICML 2025",
+      "authors": [
+        "Zihan Zhang",
+        "Yuxin Chen",
+        "Jason Lee",
+        "Simon Du",
+        "Ruosong Wang"
+      ],
+      "paper_id": "44065",
+      "pdf_url": "",
+      "forum_url": "https://ICML.cc/forum?id=2025/poster/44065"
+    },
+    {
+      "title": "Mitigating Plasticity Loss in Continual Reinforcement Learning by Reducing Churn",
+      "abstract": "Plasticity, or the ability of an agent to adapt to new tasks, environments, or distributions, is crucial for continual learning. In this paper, we study the loss of plasticity in deep continual RL from the lens of churn: network output variability induced by the data in each training batch. We demonstrate that (1) the loss of plasticity is accompanied by the exacerbation of churn due to the gradual rank decrease of the Neural Tangent Kernel (NTK) matrix; (2) reducing churn helps prevent rank collapse and adjusts the step size of regular RL gradients adaptively. Moreover, we introduce Continual Churn Approximated Reduction (C-CHAIN) and demonstrate it improves learning performance and outperforms baselines in a diverse range of continual learning environments on OpenAI Gym Control, ProcGen, DeepMind Control Suite, and MinAtar benchmarks.",
+      "venue": "ICML 2025",
+      "authors": [
+        "Hongyao Tang",
+        "Johan Obando-Ceron",
+        "Pablo Samuel Castro",
+        "Aaron Courville",
+        "Glen Berseth"
+      ],
+      "paper_id": "45929",
+      "pdf_url": "",
+      "forum_url": "https://ICML.cc/forum?id=2025/poster/45929"
+    },
+    {
+      "title": "Offline-to-Online Reinforcement Learning with Classifier-Free Diffusion Generation",
+      "abstract": "Offline-to-online Reinforcement Learning (O2O RL) aims to perform online fine-tuning on an offline pre-trained policy to minimize costly online interactions. Existing work used offline datasets to generate data that conform to the online data distribution for data augmentation. However, generated data still exhibits a gap with the online data, limiting overall performance. To address this, we propose a new data augmentation approach, Classifier-Free Diffusion Generation (CFDG). Without introducing additional classifier training overhead, CFDG leverages classifier-free guidance diffusion to significantly enhance the generation quality of offline and online data with different distributions. Additionally, it employs a reweighting method to enable more generated data to align with the online data, enhancing performance while maintaining the agent's stability.  Experimental results show that CFDG outperforms replaying the two data types or using a standard diffusion model to generate new data. Our method is versatile and can be integrated with existing offline-to-online RL algorithms. By implementing CFDG to popular methods IQL, PEX and APL, we achieve a notable 15\\% average improvement in empirical performance on the D4RL benchmark such as MuJoCo and AntMaze.",
+      "venue": "ICML 2025",
+      "authors": [
+        "Xiao Huang",
+        "Xu Liu",
+        "Enze Zhang",
+        "Tong Yu",
+        "Shuai Li"
+      ],
+      "paper_id": "46491",
+      "pdf_url": "",
+      "forum_url": "https://ICML.cc/forum?id=2025/poster/46491"
+    },
+    {
+      "title": "Online Episodic Convex Reinforcement Learning",
+      "abstract": "We study online learning in episodic finite-horizon Markov decision processes (MDPs) with convex objective functions, known as the concave utility reinforcement learning (CURL) problem. This setting generalizes RL from linear to convex losses on the state-action distribution induced by the agent’s policy. The non-linearity of CURL invalidates classical Bellman equations and requires new algorithmic approaches. We introduce the first algorithm achieving near-optimal regret bounds for online CURL without any prior knowledge on the transition function. To achieve this, we use a novel online mirror descent algorithm with variable constraint sets and a carefully designed exploration bonus. We then address for the first time a bandit version of CURL, where the only feedback is the value of the objective function on the state-action distribution induced by the agent's policy. We achieve a sub-linear regret bound for this more challenging problem by adapting techniques from bandit convex optimization to the MDP setting.",
+      "venue": "ICML 2025",
+      "authors": [
+        "Bianca Marin Moreno",
+        "Khaled Eldowa",
+        "Pierre Gaillard",
+        "Margaux Brégère",
+        "Nadia Oudjane"
+      ],
+      "paper_id": "44644",
+      "pdf_url": "",
+      "forum_url": "https://ICML.cc/forum?id=2025/poster/44644"
+    },
+    {
+      "title": "Online Pre-Training for Offline-to-Online Reinforcement Learning",
+      "abstract": "Offline-to-online reinforcement learning (RL) aims to integrate the complementary strengths of offline and online RL by pre-training an agent offline and subsequently fine-tuning it through online interactions. However, recent studies reveal that offline pre-trained agents often underperform during online fine-tuning due to inaccurate value estimation caused by distribution shift, with random initialization proving more effective in certain cases. In this work, we propose a novel method, Online Pre-Training for Offline-to-Online RL (OPT), explicitly designed to address the issue of inaccurate value estimation in offline pre-trained agents. OPT introduces a new learning phase, Online Pre-Training, which allows the training of a new value function tailored specifically for effective online fine-tuning. Implementation of OPT on TD3 and SPOT demonstrates an average 30\\% improvement in performance across a wide range of D4RL environments, including MuJoCo, Antmaze, and Adroit.",
+      "venue": "ICML 2025",
+      "authors": [
+        "Yongjae Shin",
+        "Jeonghye Kim",
+        "Whiyoung Jung",
+        "Sunghoon Hong",
+        "Deunsol Yoon",
+        "Youngsoo Jang",
+        "Geon-Hyeong Kim",
+        "Jongseong Chae",
+        "Youngchul Sung",
+        "Kanghoon Lee",
+        "Woohyung Lim"
+      ],
+      "paper_id": "46420",
+      "pdf_url": "",
+      "forum_url": "https://ICML.cc/forum?id=2025/poster/46420"
+    },
+    {
+      "title": "Position: Lifetime tuning is incompatible with continual reinforcement learning",
+      "abstract": "In continual RL we want agents capable of never-ending learning, and yet our evaluation methodologies do not reflect this. The standard practice in RL is to assume unfettered access to the deployment environment for the full lifetime of the agent. For example, agent designers select the best performing hyperparameters in Atari by testing each for 200 million frames and then reporting results on 200 million frames. In this position paper, we argue and demonstrate the pitfalls of this inappropriate empirical methodology: lifetime tuning. We provide empirical evidence to support our position by testing DQN and SAC across several of continuing and non-stationary environments with two main findings: (1) lifetime tuning does not allow us to identify algorithms that work well for continual learning---all algorithms equally succeed; (2) recently developed continual RL algorithms outperform standard non-continual algorithms when tuning is limited to a fraction of the agent's lifetime. The goal of this paper is to provide an explanation for why recent progress in continual RL has been mixed and motivate the development of empirical practices that better match the goals of continual RL.",
+      "venue": "ICML 2025",
+      "authors": [
+        "Golnaz Mesbahi",
+        "Parham Mohammad Panahi",
+        "Olya Mastikhina",
+        "Steven Tang",
+        "Martha White",
+        "Adam White"
+      ],
+      "paper_id": "40153",
+      "pdf_url": "",
+      "forum_url": "https://ICML.cc/forum?id=2025/poster/40153"
+    },
+    {
+      "title": "Reinforcement Learning with Adaptive Reward Modeling for Expensive-to-Evaluate Systems",
+      "abstract": "Training reinforcement learning (RL) agents requires extensive trials and errors, which becomes prohibitively time-consuming in systems with costly reward evaluations.To address this challenge, we propose adaptive reward modeling (AdaReMo) which accelerates RL training by decomposing the complicated reward function into multiple localized fast reward models approximating direct reward evaluation with neural networks.These models dynamically adapt to the agent’s evolving policy by fitting the currently explored subspace with the latest trajectories, ensuring accurate reward estimation throughout the entire training process while significantly reducing computational overhead.We empirically show that AdaReMo not only achieves over 1,000 times speedup but also improves the performance by 14.6% over state-of-the-art approaches across three expensive-to-evaluate systems---molecular generation, epidemic control, and spatial planning.Code and data for the project are provided at https://github.com/tsinghua-fib-lab/AdaReMo.",
+      "venue": "ICML 2025",
+      "authors": [
+        "Hongyuan Su",
+        "Yu Zheng",
+        "Yuan Yuan",
+        "Yuming Lin",
+        "Depeng Jin",
+        "Yong Li"
+      ],
+      "paper_id": "43786",
+      "pdf_url": "",
+      "forum_url": "https://ICML.cc/forum?id=2025/poster/43786"
+    },
+    {
+      "title": "Reinforcement Learning with Segment Feedback",
+      "abstract": "Standard reinforcement learning (RL) assumes that an agent can observe a reward for each state-action pair. However, in practical applications, it is often difficult and costly to collect a reward for each state-action pair. While there have been several works considering RL with trajectory feedback, it is unclear if trajectory feedback is inefficient for learning when trajectories are long. In this work, we consider a model named RL with segment feedback, which offers a general paradigm filling the gap between per-state-action feedback and trajectory feedback. In this model, we consider an episodic Markov decision process (MDP), where each episode is divided into $m$ segments, and the agent observes reward feedback only at the end of each segment. Under this model, we study two popular feedback settings: binary feedback and sum feedback, where the agent observes a binary outcome and a reward sum according to the underlying reward function, respectively. To investigate the impact of the number of segments $m$ on learning performance, we design efficient algorithms and establish regret upper and lower bounds for both feedback settings. Our theoretical and experimental results show that: under binary feedback, increasing the number of segments $m$ decreases the regret at an exponential rate; in contrast, surprisingly, under sum feedback, increasing $m$ does not reduce the regret significantly.",
+      "venue": "ICML 2025",
+      "authors": [
+        "Yihan Du",
+        "Anna Winnicki",
+        "Gal Dalal",
+        "Shie Mannor",
+        "R Srikant"
+      ],
+      "paper_id": "46633",
+      "pdf_url": "",
+      "forum_url": "https://ICML.cc/forum?id=2025/poster/46633"
+    },
+    {
+      "title": "Sleeping Reinforcement Learning",
+      "abstract": "In the standard Reinforcement Learning (RL) paradigm, the action space is assumed to be fixed and immutable throughout the learning process. However, in many real-world scenarios, not all actions are available at every decision stage. The available action set may depend on the current environment state, domain-specific constraints, or other (potentially stochastic) factors outside the agent's control. To address these realistic scenarios, we introduce a novel paradigm called *Sleeping Reinforcement Learning*, where the available action set varies during the interaction with the environment. We start with the simpler scenario in which the available action sets are revealed at the beginning of each episode. We show that a modification of UCBVI achieves regret of order $\\widetilde{\\mathcal{O}}(H\\sqrt{SAT})$, where $H$ is the horizon, $S$ and $A$ are the cardinalities of the state and action spaces, respectively, and $T$ is the learning horizon. Next, we address the more challenging and realistic scenario in which the available actions are disclosed only at each decision stage. By leveraging a novel construction, we establish a minimax lower bound of order $\\Omega(\\sqrt{T 2^{A/2}})$ when the availability of actions is governed by a Markovian process, establishing a statistical barrier of the problem. Focusing on the statistically tractable case where action availability depends only on the current state and stage, we propose a new optimistic algorithm that achieves regret guarantees of order $\\widetilde{\\mathcal{O}}(H\\sqrt{SAT})$, showing that the problem shares the same complexity of standard RL.",
+      "venue": "ICML 2025",
+      "authors": [
+        "Simone Drago",
+        "Marco Mussi",
+        "Alberto Maria Metelli"
+      ],
+      "paper_id": "45138",
+      "pdf_url": "",
+      "forum_url": "https://ICML.cc/forum?id=2025/poster/45138"
+    },
+    {
+      "title": "Stable Offline Value Function Learning with Bisimulation-based Representations",
+      "abstract": "In reinforcement learning, offline value function learning is the procedure of using an offline dataset to estimate the expected discounted return from each state when taking actions according to a fixed target policy. The stability of this procedure, i.e., whether it converges to its fixed-point, critically depends on the representations of the state-action pairs. Poorly learned representations can make value function learning unstable, or even divergent. Therefore, it is critical to stabilize value function learning by explicitly shaping the state-action representations. Recently, the class of bisimulation-based algorithms have shown promise in shaping representations for control. However, it is still unclear if this class of methods can \\emph{stabilize} value function learning. In this work, we investigate this question and answer it affirmatively. We introduce a bisimulation-based algorithm called kernel representations for offline policy evaluation (\\textsc{krope}). \\textsc{krope} uses a kernel to shape state-action representations such that state-action pairs that have similar immediate rewards and lead to similar next state-action pairs under the target policy also have similar representations. We show that \\textsc{krope}: 1) learns stable representations and 2) leads to lower value error than baselines. Our analysis provides new theoretical insight into the stability properties of bisimulation-based methods and suggests that practitioners can use these methods to improve the stability and accuracy of offline evaluation of reinforcement learning agents.",
+      "venue": "ICML 2025",
+      "authors": [
+        "Brahma Pavse",
+        "Yudong Chen",
+        "Qiaomin Xie",
+        "Josiah Hanna"
+      ],
+      "paper_id": "45250",
+      "pdf_url": "",
+      "forum_url": "https://ICML.cc/forum?id=2025/poster/45250"
+    },
+    {
+      "title": "The Courage to Stop: Overcoming Sunk Cost Fallacy in Deep Reinforcement Learning",
+      "abstract": "Off-policy deep reinforcement learning (RL) agents typically leverage replay buffers for reusing past experiences during learning. This can help sample efficiency when the collected data is informative and aligned with the learning objectives; when that is not the case, it has the effect of ``polluting'' the replay buffer with data that can exacerbate optimization challenges in addition to wasting environment interactions due to redundant sampling. We argue that sampling these uninformative and wasteful transitions can be avoided by addressing the **sunk cost fallacy** which, in the context of deep RL, is the tendency towards continuing an episode until termination. To address this, we propose the *learn to stop* (**LEAST**) mechanism which uses statistics based on $Q$-values and gradient to guide early episode termination which helps agents recognize when to terminate unproductive episodes early. We demonstrate that our method improves learning efficiency on a variety of RL algorithms, evaluated on both the MuJoCo and DeepMind Control Suite benchmarks.",
+      "venue": "ICML 2025",
+      "authors": [
+        "Jiashun Liu",
+        "Johan Obando-Ceron",
+        "Pablo Samuel Castro",
+        "Aaron Courville",
+        "Ling Pan"
+      ],
+      "paper_id": "45044",
+      "pdf_url": "",
+      "forum_url": "https://ICML.cc/forum?id=2025/poster/45044"
+    },
+    {
+      "title": "The Impact of On-Policy Parallelized Data Collection on Deep Reinforcement Learning Networks",
+      "abstract": "The use of parallel actors for data collection has been an effective technique used in reinforcement learning (RL) algorithms. The manner in which data is collected in these algorithms, controlled via the number of parallel environments and the rollout length, induces a form of bias-variance trade-off; the number of training passes over the collected data, on the other hand, must strike a balance between sample efficiency and overfitting. We conduct an empirical analysis of these trade-offs on PPO, one of the most popular RL algorithms that uses parallel actors, and establish connections to network plasticity and, more generally, optimization stability. We examine its impact on network architectures, as well as the hyper-parameter sensitivity when scaling data. Our analyses indicate that larger dataset sizes can increase final performance across a variety of settings, and that scaling parallel environments is more effective than increasing rollout lengths. These findings highlight the critical role of data collection strategies in improving agent performance.",
+      "venue": "ICML 2025",
+      "authors": [
+        "Walter Mayor",
+        "Johan Obando-Ceron",
+        "Aaron Courville",
+        "Pablo Samuel Castro"
+      ],
+      "paper_id": "44665",
+      "pdf_url": "",
+      "forum_url": "https://ICML.cc/forum?id=2025/poster/44665"
+    }
+  ]
+}

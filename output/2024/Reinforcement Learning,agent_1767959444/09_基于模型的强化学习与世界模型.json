@@ -1,0 +1,339 @@
+{
+  "name": "基于模型的强化学习与世界模型",
+  "paper_count": 23,
+  "summary": "该类别专注于基于模型的强化学习（Model-Based RL）以及世界模型（World Models）的学习与应用。研究重点在于构建能够准确预测环境动态的模型，并利用该模型进行高效的规划或策略优化。相关工作旨在通过学习分层的时间抽象、离散潜在动态等方式，提升模型的表达能力和规划效率，使智能体能够进行更长期的推理和更复杂的决策，从而解决样本效率低下和长期信用分配等挑战。",
+  "papers": [
+    {
+      "title": "Learning Hierarchical World Models with Adaptive Temporal Abstractions from Discrete Latent Dynamics",
+      "abstract": "Hierarchical world models can significantly improve model-based reinforcement learning (MBRL) and planning by enabling reasoning across multiple time scales. Nonetheless, the majority of state-of-the-art MBRL methods employ flat, non-hierarchical models. We propose Temporal Hierarchies from Invariant Context Kernels (THICK), an algorithm that learns a world model hierarchy via discrete latent dynamics. The lower level of THICK updates parts of its latent state sparsely in time, forming invariant contexts. The higher level exclusively predicts situations involving context changes. Our experiments demonstrate that THICK learns categorical, interpretable, temporal abstractions on the high level, while maintaining precise low-level predictions. Furthermore, we show that the emergent hierarchical predictive model seamlessly enhances the abilities of MBRL or planning methods. We believe that THICK contributes to the further development of hierarchical agents capable of more sophisticated planning and reasoning abilities.",
+      "venue": "ICLR 2024",
+      "authors": [
+        "Christian Gumbsch",
+        "Noor Sajid",
+        "Georg Martius",
+        "Martin V. Butz"
+      ],
+      "paper_id": "18558",
+      "pdf_url": "",
+      "forum_url": "https://iclr.cc/forum?id=2024/poster/18558"
+    },
+    {
+      "title": "Locality Sensitive Sparse Encoding for Learning World Models Online",
+      "abstract": "Acquiring an accurate world model $\\textit{online}$ for model-based reinforcement learning (MBRL) is challenging due to data nonstationarity, which typically causes catastrophic forgetting for neural networks (NNs). From the online learning perspective, a Follow-The-Leader (FTL) world model is desirable, which optimally fits all previous experiences at each round. Unfortunately, NN-based models need re-training on all accumulated data at every interaction step to achieve FTL, which is computationally expensive for lifelong agents. In this paper, we revisit models that can achieve FTL with incremental updates. Specifically, our world model is a linear regression model supported by nonlinear random features. The linear part ensures efficient FTL update while the nonlinear random feature empowers the fitting of complex environments. To best trade off model capacity and computation efficiency, we introduce a locality sensitive sparse encoding, which allows us to conduct efficient sparse updates even with very high dimensional nonlinear features. We validate the representation power of our encoding and verify that it allows efficient online learning under data covariate shift. We also show, in the Dyna MBRL setting, that our world models learned online using a $\\textit{single pass}$ of trajectory data either surpass or match the performance of deep world models trained with replay and other continual learning methods.",
+      "venue": "ICLR 2024",
+      "authors": [
+        "Zichen Liu",
+        "Chao Du",
+        "Wee Sun Lee",
+        "Min Lin"
+      ],
+      "paper_id": "18076",
+      "pdf_url": "",
+      "forum_url": "https://iclr.cc/forum?id=2024/poster/18076"
+    },
+    {
+      "title": "MAMBA: an Effective World Model Approach for Meta-Reinforcement Learning",
+      "abstract": "Meta-reinforcement learning (meta-RL) is a promising framework for tackling challenging domains requiring efficient exploration. Existing meta-RL algorithms are characterized by low sample efficiency, and mostly focus on low-dimensional task distributions. In parallel, model-based RL methods have been successful in solving partially observable MDPs, of which meta-RL is a special case.In this work, we leverage this success and propose a new model-based approach to meta-RL, based on elements from existing state-of-the-art model-based and meta-RL methods. We demonstrate the effectiveness of our approach on common meta-RL benchmark domains, attaining greater return with better sample efficiency (up to $15\\times$) while requiring very little hyperparameter tuning. In addition, we validate our approach on a slate of more challenging, higher-dimensional domains, taking a step towards real-world generalizing agents.",
+      "venue": "ICLR 2024",
+      "authors": [
+        "Zohar Rimon",
+        "Tom Jurgenson",
+        "Orr Krupnik",
+        "Gilad Adler",
+        "Aviv Tamar"
+      ],
+      "paper_id": "19589",
+      "pdf_url": "",
+      "forum_url": "https://iclr.cc/forum?id=2024/poster/19589"
+    },
+    {
+      "title": "Mastering Memory Tasks with World Models",
+      "abstract": "Current model-based reinforcement learning (MBRL) agents struggle with long-term dependencies. This limits their ability to effectively solve tasks involving extended time gaps between actions and outcomes, or tasks demanding the recalling of distant observations to inform current actions. To improve temporal coherence, we integrate a new family of state space models (SSMs) in world models of MBRL agents to present a new method, Recall to Imagine (R2I). This integration aims to enhance both long-term memory and long-horizon credit assignment. Through a diverse set of illustrative tasks, we systematically demonstrate that R2I not only establishes a new state-of-the-art for challenging memory and credit assignment RL tasks, such as BSuite and POPGym, but also showcases superhuman performance in the complex memory domain of Memory Maze. At the same time, it upholds comparable performance in classic RL tasks, such as Atari and DMC, suggesting the generality of our method. We also show that R2I is faster than the state-of-the-art MBRL method, DreamerV3, resulting in faster wall-time convergence.",
+      "venue": "ICLR 2024",
+      "authors": [
+        "Mohammad Reza Samsami",
+        "Artem Zholus",
+        "Janarthanan Rajendran",
+        "Sarath Chandar"
+      ],
+      "paper_id": "19565",
+      "pdf_url": "",
+      "forum_url": "https://iclr.cc/forum?id=2024/poster/19565"
+    },
+    {
+      "title": "Pre-Training Goal-based Models for Sample-Efficient Reinforcement Learning",
+      "abstract": "Pre-training on task-agnostic large datasets is a promising approach for enhancing the sample efficiency of reinforcement learning (RL) in solving complex tasks. We present PTGM, a novel method that pre-trains goal-based models to augment RL by providing temporal abstractions and behavior regularization. PTGM involves pre-training a low-level, goal-conditioned policy and training a high-level policy to generate goals for subsequent RL tasks. To address the challenges posed by the high-dimensional goal space, while simultaneously maintaining the agent's capability to accomplish various skills, we propose clustering goals in the dataset to form a discrete high-level action space. Additionally, we introduce a pre-trained goal prior model to regularize the behavior of the high-level policy in RL, enhancing sample efficiency and learning stability. Experimental results in a robotic simulation environment and the challenging open-world environment of Minecraft demonstrate PTGM’s superiority in sample efficiency and task performance compared to baselines. Moreover, PTGM exemplifies enhanced interpretability and generalization of the acquired low-level skills.",
+      "venue": "ICLR 2024",
+      "authors": [
+        "Haoqi Yuan",
+        "Zhancun Mu",
+        "Feiyang Xie",
+        "Zongqing Lu"
+      ],
+      "paper_id": "17838",
+      "pdf_url": "",
+      "forum_url": "https://iclr.cc/forum?id=2024/poster/17838"
+    },
+    {
+      "title": "TD-MPC2: Scalable, Robust World Models for Continuous Control",
+      "abstract": "TD-MPC is a model-based reinforcement learning (RL) algorithm that performs local trajectory optimization in the latent space of a learned implicit (decoder-free) world model. In this work, we present TD-MPC2: a series of improvements upon the TD-MPC algorithm. We demonstrate that TD-MPC2 improves significantly over baselines across 104 online RL tasks spanning 4 diverse task domains, achieving consistently strong results with a single set of hyperparameters. We further show that agent capabilities increase with model and data size, and successfully train a single 317M parameter agent to perform 80 tasks across multiple task domains, embodiments, and action spaces. We conclude with an account of lessons, opportunities, and risks associated with large TD-MPC2 agents.Explore videos, models, data, code, and more at https://tdmpc2.com",
+      "venue": "ICLR 2024",
+      "authors": [
+        "Nick Hansen",
+        "Hao Su",
+        "Xiaolong Wang"
+      ],
+      "paper_id": "18722",
+      "pdf_url": "",
+      "forum_url": "https://iclr.cc/forum?id=2024/poster/18722"
+    },
+    {
+      "title": "ATraDiff: Accelerating Online Reinforcement Learning with Imaginary Trajectories",
+      "abstract": "Training autonomous agents with sparse rewards is a long-standing problem in online reinforcement learning (RL), due to low data efficiency. Prior work overcomes this challenge by extracting useful knowledge from offline data, often accomplished through the learning of action distribution from offline data and utilizing the learned distribution to facilitate online RL. However, since the offline data are given and fixed, the extracted knowledge is inherently limited, making it difficult to generalize to new tasks. We propose a novel approach that leverages offline data to learn a generative diffusion model, coined as Adaptive Trajectory Diffuser (ATraDiff). This model generates synthetic trajectories, serving as a form of data augmentation and consequently enhancing the performance of online RL methods. The key strength of our diffuser lies in its adaptability, allowing it to effectively handle varying trajectory lengths and mitigate distribution shifts between online and offline data. Because of its simplicity, ATraDiff seamlessly integrates with a wide spectrum of RL methods. Empirical evaluation shows that ATraDiff consistently achieves state-of-the-art performance across a variety of environments, with particularly pronounced improvements in complicated settings. Our code and demo video are available at https://atradiff.github.io.",
+      "venue": "ICML 2024",
+      "authors": [
+        "Qianlan Yang",
+        "Yu-Xiong Wang"
+      ],
+      "paper_id": "33264",
+      "pdf_url": "",
+      "forum_url": "https://ICML.cc/forum?id=2024/poster/33264"
+    },
+    {
+      "title": "Dr. Strategy: Model-Based Generalist Agents with Strategic Dreaming",
+      "abstract": "Model-based reinforcement learning (MBRL) has been a primary approach to ameliorating the sample efficiency issue as well as to make a generalist agent. However, there has not been much effort toward enhancing the strategy of dreaming itself. Therefore, it is a question *whether and how an agent can ``*dream better*''* in a more structured and strategic way. In this paper, inspired by the observation from cognitive science suggesting that humans use a spatial divide-and-conquer strategy in planning, we propose a new MBRL agent, called **Dr. Strategy**, which is equipped with a novel **Dr**eaming **Strategy**. The proposed agent realizes a version of divide-and-conquer-like strategy in dreaming. This is achieved by learning a set of latent landmarks and then utilizing these to learn a landmark-conditioned highway policy. With the highway policy, the agent can first learn in the dream to move to a landmark, and from there it tackles the exploration and achievement task in a more focused way. In experiments, we show that the proposed model outperforms prior pixel-based MBRL methods in various visually complex and partially observable navigation tasks.",
+      "venue": "ICML 2024",
+      "authors": [
+        "Hany Hamed",
+        "Subin Kim",
+        "Dongyeong Kim",
+        "Jaesik Yoon",
+        "Sungjin Ahn"
+      ],
+      "paper_id": "34444",
+      "pdf_url": "",
+      "forum_url": "https://ICML.cc/forum?id=2024/poster/34444"
+    },
+    {
+      "title": "Efficient World Models with Context-Aware Tokenization",
+      "abstract": "Scaling up deep Reinforcement Learning (RL) methods presents a significant challenge. Following developments in generative modelling, model-based RL positions itself as a strong contender. Recent advances in sequence modelling have led to effective transformer-based world models, albeit at the price of heavy computations due to the long sequences of tokens required to accurately simulate environments. In this work, we propose $\\Delta$-IRIS, a new agent with a world model architecture composed of a discrete autoencoder that encodes stochastic deltas between time steps and an autoregressive transformer that predicts future deltas by summarizing the current state of the world with continuous tokens. In the Crafter benchmark, $\\Delta$-IRIS sets a new state of the art at multiple frame budgets, while being an order of magnitude faster to train than previous attention-based approaches. We release our code and models at https://github.com/vmicheli/delta-iris.",
+      "venue": "ICML 2024",
+      "authors": [
+        "Vincent Micheli",
+        "Eloi Alonso",
+        "François Fleuret"
+      ],
+      "paper_id": "34714",
+      "pdf_url": "",
+      "forum_url": "https://ICML.cc/forum?id=2024/poster/34714"
+    },
+    {
+      "title": "Hieros: Hierarchical Imagination on Structured State Space Sequence World Models",
+      "abstract": "One of the biggest challenges to modern deep reinforcement learning (DRL) algorithms is sample efficiency. Many approaches learn a world model in order to train an agent entirely in imagination, eliminating the need for direct environment interaction during training. However, these methods often suffer from either a lack of imagination accuracy, exploration capabilities, or runtime efficiency. We propose HIEROS, a hierarchical policy that learns time abstracted world representations and imagines trajectories at multiple time scales in latent space. HIEROS uses an S5 layer-based world model, which predicts next world states in parallel during training and iteratively during environment interaction. Due to the special properties of S5 layers, our method can train in parallel and predict next world states iteratively during imagination. This allows for more efficient training than RNN-based world models and more efficient imagination than Transformer-based world models. We show that our approach outperforms the state of the art in terms of mean and median normalized human score on the Atari 100k benchmark, and that our proposed world model is able to predict complex dynamics very accurately. We also show that HIEROS displays superior exploration capabilities compared to existing approaches.",
+      "venue": "ICML 2024",
+      "authors": [
+        "Paul Mattes",
+        "Rainer Schlosser",
+        "Ralf Herbrich"
+      ],
+      "paper_id": "34428",
+      "pdf_url": "",
+      "forum_url": "https://ICML.cc/forum?id=2024/poster/34428"
+    },
+    {
+      "title": "Improving Token-Based World Models with Parallel Observation Prediction",
+      "abstract": "Motivated by the success of Transformers when applied to sequences of discrete symbols, token-based world models (TBWMs) were recently proposed as sample-efficient methods. In TBWMs, the world model consumes agent experience as a language-like sequence of tokens, where each observation constitutes a sub-sequence. However, during imagination, the sequential token-by-token generation of next observations results in a severe bottleneck, leading to long training times, poor GPU utilization, and limited representations. To resolve this bottleneck, we devise a novel Parallel Observation Prediction (POP) mechanism. POP augments a Retentive Network (RetNet) with a novel forward mode tailored to our reinforcement learning setting. We incorporate POP in a novel TBWM agent named REM (Retentive Environment Model), showcasing a 15.4x faster imagination compared to prior TBWMs. REM attains superhuman performance on 12 out of 26 games of the Atari 100K benchmark, while training in less than 12 hours. Our code is available at https://github.com/leor-c/REM",
+      "venue": "ICML 2024",
+      "authors": [
+        "Lior Cohen",
+        "Kaixin Wang",
+        "Bingyi Kang",
+        "Shie Mannor"
+      ],
+      "paper_id": "34279",
+      "pdf_url": "",
+      "forum_url": "https://ICML.cc/forum?id=2024/poster/34279"
+    },
+    {
+      "title": "Learning Latent Dynamic Robust Representations for World Models",
+      "abstract": "Visual Model-Based Reinforcement Learning (MBRL) promises to encapsulate agent's knowledge about the underlying dynamics of the environment, enabling learning a world model as a useful planner. However, top MBRL agents such as Dreamer often struggle with visual pixel-based inputs in the presence of exogenous or irrelevant noise in the observation space, due to failure to capture task-specific features while filtering out irrelevant spatio-temporal details. To tackle this problem, we apply a spatio-temporal masking strategy, a bisimulation principle, combined with latent reconstruction, to capture endogenous task-specific aspects of the environment for world models, effectively eliminating non-essential information. Joint training of representations, dynamics, and policy often leads to instabilities. To further address this issue, we develop a Hybrid Recurrent State-Space Model (HRSSM) structure, enhancing state representation robustness for effective policy learning. Our empirical evaluation demonstrates significant performance improvements over existing methods in a range of visually complex control tasks such as Maniskill with exogenous distractors from the Matterport environment. Our code is avaliable at https://github.com/bit1029public/HRSSM.",
+      "venue": "ICML 2024",
+      "authors": [
+        "Ruixiang Sun",
+        "Hongyu Zang",
+        "Xin Li",
+        "Riashat Islam"
+      ],
+      "paper_id": "34700",
+      "pdf_url": "",
+      "forum_url": "https://ICML.cc/forum?id=2024/poster/34700"
+    },
+    {
+      "title": "Learning to Play Atari in a World of Tokens",
+      "abstract": "Model-based reinforcement learning agents utilizing transformers have shown improved sample efficiency due to their ability to model extended context, resulting in more accurate world models. However, for complex reasoning and planning tasks, these methods primarily rely on continuous representations. This complicates modeling of discrete properties of the real world such as disjoint object classes between which interpolation is not plausible. In this work, we introduce discrete abstract representations for transformer-based learning (DART), a sample-efficient method utilizing discrete representations for modeling both the world and learning behavior. We incorporate a transformer-decoder for auto-regressive world modeling and a transformer-encoder for learning behavior by attending to task-relevant cues in the discrete representation of the world model. For handling partial observability, we aggregate information from past time steps as memory tokens. DART outperforms previous state-of-the-art methods that do not use look-ahead search on the Atari 100k sample efficiency benchmark with a median human-normalized score of 0.790 and beats humans in 9 out of 26 games. We release our code at https://pranaval.github.io/DART/.",
+      "venue": "ICML 2024",
+      "authors": [
+        "Pranav Agarwal",
+        "Sheldon Andrews",
+        "Samira Ebrahimi Kahou"
+      ],
+      "paper_id": "32760",
+      "pdf_url": "",
+      "forum_url": "https://ICML.cc/forum?id=2024/poster/32760"
+    },
+    {
+      "title": "Refining Minimax Regret for Unsupervised Environment Design",
+      "abstract": "In unsupervised environment design, reinforcement learning agents are trained on environment configurations (levels) generated by an adversary that maximises some objective. Regret is a commonly used objective that theoretically results in a minimax regret (MMR) policy with desirable robustness guarantees; in particular, the agent's maximum regret is bounded. However, once the agent reaches this regret bound on all levels, the adversary will only sample levels where regret cannot be further reduced. Although there may be possible performance improvements to be made outside of these regret-maximising levels, learning stagnates. In this work, we introduce *Bayesian level-perfect MMR* (BLP), a refinement of the minimax regret objective that overcomes this limitation. We formally show that solving for this objective results in a subset of MMR policies, and that BLP policies act consistently with a Perfect Bayesian policy over all levels. We further introduce an algorithm, *ReMiDi*, that results in a BLP policy at convergence. We empirically demonstrate that training on levels from a minimax regret adversary causes learning to prematurely stagnate, but that ReMiDi continues learning.",
+      "venue": "ICML 2024",
+      "authors": [
+        "Michael Beukman",
+        "Samuel Coward",
+        "Michael Matthews",
+        "Mattie Fellows",
+        "Minqi Jiang",
+        "Michael Dennis",
+        "Jakob Foerster"
+      ],
+      "paper_id": "34295",
+      "pdf_url": "",
+      "forum_url": "https://ICML.cc/forum?id=2024/poster/34295"
+    },
+    {
+      "title": "Trust the Model Where It Trusts Itself - Model-Based Actor-Critic with Uncertainty-Aware Rollout Adaption",
+      "abstract": "Dyna-style model-based reinforcement learning (MBRL) combines model-free agents with predictive transition models through model-based rollouts. This combination raises a critical question: “When to trust your model?”; i.e., which rollout length results in the model providing useful data? Janner et al. (2019) address this question by gradually increasing rollout lengths throughout the training. While theoretically tempting, uniform model accuracy is a fallacy that collapses at the latest when extrapolating. Instead, we propose asking the question “Where to trust your model?”. Using inherent model uncertainty to consider local accuracy, we obtain the Model-Based Actor-Critic with Uncertainty-Aware Rollout Adaption (MACURA) algorithm. We propose an easy-to-tune rollout mechanism and demonstrate substantial improvements in data efficiency and performance compared to state-of-the-art deep MBRL methods on the MuJoCo benchmark.",
+      "venue": "ICML 2024",
+      "authors": [
+        "Bernd Frauenknecht",
+        "Artur Eisele",
+        "Devdutt Subhasish",
+        "Friedrich Solowjow",
+        "Sebastian Trimpe"
+      ],
+      "paper_id": "34216",
+      "pdf_url": "",
+      "forum_url": "https://ICML.cc/forum?id=2024/poster/34216"
+    },
+    {
+      "title": "Diffusion for World Modeling: Visual Details Matter in Atari",
+      "abstract": "World models constitute a promising approach for training reinforcement learning agents in a safe and sample-efficient manner. Recent world models predominantly operate on sequences of discrete latent variables to model environment dynamics. However, this compression into a compact discrete representation may ignore visual details that are important for reinforcement learning. Concurrently, diffusion models have become a dominant approach for image generation, challenging well-established methods modeling discrete latents. Motivated by this paradigm shift, we introduce DIAMOND (DIffusion As a Model Of eNvironment Dreams), a reinforcement learning agent trained in a diffusion world model. We analyze the key design choices that are required to make diffusion suitable for world modeling, and demonstrate how improved visual details can lead to improved agent performance. DIAMOND achieves a mean human normalized score of 1.46 on the competitive Atari 100k benchmark; a new best for agents trained entirely within a world model. We further demonstrate that DIAMOND's diffusion world model can stand alone as an interactive neural game engine by training on static *Counter-Strike: Global Offensive* gameplay. To foster future research on diffusion for world modeling, we release our code, agents, videos and playable world models at https://diamond-wm.github.io.",
+      "venue": "NeurIPS 2024",
+      "authors": [
+        "Eloi Alonso",
+        "Adam Jelley",
+        "Vincent Micheli",
+        "Anssi Kanervisto",
+        "Amos Storkey",
+        "Tim Pearce",
+        "François Fleuret"
+      ],
+      "paper_id": "95428",
+      "pdf_url": "",
+      "forum_url": "https://neurips.cc/forum?id=2024/poster/95428"
+    },
+    {
+      "title": "FactorSim: Generative Simulation via Factorized Representation",
+      "abstract": "Generating simulations to train intelligent agents in game-playing and robotics from natural language input, user input, or task documentation remains an open-ended challenge. Existing approaches focus on parts of this challenge, such as generating reward functions or task hyperparameters. Unlike previous work, we introduce FACTORSIM that generates full simulations in code from language input that can be used to train agents. Exploiting the structural modularity specific to coded simulations, we propose to use a factored partially observable Markov decision process representation that allows us to reduce context dependence during each step of the generation. For evaluation, we introduce a generative simulation benchmark that assesses the generated simulation code’s accuracy and effectiveness in facilitating zero-shot transfers in reinforcement learning settings. We show that FACTORSIM outperforms existing methods in generating simulations regarding prompt alignment (i.e., accuracy), zero-shot transfer abilities, and human evaluation. We also demonstrate its effectiveness in generating robotic tasks.",
+      "venue": "NeurIPS 2024",
+      "authors": [
+        "Fan-Yun Sun",
+        "Harini S I",
+        "Angela Yi",
+        "Yihan Zhou",
+        "Alex Zook",
+        "Jonathan Tremblay",
+        "Logan Cross",
+        "Jiajun Wu",
+        "Nick Haber"
+      ],
+      "paper_id": "93169",
+      "pdf_url": "",
+      "forum_url": "https://neurips.cc/forum?id=2024/poster/93169"
+    },
+    {
+      "title": "iVideoGPT: Interactive VideoGPTs are Scalable World Models",
+      "abstract": "World models empower model-based agents to interactively explore, reason, and plan within imagined environments for real-world decision-making. However, the high demand for interactivity poses challenges in harnessing recent advancements in video generative models for developing world models at scale. This work introduces Interactive VideoGPT (iVideoGPT), a scalable autoregressive transformer framework that integrates multimodal signals—visual observations, actions, and rewards—into a sequence of tokens, facilitating an interactive experience of agents via next-token prediction. iVideoGPT features a novel compressive tokenization technique that efficiently discretizes high-dimensional visual observations. Leveraging its scalable architecture, we are able to pre-train iVideoGPT on millions of human and robotic manipulation trajectories, establishing a versatile foundation that is adaptable to serve as interactive world models for a wide range of downstream tasks. These include action-conditioned video prediction, visual planning, and model-based reinforcement learning, where iVideoGPT achieves competitive performance compared with state-of-the-art methods. Our work advances the development of interactive general world models, bridging the gap between generative video models and practical model-based reinforcement learning applications. Code and pre-trained models are available at https://thuml.github.io/iVideoGPT.",
+      "venue": "NeurIPS 2024",
+      "authors": [
+        "Jialong Wu",
+        "Shaofeng Yin",
+        "Ningya Feng",
+        "Xu He",
+        "Dong Li",
+        "Jianye Hao",
+        "Mingsheng Long"
+      ],
+      "paper_id": "96668",
+      "pdf_url": "",
+      "forum_url": "https://neurips.cc/forum?id=2024/poster/96668"
+    },
+    {
+      "title": "Learning World Models for Unconstrained Goal Navigation",
+      "abstract": "Learning world models offers a promising avenue for goal-conditioned reinforcement learning with sparse rewards. By allowing agents to plan actions or exploratory goals without direct interaction with the environment, world models enhance exploration efficiency. The quality of a world model hinges on the richness of data stored in the agent's replay buffer, with expectations of reasonable generalization across the state space surrounding recorded trajectories. However, challenges arise in generalizing learned world models to state transitions backward along recorded trajectories or between states across different trajectories, hindering their ability to accurately model real-world dynamics. To address these challenges, we introduce a novel goal-directed exploration algorithm, MUN (short for \"World Models for Unconstrained Goal Navigation\"). This algorithm is capable of modeling state transitions between arbitrary subgoal states in the replay buffer, thereby facilitating the learning of policies to navigate between any \"key\" states. Experimental results demonstrate that MUN strengthens the reliability of world models and significantly improves the policy's capacity to generalize across new goal settings.",
+      "venue": "NeurIPS 2024",
+      "authors": [
+        "Yuanlin Duan",
+        "Wensen Mao",
+        "He Zhu"
+      ],
+      "paper_id": "94541",
+      "pdf_url": "",
+      "forum_url": "https://neurips.cc/forum?id=2024/poster/94541"
+    },
+    {
+      "title": "Meta-DT: Offline Meta-RL as Conditional Sequence Modeling with World Model Disentanglement",
+      "abstract": "A longstanding goal of artificial general intelligence is highly capable generalists that can learn from diverse experiences and generalize to unseen tasks. The language and vision communities have seen remarkable progress toward this trend by scaling up transformer-based models trained on massive datasets, while reinforcement learning (RL) agents still suffer from poor generalization capacity under such paradigms. To tackle this challenge, we propose Meta Decision Transformer (Meta-DT), which leverages the sequential modeling ability of the transformer architecture and robust task representation learning via world model disentanglement to achieve efficient generalization in offline meta-RL. We pretrain a context-aware world model to learn a compact task representation, and inject it as a contextual condition to the causal transformer to guide task-oriented sequence generation. Then, we subtly utilize history trajectories generated by the meta-policy as a self-guided prompt to exploit the architectural inductive bias. We select the trajectory segment that yields the largest prediction error on the pretrained world model to construct the prompt, aiming to encode task-specific information complementary to the world model maximally. Notably, the proposed framework eliminates the requirement of any expert demonstration or domain knowledge at test time. Experimental results on MuJoCo and Meta-World benchmarks across various dataset types show that Meta-DT exhibits superior few and zero-shot generalization capacity compared to strong baselines while being more practical with fewer prerequisites. Our code is available at https://github.com/NJU-RL/Meta-DT.",
+      "venue": "NeurIPS 2024",
+      "authors": [
+        "Zhi Wang",
+        "Li Zhang",
+        "Wenhao Wu",
+        "Yuanheng Zhu",
+        "Dongbin Zhao",
+        "Chunlin Chen"
+      ],
+      "paper_id": "94988",
+      "pdf_url": "",
+      "forum_url": "https://neurips.cc/forum?id=2024/poster/94988"
+    },
+    {
+      "title": "Predicting Future Actions of Reinforcement Learning Agents",
+      "abstract": "As reinforcement learning agents become increasingly deployed in real-world scenarios, predicting future agent actions and events during deployment is important for facilitating better human-agent interaction and preventing catastrophic outcomes. This paper experimentally evaluates and compares the effectiveness of future action and event prediction for three types of RL agents: explicitly planning, implicitly planning, and non-planning. We employ two approaches: the inner state approach, which involves predicting based on the inner computations of the agents (e.g., plans or neuron activations), and a simulation-based approach, which involves unrolling the agent in a learned world model. Our results show that the plans of explicitly planning agents are significantly more informative for prediction than the neuron activations of the other types. Furthermore, using internal plans proves more robust to model quality compared to simulation-based approaches when predicting actions, while the results for event prediction are more mixed. These findings highlight the benefits of leveraging inner states and simulations to predict future agent actions and events, thereby improving interaction and safety in real-world deployments.",
+      "venue": "NeurIPS 2024",
+      "authors": [
+        "Stephen Chung",
+        "Scott Niekum",
+        "David Krueger"
+      ],
+      "paper_id": "95219",
+      "pdf_url": "",
+      "forum_url": "https://neurips.cc/forum?id=2024/poster/95219"
+    },
+    {
+      "title": "Simplifying Latent Dynamics with Softly State-Invariant World Models",
+      "abstract": "To solve control problems via model-based reasoning or planning, an agent needs to know how its actions affect the state of the world. The actions an agent has at its disposal often change the state of the environment in systematic ways. However, existing techniques for world modelling do not guarantee that the effect of actions are represented in such systematic ways. We introduce the Parsimonious Latent Space Model (PLSM), a world model that regularizes the latent dynamics to make the effect of the agent's actions more predictable. Our approach minimizes the mutual information between latent states and the change that an action produces in the agent's latent state, in turn minimizing the dependence the state has on the dynamics. This makes the world model softly state-invariant. We combine PLSM with different model classes used for i) future latent state prediction, ii) planning, and iii) model-free reinforcement learning. We find that our regularization improves accuracy, generalization, and performance in downstream tasks, highlighting the importance of systematic treatment of actions in world models.",
+      "venue": "NeurIPS 2024",
+      "authors": [
+        "Tankred Saanum",
+        "Peter Dayan",
+        "Eric Schulz"
+      ],
+      "paper_id": "96114",
+      "pdf_url": "",
+      "forum_url": "https://neurips.cc/forum?id=2024/poster/96114"
+    },
+    {
+      "title": "The Edge-of-Reach Problem in Offline Model-Based Reinforcement Learning",
+      "abstract": "Offline reinforcement learning (RL) aims to train agents from pre-collected datasets. However, this comes with the added challenge of estimating the value of behaviors not covered in the dataset. Model-based methods offer a potential solution by training an approximate dynamics model, which then allows collection of additional synthetic data via rollouts in this model. The prevailing theory treats this approach as online RL in an approximate dynamics model, and any remaining performance gap is therefore understood as being due to dynamics model errors. In this paper, we analyze this assumption and investigate how popular algorithms perform as the learned dynamics model is improved. In contrast to both intuition and theory, if the learned dynamics model is replaced by the true error-free dynamics, existing model-based methods completely fail. This reveals a key oversight: The theoretical foundations assume sampling of full horizon rollouts in the learned dynamics model; however, in practice, the number of model-rollout steps is aggressively reduced to prevent accumulating errors. We show that this truncation of rollouts results in a set of edge-of-reach states at which we are effectively \"bootstrapping from the void.\" This triggers pathological value overestimation and complete performance collapse. We term this the edge-of-reach problem. Based on this new insight, we fill important gaps in existing theory, and reveal how prior model-based methods are primarily addressing the edge-of-reach problem, rather than model-inaccuracy as claimed. Finally, we propose Reach-Aware Value Learning (RAVL), a simple and robust method that directly addresses the edge-of-reach problem and hence - unlike existing methods - does not fail as the dynamics model is improved. Since world models will inevitably improve, we believe this is a key step towards future-proofing offline RL.",
+      "venue": "NeurIPS 2024",
+      "authors": [
+        "Anya Sims",
+        "Cong Lu",
+        "Jakob Foerster",
+        "Yee Whye Teh"
+      ],
+      "paper_id": "96730",
+      "pdf_url": "",
+      "forum_url": "https://neurips.cc/forum?id=2024/poster/96730"
+    }
+  ]
+}

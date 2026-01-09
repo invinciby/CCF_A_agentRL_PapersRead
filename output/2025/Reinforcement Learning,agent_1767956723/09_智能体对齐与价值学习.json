@@ -1,0 +1,365 @@
+{
+  "name": "智能体对齐与价值学习",
+  "paper_count": 23,
+  "summary": "本类别聚焦于如何将智能体（特别是基于大语言模型的智能体）的行为与人类价值观、伦理原则或特定目标进行对齐。研究内容包括：设计透明、可解释的奖励函数来显式编码人类道德价值观（如道义论和功利主义），并通过强化学习对基础智能体模型进行微调以实现道德对齐；探索如何利用内在奖励使智能体“忘记”先前习得的自私策略，并评估所学道德策略在不同环境中的泛化能力。该方向旨在解决智能体日益强大且不透明所带来的对齐挑战，为当前主要依赖人类偏好数据（如RLHF/DPO）的主流对齐方法提供一种更透明、可能更具成本效益的替代方案。",
+  "papers": [
+    {
+      "title": "Moral Alignment for LLM Agents",
+      "abstract": "Decision-making agents based on pre-trained Large Language Models (LLMs) are increasingly being deployed across various domains of human activity. While their applications are currently rather specialized, several research efforts are underway to develop more generalist agents. As LLM-based systems become more agentic, their influence on human activity will grow and their transparency will decrease. Consequently, developing effective methods for aligning them to human values is vital. \n\nThe prevailing practice in alignment often relies on human preference data (e.g., in RLHF or DPO), in which values are implicit, opaque and are essentially deduced from relative preferences over different model outputs. In this work, instead of relying on human feedback, we introduce the design of reward functions that explicitly and transparently encode core human values for Reinforcement Learning-based fine-tuning of foundation agent models. Specifically, we use intrinsic rewards for the moral alignment of LLM agents. \n\nWe evaluate our approach using the traditional philosophical frameworks of Deontological Ethics and Utilitarianism, quantifying moral rewards for agents in terms of actions and consequences on the Iterated Prisoner's Dilemma (IPD) environment. We also show how moral fine-tuning can be deployed to enable an agent to unlearn a previously developed selfish strategy. Finally, we find that certain moral strategies learned on the IPD game generalize to several other matrix game environments. In summary, we demonstrate that fine-tuning with intrinsic rewards is a promising general solution for aligning LLM agents to human values, and it might represent a more transparent and cost-effective alternative to currently predominant alignment techniques.",
+      "venue": "ICLR 2025",
+      "authors": [
+        "Elizaveta Tennant",
+        "Stephen Hailes",
+        "Mirco Musolesi"
+      ],
+      "paper_id": "MeGDmZjUXy",
+      "pdf_url": "https://openreview.net/pdf/ee16dae74379d9ead7d7bc72bc9d06a27cc2b256.pdf",
+      "forum_url": "https://openreview.net/forum?id=MeGDmZjUXy"
+    },
+    {
+      "title": "Online-to-Offline RL for Agent Alignment",
+      "abstract": "Reinforcement learning (RL) has shown remarkable success in training agents to achieve high-performing policies, particularly in domains like Game AI where simulation environments enable efficient interactions. However, despite their success in maximizing these returns, such online-trained policies often fail to align with human preferences concerning actions, styles, and values. The challenge lies in efficiently adapting these online-trained policies to align with human preferences, given the scarcity and high cost of collecting human behavior data. In this work, we formalize the problem as *online-to-offline* RL and propose ALIGNment of Game AI to Preferences (ALIGN-GAP), an innovative approach for the alignment of well-trained game agents to human preferences. Our method features a carefully designed reward model that encodes human preferences from limited offline data and incorporates curriculum-based preference learning to align RL agents with targeted human preferences. Experiments across diverse environments and preference types demonstrate the performance of ALIGN-GAP, achieving effective alignment with human preferences.",
+      "venue": "ICLR 2025",
+      "authors": [
+        "Xu Liu",
+        "Haobo Fu",
+        "Stefano V Albrecht",
+        "QIANG FU",
+        "Shuai Li"
+      ],
+      "paper_id": "ruv3HdK6he",
+      "pdf_url": "https://openreview.net/pdf/d72e229b247a351871cb1f8ead57d453d1c8238f.pdf",
+      "forum_url": "https://openreview.net/forum?id=ruv3HdK6he"
+    },
+    {
+      "title": "REvolve: Reward Evolution with Large Language Models using Human Feedback",
+      "abstract": "Designing effective reward functions is crucial to training reinforcement learning (RL) algorithms. However, this design is non-trivial, even for domain experts, due to the subjective nature of certain tasks that are hard to quantify explicitly. In recent works, large language models (LLMs) have been used for reward generation from natural language task descriptions, leveraging their extensive instruction tuning and commonsense understanding of human behavior. In this work, we hypothesize that LLMs, guided by human feedback, can be used to formulate reward functions that reflect human implicit knowledge. We study this in three challenging settings -- autonomous driving, humanoid locomotion, and dexterous manipulation -- wherein notions of ``good\" behavior are tacit and hard to quantify. To this end, we introduce REvolve, a truly evolutionary framework that uses LLMs for reward design in RL. REvolve generates and refines reward functions by utilizing human feedback to guide the evolution process, effectively translating implicit human knowledge into explicit reward functions for training (deep) RL agents. Experimentally, we demonstrate that agents trained on REvolve-designed rewards outperform other state-of-the-art baselines.",
+      "venue": "ICLR 2025",
+      "authors": [
+        "RISHI HAZRA",
+        "Alkis Sygkounas",
+        "Andreas Persson",
+        "Amy Loutfi",
+        "Pedro Zuidberg Dos Martires"
+      ],
+      "paper_id": "cJPUpL8mOw",
+      "pdf_url": "https://openreview.net/pdf/8c41e3f4f7919e2026b0b1271c8f181cffdb4577.pdf",
+      "forum_url": "https://openreview.net/forum?id=cJPUpL8mOw"
+    },
+    {
+      "title": "Leveraging Sub-Optimal Data for Human-in-the-Loop Reinforcement Learning",
+      "abstract": "To create useful reinforcement learning (RL) agents, step zero is to design a suitable reward function that captures the nuances of the task. However, reward engineering can be a difficult and time-consuming process.  \nInstead, human-in-the-loop RL methods hold the promise of learning reward functions from human feedback. Despite recent successes, many of the human-in-the-loop RL methods still require numerous human interactions to learn successful reward functions.\nTo improve the feedback efficiency of human-in-the-loop RL methods (i.e., require less human interaction), this paper introduces Sub-optimal Data Pre-training, SDP, an approach that leverages reward-free, sub-optimal data to improve scalar- and preference-based RL algorithms. In SDP, we start by pseudo-labeling all low-quality data with the minimum environment reward. Through this process, we obtain reward labels \nto pre-train our reward model without requiring human labeling or preferences. \nThis pre-training phase provides the reward model a head start in learning, enabling it to recognize that low-quality transitions should be assigned low rewards. Through extensive experiments with both simulated and human teachers, we find that SDP can at least meet, but often significantly improve, state of the art human-in-the-loop RL performance across a variety of simulated robotic tasks.",
+      "venue": "ICLR 2025",
+      "authors": [
+        "Calarina Muslimani",
+        "Matthew E. Taylor"
+      ],
+      "paper_id": "DSyHRkpI7v",
+      "pdf_url": "https://openreview.net/pdf/8a655d64f2362c55d3d34a1c4545b4b2024f5eeb.pdf",
+      "forum_url": "https://openreview.net/forum?id=DSyHRkpI7v"
+    },
+    {
+      "title": "Does Reinforcement Learning Really Incentivize Reasoning Capacity in LLMs Beyond the Base Model?",
+      "abstract": "Reinforcement Learning with Verifiable Rewards (RLVR) has recently demonstrated notable success in enhancing the reasoning performance of large language models (LLMs), particularly in mathematics and programming tasks. \nIt is widely believed that, similar to how traditional RL helps agents to explore and learn new strategies, RLVR enables LLMs to continuously self-improve, thus acquiring novel reasoning abilities that exceed the capacity of the corresponding base models. \nIn this study, we take a critical look at \\textit{the current state of RLVR} by systematically probing the reasoning capability boundaries of RLVR-trained LLMs across diverse model families, RL algorithms, and math/coding/visual reasoning benchmarks, using pass@\\textit{k} at large \\textit{k} values as the evaluation metric.\nWhile RLVR improves sampling efficiency towards the correct path, we surprisingly find that current training does \\emph{not} elicit fundamentally new reasoning patterns.\nWe observe that while RLVR-trained models outperform their base models at smaller values of $k$ (\\eg, $k$=1), base models achieve higher pass@$k$ score when $k$ is large.\nMoreover, we observe that the reasoning capability boundary of LLMs often narrows as RLVR training progresses.\nFurther coverage and perplexity analysis shows that the reasoning paths generated by RLVR models are already included in the base models' sampling distribution, suggesting that their reasoning abilities originate from and are \\textit{bounded} by the base model. \nFrom this perspective, treating the base model as an upper bound, our quantitative analysis shows that six popular RLVR algorithms perform similarly and remain far from optimal in fully leveraging the potential of the base model.\nIn contrast, we find that distillation can introduce new reasoning patterns from the teacher and genuinely expand the model’s reasoning capabilities.\nTaken together, our findings suggest that current RLVR methods have not fully realized the potential of RL to elicit genuinely novel reasoning abilities in LLMs. This underscores the need for improved RL paradigms—such as continual scaling and multi-turn agent-environment interaction—to unlock this potential.",
+      "venue": "NeurIPS 2025",
+      "authors": [
+        "Yang Yue",
+        "Zhiqi Chen",
+        "Rui Lu",
+        "Andrew Zhao",
+        "Zhaokai Wang",
+        "Yang Yue",
+        "Shiji Song",
+        "Gao Huang"
+      ],
+      "paper_id": "4OsgYD7em5",
+      "pdf_url": "https://openreview.net/pdf/c3957c2dc397dd6f7bf1e3da21cebaeca53844af.pdf",
+      "forum_url": "https://openreview.net/forum?id=4OsgYD7em5"
+    },
+    {
+      "title": "ARIA: Training Language Agents with Intention-driven Reward Aggregation",
+      "abstract": "Large language models (LLMs) have enabled agents to perform complex reasoning and decision-making through free-form language interactions. However, in open-ended language action environments (e.g., negotiation or question-asking games), the action space can be formulated as a joint distribution over tokens, resulting in an extremely large and combinatorial action space. Sampling actions in such a space can lead to extreme reward sparsity, which brings large reward variance, hindering effective reinforcement learning (RL). To address this, we propose **ARIA**, a method that **A**ggregates **R**ewards in **I**ntention space to enable efficient and effective language **A**gents training. ARIA aims to project natural language actions from the high-dimensional joint token distribution space into a low-dimensional intention space, where semantically similar actions are clustered and assigned shared rewards. This intention-aware reward aggregation reduces reward variance by densifying reward signals, fostering efficient and effective policy optimization. Extensive experiments demonstrate that ARIA not only significantly reduces gradient variance, but also delivers substantial performance gains of average 9.95% across four downstream tasks (e.g., negotiation and text-based games), consistently outperforming strong offline and online RL baselines.",
+      "venue": "NeurIPS 2025",
+      "authors": [
+        "Ruihan Yang",
+        "Yikai Zhang",
+        "Aili Chen",
+        "Xintao Wang",
+        "Jiangjie Chen",
+        "Siyu Yuan",
+        "Deqing Yang",
+        "Yanghua Xiao"
+      ],
+      "paper_id": "eumRwpgdMU",
+      "pdf_url": "https://openreview.net/pdf/61e6b62ea781f638b7b6cae2c3ea12b7e42ed96d.pdf",
+      "forum_url": "https://openreview.net/forum?id=eumRwpgdMU"
+    },
+    {
+      "title": "Consistently Simulating Human Personas with Multi-Turn Reinforcement Learning",
+      "abstract": "Large Language Models (LLMs) are increasingly used to simulate human users in interactive settings such as therapy, education, and social role-play. While these simulations enable scalable training and evaluation of AI agents, off-the-shelf LLMs often drift from their assigned personas, contradict earlier statements, or abandon role-appropriate behavior. We introduce a unified framework for evaluating and improving persona consistency in LLM-generated dialogue. We define three automatic metrics—prompt-to-line consistency, line-to-line consistency, and Q\\&A consistency—that capture different types of persona drift and validate each against human annotations. Using these metrics as reward signals, we apply multi-turn reinforcement learning to fine-tune LLMs for three user roles: a patient, a student, and a social chat partner. Our method reduces inconsistency by over 55%, resulting in more coherent, faithful, and trustworthy simulated users.",
+      "venue": "NeurIPS 2025",
+      "authors": [
+        "Marwa Abdulhai",
+        "Ryan Cheng",
+        "Donovan Clay",
+        "Tim Althoff",
+        "Sergey Levine",
+        "Natasha Jaques"
+      ],
+      "paper_id": "A0T3piHiis",
+      "pdf_url": "https://openreview.net/pdf/109c600393cc962e64028e8425eca62778f40ee9.pdf",
+      "forum_url": "https://openreview.net/forum?id=A0T3piHiis"
+    },
+    {
+      "title": "Learning Preferences without Interaction for Cooperative AI: A Hybrid Offline-Online Approach",
+      "abstract": "Reinforcement learning (RL) for collaborative agents capable of cooperating with humans to accomplish tasks has long been a central goal in the RL community. While prior approaches have made progress in adapting collaborative agents to diverse human partners, they often focus solely on optimizing task performance and overlook human preferences—despite the fact that such preferences often diverge from the reward-maximization objective of the environment.\nAddressing this discrepancy poses significant challenges: humans typically provide only a small amount of offline, preference-related feedback and are unable to engage in online interactions, resulting in a distributional mismatch between the agent’s online learning process and the offline human data. To tackle this, we formulate the problem as an online&offline reinforcement learning problem that jointly integrates online generalization and offline preference learning, entirely under an offline training regime.\nWe propose a simple yet effective training framework built upon existing RL algorithms that alternates between offline preference learning and online generalization recovery, ensuring the stability and alignment of both learning objectives.\nWe evaluate our approach on a benchmark built upon the Overcooked environment—a standard environment  for human-agent collaboration—and demonstrate remarkable performance across diverse preference styles and cooperative scenarios.",
+      "venue": "NeurIPS 2025",
+      "authors": [
+        "Haitong Ma",
+        "Haoran Yu",
+        "Haobo Fu",
+        "Shuai Li"
+      ],
+      "paper_id": "QVheAhJefR",
+      "pdf_url": "https://openreview.net/pdf/b88c2a890dfabc56df9f77ac8c47edda73daec91.pdf",
+      "forum_url": "https://openreview.net/forum?id=QVheAhJefR"
+    },
+    {
+      "title": "Process vs. Outcome Reward: Which is Better for Agentic RAG Reinforcement Learning",
+      "abstract": "Retrieval-augmented generation (RAG) enhances large language models (LLMs) by integrating external knowledge, yet traditional RAG systems struggle with static workflows and limited adaptability for complex, multistep reasoning tasks. Agentic RAG systems, such as DeepResearch, address these issues through dynamic retrieval, iterative context refinement, and adaptive workflows. However, recent methods like Search-R1, which rely on outcome-based reinforcement learning, face challenges such as low exploration efficiency, gradient conflict, and sparse reward signals. To tackle these limitations, we introduce ReasonRAG, a novel method that leverages RAG-ProGUIDE—a high-quality dataset providing fine-grained, process-level rewards for query generation, evidence extraction, and answer generation. By employing process-supervised reinforcement learning, ReasonRAG enhances LLMs’ autonomous capabilities in search, query generation, evidence extraction, and answer synthesis. Experimental results show that ReasonRAG, utilizing RAG-ProGUIDE, outperforms existing approaches like Search-R1 and traditional RAG systems, achieving superior performance on five benchmark datasets with only 5k training instances—significantly fewer than the 90k required by Search-R1. Our code is available at https://github.com/Applied-Machine-Learning-Lab/ReasonRAG.",
+      "venue": "NeurIPS 2025",
+      "authors": [
+        "wenlin zhang",
+        "Xiangyang Li",
+        "Kuicai Dong",
+        "Yichao Wang",
+        "Pengyue Jia",
+        "Xiaopeng Li",
+        "Yingyi Zhang",
+        "Derong Xu",
+        "Zhaocheng Du",
+        "Huifeng Guo",
+        "Ruiming Tang",
+        "Xiangyu Zhao"
+      ],
+      "paper_id": "h3LlJ6Bh4S",
+      "pdf_url": "https://openreview.net/pdf/fa0f43fe35ea1830e4452936a1f622c7828cf9b2.pdf",
+      "forum_url": "https://openreview.net/forum?id=h3LlJ6Bh4S"
+    },
+    {
+      "title": "Offline RL by Reward-Weighted Fine-Tuning for Conversation Optimization",
+      "abstract": "Offline reinforcement learning (RL) is a variant of RL where the policy is learned from a previously collected dataset of trajectories and rewards. In our work, we propose a practical approach to offline RL with large language models (LLMs). We recast the problem as reward-weighted fine-tuning, which can be solved using similar techniques to supervised fine-tuning (SFT). To showcase the value of our approach, we apply it to learning short-horizon question-answering policies of a fixed length, where the agent reasons about potential answers or asks clarifying questions. Our work stands in a stark contrast to state-of-the-art methods in this domain, based on SFT and direct preference optimization, which have additional hyper-parameters and do not directly optimize for rewards. We compare to them empirically, and report major gains in both optimized rewards and language quality.",
+      "venue": "NeurIPS 2025",
+      "authors": [
+        "Subhojyoti Mukherjee",
+        "Viet Dac Lai",
+        "Raghavendra Addanki",
+        "Ryan A. Rossi",
+        "Seunghyun Yoon",
+        "Trung Bui",
+        "Anup Rao",
+        "Jayakumar Subramanian",
+        "Branislav Kveton"
+      ],
+      "paper_id": "WAFD6VYIEa",
+      "pdf_url": "https://openreview.net/pdf/2f05649cb891fae1c1680cd4d685676aa8a71eda.pdf",
+      "forum_url": "https://openreview.net/forum?id=WAFD6VYIEa"
+    },
+    {
+      "title": "Eliciting Reasoning in Language Models with Cognitive Tools",
+      "abstract": "The recent advent of reasoning models like OpenAI's o1 was met with excited speculation by the AI community about the mechanisms underlying these capabilities in closed models, followed by a rush of replication efforts, particularly from the open source community.\nThese speculations were largely settled by the demonstration from DeepSeek-R1 that chain-of-thought and reinforcement learning (RL) can effectively replicate reasoning on top of base LLMs.\nHowever, it remains valuable to explore alternative methods for theoretically eliciting reasoning that could help elucidate the underlying mechanisms, as well as providing additional methods that may offer complementary benefits.\n\nHere, we build on the long-standing literature in cognitive psychology and cognitive architectures, which postulates that reasoning arises from the orchestrated, sequential execution of a set of modular, predetermined cognitive operations.\nCrucially, we implement this key idea within a modern agentic tool-calling framework.\nIn particular, we endow an LLM with a small set of \"cognitive tools\" encapsulating specific reasoning operations, each executed by the LLM itself.\nSurprisingly, this simple strategy results in considerable gains in performance on standard mathematical reasoning benchmarks compared to base LLMs, for both closed and open-weight models.\nFor instance, providing our \"cognitive tools\" to GPT-4.1 increases its pass@1 performance on AIME2024 from 32\\% to 53\\%, even surpassing the performance of o1-preview.\n\nIn addition to its practical implications, this demonstration contributes to the debate regarding the role of post-training methods in eliciting reasoning in LLMs versus the role of inherent capabilities acquired during pre-training, and whether post-training merely uncovers these latent abilities.",
+      "venue": "NeurIPS 2025",
+      "authors": [
+        "Brown Ebouky",
+        "Andrea Bartezzaghi",
+        "Mattia Rigotti"
+      ],
+      "paper_id": "6H4tDTHalg",
+      "pdf_url": "https://openreview.net/pdf/ea576c6461243d27a8102c9dfa554db950d66757.pdf",
+      "forum_url": "https://openreview.net/forum?id=6H4tDTHalg"
+    },
+    {
+      "title": "Contextual Integrity in LLMs via Reasoning and Reinforcement Learning",
+      "abstract": "As the era of autonomous agents making decisions on behalf of users unfolds, ensuring contextual integrity (CI) -- what is the appropriate information to share while carrying out a certain task -- becomes a central question to the field. \nWe posit that CI demands a form of reasoning where the agent needs to reason about the context in which it is operating.\nTo test this, we first prompt LLMs to reason explicitly about CI when deciding what information to disclose. \nWe then extend this approach by developing a reinforcement learning (RL) framework that further instills in models the reasoning necessary to achieve CI.\nUsing a synthetic, automatically created, dataset of only $\\sim700$ examples but with diverse contexts and information disclosure norms, we show that our method substantially reduces inappropriate information disclosure while maintaining task performance across multiple model sizes and families. \nImportantly, improvements transfer from this synthetic dataset to established CI benchmarks such as PrivacyLens that has human annotations and evaluates privacy leakage of AI assistants in actions and tool calls.",
+      "venue": "NeurIPS 2025",
+      "authors": [
+        "Guangchen Lan",
+        "Huseyin A Inan",
+        "Sahar Abdelnabi",
+        "Janardhan Kulkarni",
+        "Lukas Wutschitz",
+        "Reza Shokri",
+        "Christopher Brinton",
+        "Robert Sim"
+      ],
+      "paper_id": "Xm57IXqU0n",
+      "pdf_url": "https://openreview.net/pdf/b39de1061902f7e2d23191a93a6d94f945bff28e.pdf",
+      "forum_url": "https://openreview.net/forum?id=Xm57IXqU0n"
+    },
+    {
+      "title": "Enhancing Personalized Multi-Turn Dialogue with Curiosity Reward",
+      "abstract": "Effective conversational agents must personalize their interactions to adapt to user preferences, personalities, and attributes across diverse domains like education and healthcare. Current methods like Reinforcement Learning from Human Feedback (RLHF), often prioritize helpfulness and safety but fall short in fostering truly empathetic, adaptive, and personalized dialogues. Existing personalization approaches typically rely on extensive user history, limiting their effectiveness for new or context-limited users. To address these limitations, we propose leveraging a user model to incorporate a curiosity-based intrinsic reward into multi-turn RLHF. This novel reward mechanism encourages the agent to actively infer user traits by optimizing conversations to improve its user model's accuracy. Consequently, the agent delivers more personalized interactions by learning more about the user. We demonstrate our method's effectiveness in two distinct domains: significantly improving personalization performance in a conversational recommendation task, and personalizing conversations for different learning styles in an educational setting with improved generalization capabilities compared to traditional multi-turn RLHF, all while maintaining conversation quality. Our method offers a promising solution for creating more personalized, adaptive, and engaging conversational agents.",
+      "venue": "NeurIPS 2025",
+      "authors": [
+        "Yanming Wan",
+        "Jiaxing Wu",
+        "Marwa Abdulhai",
+        "Lior Shani",
+        "Natasha Jaques"
+      ],
+      "paper_id": "tVRtDIwDmQ",
+      "pdf_url": "https://openreview.net/pdf/c9cd1dd6b30dd66e9e0c2d8cb230ad3af8841e5c.pdf",
+      "forum_url": "https://openreview.net/forum?id=tVRtDIwDmQ"
+    },
+    {
+      "title": "MURKA: Multi-Reward Reinforcement Learning with Knowledge Alignment for Optimization Tasks",
+      "abstract": "Optimization plays a central role in Operations Research (OR) and numerous industrial applications, yet automating the end-to-end process of translating natural language descriptions into executable optimization programs remains a formidable challenge. While recent efforts have applied Large Language Models (LLMs) to this task, existing approaches are hindered by high inference costs, limited robustness across domains, and weak verification mechanisms. In this work, we propose MURKA, a reinforcement learning and knowledge distillation-based framework that enhances LLM-driven optimization modeling via collaborative agent alignment. MURKA orchestrates three specialized agents---Extractor, Solver, and Checker---to achieve accurate problem understanding, robust formulation, and verifiable execution. The Extractor is trained using group relative policy optimization with a composite reward function that incorporates semantic correctness and execution fidelity. The Solver benefits from knowledge distillation from a powerful teacher model, yielding structurally valid and executable formulations in AMPL. The Checker iteratively verifies solution correctness via solver feedback. \nWe validate MURKA's generalizability through extensive experiments across diverse OR benchmarks, demonstrating its robustness and scalability.\nExperimental results on eight diverse OR benchmarks, including NLP4LP, ComplexOR, and NL4Opt, demonstrate that MURKA, built on the LLaMa3-8B backbone, achieves a 5.9\\% absolute improvement in solution accuracy and a 5.1\\% increase in execution success rate compared to leading baselines. These results establish MURKA as an effective and scalable paradigm for LLM-driven optimization, with strong potential for deployment in real-world OR applications.",
+      "venue": "NeurIPS 2025",
+      "authors": [
+        "Wantong Xie",
+        "Yi-Xiang Hu",
+        "Jieyang Xu",
+        "Feng Wu",
+        "Xiangyang Li"
+      ],
+      "paper_id": "f4pvPNf9ox",
+      "pdf_url": "https://openreview.net/pdf/dbf84e2669183c96fe40caac76d12d8331acc0e2.pdf",
+      "forum_url": "https://openreview.net/forum?id=f4pvPNf9ox"
+    },
+    {
+      "title": "STAIR: Addressing Stage Misalignment through Temporal-Aligned Preference Reinforcement Learning",
+      "abstract": "Preference-based reinforcement learning (PbRL) bypasses complex reward engineering by learning rewards directly from human preferences, enabling better alignment with human intentions. However, its effectiveness in multi-stage tasks, where agents sequentially perform sub-tasks (e.g., navigation, grasping), is limited by **stage misalignment**: Comparing segments from mismatched stages, such as movement versus manipulation, results in uninformative feedback, thus hindering policy learning. In this paper, we validate the stage misalignment issue through theoretical analysis and empirical experiments. To address this issue, we propose **ST**age-**A**l**I**gned **R**eward learning (STAIR), which first learns a stage approximation based on temporal distance, then prioritizes comparisons within the same stage. Temporal distance is learned via contrastive learning, which groups temporally close states into coherent stages, without predefined task knowledge, and adapts dynamically to policy changes. Extensive experiments demonstrate STAIR's superiority in multi-stage tasks and competitive performance in single-stage tasks. Furthermore, human studies show that stages approximated by STAIR are consistent with human cognition, confirming its effectiveness in mitigating stage misalignment.",
+      "venue": "NeurIPS 2025",
+      "authors": [
+        "Yao Luan",
+        "Ni Mu",
+        "Yiqin Yang",
+        "Bo XU",
+        "Qing-Shan Jia"
+      ],
+      "paper_id": "WI8rrwYJdT",
+      "pdf_url": "https://openreview.net/pdf/e28b14654db61388ad72e534181a96bbd26b83e6.pdf",
+      "forum_url": "https://openreview.net/forum?id=WI8rrwYJdT"
+    },
+    {
+      "title": "AdvAgent: Controllable Blackbox Red-teaming on Web Agents",
+      "abstract": "Foundation model-based agents are increasingly used to automate complex tasks, enhancing efficiency and productivity. However, their access to sensitive resources and autonomous decision-making also introduce significant security risks, where successful attacks could lead to severe consequences. To systematically uncover these vulnerabilities, we propose AdvAgent, a black-box red-teaming framework for attacking web agents. Unlike existing approaches, AdvAgent employs a reinforcement learning-based pipeline to train an adversarial prompter model that optimizes adversarial prompts using feedback from the black-box agent. With careful attack design, these prompts effectively exploit agent weaknesses while maintaining stealthiness and controllability. Extensive evaluations demonstrate that AdvAgent achieves high success rates against state-of-the-art GPT-4-based web agents across diverse web tasks. Furthermore, we find that existing prompt-based defenses provide only limited protection, leaving agents vulnerable to our framework. These findings highlight critical vulnerabilities in current web agents and emphasize the urgent need for stronger defense mechanisms. We release code at https://ai-secure.github.io/AdvAgent/.",
+      "venue": "ICML 2025",
+      "authors": [
+        "Chejian Xu",
+        "Mintong Kang",
+        "Jiawei Zhang",
+        "Zeyi Liao",
+        "Lingbo Mo",
+        "Mengqi Yuan",
+        "Huan Sun",
+        "Bo Li"
+      ],
+      "paper_id": "44710",
+      "pdf_url": "",
+      "forum_url": "https://ICML.cc/forum?id=2025/poster/44710"
+    },
+    {
+      "title": "Deep Reinforcement Learning from Hierarchical Preference Design",
+      "abstract": "Reward design is a fundamental, yet challenging aspect of reinforcement learning (RL). Researchers typically utilize feedback signals from the environment to handcraft a reward function, but this process is not always effective due to the varying scale and intricate dependencies of the feedback signals. This paper shows by exploiting certain structures, one can ease the reward design process. Specifically, we propose a hierarchical reward design framework -- HERON for scenarios: (I) The feedback signals naturally present hierarchy; (II) The reward is sparse, but with less important surrogate feedback to help policy learning. Both scenarios allow us to design a hierarchical decision tree induced by the importance ranking of the feedback signals to compare RL trajectories. With such preference data, we can then train a reward model for policy learning. We apply HERON to several RL applications, and we find that our framework can not only train high performing agents on a variety of difficult tasks, but also provide additional benefits such as improved sample efficiency and robustness.",
+      "venue": "ICML 2025",
+      "authors": [
+        "Alexander Bukharin",
+        "Yixiao Li",
+        "Pengcheng He",
+        "Tuo Zhao"
+      ],
+      "paper_id": "43978",
+      "pdf_url": "",
+      "forum_url": "https://ICML.cc/forum?id=2025/poster/43978"
+    },
+    {
+      "title": "Eliciting Language Model Behaviors with Investigator Agents",
+      "abstract": "Language models exhibit complex, diverse behaviors when prompted with free-form text, making it hard to characterize the space of possible outputs. We study the problem of behavioral elicitation, where the goal is to search for prompts that induce specific target behaviors (e.g., hallucinations, harmful responses) from a target language model. To navigate the exponentially large space of possible prompts, we train amortized investigator models to emulate the posterior distribution over the prompts, conditioned on the target behavior. Specifically, we first fit a reverse model and then use reinforcement learning to optimize likelihood of generating the target behavior. To improve the diversity of the prompt distribution, we further propose a novel iterative training objective based on the Frank-Wolfe algorithm that encourages each iteration to discover different sets of prompts not captured by previous iterations. Our investigator models produce prompts that exhibit a variety of effective and human-interpretable strategies for behavior elicitation, obtaining a 100% attack success rate on AdvBench (Harmful Behaviors) and an 85% hallucination rate.",
+      "venue": "ICML 2025",
+      "authors": [
+        "Xiang Li",
+        "Neil Chowdhury",
+        "Daniel Johnson",
+        "Tatsunori Hashimoto",
+        "Percy Liang",
+        "Sarah Schwettmann",
+        "Jacob Steinhardt"
+      ],
+      "paper_id": "46145",
+      "pdf_url": "",
+      "forum_url": "https://ICML.cc/forum?id=2025/poster/46145"
+    },
+    {
+      "title": "Enhancing Rating-Based Reinforcement Learning to Effectively Leverage Feedback from Large Vision-Language Models",
+      "abstract": "Designing effective reward functions remains a fundamental challenge in reinforcement learning (RL), as it often requires extensive human effort and domain expertise. While RL from human feedback has been successful in aligning agents with human intent, acquiring high-quality feedback is costly and labor-intensive, limiting its scalability. Recent advancements in foundation models present a promising alternative--leveraging AI-generated feedback to reduce reliance on human supervision in reward learning. Building on this paradigm, we introduce ERL-VLM, an enhanced rating-based RL method that effectively learns reward functions from AI feedback. Unlike prior methods that rely on pairwise comparisons, ERL-VLM queries large vision-language models (VLMs) for absolute ratings of individual trajectories, enabling more expressive feedback and improved sample efficiency. Additionally, we propose key enhancements to rating-based RL, addressing instability issues caused by data imbalance and noisy labels. Through extensive experiments across both low-level and high-level control tasks, we demonstrate that ERL-VLM significantly outperforms existing VLM-based reward generation methods. Our results demonstrate the potential of AI feedback for scaling RL with minimal human intervention, paving the way for more autonomous and efficient reward learning.",
+      "venue": "ICML 2025",
+      "authors": [
+        "Minh-Tung Luu",
+        "Younghwan Lee",
+        "Donghoon Lee",
+        "Sunho Kim",
+        "MinJun Kim",
+        "Chang Yoo"
+      ],
+      "paper_id": "44273",
+      "pdf_url": "",
+      "forum_url": "https://ICML.cc/forum?id=2025/poster/44273"
+    },
+    {
+      "title": "Learning Utilities from Demonstrations in Markov Decision Processes",
+      "abstract": "Although it is well-known that humans commonly engage in *risk-sensitive* behaviors in the presence of stochasticity, most Inverse Reinforcement Learning (IRL) models assume a *risk-neutral* agent. As such, beyond $(i)$ introducing model misspecification, $(ii)$ they do not permit direct inference of the risk attitude of the observed agent, which can be useful in many applications. In this paper, we propose a novel model of behavior to cope with these issues. By allowing for risk sensitivity, our model alleviates $(i)$, and by explicitly representing risk attitudes through (learnable) *utility* functions, it solves $(ii)$. Then, we characterize the partial identifiability of an agent’s utility under the new model and note that demonstrations from multiple environments mitigate the problem. We devise two provably-efficient algorithms for learning utilities in a finite-data regime, and we conclude with some proof-of-concept experiments to validate *both* our model and our algorithms.",
+      "venue": "ICML 2025",
+      "authors": [
+        "Filippo Lazzati",
+        "Alberto Maria Metelli"
+      ],
+      "paper_id": "46034",
+      "pdf_url": "",
+      "forum_url": "https://ICML.cc/forum?id=2025/poster/46034"
+    },
+    {
+      "title": "Multi-objective Linear Reinforcement Learning with Lexicographic Rewards",
+      "abstract": "Reinforcement Learning (RL) with linear transition kernels and reward functions has recently attracted growing attention due to its computational efficiency and theoretical advancements. However, prior theoretical research in RL has primarily focused on single-objective problems, resulting in limited theoretical development for multi-objective reinforcement learning (MORL). To bridge this gap, we examine MORL under lexicographic reward structures, where rewards comprise $m$ hierarchically ordered objectives. In this framework, the agent the agent maximizes objectives sequentially, prioritizing the highest-priority objective before considering subsequent ones. We introduce the first MORL algorithm with provable regret guarantees. For any objective $i \\in \\\\{1, 2, \\ldots, m\\\\}$, our algorithm achieves a regret bound of $\\widetilde{O}(\\Lambda^i(\\lambda) \\cdot \\sqrt{d^2H^4 K})$, where $\\Lambda^i(\\lambda) = 1 + \\lambda + \\cdots + \\lambda^{i-1}$, $\\lambda$ quantifies the trade-off between conflicting objectives, $d$ is the feature dimension, $H$ is the episode length, and $K$ is the number of episodes. Furthermore, our algorithm can be applied in the misspecified setting, where the regret bound for the $i$-th objective becomes $\\widetilde{O}(\\Lambda^i(\\lambda)\\cdot(\\sqrt{d^2H^4K}+\\epsilon dH^2K))$, with $\\epsilon$ denoting the degree of misspecification.",
+      "venue": "ICML 2025",
+      "authors": [
+        "Bo Xue",
+        "Dake Bu",
+        "Ji Cheng",
+        "Yuanyu Wan",
+        "Qingfu Zhang"
+      ],
+      "paper_id": "45277",
+      "pdf_url": "",
+      "forum_url": "https://ICML.cc/forum?id=2025/poster/45277"
+    },
+    {
+      "title": "Preference Controllable Reinforcement Learning with Advanced Multi-Objective Optimization",
+      "abstract": "Practical reinforcement learning (RL) usually requires agents to be optimized for multiple potentially conflicting criteria, e.g. speed vs. safety. Although Multi-Objective RL (MORL) algorithms have been studied in previous works, their trained agents often cover limited Pareto optimal solutions and they lack precise controllability of the delicate trade-off among multiple objectives. Hence, the resulting agent is not versatile in aligning with customized requests from different users. To bridge the gap, we develop the ``Preference controllable (PC) RL'' framework, which trains a preference-conditioned meta-policy that takes user preference as input controlling the generated trajectories within the preference region on the Pareto frontier. The PCRL framework is compatible with advanced Multi-Objective Optimization~(MOO) algorithms that are rarely seen in previous MORL approaches. We also proposed a novel preference-regularized MOO algorithm specifically for PCRL. We provide a comprehensive theoretical analysis to justify its convergence and preference controllability.We evaluate PCRL with different MOO algorithms against state-of-the-art MORL baselines in various challenging environments with up to six objectives. In these experiments, our proposed method exhibits significantly better controllability than existing approaches and can generate Pareto solutions with better diversity and utilities.",
+      "venue": "ICML 2025",
+      "authors": [
+        "Yucheng Yang",
+        "Tianyi Zhou",
+        "Mykola Pechenizkiy",
+        "Meng Fang"
+      ],
+      "paper_id": "46501",
+      "pdf_url": "",
+      "forum_url": "https://ICML.cc/forum?id=2025/poster/46501"
+    },
+    {
+      "title": "Robust Reward Alignment via Hypothesis Space Batch Cutting",
+      "abstract": "Reward design in reinforcement learning and optimal control is challenging. Preference-based alignment addresses this by enabling agents to learn rewards from ranked trajectory pairs provided by humans. However, existing methods often struggle from poor robustness to unknown false human preferences. In this work, we propose a robust and efficient reward alignment method based on a novel and geometrically interpretable perspective: hypothesis space batched cutting. Our method iteratively refines the reward hypothesis space through “cuts” based on batches of human preferences. Within each batch, human preferences, queried based on disagreement, are grouped using a voting function to determine the appropriate cut, ensuring a bounded human query complexity. To handle unknown erroneous preferences, we introduce a conservative cutting method within each batch, preventing erroneous human preferences from making overly aggressive cuts to the hypothesis space. This guarantees provable robustness against false preferences, while eliminating the need to explicitly identify them. We evaluate our method in a model predictive control setting across diverse tasks. The results demonstrate that our framework achieves comparable or superior performance to state-of-the-art methods in error-free settings while significantly outperforming existing methods when handling a high percentage of erroneous human preferences.",
+      "venue": "ICML 2025",
+      "authors": [
+        "Zhixian Xie",
+        "Haode Zhang",
+        "Yizhe Feng",
+        "Wanxin Jin"
+      ],
+      "paper_id": "44015",
+      "pdf_url": "",
+      "forum_url": "https://ICML.cc/forum?id=2025/poster/44015"
+    }
+  ]
+}
