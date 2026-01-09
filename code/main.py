@@ -559,7 +559,26 @@ HTML_TEMPLATE = """
             margin-bottom: 12px;
             max-height: 100px;
             overflow: hidden;
-            text-overflow: ellipsis;
+            transition: max-height 0.3s ease;
+        }
+
+        .paper-abstract.expanded {
+            max-height: none;
+            overflow: visible;
+        }
+
+        .paper-abstract-toggle {
+            color: #667eea;
+            cursor: pointer;
+            font-size: 0.85em;
+            font-weight: 500;
+            margin-top: 8px;
+            display: inline-block;
+            transition: color 0.2s;
+        }
+
+        .paper-abstract-toggle:hover {
+            color: #5568d3;
         }
 
         .paper-links {
@@ -865,17 +884,20 @@ HTML_TEMPLATE = """
             const currentPapers = catData.papers.slice(startIdx, endIdx);
 
             const papersHtml = currentPapers
-                .map(paper => `
-                    <div class="paper-card">
+                .map((paper, idx) => {
+                    const abstractId = `abstract_${catName}_${idx}`;
+                    const html = `<div class="paper-card">
                         <div class="paper-title">${paper.title}</div>
                         <div class="paper-venue">${paper.venue}</div>
-                        <div class="paper-abstract">${paper.abstract}</div>
+                        <div class="paper-abstract" id="${abstractId}">${paper.abstract}</div>
+                        <div class="paper-abstract-toggle" onclick="toggleAbstract('${abstractId}')">展开 ▼</div>
                         <div class="paper-links">
                             ${paper.forum_url ? `<a href="${paper.forum_url}" target="_blank" class="paper-link">📄 论文</a>` : ''}
                             ${paper.pdf_url ? `<a href="${paper.pdf_url}" target="_blank" class="paper-link">PDF</a>` : ''}
                         </div>
-                    </div>
-                `)
+                    </div>`;
+                    return html;
+                })
                 .join('');
 
             // 生成分页按钮
@@ -1012,17 +1034,19 @@ HTML_TEMPLATE = """
                             </div>
                             <div class="category-content">
                                 <div class="papers-list">
-                                    ${currentPapers.map(paper => `
-                                        <div class="paper-card">
+                                    ${currentPapers.map((paper, idx) => {
+                                        const abstractId = `search_${catName}_${idx}`;
+                                        return `<div class="paper-card">
                                             <div class="paper-title">${paper.title}</div>
                                             <div class="paper-venue">${paper.venue}</div>
-                                            <div class="paper-abstract">${paper.abstract}</div>
+                                            <div class="paper-abstract" id="${abstractId}">${paper.abstract}</div>
+                                            <div class="paper-abstract-toggle" onclick="toggleAbstract('${abstractId}')">展开 ▼</div>
                                             <div class="paper-links">
                                                 ${paper.forum_url ? `<a href="${paper.forum_url}" target="_blank" class="paper-link">📄 论文</a>` : ''}
                                                 ${paper.pdf_url ? `<a href="${paper.pdf_url}" target="_blank" class="paper-link">PDF</a>` : ''}
                                             </div>
-                                        </div>
-                                    `).join('')}
+                                        </div>`;
+                                    }).join('')}
                                 </div>
                                 ${paginationHtml}
                             </div>
@@ -1063,6 +1087,19 @@ HTML_TEMPLATE = """
             searchMode = false;
             currentPage = {}; // 重置页码
             loadCategories();
+        }
+
+        function toggleAbstract(abstractId) {
+            const abstractEl = document.getElementById(abstractId);
+            const toggleBtn = abstractEl.nextElementSibling;
+
+            if (abstractEl.classList.contains('expanded')) {
+                abstractEl.classList.remove('expanded');
+                toggleBtn.textContent = '展开 ▼';
+            } else {
+                abstractEl.classList.add('expanded');
+                toggleBtn.textContent = '收起 ▲';
+            }
         }
     </script>
 </body>
